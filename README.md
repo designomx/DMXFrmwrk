@@ -16,6 +16,6 @@ FontsAwesome --> https://fortawesome.github.io/Font-Awesome/ </br>
 The HTML5 Shiv - https://github.com/aFarkas/html5shiv
 https://github.com/scottjehl/Respond
 
-jQuery 2+ --> https://jquery.com
-jQuery.stayInWebApp --> https://github.com/mrmoses/jQuery.stayInWebApp
-backtotop.js --> http://jsfiddle.net/gilbitron/Lt2wH/
+jQuery 2+ --> https://jquery.com </br>
+jQuery.stayInWebApp --> https://github.com/mrmoses/jQuery.stayInWebApp </br>
+backtotop.js --> http://jsfiddle.net/gilbitron/Lt2wH/ </br>
