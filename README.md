@@ -3,7 +3,7 @@ Repositorio publico - DMX Modern Web Framework 2015 designo.mx®
 
 Dependencies:
 
-http://bourbon.io
+http://bourbon.io </br>
 http://neat.bourbon.io
 
 iosOverlay --> http://taitems.github.io/iOS-Overlay/
