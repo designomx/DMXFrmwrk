@@ -122,7 +122,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/css\/animate.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -138,7 +138,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_mixins.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -154,7 +154,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/css\/animate.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -170,7 +170,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_bounce.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -186,7 +186,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_flash.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -202,7 +202,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_pulse.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -218,7 +218,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_rubberBand.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -234,7 +234,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_shake.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -250,7 +250,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_swing.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -266,7 +266,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_tada.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -282,7 +282,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_wobble.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -298,7 +298,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_bounceIn.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -314,7 +314,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_bounceInDown.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -330,7 +330,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_bounceInLeft.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -346,7 +346,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_bounceInRight.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -362,7 +362,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_bounceInUp.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -378,7 +378,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_bounceOut.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -394,7 +394,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_bounceOutDown.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -410,7 +410,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_bounceOutLeft.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -426,7 +426,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_bounceOutRight.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -442,7 +442,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_bounceOutUp.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -458,7 +458,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeIn.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -474,7 +474,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeInDown.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -490,7 +490,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeInDownBig.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -506,7 +506,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeInLeft.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -522,7 +522,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeInLeftBig.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -538,7 +538,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeInRight.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -554,7 +554,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeInRightBig.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -570,7 +570,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeInUp.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -586,7 +586,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeInUpBig.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -602,7 +602,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeOut.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -618,7 +618,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeOutDown.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -634,7 +634,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeOutDownBig.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -650,7 +650,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeOutLeft.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -666,7 +666,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeOutLeftBig.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -682,7 +682,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeOutRight.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -698,7 +698,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeOutRightBig.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -714,7 +714,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeOutUp.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -730,7 +730,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_fadeOutUpBig.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -746,7 +746,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_flip.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -762,7 +762,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_flipInX.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -778,7 +778,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_flipInY.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -794,7 +794,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_flipOutX.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -810,7 +810,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_flipOutY.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -826,7 +826,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_lightSpeedIn.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -842,7 +842,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_lightSpeedOut.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -858,7 +858,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_rotateIn.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -874,7 +874,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_rotateInDownLeft.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -890,7 +890,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_rotateInDownRight.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -906,7 +906,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_rotateInUpLeft.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -922,7 +922,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_rotateInUpRight.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -938,7 +938,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_rotateOut.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -954,7 +954,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_rotateOutDownLeft.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -970,7 +970,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_rotateOutDownRight.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -986,7 +986,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_rotateOutUpLeft.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1002,7 +1002,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_rotateOutUpRight.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1018,7 +1018,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/slideInDown.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1034,7 +1034,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/slideInLeft.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1050,7 +1050,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/slideInRight.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1066,7 +1066,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/slideInUp.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1082,7 +1082,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/slideOutDown.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1098,7 +1098,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/slideOutLeft.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1114,7 +1114,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/slideOutRight.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1130,7 +1130,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/slideOutUp.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1146,7 +1146,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_hinge.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1162,7 +1162,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_rollIn.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1178,7 +1178,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_rollOut.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1194,7 +1194,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_zoomIn.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1210,7 +1210,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_zoomInDown.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1226,7 +1226,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_zoomInLeft.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1242,7 +1242,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_zoomInRight.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1258,7 +1258,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_zoomInUp.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1274,7 +1274,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_zoomOut.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1290,7 +1290,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_zoomOutDown.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1306,7 +1306,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_zoomOutLeft.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1322,7 +1322,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_zoomOutRight.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1338,7 +1338,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/sass\/animatecss\/css\/_zoomOutUp.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1354,7 +1354,7 @@
 		"outputAbbreviatedPath": "\/gadget_assets\/css\/gadget.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 3,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -1364,6 +1364,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/index.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/README.html": {
+		"fileType": 8192,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/README.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -1397,9 +1406,9 @@
 	},
 "projectAttributes": {
 	"bowerAbbreviatedPath": "",
-	"displayValue": "ft_gadget.tooth.me",
+	"displayValue": "DMXFrmwrk",
 	"displayValueWasSetByUser": 0,
-	"iconImageName": "brackets_yellow"
+	"iconImageName": "brackets_darkGray"
 	},
 "projectSettings": {
 	"alwaysUseExternalServer": 1,
@@ -1995,7 +2004,7 @@
 	"sassCreateSourceMap": 0,
 	"sassDebugStyle": 0,
 	"sassDecimalPrecision": 10,
-	"sassOutputStyle": 3,
+	"sassOutputStyle": 0,
 	"sassUseLibsass": 0,
 	"shouldRunAutoprefixer": 0,
 	"shouldRunBless": 0,
