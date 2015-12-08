@@ -12,8 +12,8 @@ MagicCSS --> https://github.com/miniMAC/magic </br>
 Material Design Lite --> http://www.getmdl.io </br>
 FontsAwesome --> https://fortawesome.github.io/Font-Awesome/ </br>
 
-[if IE]
-The HTML5 Shiv - https://github.com/aFarkas/html5shiv
+[if IE] </br>
+The HTML5 Shiv - https://github.com/aFarkas/html5shiv </br>
 https://github.com/scottjehl/Respond
 
 jQuery 2+ --> https://jquery.com </br>
