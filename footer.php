@@ -17,19 +17,26 @@
   <script src="js/backtotop.js"></script>
   <script src="js/init.js"></script>
   
+  <!--One page scroll-->
+  <script type="text/javascript" src="js/onepage-scroll.min.js"></script>
+  <link href='css/onepage-scroll.css' rel='stylesheet' type='text/css'>
+  
   <!--INTERNET CHECK-->
   <script src="offline07/offline.min.js"></script>
   <link rel="stylesheet" href="offline07/themes/offline-theme-dark.css" />
   <link rel="stylesheet" href="offline07/themes/offline-language-spanish.css" />
+  
+  <!--Roboto Font-->
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
   
+  <!--Googgle's Material Design Framework-->
   <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
   
   <!--PERFIL-->
   <script src="js/web.js"></script>
   <script>
   	jQuery(function() {
-  	
+
   	    Gadget.main.init();
   	    Gadget.web.init();
 	    

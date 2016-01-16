@@ -1,5 +1,9 @@
 <?php include 'header.php'; ?>
 
-<h4>DMX Modern Web Framework 2015 designo.mx®</h4>
+<div class="main">
+<section>...</section>
+<section>...</section>
+...
+</div>
 
 <?php include 'footer.php'; ?>
