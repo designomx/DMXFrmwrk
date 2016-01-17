@@ -1,0 +1,1 @@
+FRMWRK.web=function($){var i=function(){var i=$(window).height(),n=i-104;$(".slider, .slider .slide").slider({full_width:!0,height:n})},n=function(){function i(){location.reload()}$(window).resize(function(){clearTimeout(n),n=setTimeout(i,500)});var n},e=function(){};return{init:function(){i(),n()}}}(jQuery);
