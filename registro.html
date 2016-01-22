@@ -40,6 +40,7 @@
   <!--http://www.getmdl.io-->
   <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
   
 </head>
 
@@ -50,24 +51,24 @@
     <form class="col s12" id="formulario">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Placeholder" id="nombre" type="text" class="validate">
+          <input placeholder="Nombre y apellido" id="nombre" type="text" class="validate" required>
           <label for="nombre">Nombre completo</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="clave" type="password" class="validate">
+          <input placeholder="Contraseña" id="password" type="password" class="validate" required>
           <label for="clave">Password</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
+          <input placeholder="Correo electronico" id="email" type="email" class="validate" required>
           <label for="email">Email</label>
         </div>
       </div>
-      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-        <i class="material-icons right">Enviar</i>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+        <i class="material-icons right">send</i>
       </button>
     </form>
    </div> 
@@ -92,6 +93,7 @@
   <script src="js/materialize.min.js"></script>
   <script src="js/init.config.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/benjaminpalacios.js"></script>
   
   <!--INTERNET CHECK-->
   <script src="offline07/offline.min.js"></script>

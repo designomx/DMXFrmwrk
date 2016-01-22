@@ -1,0 +1,1 @@
+$("#formulario").submit(function(a){var o={nombre:$("#nombre").val(),email:$("#email").val(),password:$("#password").val()};$.ajax({type:"POST",url:"php/BenjaminPalaciosREGISTRO.php",data:o,success:function(a){alert("entro"),console.log(a)}})});
