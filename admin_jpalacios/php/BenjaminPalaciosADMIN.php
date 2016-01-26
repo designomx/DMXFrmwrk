@@ -17,9 +17,9 @@ if ($resultado = mysqli_query($dbConn, $consulta)) {
 		print_r("<tr>");
 	    print_r("<td>".$i."</td>");
 	    print_r("<td><img src='img/avatar_".$fila[4].".png' alt='user' width='70' class='img-circle' alt='Responsive image'></td>");
+	    print_r("<td>".$fila[0]."</td>");
 	    print_r("<td>".$fila[3]."</td>");
 	    print_r("<td>".$fila[1]."</td>");
-	    print_r("<td>".$fila[2]."</td>");
 	    if($fila[4]==0){
 			print_r("<td>Usuario</td>");
 	    }else{

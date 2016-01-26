@@ -9,14 +9,21 @@ $(document).ready(function(){
     )
     .fail(function(){
     	alert("Error!");
+    	return false;
+
     })
-    return false;
 });
 
 
 //Script para registrar usuarios desde la vista de administrador
 $( "#FormularioRegistroADMIN" ).submit(function( event ) {
 	if($('#password').val()==$('#password_confirmation').val()){
+		if ($('#usuario_admin').is(":checked"))
+		{
+			var usuario_admin = 1;
+		}else{
+			var usuario_admin = 0;
+		}
 		var formData = {
 				//Variables del formulario de registro
 	            nombre		: $('#nombre').val(),
@@ -24,7 +31,7 @@ $( "#FormularioRegistroADMIN" ).submit(function( event ) {
 	            password	: $('#password').val(),
 	            edad		: $('#edad').val(),
 	            sexo		: $("input[name=sexo]:checked").val(),
-	            usuario_admin: $("#usuario_admin").is(':checked') ? 1 : 0
+	            usuario_admin: usuario_admin
 	        }
 		$.ajax({
 			type: "POST",
@@ -33,14 +40,82 @@ $( "#FormularioRegistroADMIN" ).submit(function( event ) {
 			
 		})
 	    .done(function(data){
-				alert(data);
-	            }
+					//alert(data);
+					if(data=="Resgistro exitoso!"){
+						//alert("Login correcto.. Redireccionando");
+						window.location = "listado.html"
+						
+					}else{
+						if(data=="Error creando el registro!"){
+							alert("Error creando usuario");
+
+						}else{
+							alert("Usuario ya registrado")
+						}
+						return false;
+					}
+	          	}
 	    )
 	    .fail(function(){
 	    	alert("Posting failed");
 	    })
-	    return false;
 	}else{
-		alert("El password no coincide");
+		alert("El password no coincide")
 	}
+	return false;
+
+});
+
+//Script para editar registro
+$( "#EditarRegistro" ).submit(function( event ) {
+	if($('#password').val()==$('#password_confirmation').val()){
+		if ($('#usuario_admin').is(":checked"))
+		{
+			var usuario_admin = 1;
+		}else{
+			var usuario_admin = 0;
+		}
+		var editar_usuario=1;
+		var formData = {
+				//Variables del formulario de registro
+	            nombre		: $('#nombre').val(),
+	            email		: $('#email').val(),
+	            password	: $('#password').val(),
+	            edad		: $('#edad').val(),
+	            sexo		: $("input[name=sexo]:checked").val(),
+	            editar_usuario: editar_usuario,
+	            usuario_admin: usuario_admin
+	        }
+		$.ajax({
+			type: "POST",
+			url: "php/BenjaminPalacios.php",
+			data: formData
+			
+		})
+	    .done(function(data){
+					//alert(data);
+					if(data=="Resgistro exitoso!"){
+						//alert("Login correcto.. Redireccionando");
+						window.location = "listado.html"
+						
+					}else{
+						if(data=="Error creando el registro!"){
+							alert("Error creando usuario");
+
+						}else{
+							alert(data);
+							alert("Usuario ya registrado")
+						}
+						return false;
+					}
+	          	}
+	    )
+	    .fail(function(){
+	    	alert("Posting failed");
+	    })
+	}else{
+		alert("El password no coincide")
+	}
+	return false;
+
 });

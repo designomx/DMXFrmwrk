@@ -20,15 +20,29 @@ $( "#FormularioRegistro" ).submit(function( event ) {
 			
 		})
 	    .done(function(data){
-				alert(data);
-	            }
+					//alert(data);
+					if(data=="Resgistro exitoso!"){
+						//alert("Login correcto.. Redireccionando");
+						window.location = "#"
+						
+					}else{
+						if(data=="Error creando el registro!"){
+							alert("Error creando usuario")
+						}else{
+							alert("Usuario ya registrado")
+						}
+						return false;
+
+					}
+	          	}
 	    )
 	    .fail(function(){
 	    	alert("Posting failed");
 	    })
-	    return false;
 	}else{
 		alert("El password no coincide");
+		return false;
+
 	}
 });
 
@@ -50,8 +64,11 @@ $( "#BotonLogin" ).click(function( event ) {
 			if(data=="admin"){
 				alert("Login correcto.. Redireccionando");
 				window.location = "listado.html"
+
 			}else{
-				alert("Error en usuario y/o contraseña")
+				alert("Error en usuario y/o contraseña");
+				return false;
+
 			}
             //$("#Resultado").html(data);
             //$("#Resultado").html("Procesando, espere por favor...");
@@ -59,6 +76,7 @@ $( "#BotonLogin" ).click(function( event ) {
     )
     .fail(function(){
     	alert("Error!");
+    	return false;
+
     })
-    return false;
 });

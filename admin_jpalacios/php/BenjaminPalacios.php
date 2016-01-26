@@ -23,8 +23,10 @@ if(!isset($_POST['nombre'])){
 	if( $num_row == 1 ) {
 		$_SESSION['user'] = $row['nombre'];
 		if($row['usuario_admin']==1){
+			$_SESSION['tipo_usuario']=1;
 			echo "admin";
 		}else{
+			$_SESSION['tipo_usuario']=0;
 			echo 'usuario';
 		}
 		//$_SESSION['email'] = $row['email'];
@@ -41,8 +43,20 @@ if(!isset($_POST['nombre'])){
 	$sexo=$_POST['sexo'];
 	$queryRegistro="INSERT INTO usuarios (nombre,password,email,usuario_admin,edad,sexo)VALUES('".$nombre."',MD5('".$password."'),'".$email."','0','".$edad."','".$sexo."')";
 	//$queryRegistro="INSERT INTO usuarios (nombre,password,email,usuario_admin)VALUES('"prueba2"',MD5('"123"'),'"prueba2@prueba.com"','0')";
-	$result = mysqli_query($dbConn, $queryRegistro);
-	echo "Resgistro exitoso!";
+	//$result = mysqli_query($dbConn, $queryRegistro);
+	if (mysqli_query($dbConn, $queryRegistro) === TRUE) {
+    	printf("Resgistro exitoso!");
+	}else{
+		$result = mysqli_query($dbConn, "SELECT email FROM usuarios WHERE email='".$email."'");
+		if(mysql_num_rows($result) == 0) {
+		     // row not found, do stuff...
+			print_r("Error creando el registro!");	
+		} else {
+		    // do other stuff...
+		    print_r("Email ya registrado");
+		}
+	}
+	mysqli_close($dbConn);
 	//return $respuesta;
 
 //Si tiene los dos, es por que esta entrando desde el administrador	para realizar cualquiera de las acciones
@@ -52,10 +66,32 @@ if(!isset($_POST['nombre'])){
 	$edad=$_POST['edad'];
 	$sexo=$_POST['sexo'];
 	$usuario_admin=$_POST['usuario_admin'];
-	$queryRegistroADMIN="INSERT INTO usuarios (nombre,password,email,usuario_admin,edad,sexo)VALUES('".$nombre."',MD5('".$password."'),'".$email."','".$usuario_admin."','".$edad."','".$sexo."')";
-	//$queryRegistro="INSERT INTO usuarios (nombre,password,email,usuario_admin)VALUES('"prueba2"',MD5('"123"'),'"prueba2@prueba.com"','0')";
-	$result = mysqli_query($dbConn, $queryRegistroADMIN);
-	echo "Resgistro exitoso!";
+	//Si no está editar_usuario, es un Insert, viene de FormularioREgistroADMIN
+	if(!isset($_POST['editar_usuario'])){
+		$queryRegistroADMIN="INSERT INTO usuarios (nombre,password,email,usuario_admin,edad,sexo)VALUES('".$nombre."',MD5('".$password."'),'".$email."','".$usuario_admin."','".$edad."','".$sexo."')";
+	}else{
+		$update_pass = mysqli_query($dbConn, "SELECT email FROM usuarios WHERE email='".$email."' AND password='".$password."'");
+		//Revisar si ha modificado el password en el formulario de EditarRegistro, y actualizo o no el password
+		if(mysqli_num_rows($update_pass) == 1) {
+		    //No cambia el password
+			$queryRegistroADMIN="UPDATE usuarios SET nombre='".$nombre."',password='".$password."',usuario_admin='".$usuario_admin."',edad='".$edad."',sexo='".$sexo."' WHERE email='".$email."'";
+		}else{
+			$queryRegistroADMIN="UPDATE usuarios SET nombre='".$nombre."',password=MD5('".$password."'),usuario_admin='".$usuario_admin."',edad='".$edad."',sexo='".$sexo."' WHERE email='".$email."'";
+		}
+	}
+	if (mysqli_query($dbConn, $queryRegistroADMIN) === TRUE) {
+    	printf("Resgistro exitoso!");
+	}else{
+		$result = mysqli_query($dbConn, "SELECT email FROM usuarios WHERE email='".$email."'" );
+		if(mysqli_num_rows($result) == 0) {
+		     // row not found, do stuff...
+			print_r("Error creando el registro!");	
+		} else {
+		    // do other stuff...
+		    print_r($queryRegistroADMIN);
+		}
+	}
+	mysqli_close($dbConn);
 	//return $respuesta;
 }
 
