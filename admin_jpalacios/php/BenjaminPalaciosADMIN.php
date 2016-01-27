@@ -5,8 +5,6 @@ Archivos PHP para el registro de usuario de la aplicacion de BenjaminPalacios
 
 require "dbConn.php"; 
 
-
-session_start();
 $consulta = "SELECT nombre, email, usuario_admin, edad, sexo FROM usuarios ORDER by nombre";
 
 if ($resultado = mysqli_query($dbConn, $consulta)) {

@@ -43,7 +43,7 @@ $( "#FormularioRegistroADMIN" ).submit(function( event ) {
 					//alert(data);
 					if(data=="Resgistro exitoso!"){
 						//alert("Login correcto.. Redireccionando");
-						window.location = "listado.html"
+						window.location = "listado.php"
 						
 					}else{
 						if(data=="Error creando el registro!"){
@@ -96,7 +96,7 @@ $( "#EditarRegistro" ).submit(function( event ) {
 					//alert(data);
 					if(data=="Resgistro exitoso!"){
 						//alert("Login correcto.. Redireccionando");
-						window.location = "listado.html"
+						window.location = "listado.php"
 						
 					}else{
 						if(data=="Error creando el registro!"){

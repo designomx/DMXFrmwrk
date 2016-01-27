@@ -1,32 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Johnnie Ginger House | Admin v1.0</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Loading Bootstrap -->
-    <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Loading Flat UI -->
-    <link href="css/flat-ui.min.css" rel="stylesheet">
-
-    <link rel="shortcut icon" href="img/favicon.ico">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-    <!--[if lt IE 9]>
-      <script src="js/vendor/html5shiv.js"></script>
-      <script src="js/vendor/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-
+<?php
+  include "head.php";
+  include "contro.php";
+?>
     <div class="container">
     	<br /><br /><br />
 
-        <form class="form-horizontal" role="form" id="FormularioRegistro">
+        <form class="form-horizontal" role="form" id="FormularioRegistroADMIN">
           <div class="login-form" style="width: 300px; margin: 0 auto;">
-          <h6 style="text-align: center;"><strong>Johnnie Ginger House</strong></h6>
+          <h6 style="text-align: center;"><strong>Registrar nuevo usuario</strong></h6>
           <br />
             <div class="row">
               <div class="col-xs-8 col-sm-8 col-md-16">
@@ -64,6 +45,18 @@
               </div>
             </div>
             <div class="row">
+              <div class="form-group">
+                <label class="col-xs-3 control-label">Administrador</label>
+                <div class="col-xs-9">
+                   <div class="checkbox">
+                    <label>
+                      <input id="usuario_admin" type="checkbox" value="1">
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                   <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" required>
@@ -89,7 +82,7 @@
     <script src="../dist/js/vendor/video.js"></script>-->
     <script src="js/flat-ui.min.js"></script>
     <script src="js/application.js"></script>
-    <script src="js/benjaminpalacios.js"></script>
+    <script src="js/benjaminpalaciosADMIN.js"></script>
 
 
   </body>

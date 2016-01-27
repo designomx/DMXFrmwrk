@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Johnnie Ginger House | Admin v1.0</title>
+    <title>Benjamin Palacios | Admin v1.0</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Loading Bootstrap -->
@@ -17,6 +17,8 @@
     <!--[if lt IE 9]>
       <script src="js/vendor/html5shiv.js"></script>
       <script src="js/vendor/respond.min.js"></script>
+      colores amarillo: F2E000
+      color amarillo hoover, active, etc: #FFF042
     <![endif]-->
   </head>
   <body>
@@ -25,7 +27,7 @@
     	<br /><br /><br />
         
 		<div class="login-form" style="width: 300px; margin: 0 auto;">
-			<h6 style="text-align: center;"><strong>Johnnie Ginger House</strong></h6>
+			<h6 style="text-align: center;"><strong>Benjamin Palacios</strong></h6>
 			<br />
             <div class="form-group">
               <input type="text" class="form-control login-field" value="" placeholder="Usuario" id="login-name">
@@ -37,7 +39,9 @@
               <label class="login-field-icon fui-lock" for="login-pass"></label>
             </div>
 
-            <a class="btn btn-primary btn-lg btn-block" href="#" id="BotonLogin">Entrar</a>
+            <a class="btn btn-primary btn-lg btn-block" href="listado.php" id="BotonLogin">Entrar</a>
+            <a class="btn btn-primary btn-lg btn-block" href="register.php">Registrar</a>
+
         </div>
         
     </div>

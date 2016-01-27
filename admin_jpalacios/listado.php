@@ -1,42 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Benjamin Palacios | Admin v1.0</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Loading Bootstrap -->
-    <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Loading Flat UI -->
-    <link href="css/flat-ui.min.css" rel="stylesheet">
-
-    <link rel="shortcut icon" href="img/favicon.ico">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-    <!--[if lt IE 9]>
-      <script src="js/vendor/html5shiv.js"></script>
-      <script src="js/vendor/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-  	<!-- Static navbar -->
-  	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  	  <div class="container">
-  	    <div class="navbar-header">
-  	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-  	        <span class="sr-only">Toggle navigation</span>
-  	      </button>
-  	      <a class="navbar-brand" href="#">Benjamin Palacios</a>
-  	    </div>
-  	    <div class="navbar-collapse collapse">
-  	      <ul class="nav navbar-nav navbar-right">
-            <li><a href="register.html">Registrar Nuevo Usuario</a></li>
-            <li><a href="select.html">Lista de Usuarios</a></li>
-  	      </ul>
-  	    </div><!--/.nav-collapse -->
-  	  </div>
-  	</div>
+<?php 
+include "php/control.php";
+include "head.php";
+?>
     <div class="container">
     	<br /><br /><br />
     	<div class="table-responsive" id="lista_usuarios">
@@ -54,7 +19,9 @@
 	                </tr>
 	              </thead>
 	              <tbody id="tabla_usuarios">
-	                
+	                <!--
+	                	Por jQuery y ajax, llamo al archico BenjaminPalaciosADMIN.php, que carga los datos. (Puede hacerse directamente aca)
+	                -->
 	              </tbody>
 	            </table>
             </div><!--table-responsive-->

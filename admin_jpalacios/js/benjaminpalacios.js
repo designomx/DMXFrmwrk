@@ -63,12 +63,19 @@ $( "#BotonLogin" ).click(function( event ) {
 			//alert(data);
 			if(data=="admin"){
 				alert("Login correcto.. Redireccionando");
-				window.location = "listado.html"
+				alert(data);
+				window.location = "listado.php"
 
 			}else{
-				alert("Error en usuario y/o contraseña");
-				return false;
-
+				if(data=="usuario"){
+					alert("Usuario NO administrador");
+					//window.location = "#";
+					alert(data);
+					return false;
+				}else{
+					alert("Error en usuario y/o contraseña");
+					return false;
+				}
 			}
             //$("#Resultado").html(data);
             //$("#Resultado").html("Procesando, espere por favor...");
@@ -76,6 +83,7 @@ $( "#BotonLogin" ).click(function( event ) {
     )
     .fail(function(){
     	alert("Error!");
+    	alert(data);
     	return false;
 
     })
