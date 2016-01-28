@@ -12,8 +12,6 @@ $email=$_POST['email'];
 //Si no tiene nombre es por que es un login
 if(!isset($_POST['nombre'])){
 	//Iniciamos sesión y comienza el control de sesiones con $_SESSION->autenntica para saber si de verdad pasó la conexión, ->user para saber que usuario es y ->tipo_usuario para saber si es administrador o no.
-	session_start();
-	$_SESSION['autenticaBP']=1;
 	$password = md5($password);
 	$queryLogin = "SELECT nombre, email, usuario_admin FROM usuarios WHERE email='".$email."' AND password='".$password."'";
 	//$respuesta = mysql_query($queryLogin);
@@ -21,10 +19,11 @@ if(!isset($_POST['nombre'])){
 	$num_row = mysqli_num_rows($respuesta);
 	$row=mysqli_fetch_assoc($respuesta);
 	if( $num_row == 1 ) {
+		session_start();
 		$_SESSION['user'] = $row['nombre'];
 		if($row['usuario_admin']==1){
 			$_SESSION['tipo_usuario']="1";
-			echo "admin";
+			print_r("admin");
 		}else{
 			$_SESSION['tipo_usuario']="0";
 			echo 'usuario';

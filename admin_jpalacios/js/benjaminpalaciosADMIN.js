@@ -1,17 +1,20 @@
 $(document).ready(function(){
-	$.ajax({
-		type: "POST",
-		url: "php/BenjaminPalaciosADMIN.php",
-	})
-	.done(function(data){
-				$("#tabla_usuarios").html(data);	
-            }
-    )
-    .fail(function(){
-    	alert("Error!");
-    	return false;
+	
+});
 
-    })
+$(document).on("click", "#pagination ul li a",function() {
+    //alert('hello there!');
+    var page = $(this).data("id");        
+    var dataString = 'page='+page;
+    //alert(page);
+    $.ajax({
+            type: "GET",
+            url: "php/BenjaminPalaciosADMIN.php",
+            data: dataString,
+            success: function(data) {
+                $('#tabla_usuarios').fadeIn(1000).html(data);
+            }
+        });
 });
 
 
@@ -118,4 +121,23 @@ $( "#EditarRegistro" ).submit(function( event ) {
 	}
 	return false;
 
+});
+
+//Accion de eliminar registro
+$( "#BotonEliminar" ).click(function( event ) {
+    var dataString = $(this).data("registro");        
+    //alert(page);
+	var r = confirm("Press a button!");
+	if (r == true) {
+	    $.ajax({
+	            type: "GET",
+	            url: "php/eliminar.php",
+	            data: dataString,
+	            success: function(data) {
+	                window.location("listado.php");
+	            }
+	        });
+    } else {
+        txt = "You pressed Cancel!";
+    }
 });

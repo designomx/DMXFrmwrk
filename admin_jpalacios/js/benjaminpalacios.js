@@ -57,14 +57,15 @@ $( "#BotonLogin" ).click(function( event ) {
 	$.ajax({
 		type: "POST",
 		url: "php/BenjaminPalacios.php",
-		data: formData
+		data: formData,
+		dataType: "html"
 	})
 	.done(function(data){
 			//alert(data);
 			if(data=="admin"){
 				alert("Login correcto.. Redireccionando");
 				alert(data);
-				window.location = "listado.php"
+				window.location = "listado.php";
 
 			}else{
 				if(data=="usuario"){

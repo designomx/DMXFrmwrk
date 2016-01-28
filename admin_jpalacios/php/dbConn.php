@@ -2,10 +2,10 @@
 /*
 	Conexion a la base de datos para la aplicacion de Benjamin Palacios
 */
-$hostname = "localhost";
-$database = "benjaminpalacios";
+$hostname = "localhost:8889";
+$database = "benjamin_palacios";
 $username = "root";
-$password = "";
+$password = "root";
 
 $dbConn = mysqli_connect($hostname, $username, $password, $database);
 
