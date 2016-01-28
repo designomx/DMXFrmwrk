@@ -18,12 +18,12 @@ if(!isset($_POST['nombre'])){
 	$respuesta = mysqli_query($dbConn, $queryLogin);
 	$num_row = mysqli_num_rows($respuesta);
 	$row=mysqli_fetch_assoc($respuesta);
-	if( $num_row == 1 ) {
+	if( $num_row > 0 ) {
 		session_start();
 		$_SESSION['user'] = $row['nombre'];
 		if($row['usuario_admin']==1){
 			$_SESSION['tipo_usuario']="1";
-			print_r("admin");
+			echo "admin";
 		}else{
 			$_SESSION['tipo_usuario']="0";
 			echo 'usuario';
@@ -34,26 +34,23 @@ if(!isset($_POST['nombre'])){
 	else {
 	echo 'false';
 	}
-
+	mysqli_close($dbConn);
 //Si no tiene nombre ni usuario_admin, es un registro desde usuario
 }elseif(!isset($_POST['usuario_admin'])){
-	//Probar query para Registro
 	$nombre=$_POST['nombre'];
 	$edad=$_POST['edad'];
 	$sexo=$_POST['sexo'];
-	$queryRegistro="INSERT INTO usuarios (nombre,password,email,usuario_admin,edad,sexo)VALUES('".$nombre."',MD5('".$password."'),'".$email."','0','".$edad."','".$sexo."')";
-	//$queryRegistro="INSERT INTO usuarios (nombre,password,email,usuario_admin)VALUES('"prueba2"',MD5('"123"'),'"prueba2@prueba.com"','0')";
-	//$result = mysqli_query($dbConn, $queryRegistro);
-	if (mysqli_query($dbConn, $queryRegistro) === TRUE) {
-    	printf("Resgistro exitoso!");
+	$queryRegistro="INSERT INTO usuarios (nombre,password,email,usuario_admin,edad,sexo) VALUES ('".$nombre."',MD5('".$password."'),'".$email."','0','".$edad."','".$sexo."')";
+	if (mysqli_query($dbConn, $queryRegistro)===TRUE) {
+    	echo "exitoso";
 	}else{
 		$result = mysqli_query($dbConn, "SELECT email FROM usuarios WHERE email='".$email."'");
-		if(mysql_num_rows($result) == 0) {
-		     // row not found, do stuff...
-			print_r("Error creando el registro!");	
+		if(mysqli_num_rows($result) == 0) {
+		     // row not found
+			echo "Error creando el registro!";	
 		} else {
 		    // do other stuff...
-		    print_r("Email ya registrado");
+		    echo "Email ya registrado";
 		}
 	}
 	mysqli_close($dbConn);

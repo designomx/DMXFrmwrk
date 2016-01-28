@@ -6,13 +6,13 @@ $(document).on("click", "#pagination ul li a",function() {
     //alert('hello there!');
     var page = $(this).data("id");        
     var dataString = 'page='+page;
-    //alert(page);
+    //alert(dataString);
     $.ajax({
             type: "GET",
             url: "php/BenjaminPalaciosADMIN.php",
             data: dataString,
             success: function(data) {
-                $('#tabla_usuarios').fadeIn(1000).html(data);
+                $('#contenido_tablas').fadeIn(1000).html(data);
             }
         });
 });

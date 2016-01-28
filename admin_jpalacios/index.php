@@ -39,7 +39,7 @@
               <label class="login-field-icon fui-lock" for="login-pass"></label>
             </div>
 
-            <a class="btn btn-primary btn-lg btn-block" href="listado.php" id="BotonLogin">Entrar</a>
+            <a class="btn btn-primary btn-lg btn-block" id="BotonLogin">Entrar</a>
             <a class="btn btn-primary btn-lg btn-block" href="register.php">Registrar</a>
 
         </div>
