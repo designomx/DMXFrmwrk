@@ -28,7 +28,7 @@ if ($resultado = mysqli_query($dbConn, $consulta)) {
     //$_SESSION['total_paginas']= ceil($num_row / $rowsPerPage);
 
     /* obtener el array asociativo */
-    $consultaPaginacion = "SELECT nombre, email, usuario_admin, edad, sexo FROM usuarios ORDER by nombre ASC LIMIT ".$offset.", ".$rowsPerPage."";
+    $consultaPaginacion = "SELECT nombre, email, usuario_admin, edad, sexo, autorizado FROM usuarios ORDER by nombre ASC LIMIT ".$offset.", ".$rowsPerPage."";
     $resultadoPaginacion = mysqli_query($dbConn, $consultaPaginacion);
     //$i=1;
     echo("<br /><br /><br />");
@@ -42,6 +42,7 @@ if ($resultado = mysqli_query($dbConn, $consulta)) {
 	echo("                  <th>Edad</th>");
 	echo("                  <th>Email</th>");
 	echo("                  <th>Tipo de Usuario</th>");
+	echo("                  <th>Autorización</th>");
 	echo("                  <th></th>");
 	echo("                  <th></th>");
 	echo("                </tr>");
@@ -57,15 +58,20 @@ if ($resultado = mysqli_query($dbConn, $consulta)) {
 	    if($fila[4]==0){
 			echo("				<td>Usuario</td>");
 	    }else{
-	   		echo("				<td>Administrador</td>");
+	   		echo("				<td>Autorización</td>");
+	   	}
+	   	if($fila[5]==0){
+			echo("				<center><td class='text-center fui-cross'></td></center>");
+	    }else{
+	   		echo("				<td class='text-center fui-check'></td>");
 	   	}
 	    echo("
 	    							<td>
-	    								<a class='btn btn-primary btn-lg btn-block' data-registro='".$fila[1]."'>Editar</a>
+	    								<a class='btn btn-primary btn-lg btn-block' href='editar.php?email=".$fila[1]."'>Editar</a>
 	    							</td>");
 	   	echo("
 							    	<td>
-							    		<a id='BotonEliminar' class='btn btn-primary btn-lg btn-block' href='php/eliminar.php?email=".$fila[1]."'>X</a>
+							    		<a id='BotonEliminar' class='btn btn-primary btn-lg btn-block fui-trash' data-registro='".$fila[1]."'></a>
 							    	</td>");
 	    echo("				</tr>");
 

@@ -53,7 +53,19 @@
                       <input id="usuario_admin" type="checkbox" value="1">
                     </label>
                   </div>
-                </div>
+                </div>              
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <label class="col-xs-3 control-label">Autorizado</label>
+                <div class="col-xs-9">
+                   <div class="checkbox">
+                    <label>
+                      <input id="autorizado" type="checkbox" value="1" checked>
+                    </label>
+                  </div>
+                </div>              
               </div>
             </div>
             <div class="row">

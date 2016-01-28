@@ -2,7 +2,7 @@
 include "php/control.php";
 include "head.php";
 require "php/dbConn.php";
-$consulta = "SELECT nombre, email, usuario_admin, edad, sexo, password FROM usuarios WHERE email='".$_GET['email']."'";
+$consulta = "SELECT nombre, email, usuario_admin, edad, sexo, password, autorizado FROM usuarios WHERE email='".$_GET['email']."'";
 
 if ($resultado = mysqli_query($dbConn, $consulta)) {
   $fila = mysqli_fetch_row($resultado);
@@ -12,6 +12,7 @@ if ($resultado = mysqli_query($dbConn, $consulta)) {
   $edad=$fila[3];
   $sexo=$fila[4];
   $password=$fila[5];
+  $autorizado=$fila[6];
 }
 else{
   echo "<script> alert('no entra')</script>";
@@ -69,6 +70,18 @@ else{
                    <div class="checkbox">
                     <label>
                       <input id="usuario_admin" type="checkbox" value="1"  <?php if($usuario_admin==1){ echo "checked";} ?> >
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <label class="col-xs-3 control-label">Autorizado</label>
+                <div class="col-xs-9">
+                   <div class="checkbox">
+                    <label>
+                      <input id="autorizado" type="checkbox" value="1"  <?php if($autorizado==1){ echo "checked";} ?> >
                     </label>
                   </div>
                 </div>

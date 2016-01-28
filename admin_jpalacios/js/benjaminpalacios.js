@@ -1,7 +1,7 @@
 /*
 	Scripts de inicio de sesion, registro y administrador para aplicacion de BenjaminPalacios
 */
-
+$(document).ready()
 //Script para registrar usuarios
 $( "#FormularioRegistro" ).submit(function( event ) {
 	if($('#password').val()==$('#password_confirmation').val()){
@@ -24,12 +24,12 @@ $( "#FormularioRegistro" ).submit(function( event ) {
 					console.log('SUCCESS :)');
 					if(data=="exitoso"){
 						//alert("Registro Exitoso");
-						window.location = "index.php"			
+						window.location = "index.php";			
 					}else{
 						if(data=="Error creando el registro!"){
-							alert("Error creando usuario")
+							alert("Error creando usuario");
 						}else{
-							alert("Usuario ya registrado")
+							alert("Usuario ya registrado");
 						}
 						return false;
 

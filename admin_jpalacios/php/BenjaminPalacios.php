@@ -63,9 +63,10 @@ if(!isset($_POST['nombre'])){
 	$edad=$_POST['edad'];
 	$sexo=$_POST['sexo'];
 	$usuario_admin=$_POST['usuario_admin'];
+	$autorizado=$_POST['autorizado'];
 	//Si no está editar_usuario, es un Insert, viene de FormularioREgistroADMIN
 	if(!isset($_POST['editar_usuario'])){
-		$queryRegistroADMIN="INSERT INTO usuarios (nombre,password,email,usuario_admin,edad,sexo)VALUES('".$nombre."',MD5('".$password."'),'".$email."','".$usuario_admin."','".$edad."','".$sexo."')";
+		$queryRegistroADMIN="INSERT INTO usuarios (nombre,password,email,usuario_admin,edad,sexo,autorizado)VALUES('".$nombre."',MD5('".$password."'),'".$email."','".$usuario_admin."','".$edad."','".$sexo."','".$autorizado."')";
 	}else{
 		$update_pass = mysqli_query($dbConn, "SELECT email FROM usuarios WHERE email='".$email."' AND password='".$password."'");
 		//Revisar si ha modificado el password en el formulario de EditarRegistro, y actualizo o no el password

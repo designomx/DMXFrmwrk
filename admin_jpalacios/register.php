@@ -7,7 +7,7 @@
 
         <form class="form-horizontal" role="form" id="FormularioRegistro">
           <div class="login-form" style="width: 300px; margin: 0 auto;">
-          <h6 style="text-align: center;"><strong>Benjamin Palacios</strong></h6>
+          <h6 style="text-align: center;"><strong><a href="index.php">Benjamin Palacios</a></strong></h6>
           <br />
             <div class="row">
               <div class="col-xs-8 col-sm-8 col-md-16">
@@ -63,14 +63,6 @@
         
     </div>
     <!-- /.container -->
-
-    <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
-    <script src="js/vendor/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed 
-    <script src="../dist/js/vendor/video.js"></script>-->
-    <script src="js/flat-ui.min.js"></script>
-    <script src="js/application.js"></script>
-    <script src="js/benjaminpalacios.js"></script>
 
 
   </body>

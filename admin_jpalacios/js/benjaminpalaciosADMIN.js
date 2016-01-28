@@ -27,6 +27,12 @@ $( "#FormularioRegistroADMIN" ).submit(function( event ) {
 		}else{
 			var usuario_admin = 0;
 		}
+		if ($('#autorizado').is(":checked"))
+		{
+			var autorizado = 1;
+		}else{
+			var autorizado = 0;
+		}
 		var formData = {
 				//Variables del formulario de registro
 	            nombre		: $('#nombre').val(),
@@ -34,7 +40,8 @@ $( "#FormularioRegistroADMIN" ).submit(function( event ) {
 	            password	: $('#password').val(),
 	            edad		: $('#edad').val(),
 	            sexo		: $("input[name=sexo]:checked").val(),
-	            usuario_admin: usuario_admin
+	            usuario_admin: usuario_admin,
+	            autorizado	: autorizado
 	        }
 		$.ajax({
 			type: "POST",
@@ -124,17 +131,19 @@ $( "#EditarRegistro" ).submit(function( event ) {
 });
 
 //Accion de eliminar registro
-$( "#BotonEliminar" ).click(function( event ) {
-    var dataString = $(this).data("registro");        
-    //alert(page);
-	var r = confirm("Press a button!");
+$(document).on("click", "#BotonEliminar",function() {
+    var dataString = $(this).data("registro");
+    var formData = 'email='+ dataString;        
+    alert(dataString);
+	var r = confirm("¿Está seguro que desea eliminar este usuario?");
 	if (r == true) {
 	    $.ajax({
 	            type: "GET",
 	            url: "php/eliminar.php",
-	            data: dataString,
+	            data: formData,
 	            success: function(data) {
-	                window.location("listado.php");
+	            		alert("Registro eliminado exitosamente");
+	            		window.location="listado.php";
 	            }
 	        });
     } else {
