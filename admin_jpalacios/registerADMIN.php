@@ -1,6 +1,6 @@
 <?php
+  include "php/control.php";
   include "head.php";
-  include "control.php";
 ?>
     <div class="container">
     	<br /><br /><br />
