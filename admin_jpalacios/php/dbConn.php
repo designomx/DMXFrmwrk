@@ -2,10 +2,10 @@
 /*
 	Conexion a la base de datos para la aplicacion de Benjamin Palacios
 */
-$hostname = "localhost:8889";
-$database = "benjamin_palacios";
-$username = "root";
-$password = "root";
+$hostname = "localhost";
+$database = "designom_benjaminpalacios";
+$username = "designom_BPapp";
+$password = "B3nj4m1n";
 
 $dbConn = mysqli_connect($hostname, $username, $password, $database);
 

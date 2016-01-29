@@ -134,7 +134,7 @@ $( "#EditarRegistro" ).submit(function( event ) {
 $(document).on("click", "#BotonEliminar",function() {
     var dataString = $(this).data("registro");
     var formData = 'email='+ dataString;        
-    alert(dataString);
+    //alert(formData);
 	var r = confirm("¿Está seguro que desea eliminar este usuario?");
 	if (r == true) {
 	    $.ajax({

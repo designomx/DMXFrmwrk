@@ -58,7 +58,7 @@ if ($resultado = mysqli_query($dbConn, $consulta)) {
 	    if($fila[4]==0){
 			echo("				<td>Usuario</td>");
 	    }else{
-	   		echo("				<td>Autorización</td>");
+	   		echo("				<td>Administrador</td>");
 	   	}
 	   	if($fila[5]==0){
 			echo("				<center><td class='text-center fui-cross'></td></center>");

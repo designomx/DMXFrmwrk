@@ -6,7 +6,11 @@ $email=$_GET['email'];
 
 $queryEliminar="DELETE FROM usuarios WHERE email ='".$email."'";
 
-$dbConn->exec($queryEliminar);
+if (mysqli_query($dbConn, $queryEliminar)) {
+    echo "Record deleted successfully";
+} else {
+    echo "Error deleting record: " . mysqli_error($conn);
+}
 
 $dbConn=null;
 

@@ -40,8 +40,10 @@ if(!isset($_POST['nombre'])){
 	$nombre=$_POST['nombre'];
 	$edad=$_POST['edad'];
 	$sexo=$_POST['sexo'];
-	$queryRegistro="INSERT INTO usuarios (nombre,password,email,usuario_admin,edad,sexo) VALUES ('".$nombre."',MD5('".$password."'),'".$email."','0','".$edad."','".$sexo."')";
-	if (mysqli_query($dbConn, $queryRegistro)===TRUE) {
+	//$queryRegistro="INSERT INTO usuarios (nombre,password,email,usuario_admin,edad,sexo,autorizado) VALUES ('".$nombre."',MD5('".$password."'),'".$email."','0','".$edad."','".$sexo."','0')";
+	$queryRegistro="INSERT INTO usuarios (nombre,password,email,usuario_admin,edad,sexo,autorizado)VALUES('".$nombre."',MD5('".$password."'),'".$email."','0','".$edad."','".$sexo."','0')";
+
+	if (mysqli_query($dbConn, $queryRegistro)=== TRUE) {
     	echo "exitoso";
 	}else{
 		$result = mysqli_query($dbConn, "SELECT email FROM usuarios WHERE email='".$email."'");

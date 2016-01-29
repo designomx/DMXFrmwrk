@@ -101,6 +101,7 @@ else{
             </div>
             
             <input type="submit" value="Registrar" class="btn btn-primary btn-lg btn-block">
+            <a id='BotonCancelar' class='btn btn-primary btn-lg btn-block fui-cross' href="listado.php">Cancelar</a>
           </div>  
               </form>
         
