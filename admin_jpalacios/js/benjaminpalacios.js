@@ -6,7 +6,7 @@ $(document).ready(function(){
 });
 
 //Script para registrar usuarios
-$( "#FormularioRegistro" ).submit(function( event ) {
+$( "#BotonRegistrar" ).click(function( event ) {
 	if($('#password').val()==$('#password_confirmation').val()){
 		var formData = {
 				//Variables del formulario de registro
@@ -27,7 +27,7 @@ $( "#FormularioRegistro" ).submit(function( event ) {
 					//alert(data);
 					if(data=="Resgistro exitoso!"){
 						//alert("Login correcto.. Redireccionando");
-						window.location = "listado.php"
+						window.location = "index.php"
 						
 					}else{
 						if(data=="Error creando el registro!"){
@@ -52,44 +52,56 @@ $( "#FormularioRegistro" ).submit(function( event ) {
 
 //Script para inicio de sesión
 $( "#BotonLogin" ).click(function( event ) {
-	var formData = {
-			//Variables del formulario de login
-            email		: $('#login-name').val(),
-            password	: $('#login-pass').val()
-        }
-        //alert($('#email').val())
-	$.ajax({
-		type: "POST",
-		url: "php/BenjaminPalacios.php",
-		data: formData,
-		dataType: "html"
-	})
-	.done(function(data){
-			//alert(data);
-			if(data=="admin"){
-				alert("Bienvenido");
+	if ($('#AceptaTerminos').is(":checked"))
+		{
+			var Acepta = 1;
+		}else{
+			var Acepta = 0;
+		}
+	//alert(Acepta);
+	if(Acepta=='1'){	
+		var formData = {
+				//Variables del formulario de login
+	            email		: $('#login-name').val(),
+	            password	: $('#login-pass').val()
+	        }
+	        //alert($('#email').val())
+		$.ajax({
+			type: "POST",
+			url: "php/BenjaminPalacios.php",
+			data: formData,
+			dataType: "html"
+		})
+		.done(function(data){
 				//alert(data);
-				window.location = "listado.php";
-
-			}else{
-				if(data=="usuario"){
-					alert("Usuario NO administrador");
-					//window.location = "#";
+				if(data=="admin"){
+					alert("Bienvenido");
 					//alert(data);
+					window.location = "listado.php";
 					return false;
-				}else{
-					alert("Error en usuario y/o contraseña");
-					return false;
-				}
-			}
-            //$("#Resultado").html(data);
-            //$("#Resultado").html("Procesando, espere por favor...");
-        }
-    )
-    .fail(function(){
-    	alert("Error!");
-    	//alert(data);
-    	return false;
 
-    })
+				}else{
+					if(data=="usuario"){
+						alert("Usuario NO administrador");
+						//window.location = "#";
+						//alert(data);
+						return false;
+					}else{
+						alert("Error en usuario y/o contraseña");
+						return false;
+					}
+				}
+	            //$("#Resultado").html(data);
+	            //$("#Resultado").html("Procesando, espere por favor...");
+	        }
+	    )
+	    .fail(function(){
+	    	alert("Error!");
+	    	//alert(data);
+	    	return false;
+
+	    })
+	}else{
+		alert("Debe aceptar Términos y Condiciones");
+	}
 });

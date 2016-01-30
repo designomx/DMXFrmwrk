@@ -13,13 +13,7 @@
 
     <link rel="shortcut icon" href="img/favicon.ico">
 
-        <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
-    <script src="js/vendor/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed 
-    <script src="../dist/js/vendor/video.js"></script>-->
-    <script src="js/flat-ui.min.js"></script>
-    <script src="js/application.js"></script>
-    <script src="js/benjaminpalacios.js"></script>
+
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
@@ -32,7 +26,7 @@
     <div class="container">
     	<br /><br /><br />
 
-        <form class="form-horizontal" role="form" id="FormularioRegistro">
+        <form class="form-horizontal" role="form" id="FormularioRegistro" method="post" action="">
           <div class="login-form" style="width: 300px; margin: 0 auto;">
           <h6 style="text-align: center;"><strong>Benjamin Palacios</strong></h6>
           <br />
@@ -84,13 +78,21 @@
               </div>
             </div>
             
-            <input type="submit" value="Registrar" class="btn btn-primary btn-lg btn-block">
+            <button type="button" id="BotonRegistrar" name="go" class="btn btn-primary btn-block">
+              Registrar
+            </button>
           </div>  
               </form>
         
     </div>
     <!-- /.container -->
-
+        <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
+    <script src="js/vendor/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed 
+    <script src="../dist/js/vendor/video.js"></script>-->
+    <script src="js/flat-ui.min.js"></script>
+    <script src="js/application.js"></script>
+    <script src="js/benjaminpalacios.js"></script>
 
   </body>
 </html>
