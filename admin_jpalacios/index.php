@@ -1,76 +1,67 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=1,initial-scale=1,user-scalable=1" />
-  <title>Benjamin Palacios</title>
-  
-  
-  <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.css" />
-  <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/font-awesome.css" />
-  <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap-social.css" />
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Benjamin Palacios | Admin v1.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
-  
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- Loading Bootstrap -->
+    <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="css/flat-ui.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <script src="js/vendor/html5shiv.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+      colores amarillo: F2E000
+      color amarillo hoover, active, etc: #FFF042
     <![endif]-->
-</head>
-<body>
+  </head>
+  <body>
 
-  <section class="container">
-      <section class="login-form">
-        <form method="post" action="" role="login">
-          <img src="img/Logo.png" class="img-responsive" alt="" />
-          <input type="email" name="email" placeholder="Email" required class="form-control input-lg" id="login-name"/>
-          <input type="password" name="password" id="login-pass" placeholder="Contraseña" required class="form-control input-lg" />
+    <div class="container">
+    	<br /><br /><br />
+        
+		<div class="login-form" style="width: 300px; margin: 0 auto;">
+			<h6 style="text-align: center;"><strong>Benjamin Palacios</strong></h6>
+			<br />
+            <div class="form-group">
+              <input type="text" class="form-control login-field" value="" placeholder="Usuario" id="login-name">
+              <label class="login-field-icon fui-user" for="login-name"></label>
+            </div>
 
-
-          <div class="text-center terminos">
+            <div class="form-group">
+              <input type="password" class="form-control login-field" value="" placeholder="Password" id="login-pass">
+              <label class="login-field-icon fui-lock" for="login-pass"></label>
+            </div>
+            
+            <div class="text-center terminos">
             <label >
               <input id="AceptaTerminos" type="checkbox" value="1" required>
               Acepto Términos y Condiciones
             </label>
           </div>
-          
-          <div class="">
-            <button type="button" id="BotonLogin" name="go" class="btn btn-primary btn-block">
-              Entrar
-            </button>
-          </div>
-          <!--
-          <div>
-            <a href="#">Create account</a> or <a href="#">reset password</a>
-          </div>
-          -->
-          <br><br><br><br>
-          <div>
-          <a class="btn btn-social-icon btn-github">
-            <span class="fa fa-twitter"></span>
-          </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a class="btn btn-social-icon btn-github">
-            <span class="fa fa-facebook"></span>
-          </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a class="btn btn-social-icon btn-github">
-            <span class="fa fa-youtube"></span>
-          </a>
 
+            <a class="btn btn-primary btn-lg btn-block" id="BotonLogin">Entrar</a>
+            <a class="btn btn-primary btn-lg btn-block" href="register.php">Registrar</a>
 
-          </div>
-
-          
-        </form>
-        <div class="footer">
-          <label>www.benjaminpalacios.net</label>
         </div>
-      </section>
-  </section>
-  
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="js/benjaminpalacios.js"></script>
+        
+    </div>
+    <!-- /.container -->
 
-</body>
+    <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
+    <script src="js/vendor/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed 
+    <script src="../dist/js/vendor/video.js"></script>-->
+    <script src="js/flat-ui.min.js"></script>
+    <script src="js/application.js"></script>
+    <script src="js/benjaminpalacios.js"></script>
+
+
+  </body>
 </html>
