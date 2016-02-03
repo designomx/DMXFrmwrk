@@ -154,15 +154,14 @@ $(document).on("click", "#BotonEliminar",function() {
 //Accion para editar un registro
 $(document).on("click", "#BotonEditar",function() {
 	if(typeof(Storage) !== "undefined") {
-	    localstorage.EDITARemail = $(this).data("email");
-	    localstorage.EDITARnombre = $(this).data("nombre");
-	    localstorage.EDITARusuarioAdmin = $(this).data("usuarioAdmin");
-	    localstorage.EDITARedad = $(this).data("edad");
-	    localstorage.EDITARsexo = $(this).data("sexo");
-	    localstorage.EDITARautorizado = $(this).data("autorizado");
-	    localstorage.EDITARpassword = $(this).data("password");
-		 
-	}
+	    localStorage.EDITARemail = $(this).data("email");
+	    localStorage.EDITARnombre = $(this).data("nombre");
+	    localStorage.EDITARusuarioAdmin = $(this).data("usuarioAdmin");
+	    localStorage.EDITARedad = $(this).data("edad");
+	    localStorage.EDITARsexo = $(this).data("sexo");
+	    localStorage.EDITARautorizado = $(this).data("autorizado");
+	    localStorage.EDITARpassword = $(this).data("password");
+	    window.location="editar.html";
 	} else {
             	alert("Sorry, your browser does not support web storage...");
         }
