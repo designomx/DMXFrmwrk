@@ -28,7 +28,7 @@ if ($resultado = mysqli_query($dbConn, $consulta)) {
     //$_SESSION['total_paginas']= ceil($num_row / $rowsPerPage);
 
     /* obtener el array asociativo */
-    $consultaPaginacion = "SELECT nombre, email, usuario_admin, edad, sexo, autorizado FROM usuarios ORDER by nombre ASC LIMIT ".$offset.", ".$rowsPerPage."";
+    $consultaPaginacion = "SELECT nombre, email, usuario_admin, edad, sexo, autorizado,password FROM usuarios ORDER by nombre ASC LIMIT ".$offset.", ".$rowsPerPage."";
     $resultadoPaginacion = mysqli_query($dbConn, $consultaPaginacion);
     //$i=1;
     echo("<br /><br /><br />");
@@ -67,7 +67,7 @@ if ($resultado = mysqli_query($dbConn, $consulta)) {
 	   	}
 	    echo("
 	    							<td>
-	    								<a class='btn btn-primary btn-lg btn-block' href='editar.php?email=".$fila[1]."'>Editar</a>
+	    								<a id='BotonEditar' class='btn btn-primary btn-lg btn-block' data-email='".$fila[1]."' data-nombre='".$fila[0]."' data-usuarioAdmin='".$fila[2]."' data-edad='".$fila[3]."' data-sexo='".$fila[4]."' data-autorizado='".$fila[5]."' data-password='".$fila[6]."'>Editar</a>
 	    							</td>");
 	   	echo("
 							    	<td>

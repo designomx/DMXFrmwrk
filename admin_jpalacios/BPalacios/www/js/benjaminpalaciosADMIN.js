@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+	TipoDeUsuario();
 });
 
 $(document).on("click", "#pagination ul li a",function() {
@@ -9,7 +9,7 @@ $(document).on("click", "#pagination ul li a",function() {
     //alert(dataString);
     $.ajax({
             type: "GET",
-            url: "php/BenjaminPalaciosADMIN.php",
+            url: "http://localhost:8888/DMXFrmwrk/admin_jpalacios/php/BenjaminPalaciosAdminAPP.php",
             data: dataString,
             success: function(data) {
                 $('#contenido_tablas').fadeIn(1000).html(data);
@@ -45,15 +45,15 @@ $( "#FormularioRegistroADMIN" ).submit(function( event ) {
 	        }
 		$.ajax({
 			type: "POST",
-			url: "php/BenjaminPalacios.php",
+			url: "http://localhost:8888/DMXFrmwrk/admin_jpalacios/php/BenjaminPalacios.php",
 			data: formData
 			
 		})
 	    .done(function(data){
 					//alert(data);
 					if(data=="Resgistro exitoso!"){
-						//alert("Login correcto.. Redireccionando");
-						window.location = "listado.php"
+						alert("Registrado Exitosamente");
+						window.location = "listado.html"
 						
 					}else{
 						if(data=="Error creando el registro!"){
@@ -98,7 +98,7 @@ $( "#EditarRegistro" ).submit(function( event ) {
 	        }
 		$.ajax({
 			type: "POST",
-			url: "php/BenjaminPalacios.php",
+			url: "http://localhost:8888/DMXFrmwrk/admin_jpalacios/php/BenjaminPalacios.php",
 			data: formData
 			
 		})
@@ -106,7 +106,7 @@ $( "#EditarRegistro" ).submit(function( event ) {
 					//alert(data);
 					if(data=="Resgistro exitoso!"){
 						//alert("Login correcto.. Redireccionando");
-						window.location = "listado.php"
+						window.location = "listado.html"
 						
 					}else{
 						if(data=="Error creando el registro!"){
@@ -139,13 +139,64 @@ $(document).on("click", "#BotonEliminar",function() {
 	if (r == true) {
 	    $.ajax({
 	            type: "GET",
-	            url: "php/eliminar.php",
+	            url: "http://localhost:8888/DMXFrmwrk/admin_jpalacios/php/eliminar.php",
 	            data: formData,
 	            success: function(data) {
 	            		alert("Registro eliminado exitosamente");
-	            		window.location="listado.php";
+	            		window.location="listado.html";
 	            }
 	        });
+    } else {
+        txt = "You pressed Cancel!";
+    }
+});
+
+//Accion para editar un registro
+$(document).on("click", "#BotonEditar",function() {
+	if(typeof(Storage) !== "undefined") {
+	    localstorage.EDITARemail = $(this).data("email");
+	    localstorage.EDITARnombre = $(this).data("nombre");
+	    localstorage.EDITARusuarioAdmin = $(this).data("usuarioAdmin");
+	    localstorage.EDITARedad = $(this).data("edad");
+	    localstorage.EDITARsexo = $(this).data("sexo");
+	    localstorage.EDITARautorizado = $(this).data("autorizado");
+	    localstorage.EDITARpassword = $(this).data("password");
+		 
+	}
+	} else {
+            	alert("Sorry, your browser does not support web storage...");
+        }
+});
+
+//Función que determina si el tipo de usuario le saldrá o no el menu
+function TipoDeUsuario() {
+          if(typeof(Storage) !== "undefined") {
+              if (localStorage.TipoUsuario) {
+                  $("#contenedor").append('<!-- Static navbar --><div class="navbar navbar-default navbar-fixed-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span></button><a class="navbar-brand" href="#">Benjamin Palacios</a><small>Hola,'+localStorage.NombreUsuario+'</small></div><div class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="registerADMIN.html">Registrar Nuevo Usuario</a></li><li><a href="listado.html">Lista de Usuarios</a></li><li><a id="cerrarSesion" href="">Salir</a></li></ul></div><!--/.nav-collapse --></div></div>')
+              }
+          } else {
+            	alert("Sorry, your browser does not support web storage...");
+          }
+      }
+
+//Accion para el boton de cerrar sesion
+$(document).on("click", "#cerrarSesion",function() {
+    var dataStringCS = $(this).data("registro");
+    //var formData = 'email='+ dataString;        
+    //alert(formData);
+	var r = confirm("¿Está seguro que desea cerrar la sesion?");
+	if (r == true) {
+	    /*
+	    $.ajax({
+	            type: "GET",
+	            url: "http://localhost:8888/DMXFrmwrk/admin_jpalacios/php/eliminar.php",
+	            data: formData,
+	            success: function(data) {
+	            		alert("Registro eliminado exitosamente");
+	            		window.location="listado.html";
+	            }
+	        });
+	    */
     } else {
         txt = "You pressed Cancel!";
     }
