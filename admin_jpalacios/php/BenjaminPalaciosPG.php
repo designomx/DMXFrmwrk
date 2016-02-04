@@ -27,14 +27,14 @@ if(!isset($_POST['nombre'])){
 		session_start();
 		$_SESSION['user'] = $row['nombre'];
 		header('Content-type: application/json');
-
-		if($row['usuario_admin']==1){
+		$data1 = array( 'tipo_usuario' => $row['usuario_admin'], 'name' => $row['nombre'], 'email' => $row['email'] );
+		echo json_encode( $data1 );
+		if($row['usuario_admin']=="1"){
 			$_SESSION['tipo_usuario']="1";
-			$data1 = array( 'tipo_usuario' => $row['usuario_admin'], 'name' => $row['nombre'], 'email' => $row['email'] );
-			echo json_encode( $data1 );
 			//echo "admin";
+		}else{
+			$_SESSION['tipo_usuario']="0";
 		}
-
 		//Probablemente necesitemos el email que es la primary_key de la tabla usuarios para usos futuros;
 		//$_SESSION['email'] = $row['email'];
 	}

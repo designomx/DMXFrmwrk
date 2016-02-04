@@ -79,25 +79,25 @@ $( "#BotonLogin" ).click(function( event ) {
 					localStorage.TipoUsuario = data.tipo_usuario;
 					localStorage.NombreUsuario = data.name;
 					localStorage.email = data.email;
+					if(localStorage.TipoUsuario=="1"){
+						alert("Bienvenido");
+						//alert(data);
+						window.location = "listado.html";
+						return false;
+
+					}else{
+						if(localStorage.TipoUsuario=="0"){
+							alert("Usuario NO administrador");
+							window.location = "BenjaminPalaciosAPP.html";
+							//alert(data);
+							return false;
+						}else{
+							alert("Error en usuario y/o contraseña");
+							return false;
+						}
+					}
 				}else{
 					alert("Sorry, your browser does not support web storage...");
-				}
-				if(localStorage.TipoUsuario=="1"){
-					alert("Bienvenido");
-					//alert(data);
-					window.location = "listado.html";
-					return false;
-
-				}else{
-					if(data.tipo_usuario=="0"){
-						alert("Usuario NO administrador");
-						//window.location = "#";
-						//alert(data);
-						return false;
-					}else{
-						alert("Error en usuario y/o contraseña");
-						return false;
-					}
 				}
 	            //$("#Resultado").html(data);
 	            //$("#Resultado").html("Procesando, espere por favor...");
@@ -107,7 +107,6 @@ $( "#BotonLogin" ).click(function( event ) {
 	    	alert("Error!");
 	    	//alert(data);
 	    	return false;
-
 	    })
 	}else{
 		alert("Debe aceptar Términos y Condiciones");
