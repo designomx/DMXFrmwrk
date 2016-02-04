@@ -9,7 +9,7 @@ $(document).on("click", "#pagination ul li a",function() {
     //alert(dataString);
     $.ajax({
             type: "GET",
-            url: "http://localhost:8888/DMXFrmwrk/admin_jpalacios/php/BenjaminPalaciosAdminAPP.php",
+            url: "http://designo.mx/DMXFrmwrk/admin_jpalacios/php/BenjaminPalaciosAdminAPP.php",
             data: dataString,
             success: function(data) {
                 $('#contenido_tablas').fadeIn(1000).html(data);
@@ -45,7 +45,7 @@ $( "#FormularioRegistroADMIN" ).submit(function( event ) {
 	        }
 		$.ajax({
 			type: "POST",
-			url: "http://localhost:8888/DMXFrmwrk/admin_jpalacios/php/BenjaminPalacios.php",
+			url: "http://designo.mx/DMXFrmwrk/admin_jpalacios/php/BenjaminPalacios.php",
 			data: formData
 			
 		})
@@ -98,7 +98,7 @@ $( "#EditarRegistro" ).submit(function( event ) {
 	        }
 		$.ajax({
 			type: "POST",
-			url: "http://localhost:8888/DMXFrmwrk/admin_jpalacios/php/BenjaminPalacios.php",
+			url: "http://designo.mx/DMXFrmwrk/admin_jpalacios/php/BenjaminPalacios.php",
 			data: formData
 			
 		})
@@ -139,7 +139,7 @@ $(document).on("click", "#BotonEliminar",function() {
 	if (r == true) {
 	    $.ajax({
 	            type: "GET",
-	            url: "http://localhost:8888/DMXFrmwrk/admin_jpalacios/php/eliminar.php",
+	            url: "http://designo.mx/DMXFrmwrk/admin_jpalacios/php/eliminar.php",
 	            data: formData,
 	            success: function(data) {
 	            		alert("Registro eliminado exitosamente");
@@ -171,7 +171,7 @@ $(document).on("click", "#BotonEditar",function() {
 function TipoDeUsuario() {
           if(typeof(Storage) !== "undefined") {
               if (localStorage.TipoUsuario) {
-                  $("#contenedor").append('<!-- Static navbar --><div class="navbar navbar-default navbar-fixed-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span></button><a class="navbar-brand" href="#">Benjamin Palacios</a><small>Hola,'+localStorage.NombreUsuario+'</small></div><div class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="registerADMIN.html">Registrar Nuevo Usuario</a></li><li><a href="listado.html">Lista de Usuarios</a></li><li><a id="cerrarSesion" href="">Salir</a></li></ul></div><!--/.nav-collapse --></div></div>')
+                  $("#contenedor").append('<!-- Static navbar --><div class="navbar navbar-default navbar-fixed-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span></button><a class="navbar-brand" href="#">Benjamin Palacios</a><small>Hola,'+localStorage.NombreUsuario+'</small></div><div class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="registerADMIN.html">Registrar Nuevo Usuario</a></li><li><a href="listado.html">Lista de Usuarios</a></li><li><a id="cerrarSesion" href="index.html">Salir</a></li></ul></div><!--/.nav-collapse --></div></div>')
               }
           } else {
             	alert("Sorry, your browser does not support web storage...");
@@ -180,7 +180,7 @@ function TipoDeUsuario() {
 
 //Accion para el boton de cerrar sesion
 $(document).on("click", "#cerrarSesion",function() {
-    var dataStringCS = $(this).data("registro");
+    //var dataStringCS = $(this).data("registro");
     //var formData = 'email='+ dataString;        
     //alert(formData);
 	var r = confirm("¿Está seguro que desea cerrar la sesion?");

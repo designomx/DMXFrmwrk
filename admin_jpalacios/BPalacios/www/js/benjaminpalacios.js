@@ -68,7 +68,7 @@ $( "#BotonLogin" ).click(function( event ) {
 	        //alert($('#email').val())
 		$.ajax({
 			type: "POST",
-			url: "http://localhost:8888/DMXFrmwrk/admin_jpalacios/php/BenjaminPalaciosPG.php",
+			url: "http://designo.mx/DMXFrmwrk/admin_jpalacios/php/BenjaminPalaciosPG.php",
 			data: formData,
 			dataType: "json"
 		})

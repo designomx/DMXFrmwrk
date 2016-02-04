@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 require "dbConn.php"; 
 
 //Variables del formulario de Registro

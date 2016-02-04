@@ -3,14 +3,16 @@
 Archivos PHP para el registro de usuario de la aplicacion de BenjaminPalacios
 */
 
+header("Access-Control-Allow-Origin: *");
+
 require "dbConn.php"; 
 
 //Variables del formulario de Registro
-//$password=$_POST['password'];
-//$email=$_POST['email'];
+$password=$_POST['password'];
+$email=$_POST['email'];
 
-$password="123";
-$email="admin@prueba";
+//$password="123";
+//$email="admin@prueba";
 
 //Si no tiene nombre es por que es un login
 if(!isset($_POST['nombre'])){

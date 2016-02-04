@@ -2,6 +2,8 @@
 /*
 Archivos PHP para el registro de usuario de la aplicacion de BenjaminPalacios
 */
+header("Access-Control-Allow-Origin: *");
+
 
 require "dbConn.php"; 
 
