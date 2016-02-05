@@ -171,7 +171,7 @@ $(document).on("click", "#BotonEditar",function() {
 function TipoDeUsuario() {
           if(typeof(Storage) !== "undefined") {
               if (localStorage.TipoUsuario) {
-                  $("#contenedor").append('<!-- Static navbar --><div class="navbar navbar-default navbar-fixed-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span></button><a class="navbar-brand" href="#">Benjamin Palacios</a><small>Hola,'+localStorage.NombreUsuario+'</small></div><div class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="registerADMIN.html">Registrar Nuevo Usuario</a></li><li><a href="listado.html">Lista de Usuarios</a></li><li><a id="cerrarSesion" href="index.html">Salir</a></li></ul></div><!--/.nav-collapse --></div></div>')
+                  $("#contenedor").append('<!-- Static navbar --><div class="navbar navbar-default navbar-fixed-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span></button><a class="navbar-brand" href="#">Benjamin Palacios</a></div><div class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="registerADMIN.html">Registrar Nuevo Usuario</a></li><li><a href="listado.html">Lista de Usuarios</a></li><li><a id="cerrarSesion" href="index.html">Salir</a></li></ul></div><!--/.nav-collapse --></div></div>')
               }
           } else {
             	alert("Sorry, your browser does not support web storage...");

@@ -24,7 +24,4 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <preference name="DisallowOverscroll" value="true" />
-    <preference name="orientation" value="portrait" />
-    <preference name="orientation" value="landscape" />
-
 </widget>
