@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=1,initial-scale=1,user-scalable=1" />
+  <meta http-equiv="Content-Security-Policy"/>
+  <title>Benjamin Palacios</title>
+  
+  
+  <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/font-awesome.css" />
+  <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap-social.css" />
+  <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap-switch.css" />
+  <link href="assets/bootstrap/css/highlight.css" rel="stylesheet"/>
+
+  <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+  <div id="container" class="container">
+    <div id="body" class="login-form">
+      <section class="controles">
+        <img src="img/Logo.png" class="img-responsive" alt="" />
+        <span class="input-group form-control">
+          <span class="pull-left" id="">Despertador y Alimentos</span>
+          <span class="pull-right">
+            <input name="despertador" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" checked>
+          </span>
+        </span>   
+        <div class="pull-left col-xs-8 col-sm-8 col-md-16 texto-izq">
+            <span class=" form-control input-lg">8:00 AM</span>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-16 texto-der">
+            <input id="repetidor1" type="number" inputmode="numeric" pattern="[0-9]*" name="cantidad" class="input-lg form-control" placeholder="5" required>
+        </div>
+        <span class="input-group form-control">
+          <span class="pull-left" id="">Alimentos y Entrenamiento</span>
+          <span class="pull-right">
+            <input name="alimentos" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" checked>
+          </span>
+        </span>   
+        <div class="col-xs-8 col-sm-8 col-md-16 texto-izq">    
+            <span class="form-control input-lg">7:40 AM</span>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-16 texto-der">
+            <input id="repetidor2" type="number" pattern="\d*" name="cantidad" class="input-lg form-control" placeholder="5" required>
+        </div>
+        <span class="input-group form-control">
+          <span class="pull-left" id="">Hidratación</span>
+          <span class="pull-right">
+            <input name="hidratacion" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" checked>
+          </span>
+        </span>   
+        <span class="input-group form-control">
+          <span class="pull-left" id="">Recordatorios directos</span>
+          <span class="pull-right">
+            <input name="recordatorios" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" checked>
+          </span>
+        </span>
+        <br><br>
+        <div class="text-center">
+          <a class="btn btn-social-icon btn-github">
+            <span class="fa fa-twitter"></span>
+          </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a class="btn btn-social-icon btn-github">
+            <span class="fa fa-facebook"></span>
+          </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a class="btn btn-social-icon btn-github">
+            <span class="fa fa-youtube"></span>
+          </a>
+        </div>
+
+        <!-- schedule 
+            <h2 class="section">Schedule</h2>
+            <div class="container">
+                <div onclick="schedule()">Single<br /><span>schedule(1)</span></div>
+                <div onclick="scheduleMultiple()">Multiple<br /><span>schedule(1, 2, 3)</span></div>
+            </div>
+            <div class="container">
+                <div onclick="scheduleDelayed()">In 5 sec<br /><span>schedule(1, firstAt:later)</span></div>
+                <div onclick="scheduleMinutely()">Every min<br /><span>schedule(1, every:minute)</span></div>
+            </div>
+        -->
+        <div class="container">
+            <button onclick="add_reminder(10,'Mensaje del primer repetidor, bla bla bla bla bla bla',5,8,0,'notificacion primer repetidor')">Single</button>
+            <button onclick="schedule()">Multiple</button>
+        </div>
+
+
+      </section>
+    </div>
+  </div>
+  <footer id="footer" class="footer">
+        <label>www.benjaminpalacios.net</label>
+    </footer>
+  
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap-switch.min.js"></script>
+  <script>
+    $(function(argument) {
+      $('[type="checkbox"]').bootstrapSwitch();
+    })
+    </script>
+
+  <script type="text/javascript">
+      //set initial state.
+      //$('#textbox1').val($(this).is(':checked'));
+      $('input[name="despertador"]').on('switchChange.bootstrapSwitch', function(event, state) {
+          if(state==true){
+            //alert("cambio a verde");
+          }else{
+            //alert("cambio a rojo");
+          }
+      });
+      $('input[name="alimentos"]').on('switchChange.bootstrapSwitch', function(event, state) {
+          if(state==true){
+            //alert("cambio a verde");
+          }else{
+            //alert("cambio a rojo");
+          }
+      });
+      $('input[name="hidratacion"]').on('switchChange.bootstrapSwitch', function(event, state) {
+          if(state==true){
+            //alert("cambio a verde");
+          }else{
+            //alert("cambio a rojo");
+          }
+      });
+      $('input[name="recordatorios"]').on('switchChange.bootstrapSwitch', function(event, state) {
+          if(state==true){
+            //alert("cambio a verde");
+          }else{
+            //alert("cambio a rojo");
+          }
+      });
+     $( "#repetidor1" ).change(function() {
+        //alert( "Llamar ad_remeinder" );
+        if($("#repetidor1").val()<=0){
+          //Funcion para cancelar 
+
+        }else{
+          //Funcion para agregar notificacion
+          add_reminder(1,"Mensaje del primer repetidor, bla bla bla bla bla bla",$("#repetidor1").val(),8,0,"notificacion primer repetidor");
+        }
+      });
+     $( "#repetidor2" ).change(function() {
+        if($("#repetidor2").val()<=0){
+          //Funcion para cancelar 
+
+        }else{
+          //Funcion para agregar notificacion
+          add_reminder("100","Mensaje del primer repetidor, bla bla bla bla bla bla",$("#repetidor2").val(),"8","0","notificacion primer repetidor");
+        }
+      });
+  </script>
+
+
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="cordova_plugins.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+
+  <script type="text/javascript">
+  function add_reminder(id,mensaje,repeticiones,hora,minutos,titulo)
+  { 
+
+      /*
+      var schedule_time = new Date((date + " " + time).replace(/-/g, "/")).getTime();
+      schedule_time = new Date(schedule_time);
+      */
+     
+      var schedule_time = new Date();
+      schedule_time.setHours(hora,minutos);
+
+      //var id = info.data.length;
+      alert("hizo la llamada");
+      alert(schedule_time);
+      cordova.plugins.notification.local.hasPermission(function(granted){
+        if(granted == true)
+        {
+            alert("entra a granted ==true");
+
+          alert(id+titulo+mensaje+schedule_time+hora+minutos+repeticiones);
+          schedule(id, titulo, mensaje,schedule_time);
+        }
+        else
+        {
+          cordova.plugins.notification.local.registerPermission(function(granted) {
+              if(granted == true)
+              {
+              alert(id+titulo+message+schedule_time+hora+minutos+repeticiones);
+                schedule(id, titulo, mensaje);
+              }
+              else
+              {
+                alert("Reminder cannot be added because app doesn't have permission");
+              }
+          });
+        }
+      });
+  }
+  </script>
+
+  <!-- initialize -->
+  <script type="text/javascript">
+    function schedule(id, title, message, schedule_time)
+  {
+    var date = new Date();
+      cordova.plugins.notification.local.schedule({
+          id: id,
+          title: title,
+          message: message,
+          at: schedule_time,
+          every:"minute",
+          ongoing: true,
+          badge: true
+      });
+
+      var array = [id, title, message, schedule_time];
+      info.data[info.data.length] = array;
+      localStorage.setItem("rp_data", JSON.stringify(info));
+
+      alert("Reminder added successfully")
+  }
+  </script>
+  <script type="text/javascript">
+  document.addEventListener('deviceready', function () {
+
+    cordova.plugins.notification.local.on('schedule', function (notification) {
+                      console.log('onschedule', arguments);
+                       showToast('scheduled: ' + notification.id);
+                       alert("schedule"+notification.id);
+            Navigator.Notification.prompt (message, promptCallback,title);
+
+                  });
+    cordova.plugins.notification.local.on('trigger', function (notification) {
+                      console.log('ontrigger', arguments);
+                      showToast('triggered: ' + notification.id,'short','center');
+                       alert("trigger"+notification.id);
+            navigator.notification.confirm(message,funcion,title,['Cancelar','Sí']);
+            Navigator.Notification.prompt (message, promptCallback,title);
+
+                  });
+    cordova.plugins.notification.local.on('click', function (notification) {
+              console.log('onclick', arguments);
+              showToast('clicked: ' + notification.id,'short','center');
+              alert("clicked"+notification.id+"Va a ser cancelada");
+              cordova.plugins.notification.local.cancel(notification.id, function () {
+                // Notification was cancelled
+              }, scope);
+
+          });
+
+    cordova.plugins.notification.local.on('cancel', function (notification) {
+              console.log('oncancel', arguments);
+              // showToast('canceled: ' + notification.id);
+              alert("canceled"+notification.id);
+
+          });     
+
+  }, false);
+  </script>
+
+<script type="text/javascript">
+      var id = 1, dialog;
+
+      callback = function () {
+          cordova.plugins.notification.local.getIds(function (ids) {
+              showToast('IDs: ' + ids.join(' ,'));
+          });
+      };
+
+      showToast = function (text) {
+          setTimeout(function () {
+              if (device.platform != 'windows') {
+                  window.plugins.toast.showShortBottom(text);
+              } else {
+                  showDialog(text);
+              }
+          }, 100);
+      };
+
+      showDialog = function (text) {
+          if (dialog) {
+              dialog.content = text;
+              return;
+          }
+
+          dialog = new Windows.UI.Popups.MessageDialog(text);
+
+          dialog.showAsync().done(function () {
+              dialog = null;
+          });
+      };
+
+  </script>
+
+
+<script type="text/javascript">
+  var info = null;
+
+document.addEventListener("deviceready", function(){
+if(!localStorage.getItem("rp_data"))
+{
+  var rp_data = {data: []};
+  localStorage.setItem("rp_data", JSON.stringify(rp_data));
+}
+
+info = JSON.parse(localStorage.getItem("rp_data"));
+}, false);
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
