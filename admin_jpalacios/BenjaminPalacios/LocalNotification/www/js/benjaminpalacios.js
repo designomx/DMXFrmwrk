@@ -86,6 +86,8 @@ $( "#BotonLogin" ).click(function( event ) {
 				if(typeof(Storage) !== "undefined") {
 					window.localStorage.setItem("TipoUsuario", data.tipo_usuario);
 					window.localStorage.setItem("autorizado", data.autorizado);
+					window.localStorage.setItem("email", data.email);
+					window.localStorage.setItem("name", data.name);
 
 					localStorage.TipoUsuario = data.tipo_usuario;
 					localStorage.NombreUsuario = data.name;

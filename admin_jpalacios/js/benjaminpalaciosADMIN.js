@@ -85,6 +85,12 @@ $( "#EditarRegistro" ).submit(function( event ) {
 		}else{
 			var usuario_admin = 0;
 		}
+		if ($('#autorizado').is(":checked"))
+		{
+			var autorizado = 1;
+		}else{
+			var autorizado = 0;
+		}
 		var editar_usuario=1;
 		var formData = {
 				//Variables del formulario de registro
@@ -94,7 +100,8 @@ $( "#EditarRegistro" ).submit(function( event ) {
 	            edad		: $('#edad').val(),
 	            sexo		: $("input[name=sexo]:checked").val(),
 	            editar_usuario: editar_usuario,
-	            usuario_admin: usuario_admin
+	            usuario_admin: usuario_admin,
+	            autorizado: autorizado
 	        }
 		$.ajax({
 			type: "POST",

@@ -44,7 +44,7 @@ if(!isset($_POST['nombre'])){
 	$queryRegistro="INSERT INTO usuarios (nombre,password,email,usuario_admin,edad,sexo,autorizado)VALUES('".$nombre."',MD5('".$password."'),'".$email."','0','".$edad."','".$sexo."','0')";
 
 	if (mysqli_query($dbConn, $queryRegistro)=== TRUE) {
-    	echo "exitoso";
+    	echo "Resgistro exitoso!";
 	}else{
 		$result = mysqli_query($dbConn, "SELECT email FROM usuarios WHERE email='".$email."'");
 		if(mysqli_num_rows($result) == 0) {
@@ -74,9 +74,9 @@ if(!isset($_POST['nombre'])){
 		//Revisar si ha modificado el password en el formulario de EditarRegistro, y actualizo o no el password
 		if(mysqli_num_rows($update_pass) == 1) {
 		    //No cambia el password
-			$queryRegistroADMIN="UPDATE usuarios SET nombre='".$nombre."',password='".$password."',usuario_admin='".$usuario_admin."',edad='".$edad."',sexo='".$sexo."' WHERE email='".$email."'";
+			$queryRegistroADMIN="UPDATE usuarios SET nombre='".$nombre."',password='".$password."',usuario_admin='".$usuario_admin."',edad='".$edad."',sexo='".$sexo."',autorizado='".$autorizado."' WHERE email='".$email."'";
 		}else{
-			$queryRegistroADMIN="UPDATE usuarios SET nombre='".$nombre."',password=MD5('".$password."'),usuario_admin='".$usuario_admin."',edad='".$edad."',sexo='".$sexo."' WHERE email='".$email."'";
+			$queryRegistroADMIN="UPDATE usuarios SET nombre='".$nombre."',password=MD5('".$password."'),usuario_admin='".$usuario_admin."',edad='".$edad."',sexo='".$sexo."',autorizado='".$autorizado."' WHERE email='".$email."'";
 		}
 	}
 	if (mysqli_query($dbConn, $queryRegistroADMIN) === TRUE) {
