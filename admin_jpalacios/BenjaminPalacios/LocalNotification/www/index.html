@@ -65,5 +65,18 @@
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="js/benjaminpalacios.js"></script>
 
+  <script type="text/javascript" src="cordova.js"></script>
+
+  <script type="text/javascript">
+    document.addEventListener("deviceready", function(){
+    document.addEventListener("resume", onResume, false);
+    if(localStorage.autorizado=="1"){
+      alert("AUTORIZADO!!")
+      window.location = "BenjaminPalaciosAPP.html";
+    }
+    
+    }, false);
+  </script>
+
 </body>
 </html>

@@ -33,37 +33,37 @@
         <span class="input-group form-control">
           <span class="pull-left" id="">Despertador y Alimentos</span>
           <span class="pull-right">
-            <input name="despertador" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" checked>
+            <input name="despertador" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" >
           </span>
         </span>   
         <div class="pull-left col-xs-8 col-sm-8 col-md-16 texto-izq">
             <span class=" form-control input-lg">8:00 AM</span>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-16 texto-der">
-            <input id="repetidor1" type="number" inputmode="numeric" pattern="[0-9]*" name="cantidad" class="input-lg form-control" placeholder="5" required>
+            <input id="repetidor1" type="number" inputmode="numeric" pattern="[0-9]*" name="cantidad" class="input-lg form-control" placeholder="1" min="1" max="5" value=1 required>
         </div>
         <span class="input-group form-control">
           <span class="pull-left" id="">Alimentos y Entrenamiento</span>
           <span class="pull-right">
-            <input name="alimentos" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" checked>
+            <input name="alimentos" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" >
           </span>
         </span>   
         <div class="col-xs-8 col-sm-8 col-md-16 texto-izq">    
             <span class="form-control input-lg">7:40 AM</span>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-16 texto-der">
-            <input id="repetidor2" type="number" pattern="\d*" name="cantidad" class="input-lg form-control" placeholder="5" required>
+            <input id="repetidor2" type="number" pattern="\d*" name="cantidad" class="input-lg form-control" placeholder="1" min="1" max="5" value=1 required>
         </div>
         <span class="input-group form-control">
           <span class="pull-left" id="">Hidratación</span>
           <span class="pull-right">
-            <input name="hidratacion" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" checked>
+            <input name="hidratacion" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" >
           </span>
         </span>   
         <span class="input-group form-control">
           <span class="pull-left" id="">Recordatorios directos</span>
           <span class="pull-right">
-            <input name="recordatorios" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" checked>
+            <input name="recordatorios" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" >
           </span>
         </span>
         <br><br>
@@ -90,10 +90,6 @@
                 <div onclick="scheduleMinutely()">Every min<br /><span>schedule(1, every:minute)</span></div>
             </div>
         -->
-        <div class="container">
-            <button onclick="add_reminder(10,'Mensaje del primer repetidor, bla bla bla bla bla bla',5,8,0,'notificacion primer repetidor')">Single</button>
-            <button onclick="schedule()">Multiple</button>
-        </div>
 
 
       </section>
@@ -119,56 +115,174 @@
       $('input[name="despertador"]').on('switchChange.bootstrapSwitch', function(event, state) {
           if(state==true){
             //alert("cambio a verde");
+            window.localStorage.setItem("despertador","1");
+            agregar_DESPERTADORyALIMENTOS();
+            localStorage.despertador=1;
           }else{
             //alert("cambio a rojo");
+            window.localStorage.setItem("despertador","0");
+            cancelar(0);
+            cancelar(1);
+            cancelar(2);
+            cancelar(3);
+            cancelar(4);  
+            limpiarALL();
+            localStorage.despertador=0;
           }
       });
       $('input[name="alimentos"]').on('switchChange.bootstrapSwitch', function(event, state) {
           if(state==true){
-            //alert("cambio a verde");
+            window.localStorage.setItem("alimentos","1");      
+            agregar_ALIMENTOSyENTRENAMIENTO();   
+            localStorage.alimentos=1;   
           }else{
-            //alert("cambio a rojo");
+            window.localStorage.setItem("alimentos","0");
+            cancelar(10);
+            cancelar(11);
+            cancelar(12);
+            cancelar(13);
+            cancelar(14);
+            limpiarALL();
+            localStorage.alimentos=0;
           }
       });
       $('input[name="hidratacion"]').on('switchChange.bootstrapSwitch', function(event, state) {
           if(state==true){
-            //alert("cambio a verde");
+            window.localStorage.setItem("hidratacion","1");      
+            add_reminder(2,'Mensaje de Hidratación',0,9,0,'Hidratación!');
+            localStorage.hidratacion=1;
           }else{
-            //alert("cambio a rojo");
+            window.localStorage.setItem("hidratacion","0");
+            cancelar(2);
+            limpiarALL();
+            localStorage.hidratacion=0;
           }
       });
       $('input[name="recordatorios"]').on('switchChange.bootstrapSwitch', function(event, state) {
           if(state==true){
-            //alert("cambio a verde");
+            window.localStorage.setItem("recordatorios","1");          
+            add_reminder(3,'Recordatorios Directos',0,11,0,'Recordatorios!');
+            localStorage.recordatorios=1;
           }else{
-            //alert("cambio a rojo");
+            window.localStorage.setItem("recordatorios","0");
+            canelar(3);
+            limpiarALL();
+            localStorage.recordatorios=0;
           }
       });
-     $( "#repetidor1" ).change(function() {
-        //alert( "Llamar ad_remeinder" );
+
+    $( "#repetidor1" ).change(function() {
+      //alert( "entra a change" );
+      if(window.localStorage.getItem("despertador")==1){
+        agregar_DESPERTADORyALIMENTOS();
+      }
+    });
+
+    $( "#repetidor2" ).change(function() {
+      if(window.localStorage.getItem("alimentos")==1){
+        agregar_ALIMENTOSyENTRENAMIENTO();
+      }
+    });
+  </script>
+
+  <script type="text/javascript">
+
+    function agregar_DESPERTADORyALIMENTOS() {
+      // body...
+      if ($("#repetidor1").val() > 5)
+        {
+            $("#repetidor1").val(5);
+            showToast('Máximo 5 repeticiones');
+        }
+        else if ($("#repetidor1").val() < 1)
+        {
+          alert("entra a menot que 1");
+            $("#repetidor1").val(1);
+            showToast('Mínimo 0 cancela esta notificación');
+        }
         if($("#repetidor1").val()<=0){
           //Funcion para cancelar 
-
+          cancelar(0);
+          cancelar(1);
+          cancelar(2);
+          cancelar(3);
+          cancelar(4); 
+          limpiarALL();
         }else{
           //Funcion para agregar notificacion
-          add_reminder(1,"Mensaje del primer repetidor, bla bla bla bla bla bla",$("#repetidor1").val(),8,0,"notificacion primer repetidor");
+          repeticiones1=$("#repetidor1").val();
+          var minutos_repeticion =-5;
+          for (var i = 0; i <= repeticiones1 -1; i++) {
+            minutos_repeticion+=5;
+            add_reminder(i,'Despertar y comer un desayuno bine balanceado',0,8,minutos_repeticion,'Despertarse y comer'); 
+          }
         }
-      });
-     $( "#repetidor2" ).change(function() {
+    }
+
+    function agregar_ALIMENTOSyENTRENAMIENTO() {
+      // body...
+      if ($("#repetidor2").val() > 5)
+        {
+            $("#repetidor2").val(5);
+            showToast('Máximo 5 repeticiones');
+        }
+        else if ($("#repetidor2").val() < 1)
+        {
+            $("#repetidor2").val(1);
+            showToast('Mínimo 0 cancela esta notificación');
+        }
         if($("#repetidor2").val()<=0){
           //Funcion para cancelar 
-
+          cancelar(10);
+          cancelar(11);
+          cancelar(12);
+          cancelar(13);
+          cancelar(14);  
+          limpiarALL();
         }else{
           //Funcion para agregar notificacion
-          add_reminder("100","Mensaje del primer repetidor, bla bla bla bla bla bla",$("#repetidor2").val(),"8","0","notificacion primer repetidor");
+          repeticiones2=Number($("#repetidor2").val())+10;
+          var minutos_repeticion2=35;
+          for (var i = 10; i <= repeticiones2 -1; i++) {
+            minutos_repeticion2+=5;
+            add_reminder(i,'Después de comer hay que entrenar',0,8,minutos_repeticion2,'Alimentos y Entrenamiento'); 
+          }
         }
-      });
+    }
+
+
+  </script>
+
+
+  <script type="text/javascript">
+    function cancelar(id){
+      cordova.plugins.notification.local.cancel(id, function() {
+          //alert("done");
+      }, this);
+    }
+    
+    function limpiar(id){
+      cordova.plugins.notification.local.clear(id, function() {
+          //alert("done");
+      }, this);
+    }
+
+    function cancelarALL(){
+      cordova.plugins.notification.local.cancelAll(function() {
+          //alert("done");
+      }, this);
+    }
+    
+    function limpiarALL(){
+      cordova.plugins.notification.local.clearAll(function() {
+          //alert("done");
+      }, this);
+    }
   </script>
 
 
   <script type="text/javascript" src="cordova.js"></script>
-  <script type="text/javascript" src="cordova_plugins.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
+
 
   <script type="text/javascript">
   function add_reminder(id,mensaje,repeticiones,hora,minutos,titulo)
@@ -180,17 +294,18 @@
       */
      
       var schedule_time = new Date();
-      schedule_time.setHours(hora,minutos);
+      schedule_time.setHours(hora,minutos,00);
+      var current_time = new Date().getTime();
+      if(current_time>schedule_time){
+        schedule_time.setDate(schedule_time.getDate() + 1);
+      }  
 
       //var id = info.data.length;
-      alert("hizo la llamada");
-      alert(schedule_time);
+
       cordova.plugins.notification.local.hasPermission(function(granted){
         if(granted == true)
         {
-            alert("entra a granted ==true");
-
-          alert(id+titulo+mensaje+schedule_time+hora+minutos+repeticiones);
+          //alert(id+titulo+mensaje+schedule_time+hora+minutos+repeticiones);
           schedule(id, titulo, mensaje,schedule_time);
         }
         else
@@ -198,8 +313,8 @@
           cordova.plugins.notification.local.registerPermission(function(granted) {
               if(granted == true)
               {
-              alert(id+titulo+message+schedule_time+hora+minutos+repeticiones);
-                schedule(id, titulo, mensaje);
+                //alert(id+titulo+message+schedule_time+hora+minutos+repeticiones);
+                schedule(id, titulo, mensaje,schedule_time);
               }
               else
               {
@@ -213,63 +328,45 @@
 
   <!-- initialize -->
   <script type="text/javascript">
-    function schedule(id, title, message, schedule_time)
+    function schedule(id, titulo, mensaje, schedule_time)
   {
-    var date = new Date();
       cordova.plugins.notification.local.schedule({
           id: id,
-          title: title,
-          message: message,
-          at: schedule_time,
-          every:"minute",
-          ongoing: true,
+          title: titulo,
+          message: mensaje,
+          firstAt: schedule_time,
+          //every:"minute",
           badge: true
       });
 
-      var array = [id, title, message, schedule_time];
-      info.data[info.data.length] = array;
-      localStorage.setItem("rp_data", JSON.stringify(info));
-
-      alert("Reminder added successfully")
+      //alert("Reminder added successfully")
+      showToast("Notificación agregada con éxito!");
   }
   </script>
+
   <script type="text/javascript">
   document.addEventListener('deviceready', function () {
 
-    cordova.plugins.notification.local.on('schedule', function (notification) {
-                      console.log('onschedule', arguments);
-                       showToast('scheduled: ' + notification.id);
-                       alert("schedule"+notification.id);
-            Navigator.Notification.prompt (message, promptCallback,title);
-
-                  });
     cordova.plugins.notification.local.on('trigger', function (notification) {
                       console.log('ontrigger', arguments);
                       showToast('triggered: ' + notification.id,'short','center');
-                       alert("trigger"+notification.id);
-            navigator.notification.confirm(message,funcion,title,['Cancelar','Sí']);
-            Navigator.Notification.prompt (message, promptCallback,title);
-
+                      //alert("trigger"+notification.id);
                   });
     cordova.plugins.notification.local.on('click', function (notification) {
               console.log('onclick', arguments);
               showToast('clicked: ' + notification.id,'short','center');
-              alert("clicked"+notification.id+"Va a ser cancelada");
-              cordova.plugins.notification.local.cancel(notification.id, function () {
-                // Notification was cancelled
-              }, scope);
-
+              //alert("clicked"+notification.id+"Va a ser cancelada");
           });
 
     cordova.plugins.notification.local.on('cancel', function (notification) {
               console.log('oncancel', arguments);
-              // showToast('canceled: ' + notification.id);
-              alert("canceled"+notification.id);
+              showToast('canceled: ' + notification.id);
+              //alert("canceled"+notification.id);
 
           });     
 
   }, false);
-  </script>
+</script>
 
 <script type="text/javascript">
       var id = 1, dialog;
@@ -285,48 +382,100 @@
               if (device.platform != 'windows') {
                   window.plugins.toast.showShortBottom(text);
               } else {
-                  showDialog(text);
+                  //showDialog(text);
               }
           }, 100);
       };
-
-      showDialog = function (text) {
-          if (dialog) {
-              dialog.content = text;
-              return;
-          }
-
-          dialog = new Windows.UI.Popups.MessageDialog(text);
-
-          dialog.showAsync().done(function () {
-              dialog = null;
-          });
-      };
-
-  </script>
+</script>
 
 
 <script type="text/javascript">
   var info = null;
 
-document.addEventListener("deviceready", function(){
-if(!localStorage.getItem("rp_data"))
-{
-  var rp_data = {data: []};
-  localStorage.setItem("rp_data", JSON.stringify(rp_data));
-}
+  document.addEventListener("deviceready", function(){
+    //alert("hola");
+    document.addEventListener("resume", onResume, false);
+    
+  }, false);
 
-info = JSON.parse(localStorage.getItem("rp_data"));
-}, false);
+  function onResume() {
+    //Cargar lista de Notificaciones pendientes para que el usuario las acepte
+    //alert(info.data[count][3])
+    if(localStorage.despertador==0){
+      limpiarALL();
+      cancelar(0);
+      cancelar(1);
+      cancelar(2);
+      cancelar(3);
+      cancelar(4);
+    }else if(localStorage.despertador==1){
+        var schedule_time = new Date();
+        schedule_time.setHours(8,0,00);
+        var schedule_time_limit = new Date();
+        schedule_time_limit.setHours(8,40,00);
+        var current_time = new Date().getTime();
+        if(current_time>schedule_time && current_time<schedule_time_limit){
+          alert("Recuerde que tiene despertar temprano y alimentarse sano");
+          limpiarALL();      
+        }else{
+          //Si ya pasó el tiempo que debería mostrarse
+        }
+    }
+    if(localStorage.alimentos==0){
+      limpiarALL();
+      cancelar(10);
+      cancelar(11);
+      cancelar(12);
+      cancelar(13);
+      cancelar(14);
+    }else if(localStorage.alimentos==1){
+        var schedule_time = new Date();
+        schedule_time.setHours(8,40,00);
+        var schedule_time_limit = new Date();
+        schedule_time_limit.setHours(09,20,00);
+        var current_time = new Date().getTime();
+        if(current_time>schedule_time && current_time<schedule_time_limit){
+          alert("Recuerde que tiene que alimentarse bien y entrenar!");
+          limpiarALL();      
+        }else{
+          //Si ya pasó el tiempo que debería mostrarse
+        }
+    }
+    if(localStorage.hidratacion==0){
+      limpiarALL();
+      cancelar(20);
+    }else if(localStorage.hidratacion==1){
+        var schedule_time = new Date();
+        schedule_time.setHours(9,0,00);
+        var schedule_time_limit = new Date();
+        schedule_time_limit.setHours(09,40,00);
+        var current_time = new Date().getTime();
+        if(current_time>schedule_time && current_time<schedule_time_limit){
+          alert("Recuerde que tiene que hidratarse");
+          limpiarALL();      
+        }else{
+          //Si ya pasó el tiempo que debería mostrarse
+        }
+    }
+    if(localStorage.recordatorios==0){
+      limpiarALL();
+      cancelar(30);
+    }else if(localStorage.recordatorios==1){
+        var schedule_time = new Date();
+        schedule_time.setHours(11,0,00);
+        var schedule_time_limit = new Date();
+        schedule_time_limit.setHours(11,40,00);
+        var current_time = new Date().getTime();
+        if(current_time>schedule_time && current_time<schedule_time_limit){
+          alert("Recuerde que tiene que tiene recordatorios");
+          limpiarALL();      
+        }else{
+          //Si ya pasó el tiempo que debería mostrarse
+        }
+    }
+    
+  }
 </script>
-
-
-
-
-
-
-
-
 
 </body>
 </html>

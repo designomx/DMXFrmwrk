@@ -37,7 +37,7 @@
             <span class=" form-control input-lg">8:00 AM</span>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-16 texto-der">
-            <input id="repetidor1" type="number" inputmode="numeric" pattern="[0-9]*" name="cantidad" class="input-lg form-control" placeholder="5" required>
+            <input id="repetidor1" type="number" inputmode="numeric" pattern="[0-9]*" name="cantidad" class="input-lg form-control" placeholder="5" min="0" max="5" required>
         </div>
         <span class="input-group form-control">
           <span class="pull-left" id="">Alimentos y Entrenamiento</span>
@@ -49,7 +49,7 @@
             <span class="form-control input-lg">7:40 AM</span>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-16 texto-der">
-            <input id="repetidor2" type="number" pattern="\d*" name="cantidad" class="input-lg form-control" placeholder="5" required>
+            <input id="repetidor2" type="number" pattern="\d*" name="cantidad" class="input-lg form-control" placeholder="5" min="0" max="5" required>
         </div>
         <span class="input-group form-control">
           <span class="pull-left" id="">Hidratación</span>
@@ -143,6 +143,14 @@
       });
      $( "#repetidor1" ).change(function() {
         //alert( "Llamar ad_remeinder" );
+        if ($("#repetidor1").val() > 5)
+        {
+            $("#repetidor1").val(5);
+        }
+        else if ($("#repetidor1").val() < 0)
+        {
+            $("#repetidor1").val(0);
+        }
         if($("#repetidor1").val()<=0){
           //Funcion para cancelar 
 
@@ -177,12 +185,64 @@
       var schedule_time = new Date();
       schedule_time.setHours(hora,minutos);
 
-      //var id = info.data.length;
-      alert("hizo la llamada");
-      alert(schedule_time);
+
+      var info = null;
+     
+    
+      if(!localStorage.getItem("rp_data"))
+      {
+        var rp_data = {data: []};
+        localStorage.setItem("rp_data", JSON.stringify(rp_data));
+      }
+       
+      info = JSON.parse(localStorage.getItem("rp_data"));
+
+          
+
+      var array = [id, titulo, mensaje, schedule_time];
+      info.data[info.data.length] = array;
+      localStorage.setItem("rp_data", JSON.stringify(info));
+
+      var html = '';
+ 
+      for(var count = 0; count < info.data.length; count++)
+      {
+          var schedule_time = new Date(info.data[count][3]).getTime();
+          var current_time = new Date().getTime();
+   
+          if(current_time < schedule_time)
+          {
+            html = html + "<tr><td>" + info.data[count][1] + "</td><td>" + info.data[count][3] + "</td></tr>";
+          }
+      }
+   
+      //$("table#pendingTable tbody").empty();
+      //$("table#pendingTable tbody").append(html).closest("table#pendingTable").table("refresh").trigger("create"); 
+      alert(html);
 
   }
   </script>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    //alert("hola");
+     var info = null;
+     
+    
+    if(!localStorage.getItem("rp_data"))
+    {
+      var rp_data = {data: []};
+      localStorage.setItem("rp_data", JSON.stringify(rp_data));
+    }
+     
+    info = JSON.parse(localStorage.getItem("rp_data"));
+
+        
+
+  });
+
+
+</script>
 
 
 

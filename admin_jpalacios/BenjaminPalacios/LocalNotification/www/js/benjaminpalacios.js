@@ -2,7 +2,15 @@
 	Scripts de inicio de sesion, registro y administrador para aplicacion de BenjaminPalacios
 */
 $(document).ready(function(){
-	
+		localStorage.autorizado = window.localStorage.getItem("autorizado");
+	    // value is now equal to "value"
+	    //alert(localStorage.autorizado);
+		if(localStorage.autorizado=="1"){
+			window.location = "BenjaminPalaciosAPP.html";
+		}
+    
+  
+
 });
 
 //Script para registrar usuarios
@@ -76,9 +84,13 @@ $( "#BotonLogin" ).click(function( event ) {
 				//alert(data);
 				//alert(data.name);
 				if(typeof(Storage) !== "undefined") {
+					window.localStorage.setItem("TipoUsuario", data.tipo_usuario);
+					window.localStorage.setItem("autorizado", data.autorizado);
+
 					localStorage.TipoUsuario = data.tipo_usuario;
 					localStorage.NombreUsuario = data.name;
 					localStorage.email = data.email;
+					localStorage.autorizado = data.autorizado;					
 				}else{
 					alert("Sorry, your browser does not support web storage...");
 				}
@@ -89,8 +101,8 @@ $( "#BotonLogin" ).click(function( event ) {
 					return false;
 
 				}else{
-					if(data.tipo_usuario=="0"){
-						alert("Usuario NO administrador");
+					if(localStorage.autorizado=="1"){
+						//alert("Usuario NO administrador");
 						window.location = "BenjaminPalaciosAPP.html";
 						//alert(data);
 						return false;

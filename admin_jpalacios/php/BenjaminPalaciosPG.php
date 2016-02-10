@@ -18,7 +18,7 @@ $email=$_POST['email'];
 if(!isset($_POST['nombre'])){
 	//Iniciamos sesión y comienza el control de sesiones con $_SESSION->autenntica para saber si de verdad pasó la conexión, ->user para saber que usuario es y ->tipo_usuario para saber si es administrador o no.
 	$password = md5($password);
-	$queryLogin = "SELECT nombre, email, usuario_admin FROM usuarios WHERE email='".$email."' AND password='".$password."'";
+	$queryLogin = "SELECT nombre, email, usuario_admin, autorizado FROM usuarios WHERE email='".$email."' AND password='".$password."'";
 	//$respuesta = mysql_query($queryLogin);
 	$respuesta = mysqli_query($dbConn, $queryLogin);
 	$num_row = mysqli_num_rows($respuesta);
@@ -27,7 +27,7 @@ if(!isset($_POST['nombre'])){
 		session_start();
 		$_SESSION['user'] = $row['nombre'];
 		header('Content-type: application/json');
-		$data1 = array( 'tipo_usuario' => $row['usuario_admin'], 'name' => $row['nombre'], 'email' => $row['email'] );
+		$data1 = array( 'tipo_usuario' => $row['usuario_admin'], 'name' => $row['nombre'], 'email' => $row['email'], 'autorizado' => $row['autorizado'] );
 		echo json_encode( $data1 );
 		if($row['usuario_admin']=="1"){
 			$_SESSION['tipo_usuario']="1";
