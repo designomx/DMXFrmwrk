@@ -97,9 +97,9 @@ $( "#BotonLogin" ).click(function( event ) {
 					alert("Sorry, your browser does not support web storage...");
 				}
 				if(localStorage.TipoUsuario=="1"){
-					alert("Bienvenido");
+					//alert("Bienvenido");
 					//alert(data);
-					window.location = "listado.html";
+					window.location = "BenjaminPalaciosAPP.html";
 					return false;
 
 				}else{

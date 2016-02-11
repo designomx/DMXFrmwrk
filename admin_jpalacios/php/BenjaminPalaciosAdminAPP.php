@@ -56,7 +56,7 @@ if ($resultado = mysqli_query($dbConn, $consulta)) {
 	    echo("					<td><img src='img/avatar_".$fila[4].".png' alt='user' width='70' class='img-circle' alt='Responsive image'></td>");
 	    echo("					<td>".$fila[3]."</td>");
 	    echo("					<td>".$fila[1]."</td>");
-	    if($fila[4]==0){
+	    if($fila[2]==0){
 			echo("				<td>Usuario</td>");
 	    }else{
 	   		echo("				<td>Administrador</td>");

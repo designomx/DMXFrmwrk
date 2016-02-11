@@ -157,6 +157,7 @@ document.addEventListener("deviceready", function(){
         var minutos_repeticion1 =schedule_time_repetidor1.getMinutes()-5;
         window.localStorage.setItem("horaRepetidor1",horaRepetidor1);
         window.localStorage.setItem("minutos_repeticion1",minutos_repeticion1);
+        window.localStorage.setItem("confirmacionDespertador","32");
         for (var i = 0; i <= repeticiones1 -1; i++) {
           minutos_repeticion1+=5;
           add_reminder(i,'Despertar y comer un desayuno bine balanceado',0,horaRepetidor1,minutos_repeticion1,'Despertarse y comer'); 
@@ -199,6 +200,7 @@ document.addEventListener("deviceready", function(){
         var minutos_repeticion2 =schedule_time_repetidor2.getMinutes()-5;
         window.localStorage.setItem("horaRepetidor2",horaRepetidor2);
         window.localStorage.setItem("minutos_repeticion2",minutos_repeticion2);
+        window.localStorage.setItem("confirmacionAlimentos","32");
         for (var i = 10; i <= repeticiones2 -1; i++) {
           minutos_repeticion2+=5;
           add_reminder(i,'Después de comer hay que entrenar',0,horaRepetidor2,minutos_repeticion2,'Alimentos y Entrenamiento'); 
@@ -334,7 +336,7 @@ document.addEventListener("deviceready", function(){
   function onResume() {
     //Cargar lista de Notificaciones pendientes para que el usuario las acepte
     //alert(info.data[count][3])
-    
+
     var confirmacion = new Date().getDate();
     $("#time-repetidor1").val(window.localStorage.getItem("time-repetidor1"));
     $("#time-repetidor2").val(window.localStorage.getItem("time-repetidor2"));
