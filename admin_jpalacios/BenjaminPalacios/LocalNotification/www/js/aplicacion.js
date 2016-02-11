@@ -11,6 +11,19 @@ document.addEventListener("deviceready", function(){
     window.localStorage.setItem("time-repetidor1",$("#time-repetidor1").val());
     window.localStorage.setItem("time-repetidor2",$("#time-repetidor2").val());
   }else{
+    var items = window.localStorage.getItem('confirmacionRecordatorios');
+    if (items === null || items.length === 0)
+    {
+        // items is null, [] or '' (empty string)
+      window.localStorage.setItem("confirmacionRecordatorios","1");
+    }
+    var items = window.localStorage.getItem('confirmacionDespertador');
+    if (items === null || items.length === 0)
+    {
+        // items is null, [] or '' (empty string)
+      window.localStorage.setItem("confirmacionDespertador","1");
+    }
+    alert(window.localStorage.getItem("confirmacionDespertador"));
     onResume();
   }
   
@@ -95,13 +108,17 @@ document.addEventListener("deviceready", function(){
   $( "#time-repetidor1" ).change(function() {
     //alert( "entra a change" );
     window.localStorage.setItem("time-repetidor1",$("#time-repetidor1").val());
-    agregar_DESPERTADORyALIMENTOS();
+    if(window.localStorage.getItem("despertador")==1){
+      agregar_DESPERTADORyALIMENTOS();
+    }
   });
 
   $( "#time-repetidor2" ).change(function() {
     //alert( "entra a change" );
     window.localStorage.setItem("time-repetidor2",$("#time-repetidor2").val());
-    agregar_ALIMENTOSyENTRENAMIENTO();
+    if(window.localStorage.getItem("alimentos")==1){
+      agregar_ALIMENTOSyENTRENAMIENTO();
+    }
   });
 
 
@@ -171,14 +188,14 @@ document.addEventListener("deviceready", function(){
       }else{
         //Funcion para agregar notificacion
         repeticiones2=Number($("#repetidor2").val())+10;
-        var timeRepetidor2 = window.localStorage.getItem("time-repetidor1");
+        var timeRepetidor2 = window.localStorage.getItem("time-repetidor2");
         var currentDate=new Date().getDate();
         var currentMonth=new Date().getMonth();
         var currentYear=new Date().getFullYear();
-        var Fecha1=currentYear+"-"+currentMonth+"-"+currentDate;
-        var schedule_time_repetidor2 = new Date((Fecha1 + " " + timeRepetidor2).replace(/-/g, "/")).getTime();
-        schedule_time_repetidor1 = new Date(schedule_time_repetidor1);
-        var horaRepetidor2 = schedule_time_repetidor1.getHours();
+        var Fecha2=currentYear+"-"+currentMonth+"-"+currentDate;
+        var schedule_time_repetidor2 = new Date((Fecha2 + " " + timeRepetidor2).replace(/-/g, "/")).getTime();
+        schedule_time_repetidor2 = new Date(schedule_time_repetidor2);
+        var horaRepetidor2 = schedule_time_repetidor2.getHours();
         var minutos_repeticion2 =schedule_time_repetidor2.getMinutes()-5;
         window.localStorage.setItem("horaRepetidor2",horaRepetidor2);
         window.localStorage.setItem("minutos_repeticion2",minutos_repeticion2);
@@ -267,7 +284,7 @@ document.addEventListener("deviceready", function(){
         title: titulo,
         message: mensaje,
         firstAt: schedule_time,
-        //every:"minute",
+        every:"day",
         badge: true
     });
 
@@ -278,7 +295,7 @@ document.addEventListener("deviceready", function(){
 
   cordova.plugins.notification.local.on('trigger', function (notification) {
                     console.log('ontrigger', arguments);
-                    showToast('triggered: ' + notification.id,'short','center');
+                    //showToast('triggered: ' + notification.id,'short','center');
                     //alert("trigger"+notification.id);
                 });
   cordova.plugins.notification.local.on('click', function (notification) {
@@ -317,7 +334,8 @@ document.addEventListener("deviceready", function(){
   function onResume() {
     //Cargar lista de Notificaciones pendientes para que el usuario las acepte
     //alert(info.data[count][3])
-
+    
+    var confirmacion = new Date().getDate();
     $("#time-repetidor1").val(window.localStorage.getItem("time-repetidor1"));
     $("#time-repetidor2").val(window.localStorage.getItem("time-repetidor2"));
     //alert( $("#time-repetidor1").val());
@@ -337,13 +355,19 @@ document.addEventListener("deviceready", function(){
     }else if(window.localStorage.getItem("despertador")==1){
         $("#despertador").prop('checked', true);
         $('input[name="despertador"]').bootstrapSwitch('state', true, true);
+        var horaRepetidor1 = window.localStorage.getItem("horaRepetidor1");
+        var minutos_repeticion1= window.localStorage.getItem("minutos_repeticion1");
         var schedule_time = new Date();
-        schedule_time.setHours(window.localStorage.getItem("horaRepetidor1"),window.localStorage.getItem("minutos_repeticion1"),00);
+        schedule_time.setHours(horaRepetidor1,minutos_repeticion1,00);
         var schedule_time_limit = new Date();
-        schedule_time_limit.setHours(window.localStorage.getItem("horaRepetidor1"),window.localStorage+1.getItem("minutos_repeticion1"),00);
+        schedule_time_limit.setHours(horaRepetidor1+1,minutos_repeticion1,00);
         var current_time = new Date().getTime();
-        if(current_time>schedule_time && current_time<schedule_time_limit){
-          alert("Recuerde que tiene despertar temprano y alimentarse sano");
+        if(current_time>schedule_time && current_time<schedule_time_limit && window.localStorage.getItem("confirmacionDespertador")!=confirmacion){
+          var r = confirm("Recuerde que tiene que despertar temprano y alimentarse sano");
+          if (r == true) {
+            window.localStorage.setItem("confirmacionDespertador", new Date().getDate());
+          }
+          //alert("Recuerde que tiene despertar temprano y alimentarse sano");
           limpiarALL();      
         }else{
           //Si ya pasó el tiempo que debería mostrarse
@@ -361,13 +385,19 @@ document.addEventListener("deviceready", function(){
     }else if(window.localStorage.getItem("alimentos")=="1"){
         $("#alimentos").attr( "checked", true );
         $('input[name="alimentos"]').bootstrapSwitch('state', true, true);
+        var horaRepetidor2 = window.localStorage.getItem("horaRepetidor2");
+        var minutos_repeticion2= window.localStorage.getItem("minutos_repeticion2");
         var schedule_time = new Date();
-        schedule_time.setHours(8,40,00);
+        schedule_time.setHours(horaRepetidor2,minutos_repeticion2,00);
         var schedule_time_limit = new Date();
-        schedule_time_limit.setHours(09,20,00);
+        schedule_time_limit.setHours(horaRepetidor2+1,minutos_repeticion2,00);
         var current_time = new Date().getTime();
-        if(current_time>schedule_time && current_time<schedule_time_limit){
-          alert("Recuerde que tiene que alimentarse bien y entrenar!");
+        if(current_time>schedule_time && current_time<schedule_time_limit && window.localStorage.getItem("confirmacionAlimentos")!= confirmacion){
+          var r = confirm("Recuerde que tiene que alimentarse bien y entrenar!");
+          if (r == true) {
+            window.localStorage.setItem("confirmacionAlimentos", new Date().getDate());
+          }
+          //alert("Recuerde que tiene que alimentarse bien y entrenar!");
           limpiarALL();      
         }else{
           //Si ya pasó el tiempo que debería mostrarse
@@ -406,8 +436,12 @@ document.addEventListener("deviceready", function(){
         var schedule_time_limit = new Date();
         schedule_time_limit.setHours(11,40,00);
         var current_time = new Date().getTime();
-        if(current_time>schedule_time && current_time<schedule_time_limit){
-          alert("Recuerde que tiene que tiene recordatorios");
+        if(current_time>schedule_time && current_time<schedule_time_limit && window.localStorage.getItem("confirmacionRecordatorios")!=current_time.getDate()){
+          var r = confirm("Recuerde que tiene recordatorios");
+          if (r == true) {
+            window.localStorage.setItem("confirmacionRecordatorios")=current_time.getDate();
+          }
+          //alert("Recuerde que tiene que tiene recordatorios");
           limpiarALL();      
         }else{
           //Si ya pasó el tiempo que debería mostrarse
