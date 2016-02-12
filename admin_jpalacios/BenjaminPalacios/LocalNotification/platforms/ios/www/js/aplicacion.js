@@ -11,6 +11,7 @@ document.addEventListener("deviceready", function(){
     window.localStorage.setItem("repetidor2","1");
     window.localStorage.setItem("time-repetidor1",$("#time-repetidor1").val());
     window.localStorage.setItem("time-repetidor2",$("#time-repetidor2").val());
+    onResume();
   }else{
     /*
 //Formas para comprobar que las variables no sean nulas y se inician
@@ -129,6 +130,30 @@ document.addEventListener("deviceready", function(){
       agregar_ALIMENTOSyENTRENAMIENTO();
     }
   });
+
+
+
+$( "#cerrarSesion" ).click(function(){
+    //var dataStringCS = $(this).data("registro");
+    //var formData = 'email='+ dataString;        
+    //alert(formData);
+    //alert("entra a funcion");
+  var cerrar_sesion = confirm("¿Está seguro que desea cerrar la sesion????????????");
+  if (cerrar_sesion == true) {
+    //limpiarALL();
+    //cancelarALL();
+    cancelarALL();
+    //alert("pasa");
+
+window.localStorage.clear();
+          window.location = "index.html";
+
+    
+    } else {
+        txt = "You pressed Cancel!";
+    }
+  });
+  
 
 //Funciones para agregar las dos primeras notificaciones que pueden 'setear' la hora y el número de repeticiones cada 5 minutos
   function agregar_DESPERTADORyALIMENTOS() {
@@ -355,7 +380,6 @@ document.addEventListener("deviceready", function(){
     limpiarALL();
 
     if(window.localStorage.getItem("despertador")==0){
-      $("#despertador").removeattr( "checked", false );
       $('input[name="despertador"]').bootstrapSwitch('state', false, false);
       limpiarALL();
       cancelar(0);
@@ -473,32 +497,10 @@ document.addEventListener("deviceready", function(){
     $("#repetidor1").val(window.localStorage.getItem("repetidor1"));
     $("#repetidor2").val(window.localStorage.getItem("repetidor2"));
   }
+
+
+
+
 }, false);
 
-$(document).on("click", "#cerrarSesion",function() {
-    //var dataStringCS = $(this).data("registro");
-    //var formData = 'email='+ dataString;        
-    //alert(formData);
-  var r = confirm("¿Está seguro que desea cerrar la sesion????????????");
-  if (r == true) {
-    //limpiarALL();
-    //cancelarALL();
-    //alert("pasa");
-    window.localStorage.setItem("primeraVez","1");
-    window.localStorage.setItem("despertador","0");//0 está inactiva la notificación
-    window.localStorage.setItem("alimentos","0");
-    window.localStorage.setItem("hidratacion","0");
-    window.localStorage.setItem("recordatorios","0");
-    window.localStorage.setItem("repetidor1","1");
-    window.localStorage.setItem("repetidor2","1");
-    window.localStorage.setItem("time-repetidor1","08:00");
-    window.localStorage.setItem("time-repetidor2","08:40");
-    window.localStorage.setItem("TipoUsuario", "0");
-    window.localStorage.setItem("autorizado", "0");
-    window.localStorage.setItem("email", "0");
-    window.localStorage.setItem("name", "0");
-    } else {
-        txt = "You pressed Cancel!";
-    }
-});
-  
+
