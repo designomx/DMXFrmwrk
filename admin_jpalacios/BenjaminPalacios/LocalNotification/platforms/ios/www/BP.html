@@ -34,19 +34,25 @@
           </span>
         </span>   
         <div class="pull-left col-xs-8 col-sm-8 col-md-16 texto-izq">
+            <!--
             <span class=" form-control input-lg">8:00 AM</span>
+            -->
+            <input class="input-lg form-control" type="time" id="time-repetidor1" style="-webkit-appearance: none;" value="08:00" />
         </div>
         <div class="col-xs-4 col-sm-4 col-md-16 texto-der">
-            <input id="repetidor1" type="number" inputmode="numeric" pattern="[0-9]*" name="cantidad" class="input-lg form-control" placeholder="5" min="0" max="5" required>
+            <input id="repetidor1" type="number" inputmode="numeric" pattern="[0-9]*" name="cantidad" class="input-lg form-control" placeholder="1" min="1" max="5" value=1 required>
         </div>
         <span class="input-group form-control">
           <span class="pull-left" id="">Alimentos y Entrenamiento</span>
           <span class="pull-right">
-            <input name="alimentos" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" checked>
+            <input input="alimentos" name="alimentos" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" >
           </span>
         </span>   
-        <div class="col-xs-8 col-sm-8 col-md-16 texto-izq">    
+        <div class="col-xs-8 col-sm-8 col-md-16 texto-izq">  
+            <!--  
             <span class="form-control input-lg">7:40 AM</span>
+            -->
+            <input class="form-control input-lg" type="time" id="time-repetidor2" value="08:40" />
         </div>
         <div class="col-xs-4 col-sm-4 col-md-16 texto-der">
             <input id="repetidor2" type="number" pattern="\d*" name="cantidad" class="input-lg form-control" placeholder="5" min="0" max="5" required>
@@ -109,140 +115,6 @@
       $('[type="checkbox"]').bootstrapSwitch();
     })
     </script>
-
-  <script type="text/javascript">
-      //set initial state.
-      //$('#textbox1').val($(this).is(':checked'));
-      $('input[name="despertador"]').on('switchChange.bootstrapSwitch', function(event, state) {
-          if(state==true){
-            //alert("cambio a verde");
-          }else{
-            //alert("cambio a rojo");
-          }
-      });
-      $('input[name="alimentos"]').on('switchChange.bootstrapSwitch', function(event, state) {
-          if(state==true){
-            //alert("cambio a verde");
-          }else{
-            //alert("cambio a rojo");
-          }
-      });
-      $('input[name="hidratacion"]').on('switchChange.bootstrapSwitch', function(event, state) {
-          if(state==true){
-            //alert("cambio a verde");
-          }else{
-            //alert("cambio a rojo");
-          }
-      });
-      $('input[name="recordatorios"]').on('switchChange.bootstrapSwitch', function(event, state) {
-          if(state==true){
-            //alert("cambio a verde");
-          }else{
-            //alert("cambio a rojo");
-          }
-      });
-     $( "#repetidor1" ).change(function() {
-        //alert( "Llamar ad_remeinder" );
-        if ($("#repetidor1").val() > 5)
-        {
-            $("#repetidor1").val(5);
-        }
-        else if ($("#repetidor1").val() < 0)
-        {
-            $("#repetidor1").val(0);
-        }
-        if($("#repetidor1").val()<=0){
-          //Funcion para cancelar 
-
-        }else{
-          //Funcion para agregar notificacion
-          add_reminder(1,"Mensaje del primer repetidor, bla bla bla bla bla bla",$("#repetidor1").val(),8,0,"notificacion primer repetidor");
-        }
-      });
-     $( "#repetidor2" ).change(function() {
-        if($("#repetidor2").val()<=0){
-          //Funcion para cancelar 
-
-        }else{
-          //Funcion para agregar notificacion
-          add_reminder("100","Mensaje del primer repetidor, bla bla bla bla bla bla",$("#repetidor2").val(),"8","0","notificacion primer repetidor");
-        }
-      });
-  </script>
-
-
-  <script type="text/javascript" src="js/index.js"></script>
-
-  <script type="text/javascript">
-  function add_reminder(id,mensaje,repeticiones,hora,minutos,titulo)
-  { 
-
-      /*
-      var schedule_time = new Date((date + " " + time).replace(/-/g, "/")).getTime();
-      schedule_time = new Date(schedule_time);
-      */
-     
-      var schedule_time = new Date();
-      schedule_time.setHours(hora,minutos);
-
-
-      var info = null;
-     
-    
-      if(!localStorage.getItem("rp_data"))
-      {
-        var rp_data = {data: []};
-        localStorage.setItem("rp_data", JSON.stringify(rp_data));
-      }
-       
-      info = JSON.parse(localStorage.getItem("rp_data"));
-
-          
-
-      var array = [id, titulo, mensaje, schedule_time];
-      info.data[info.data.length] = array;
-      localStorage.setItem("rp_data", JSON.stringify(info));
-
-      var html = '';
- 
-      for(var count = 0; count < info.data.length; count++)
-      {
-          var schedule_time = new Date(info.data[count][3]).getTime();
-          var current_time = new Date().getTime();
-   
-          if(current_time < schedule_time)
-          {
-            html = html + "<tr><td>" + info.data[count][1] + "</td><td>" + info.data[count][3] + "</td></tr>";
-          }
-      }
-   
-      //$("table#pendingTable tbody").empty();
-      //$("table#pendingTable tbody").append(html).closest("table#pendingTable").table("refresh").trigger("create"); 
-      alert(html);
-
-  }
-  </script>
-
-  <script type="text/javascript">
-  $(document).ready(function(){
-    //alert("hola");
-     var info = null;
-     
-    
-    if(!localStorage.getItem("rp_data"))
-    {
-      var rp_data = {data: []};
-      localStorage.setItem("rp_data", JSON.stringify(rp_data));
-    }
-     
-    info = JSON.parse(localStorage.getItem("rp_data"));
-
-        
-
-  });
-
-
-</script>
 
 
 

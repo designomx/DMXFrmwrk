@@ -40,7 +40,7 @@
             <!--
             <span class=" form-control input-lg">8:00 AM</span>
             -->
-            <input class="input-lg form-control" type="time" id="time-repetidor1" value="08:00" />
+            <input class="hora input-lg form-control" type="time" id="time-repetidor1" value="08:00" />
         </div>
         <div class="col-xs-4 col-sm-4 col-md-16 texto-der">
             <input id="repetidor1" type="number" inputmode="numeric" pattern="[0-9]*" name="cantidad" class="input-lg form-control" placeholder="1" min="1" max="5" value=1 required>
@@ -55,7 +55,7 @@
             <!--  
             <span class="form-control input-lg">7:40 AM</span>
             -->
-            <input class="form-control input-lg" type="time" id="time-repetidor2" value="08:40" />
+            <input class="hora form-control input-lg" type="time" id="time-repetidor2" value="08:40" />
         </div>
         <div class="col-xs-4 col-sm-4 col-md-16 texto-der">
             <input id="repetidor2" type="number" pattern="\d*" name="cantidad" class="input-lg form-control" placeholder="1" min="1" max="5" value=1 required>
@@ -72,6 +72,11 @@
             <input id="recordatorios" name="recordatorios" class="pull-right" data-size="small" data-off-text="&nbsp;" data-off-color="danger" data-on-text="&nbsp;" data-on-color="success" data-inverse="true" type="checkbox" >
           </span>
         </span>
+
+        <div>
+          <button onclick="cerrarSesion()">Salir</button>
+        </div>
+
         <br><br>
         <div class="text-center">
           <a class="btn btn-social-icon btn-github">
@@ -102,8 +107,8 @@
     </div>
   </div>
   <footer id="footer" class="footer">
-        <label>www.benjaminpalacios.net</label>
-    </footer>
+    <label><a href="#" onclick="window.open('http://www.benjaminpalacios.net', '_system');">www.benjaminpalacios.net</a></label>
+  </footer>
   
   
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

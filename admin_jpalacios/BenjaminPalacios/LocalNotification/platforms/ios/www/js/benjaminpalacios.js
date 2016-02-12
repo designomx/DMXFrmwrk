@@ -5,7 +5,7 @@ $(document).ready(function(){
 		localStorage.autorizado = window.localStorage.getItem("autorizado");
 	    // value is now equal to "value"
 	    //alert(localStorage.autorizado);
-		if(localStorage.autorizado=="1"){
+		if(window.localStorage.getItem("autorizado")=="1"){
 			window.location = "BenjaminPalaciosAPP.html";
 		}
     
@@ -127,3 +127,6 @@ $( "#BotonLogin" ).click(function( event ) {
 		alert("Debe aceptar Términos y Condiciones");
 	}
 });
+
+
+
