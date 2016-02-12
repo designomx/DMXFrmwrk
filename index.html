@@ -1,91 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link href="/img/profile/apple-touch-icon.png" rel="apple-touch-icon" />
+		<link href="/img/profile/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+		<link href="/img/profile/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
+		<link href="/img/profile/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+		<link rel="icon" sizes="192x192" href="/img/profile/android-touch-icon-192x192.png">
+		<link rel="icon" sizes="128x128" href="/img/profile/android-touch-icon-128x128.png">
+		<link rel="icon" type="image/png" href="/img/profile/favicon.png" />
+		<!--WINDOWS PHONE 8.1-->
+		<meta name="application-name" content="Perfil by tooth.me®" />
+		<meta name="msapplication-TileColor" content=" #00b0ff" />
+		<meta name="msapplication-square70x70logo" content="/img/profile/smalltile.png" />
+		<meta name="msapplication-square150x150logo" content="/img/profile/mediumtile.png" />
+		<meta name="msapplication-wide310x150logo" content="/img/profile/widetile.png" />
+		<meta name="msapplication-square310x310logo" content="/img/profile/largetile.png" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Framework 0.1.b | designo.mx®</title>
+		<!-- CSS -->
+		<link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="/css/iosOverlay.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="/css/animate.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="/css/magic.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="/css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<!-- This is FontsAwesome 4.3.0-->
+		<link href="Font-Awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		<!--http://www.getmdl.io-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	</head>
+	<body>
+		<nav id="main-nav-bar">
+			<div class="nav-wrapper">
+				<a href="index.html" class="logo-header"><img src="../images/logo_eligefacil.png" width="159" alt="" /></a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+					<li>
+						<a href="sass.html">Descubre</a>
+					</li>
+					<li>
+						<a href="badges.html">Enterate</a>
+					</li>
+					<li>
+						<a href="collapsible.html">Contacto</a>
+					</li>
+					<li>
+						<a href="mobile.html"><i class="fa fa-twitter"></i></a>
+					</li>
+					<li>
+						<a href="mobile.html"><i class="fa fa-facebook"></i></a>
+					</li>
+				</ul>
+				<ul class="side-nav" id="mobile-demo">
+					<li>
+						<a href="sass.html">Descubre</a>
+					</li>
+					<li>
+						<a href="badges.html">Enterate</a>
+					</li>
+					<li>
+						<a href="collapsible.html">Contacto</a>
+					</li>
+					<li>
+						<a href="mobile.html"><i class="fa fa-twitter"></i></a>
+					</li>
+					<li>
+						<a href="mobile.html"><i class="fa fa-facebook"></i></a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div class="home-hero"></div>
+		<!-- MODALS - ALERTS - DROP DOWNS-->
+		<!--[if IE]>
+			<script src="js/html5.js"></script>
+			<script type="text/javascript" src="js/respond.js"></script>
+		<![endif]-->
+		<!-- Scripts-->
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/jquery.stayInWebApp.min.js"></script>
+		<script src="js/spin.js"></script>
+		<script src="js/iosOverlay.js"></script>
+		<script src="js/charCount.js"></script>
+		<script src="js/backtotop.js"></script>
+		<script src="js/materialize.min.js"></script>
+		<script src="js/init.config.js"></script>
+		<script src="js/init.js"></script>
+		<!--INTERNET CHECK-->
+		<script src="offline07/offline.min.js"></script>
+		<link rel="stylesheet" href="offline07/themes/offline-theme-dark.css" />
+		<link rel="stylesheet" href="offline07/themes/offline-language-spanish.css" />
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+		<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+		<!--PERFIL-->
+		<script src="js/web.js"></script>
+		<script>
+			jQuery(function() {
+		  	
+		  		FRMWRK.main.init();
+		  		FRMWRK.web.init();
+				
+		  	});
+		</script>
+	</body>
 
-<head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
-  
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  
-  <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-  
-  <link href="/img/profile/apple-touch-icon.png" rel="apple-touch-icon" />
-  <link href="/img/profile/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
-  <link href="/img/profile/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
-  <link href="/img/profile/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
-  <link rel="icon" sizes="192x192" href="/img/profile/android-touch-icon-192x192.png">
-  <link rel="icon" sizes="128x128" href="/img/profile/android-touch-icon-128x128.png">
-  <link rel="icon" type="image/png" href="/img/profile/favicon.png" />
-  
-  <!--WINDOWS PHONE 8.1-->
-  <meta name="application-name" content="Perfil by tooth.me®" />
-  <meta name="msapplication-TileColor" content=" #00b0ff" />
-  <meta name="msapplication-square70x70logo" content="/img/profile/smalltile.png" />
-  <meta name="msapplication-square150x150logo" content="/img/profile/mediumtile.png" />
-  <meta name="msapplication-wide310x150logo" content="/img/profile/widetile.png" />
-  <meta name="msapplication-square310x310logo" content="/img/profile/largetile.png" />
-  
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
-  <title>Framework 0.1.b | designo.mx®</title>
-
-  <!-- CSS  -->
-  <link href="/css/iosOverlay.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="/css/animate.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="/css/magic.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="/css/gadget.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <!-- This is FontsAwesome 4.3.0-->
-  <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-  <!--http://www.getmdl.io-->
-  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  
-</head>
-
-<body>
-
-	<h1>Hi!</h1>
-
-	<!-- MODALS - ALERTS - DROP DOWNS-->
-	
-	
-
-  <!--[if IE]>
-	<script src="js/html5.js"></script>
-	<script type="text/javascript" src="js/respond.js"></script>
-  <![endif]--> 
-
-  <!--  Scripts-->
-  <script src="js/jquery-2.1.1.min.js"></script>
-  <script src="js/jquery.stayInWebApp.min.js"></script>
-  <script src="js/spin.js"></script>
-  <script src="js/iosOverlay.js"></script>
-  <script src="js/charCount.js"></script>
-  <script src="js/backtotop.js"></script>
-  <script src="js/materialize.min.js"></script>
-  <script src="js/init.config.js"></script>
-  <script src="js/init.js"></script>
-  
-  <!--INTERNET CHECK-->
-  <script src="offline07/offline.min.js"></script>
-  <link rel="stylesheet" href="offline07/themes/offline-theme-dark.css" />
-  <link rel="stylesheet" href="offline07/themes/offline-language-spanish.css" />
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-  
-  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
-  
-  <!--PERFIL-->
-  <script src="js/web.js"></script>
-  <script>
-  	jQuery(function() {
-  	
-  	    FRMWRK.main.init();
-  	    FRMWRK.web.init();
-	    
-  	});
-  </script>
-
-
-  </body>
 </html>
