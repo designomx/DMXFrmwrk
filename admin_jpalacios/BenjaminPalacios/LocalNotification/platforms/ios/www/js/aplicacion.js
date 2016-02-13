@@ -296,13 +296,14 @@ window.localStorage.clear();
   function add_reminder(id,mensaje,repeticiones,hora,minutos,titulo,every)
   {
 //Compruba si es una notificación para el mismo día o para el día siguiente, dependiendo de la hora que 'seteo' el usuario, si es -1 es de inmediato
+
       var schedule_time = new Date();
       schedule_time.setHours(hora,minutos,00);
       var current_time = new Date().getTime();
       if(current_time>schedule_time){
         schedule_time.setDate(schedule_time.getDate() + 1);
       }  
-    }
+    
     cordova.plugins.notification.local.hasPermission(function(granted){
       if(granted == true)
       {
