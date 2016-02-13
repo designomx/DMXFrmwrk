@@ -141,7 +141,7 @@ $( "#cerrarSesion" ).click(function(){
     //var formData = 'email='+ dataString;        
     //alert(formData);
     //alert("entra a funcion");
-  var cerrar_sesion = confirm("¿Está seguro que desea cerrar la sesion????????????");
+  var cerrar_sesion = confirm("¿Está seguro que desea cerrar la sesion?");
   if (cerrar_sesion == true) {
     //limpiarALL();
     //cancelarALL();
@@ -296,10 +296,6 @@ window.localStorage.clear();
   function add_reminder(id,mensaje,repeticiones,hora,minutos,titulo,every)
   {
 //Compruba si es una notificación para el mismo día o para el día siguiente, dependiendo de la hora que 'seteo' el usuario, si es -1 es de inmediato
-    if(hora <0 || hora >23){
-      var schedule_time = new Date();
-      schedule_time.setMinutes(schedule_time.getMinutes() + 1);
-    }else{
       var schedule_time = new Date();
       schedule_time.setHours(hora,minutos,00);
       var current_time = new Date().getTime();
@@ -541,11 +537,12 @@ window.localStorage.clear();
         if(window.localStorage.getItem("confirmacionRecordatorios")<current_time){
           var r = confirm("Recuerde que tiene recordatorios");
           if (r == true) {
-            window.localStorage.setItem("confirmacionRecordatorios", current_time.getTime());
-            add_reminder(30,'Mensaje de Hidratación',0,current_time.getHours()+3,current_time.getMinutes(),'Hidratación!','hour');
+            current_time = current_time.setHours(current_time.getHours()+3);
+            window.localStorage.setItem("confirmacionRecordatorios", current_time);
+            add_reminder(30,'Mensaje de recordatorios',0,current_time.getHours(),current_time.getMinutes(),'Recordatorios!','hour');
           }else{
             window.localStorage.setItem("confirmacionRecordatorios", current_time.getTime());
-            add_reminder(30,'Mensaje de Hidratación',0,current_time.getHours(),current_time.getMinutes()+5,'Hidratación!','hour');
+            add_reminder(30,'Mensaje de Recordatorios',0,current_time.getHours(),current_time.getMinutes()+5,'Recordatorios!','hour');
           }
           //alert("Recuerde que tiene que tiene recordatorios");
           limpiarALL();      
