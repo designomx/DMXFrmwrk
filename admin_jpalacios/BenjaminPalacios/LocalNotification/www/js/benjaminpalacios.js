@@ -35,7 +35,7 @@ $( "#BotonRegistrar" ).click(function( event ) {
 					//alert(data);
 					if(data=="Resgistro exitoso!"){
 						//alert("Login correcto.. Redireccionando");
-						window.location = "index.php"
+						window.location = "index.html"
 						
 					}else{
 						if(data=="Error creando el registro!"){
