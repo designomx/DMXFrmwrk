@@ -23,3 +23,42 @@
    	
    }
    */
+/* ==========================================================================
+      Fonts
+      ========================================================================== */
+@font-face {
+  font-family: 'MOAM91';
+  src: url('assets/fonts/assets/fonts/MOAM91_light.eot');
+  /* IE9 Compat Modes */
+  src: url('assets/fonts/MOAM91_light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('assets/fonts/MOAM91_light.woff') format('woff'), /* Modern Browsers */ url('assets/fonts/MOAM91_light.ttf') format('truetype'), /* Safari, Android, iOS */ url('assets/fonts/MOAM91_light.svg#1def069febbf5fc41694b18523b67a7e') format('svg');
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: 200;
+}
+@font-face {
+  font-family: 'Museo Sans 300';
+  src: url('assets/fonts/MuseoSans-300.eot');
+  /* IE9 Compat Modes */
+  src: url('assets/fonts/MuseoSans-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('assets/fonts/MuseoSans-300.woff') format('woff'), /* Modern Browsers */ url('assets/fonts/MuseoSans-300.ttf') format('truetype'), /* Safari, Android, iOS */ url('assets/fonts/MuseoSans-300.svg#83308de0ca4237e6cd44fbae61d13495') format('svg');
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Visby CF Light';
+  src: url('assets/fonts/VisbyCF-Light.eot');
+  /* IE9 Compat Modes */
+  src: url('assets/fonts/VisbyCF-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('assets/fonts/VisbyCF-Light.woff') format('woff'), /* Modern Browsers */ url('assets/fonts/VisbyCF-Light.ttf') format('truetype'), /* Safari, Android, iOS */ url('assets/fonts/VisbyCF-Light.svg#be1dfcf09435eecaffe5d1ba5ecf9eb0') format('svg');
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: 200;
+}
+@font-face {
+  font-family: 'Visby CF Medium';
+  src: url('assets/fonts/VisbyCF-Medium.eot');
+  /* IE9 Compat Modes */
+  src: url('assets/fonts/VisbyCF-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('assets/fonts/VisbyCF-Medium.woff') format('woff'), /* Modern Browsers */ url('assets/fonts/VisbyCF-Medium.ttf') format('truetype'), /* Safari, Android, iOS */ url('assets/fonts/VisbyCF-Medium.svg#3ae62bd5b7268d651203b3a1af56ccb4') format('svg');
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: 400;
+}
