@@ -30,28 +30,30 @@
 		<link href="/css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<!-- This is FontsAwesome 4.3.0-->
 		<link href="Font-Awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-		
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
 	<body>
 		<nav id="main-nav-bar">
 			<div class="nav-wrapper">
-				<a href="index.html" class="logo-header"><img src="../images/logo_eligefacil.png" width="159" alt="" /></a>
+				<a href="index.html" class="logo-header magictime spaceInLeft"><img src="../images/logo_eligefacil.png" width="159" alt="" /></a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
 				<ul class="right hide-on-med-and-down">
 					<li>
-						<a href="sass.html">Descubre</a>
+						<a href="sass.html" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
+						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="badges.html">Enterate</a>
+						<a href="badges.html" class="magictime slideUpRetourn fix-pos-nav">Enterate</a>
+						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="collapsible.html">Contacto</a>
+						<a href="collapsible.html" class="magictime slideUpRetourn fix-pos-nav">Contacto</a>
 					</li>
 					<li>
-						<a href="mobile.html"><i class="fa fa-twitter"></i></a>
+						<a href="mobile.html" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
 					</li>
 					<li>
-						<a href="mobile.html"><i class="fa fa-facebook"></i></a>
+						<a href="mobile.html" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
 					</li>
 				</ul>
 				<ul class="side-nav" id="mobile-demo">
@@ -73,8 +75,66 @@
 				</ul>
 			</div>
 		</nav>
-		<div class="home-hero"></div>
-		<div class="widget-wrapper"></div>
+		<div class="home-hero" data-parallax="scroll" data-image-src="images/hero1.jpg"></div>
+		<div class="slide-widget animated slideInUp">
+			<div class="widget-wrapper">
+				<div class="discover-title">!DESCUBRE TU PLAN!</div>
+				<div class="products-box">
+					<div class="plan-box active-selection">
+						<div class="content-bx">
+							<div class="valigny">
+								<i class="material-icons">phone_android</i>
+								<p>celular</p>
+							</div>
+						</div>
+						<div class="check-plan">
+							<i class="fa fa-check"></i>
+						</div>
+					</div>
+					<div class="plan-box">
+						<div class="content-bx">
+							<div class="valigny">
+								<i class="material-icons">wifi</i>
+								<p>internet</p>
+							</div>
+						</div>
+					</div>
+					<div class="plan-box">
+						<div class="content-bx">
+							<div class="valigny">
+								<i class="material-icons">phone</i>
+								<p>tel. fijo</p>
+							</div>
+						</div>
+					</div>
+					<div class="plan-box">
+						<div class="content-bx">
+							<div class="valigny">
+								<i class="material-icons">tv</i>
+								<p>tv</p>
+							</div>
+						</div>
+					</div>
+					<div class="plan-box">
+						<div class="content-bx">
+							<div class="valigny">
+								<i class="material-icons">live_tv</i>
+								<p>Streaming</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="search-btn z-depth-2">Buscar</div>
+			</div>
+			<div class="home-slide-bar">
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		<div id="blog-module"></div>
 		<!-- MODALS - ALERTS - DROP DOWNS-->
 		<!--[if IE]>
 			<script src="js/html5.js"></script>
@@ -88,6 +148,7 @@
 		<script src="js/charCount.js"></script>
 		<script src="js/backtotop.js"></script>
 		<script src="js/materialize.min.js"></script>
+		<script src="js/parallax.min.js"></script>
 		<script src="js/init.config.js"></script>
 		<script src="js/init.js"></script>
 		<!--INTERNET CHECK-->
@@ -103,7 +164,14 @@
 		  	
 		  		FRMWRK.main.init();
 		  		FRMWRK.web.init();
-				
+		  		
+		  		$('.plan-box').bind('mouseover', function() {
+		  			$(this).addClass('animated pulse');
+		  		});
+		  		$('.plan-box').bind('mouseout', function() {
+		  			$(this).removeClass('animated pulse');
+		  		});
+		  						
 		  	});
 		</script>
 	</body>

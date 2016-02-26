@@ -19,6 +19,10 @@
 	}
 }
 
+body{
+	background: #605862;
+}
+
 .alertBox{
 
 	width: 100% !important;
@@ -537,7 +541,7 @@ footer{
 //HOME
 
 #main-nav-bar{
-	position: absolute;
+	position: fixed;
 	z-index: 9999;
 	background: rgba(255, 255, 255, .75);
 	i, a{
@@ -552,7 +556,20 @@ footer{
 		display: inline-block;
 		width: auto;
 		@media @matrlzhi {
-			padding: 12px 0 10px 0 !important;
+			padding: 10px 0 0 0 !important;
+			position: absolute;
+			left: 20px;
+			top:5px;
+		}
+		@media @mobile {		font-size: 12px;
+			padding: 6px 0 0 0 !important;
+			position: absolute;
+			left: 20px;
+			top:5px;
+			img{
+				height: 38px;
+				width: auto;
+			}
 		}
 	}
 	@media @matrlzhi {
@@ -562,18 +579,25 @@ footer{
 
 .home-hero{
 	.size(100%);
-	background: url('../images/hero1.jpg') no-repeat center center;
 	.background-size(cover);
 	position: absolute;
 	left: 0;
 	top: 0;
 	z-index: 0;
+	background: transparent;
+}
+
+.slide-widget{
+	width: 100%;
+	height: 330px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
 }
 
 .widget-wrapper{
-	.size(90%, 330px);
-	.opacity(0.6);
-	background-color: white;
+	.size(90%, 380px);
+	background-color: rgba(255, 255, 255, .75);
 	.border-radius(10px);
 	.box-shadow(0 0 14px rgba(107, 38, 10, 0.22));
 	position: absolute;
@@ -581,6 +605,180 @@ footer{
 	left: 50%;
 	.translateX(-50%);
 }
+
+.discover-title{
+	color: white;
+	font-family: "Visby CF";
+	font-size: 30px;
+	padding: 10px 30px;
+	background-color: rgba(0, 0, 0, .75);
+	border: 5px solid rgba(255, 255, 255, 0.4);
+	.border-radius(41px);
+	width: auto;
+	display: inline-block;
+	position: absolute;
+	left: 50%;
+	top: -40px;
+	letter-spacing: 2px;
+	.translateX(-50%);
+	white-space: nowrap;
+	@media @mobile {		font-size: 12px;
+		display: inline-block;
+		top: -20px;
+	}
+}
+
+.products-box{
+	text-align: center;
+	position: relative;
+	top: 40%;
+	.translateY(-50%);
+	.plan-box{
+		.size(142px);
+		border: 2px solid rgba(255, 255, 255, 0.18);
+		.border-radius(50%);
+		display: inline-block;
+		padding: 6px 0 0 6px;
+		margin: 0 10px;
+		position: relative;
+		cursor: pointer;
+		&.active-selection{
+			.box-shadow(inset 0 0 10px rgba(100, 36, 11, 0.3));
+		}
+		.content-bx{
+			.size(126px);
+			border: 2px solid rgba(255, 255, 255, 0.18);
+			.box-shadow(inset 0 0 10px rgba(100, 36, 11, 0.3));
+			.border-radius(50%);
+			display: table;
+			.valigny{
+				display: table-cell;
+				vertical-align: middle;
+				i{
+					margin-top: 20px;
+					font-size: 36px;
+					color: black;
+				}
+				p{
+					margin-top: 0px;
+				}
+			}
+		}
+		.check-plan{
+			.size(36px);
+			background-color: rgb(76, 203, 0);
+			border: 5px solid rgba(255, 255, 255, 0.4);
+			.border-radius(50%);
+			.box-shadow(0 0px 5px rgba(0, 0, 0, 0.3));
+			position: absolute;
+			left: 50%;
+			bottom: -12px;
+			margin-left: -18px;
+			i{
+				color: white;
+				line-height: 25px;
+			}
+		}
+	}
+}
+
+.search-btn{
+	.size(207px, 56px);
+	background-color: rgb(255, 103, 27);
+	border: 5px solid rgba(255, 255, 255, 0.4);
+	.border-radius(53px);
+	color: white;
+	font-family: "Visby CF";
+	font-size: 20px;
+	font-weight: 500;
+	text-align: center;
+	line-height: 43px;
+	margin: 0 auto;
+	position: absolute;
+	bottom: 65px;
+	left: 50%;
+	.translateX(-50%);
+	cursor: pointer;
+}
+
+.home-slide-bar{
+	.size(95%, 35px);
+	background-color: white;
+	position: absolute;
+	z-index: 999;
+	left: 50%;
+	bottom: -15px;
+	.translateX(-50%);
+	.box-shadow(0 0 5px rgba(107, 38, 10, 0.5));
+}
+
+#blog-module{
+	.size(100%, 2000px);
+}
+
+
+.nav-wrapper{
+	color: rgb(10, 9, 9);
+	font-family: "Visby CF";
+	font-size: 0 !important;
+	.fa-twitter, .fa-facebook{
+		width: 36px !important;
+		color: #55acee !important;
+		display: block;
+		margin: 0 !important;
+		padding: 0px 0px !important;
+		font-size: 18px;
+		position: absolute;
+		left: 10px !important;
+		top: -15px !important;
+	}
+	.fa-facebook{
+		color: #3b5998 !important;
+		left: 12px !important;
+		top: -14px;
+	}
+	.twitternav, .facebooknav{
+		.size(36px);
+		display: block;
+		border: 1px solid #55acee;
+		.border-radius(50px);
+		margin: 15px 10px 15px 10px;
+		&:hover{
+			background: rgba(255, 255, 255, .5);
+		}
+	}
+	.facebooknav{
+		border: 1px solid #3b5998;
+	}
+	.fix-pos-nav{
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	li{
+		position: relative;
+		a{
+			color: rgb(10, 9, 9);
+			font-family: "Visby CF";
+			font-size: 20px;
+		}
+	}
+	.nav-mid-line{
+		.size(1px, 15px);
+		background: gray;
+		position: absolute;
+		right: 0;
+		top: 50%;
+		display: block;
+		margin-top: -10px;
+		opacity: .3;
+	}
+}
+
+
+
+
+
+
 
 
 
