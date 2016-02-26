@@ -70,6 +70,28 @@
   font-style: normal;
   font-weight: 400;
 }
+/* 2D TRANSITIONS */
+/* Grow */
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
 * {
   font-weight: 300;
 }
@@ -736,10 +758,26 @@ footer.stickFoot {
   position: relative;
   cursor: pointer;
 }
+.products-box .plan-box:hover .check-plan {
+  display: block !important;
+  visibility: visible;
+}
 .products-box .plan-box.active-selection {
   -webkit-box-shadow: inset 0 0 10px rgba(100, 36, 11, 0.3);
   -moz-box-shadow: inset 0 0 10px rgba(100, 36, 11, 0.3);
   box-shadow: inset 0 0 10px rgba(100, 36, 11, 0.3);
+}
+.products-box .plan-box.active-selection .check-plan {
+  display: block;
+  background-color: #4ccb00;
+  visibility: visible;
+}
+.products-box .plan-box.active-selection:hover .cancel-plan {
+  opacity: .4;
+  position: absolute;
+  right: 0;
+  top: 0;
+  visibility: visible;
 }
 .products-box .plan-box .content-bx {
   width: 126px;
@@ -771,7 +809,7 @@ footer.stickFoot {
 .products-box .plan-box .check-plan {
   width: 36px;
   height: 36px;
-  background-color: #4ccb00;
+  background-color: #a2a2a2;
   border: 5px solid rgba(255, 255, 255, 0.4);
   -webkit-border-radius: 50%;
   -webkit-background-clip: padding-box;
@@ -786,10 +824,24 @@ footer.stickFoot {
   left: 50%;
   bottom: -12px;
   margin-left: -18px;
+  display: none;
+  visibility: hidden;
 }
 .products-box .plan-box .check-plan i {
   color: white;
   line-height: 25px;
+}
+.products-box .plan-box .check-plan.checked-opt {
+  display: block;
+  background-color: #4ccb00;
+  visibility: visible;
+}
+.products-box .plan-box .cancel-plan {
+  opacity: .4;
+  position: absolute;
+  right: 0;
+  top: 0;
+  visibility: hidden;
 }
 .search-btn {
   width: 207px;

@@ -35,8 +35,8 @@
 	<body>
 		<nav id="main-nav-bar">
 			<div class="nav-wrapper">
-				<a href="index.html" class="logo-header magictime spaceInLeft"><img src="../images/logo_eligefacil.png" width="159" alt="" /></a>
-				<a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
+				<a href="index.html" class="logo-header magictime spaceInLeft hvr-grow"><img src="../images/logo_eligefacil.png" width="159" alt="" /></a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 				<ul class="right hide-on-med-and-down">
 					<li>
 						<a href="sass.html" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
@@ -80,8 +80,9 @@
 			<div class="widget-wrapper">
 				<div class="discover-title">!DESCUBRE TU PLAN!</div>
 				<div class="products-box">
-					<div class="plan-box active-selection">
-						<div class="content-bx">
+					
+					<div class="plan-box">
+						<div class="content-bx hvr-grow">
 							<div class="valigny">
 								<i class="material-icons">phone_android</i>
 								<p>celular</p>
@@ -90,37 +91,64 @@
 						<div class="check-plan">
 							<i class="fa fa-check"></i>
 						</div>
+						<div class="cancel-plan">
+							<i class="fa fa-times-circle"></i>
+						</div>
 					</div>
 					<div class="plan-box">
-						<div class="content-bx">
+						<div class="content-bx hvr-grow">
 							<div class="valigny">
 								<i class="material-icons">wifi</i>
 								<p>internet</p>
 							</div>
 						</div>
+						<div class="check-plan">
+							<i class="fa fa-check"></i>
+						</div>
+						<div class="cancel-plan">
+							<i class="fa fa-times-circle"></i>
+						</div>
 					</div>
 					<div class="plan-box">
-						<div class="content-bx">
+						<div class="content-bx hvr-grow">
 							<div class="valigny">
 								<i class="material-icons">phone</i>
 								<p>tel. fijo</p>
 							</div>
 						</div>
+						<div class="check-plan">
+							<i class="fa fa-check"></i>
+						</div>
+						<div class="cancel-plan">
+							<i class="fa fa-times-circle"></i>
+						</div>
 					</div>
 					<div class="plan-box">
-						<div class="content-bx">
+						<div class="content-bx hvr-grow">
 							<div class="valigny">
 								<i class="material-icons">tv</i>
 								<p>tv</p>
 							</div>
 						</div>
+						<div class="check-plan">
+							<i class="fa fa-check"></i>
+						</div>
+						<div class="cancel-plan">
+							<i class="fa fa-times-circle"></i>
+						</div>
 					</div>
 					<div class="plan-box">
-						<div class="content-bx">
+						<div class="content-bx hvr-grow">
 							<div class="valigny">
 								<i class="material-icons">live_tv</i>
 								<p>Streaming</p>
 							</div>
+						</div>
+						<div class="check-plan">
+							<i class="fa fa-check"></i>
+						</div>
+						<div class="cancel-plan">
+							<i class="fa fa-times-circle"></i>
 						</div>
 					</div>
 				</div>
@@ -165,12 +193,16 @@
 		  		FRMWRK.main.init();
 		  		FRMWRK.web.init();
 		  		
-		  		$('.plan-box').bind('mouseover', function() {
-		  			$(this).addClass('animated pulse');
+//		  		$('.plan-box').bind('mouseover', function() {
+//		  			$(this).addClass('animated pulse');
+//		  		});
+
+
+		  		$('.plan-box').bind('click', function() {
+		  			$(this).toggleClass('active-selection');
 		  		});
-		  		$('.plan-box').bind('mouseout', function() {
-		  			$(this).removeClass('animated pulse');
-		  		});
+		  		
+
 		  						
 		  	});
 		</script>

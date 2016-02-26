@@ -642,8 +642,24 @@ footer{
 		margin: 0 10px;
 		position: relative;
 		cursor: pointer;
+		&:hover .check-plan{
+			display: block !important;
+			visibility: visible;
+		}
 		&.active-selection{
 			.box-shadow(inset 0 0 10px rgba(100, 36, 11, 0.3));
+			.check-plan{
+				display: block;
+				background-color: #4ccb00;
+				visibility: visible;
+			}
+			&:hover .cancel-plan{
+				opacity: .4;
+				position: absolute;
+				right: 0;
+				top: 0;
+				visibility: visible;
+			}
 		}
 		.content-bx{
 			.size(126px);
@@ -666,7 +682,7 @@ footer{
 		}
 		.check-plan{
 			.size(36px);
-			background-color: rgb(76, 203, 0);
+			background-color: #a2a2a2;
 			border: 5px solid rgba(255, 255, 255, 0.4);
 			.border-radius(50%);
 			.box-shadow(0 0px 5px rgba(0, 0, 0, 0.3));
@@ -674,10 +690,24 @@ footer{
 			left: 50%;
 			bottom: -12px;
 			margin-left: -18px;
+			display: none;
+			visibility: hidden;
 			i{
 				color: white;
 				line-height: 25px;
 			}
+			&.checked-opt{
+				display: block;
+				background-color: #4ccb00;
+				visibility: visible;
+			}
+		}
+		.cancel-plan{
+			opacity: .4;
+			position: absolute;
+			right: 0;
+			top: 0;
+			visibility: hidden;
 		}
 	}
 }
