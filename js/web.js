@@ -25,7 +25,7 @@ FRMWRK.web = (function ($) {
     		var id;
     		
     		function doneResizing(){
-    		   location.reload();
+    		   //location.reload();
     		}
     	};
     

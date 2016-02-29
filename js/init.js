@@ -337,7 +337,7 @@ FRMWRK.main = (function($) {
 			$(".scroll-box").mCustomScrollbar({
 				axis: "x",
 				theme: "minimal",
-				updateOnContentResize: "boolean"
+				updateOnContentResize: true
 			});
 						
 			var _selfClick = 0;
@@ -368,7 +368,7 @@ FRMWRK.main = (function($) {
 			$('.streaming').click(function() {
 		
 				$("div").filter($(".nostreaming, .cellplan")).fadeToggle('500', function () {
-					
+					console.log('filter');
 					if (_selfClick <= 3) {
 						_scrollPlansResizer();
 						_selfClick++;
