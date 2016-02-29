@@ -316,8 +316,19 @@ FRMWRK.main = (function($) {
 	var _mainFileIndex = function() {
 	
 		var winH = $(window).height()
+		
+		var blogHbx = $('#blog-module').outerHeight();
 	
 		$('#blog-module').css('margin-top' , (winH-20));
+		
+		$('.side-bar-bx').height(blogHbx-195);
+		
+		$('.reload-button-bx a').bind('mouseover',function() {
+			$('.reload-button-bx a i').toggleClass('fa-spin');
+		});
+		$('.reload-button-bx a').bind('mouseout',function() {
+			$('.reload-button-bx a i').toggleClass('fa-spin');
+		});
 	
 		$('.plan-box').bind('click', function() {
 				$(this).toggleClass('active-selection');

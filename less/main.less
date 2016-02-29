@@ -19,6 +19,10 @@
 	}
 }
 
+html{
+	font-family: 'Visby CF';
+}
+
 body{
 	background: #605862;
 }
@@ -854,15 +858,16 @@ footer{
 .reload-button-bx{
 	.size(100%, auto);
 	clear: both;
-	padding: 20px 0;
+	padding: 40px 0;
 	a{
 		.size(164px, 41px);
 		background-color: rgb(235, 235, 235);
 		.border-radius(21px);
 		display: block;
 		color: #7a7a7a;
-		line-height: 42px;
+		line-height: 38px;
 		margin: 0 auto;
+		border: 1px solid white;
 		i{
 			padding: 0 20px;
 		}
@@ -973,6 +978,7 @@ footer{
 		width: 100%;
 		text-align: center;
 		padding: 60px 0 40px 0;
+		margin-top: 0 !important;
 		li{
 			color: white;
 			font-family: "Venti CF";
@@ -995,11 +1001,53 @@ footer{
 
 .side-bar-bx{
 	padding: 0 !important;
+	height: 100%;
 	.side-bar-separator{
 		.size(100%, 50px);
 	}
 	h5{
 		padding: 0 20px;
+	}
+	.post-promoted-bx{
+		.size(100%, 128px);
+		position: relative;
+		padding: 10px 20px;
+		margin-bottom: 20px;
+		.col{
+			height: 128px;
+			background: white;
+			position: relative;
+			overflow: hidden;
+			display: table;
+		}
+		img{
+			position: absolute;
+			left: 1px;
+			top: 1px;
+		}
+		p{
+			display: table-cell;
+			padding-left: 138px;
+			vertical-align: middle;
+		}
+		a{
+			.size(100%);
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	}
+	.add-promoted-bx{
+		height: auto;
+		margin-bottom: 20px;
+		clear: both;
+		.col{
+			float: none;
+		}
+		img{
+			margin: 0 auto;
+			display: block;
+		}
 	}
 }
 
