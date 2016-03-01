@@ -664,14 +664,25 @@ footer.stickFoot {
 .home-hero {
   width: 100%;
   height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+.home-hero .hero-image {
+  width: 100%;
+  height: 100%;
+  background: url('../images/hero1.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 0;
-  background: transparent;
+  z-index: 4;
+}
+.home-hero .hero-image.active-slide {
+  z-index: 5;
 }
 .slide-widget {
   width: 100%;
@@ -697,6 +708,7 @@ footer.stickFoot {
   bottom: 10px;
   left: 50%;
   z-index: 99;
+  margin-left: -50%;
 }
 .discover-title {
   color: white;
@@ -892,10 +904,10 @@ footer.stickFoot {
   padding: 7px 0;
   position: absolute;
   left: 0;
-  top: -15px;
+  top: -18px;
 }
 .home-slide-bar ul li {
-  width: 7px;
+  width: 6px;
   height: 6px;
   background-color: #C7C4C8;
   -webkit-border-radius: 50%;
@@ -926,7 +938,7 @@ footer.stickFoot {
   position: relative;
   margin: 700px auto 50px auto;
   z-index: 0;
-  padding-top: 30px;
+  padding-top: 15px;
 }
 #blog-module .blog-timeline-bx {
   padding: 20px;

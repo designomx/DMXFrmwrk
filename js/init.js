@@ -222,11 +222,11 @@ FRMWRK.main = (function($) {
 			});
 
 		};
-		
-		var _positionWidget = function() {
+
+	var _positionWidget = function() {
 			var widgH = $('.widget-wrapper').outerWidth();
-			
-			$('.widget-wrapper').css('margin-left' , (widgH/2)*-1);
+
+			$('.widget-wrapper').css('margin-left', (widgH / 2) * -1);
 		};
 
 	var _reSizeWindow = function() {
@@ -290,138 +290,145 @@ FRMWRK.main = (function($) {
 			}
 		}
 
-		//INDEX::FILE////////////////////////////////////////////////////////////////////////////////////
-		/////////////////////////////////////////////////////////////////////////////////
+
+	//INDEX::FILE////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////
+		
+		
 	var _animacionInit = function() {
 			$('#login-bx').addClass('magictime swashIn');
 			$('.navbar-fixed.aniMagic').addClass('animated bounceInDown');
 		};
-	
+
 	var _scrollResizer = function() {
-		var planWidth = 0;
-		$('.plan-box').each(function() {
-		    planWidth += $(this).outerWidth( true );
-		});
-		$('.products-box').width(planWidth).css('min-width', 860);
-	};
-	
+			var planWidth = 0;
+			$('.plan-box').each(function() {
+				planWidth += $(this).outerWidth(true);
+			});
+			$('.products-box').width(planWidth).css('min-width', 860);
+		};
+
 	var _scrollPlansResizer = function() {
-		var planWidthb = 0;
-		$('.active-selection').each(function() {
-		    planWidthb += $(this).outerWidth( true );
-		});
-		$('.products-box').width(planWidthb).css('min-width', 0);
-	};
-		
+			var planWidthb = 0;
+			$('.active-selection').each(function() {
+				planWidthb += $(this).outerWidth(true);
+			});
+			$('.products-box').width(planWidthb).css('min-width', 0);
+		};
+
 	var _mainFileIndex = function() {
-	
-		var winH = $(window).height()
-		
-		var blogHbx = $('#blog-module').outerHeight();
-	
-		$('#blog-module').css('margin-top' , (winH-20));
-		
-		$('.side-bar-bx').height(blogHbx-195);
-		
-		$('.reload-button-bx a').bind('mouseover',function() {
-			$('.reload-button-bx a i').toggleClass('fa-spin');
-		});
-		$('.reload-button-bx a').bind('mouseout',function() {
-			$('.reload-button-bx a i').toggleClass('fa-spin');
-		});
-	
-		$('.plan-box').bind('click', function() {
+
+			var winH = $(window).height()
+
+			var blogHbx = $('#blog-module').outerHeight();
+
+			$('#blog-module').css('margin-top', (winH - 20));
+
+			$('.side-bar-bx').height(blogHbx - 185);
+
+			$('.reload-button-bx a').bind('mouseover', function() {
+				$('.reload-button-bx a i').toggleClass('fa-spin');
+			});
+			$('.reload-button-bx a').bind('mouseout', function() {
+				$('.reload-button-bx a i').toggleClass('fa-spin');
+			});
+
+			$('.plan-box').bind('click', function() {
 				$(this).toggleClass('active-selection');
 			});
-		
+
 			$(".scroll-box").mCustomScrollbar({
 				axis: "x",
 				theme: "minimal",
 				updateOnContentResize: true
 			});
-						
+
 			var _selfClick = 0;
-		
+
 			$('.cellplan').click(function() {
-		
-				$("div").filter($(".nocell")).fadeToggle('500', function () {
-					
+
+				$("div").filter($(".nocell")).fadeToggle('500', function() {
+
 					if (_selfClick <= 3) {
 						_scrollPlansResizer();
 						_selfClick++;
-					}else if (_selfClick >= 4){
+					} else if (_selfClick >= 4) {
 						_selfClick++;
 						_scrollResizer();
 						if (_selfClick >= 8) {
 							_selfClick = 0;
 						}
 					}
-					
+
 					var _algoMes = $('.scroll-box').outerWidth();
-										
+
 					$("#mCSB_1_container").outerWidth(_algoMes);
-										
+
 				});
 
 			});
-			
+
 			$('.streaming').click(function() {
-		
-				$("div").filter($(".nostreaming, .cellplan")).fadeToggle('500', function () {
+
+				$("div").filter($(".nostreaming, .cellplan")).fadeToggle('500', function() {
 					console.log('filter');
 					if (_selfClick <= 3) {
 						_scrollPlansResizer();
 						_selfClick++;
-					}else if (_selfClick >= 4){
+					} else if (_selfClick >= 4) {
 						_selfClick++;
 						_scrollResizer();
 						if (_selfClick >= 8) {
 							_selfClick = 0;
 						}
 					}
-					
+
 					var _algoMes = $('.scroll-box').outerWidth();
-										
+
 					$("#mCSB_1_container").outerWidth(_algoMes);
-					
+
 				});
-						
+
 			});
-		
+
 			$('.tripleplay1, .tripleplay2, .tripleplay3').click(function() {
-		
+
 				var triple1True = $('.active-selection.tripleplay1').length
 				var triple2True = $('.active-selection.tripleplay2').length
 				var triple3True = $('.active-selection.tripleplay3').length
 				var tripleCheck = triple1True + triple2True + triple3True;
-		
+
 				if (tripleCheck == 1) {
-					$('div').filter($(".streaming, .cellplan")).fadeOut('500', function () {
-					
+					$('div').filter($(".streaming, .cellplan")).fadeOut('500', function() {
+
 						$('.products-box').width(500).css('min-width', 500);
-						
+
 						var _algoMes = $('.scroll-box').outerWidth();
-											
+
 						$("#mCSB_1_container").outerWidth(_algoMes).css('min-width', 500);
-												
+
 					});
 					$('.tripleplay1').addClass('active-selection');
 				} else if (tripleCheck == 2) {} else if (tripleCheck == 3) {} else if (tripleCheck == 0) {
-					$('div').filter($(".streaming, .cellplan")).fadeIn('500', function () {
-					
+					$('div').filter($(".streaming, .cellplan")).fadeIn('500', function() {
+
 						var _algoMes = $('.scroll-box').outerWidth();
-						
+
 						$('.products-box').width(860).css('min-width', 860);
-																	
+
 						$("#mCSB_1_container").outerWidth(860).css('min-width', _algoMes);
-																		
+
 					});
 				}
-		
-			});
-	};
 
-	
+			});
+		};
+
+	var _homeSlideFade = function() {
+		var refreshHSlider = setInterval(function() {
+			$('.home-hero .hero-image.active-slide').fadeToggle(1000);		
+		}, 8000);
+	};
 
 
 	//FIN CLASES////////////////////////////////////////////////////////////////////////////////////
@@ -440,6 +447,7 @@ FRMWRK.main = (function($) {
 			_mainFileIndex();
 			_scrollResizer();
 			_positionWidget();
+			_homeSlideFade();
 			_reSizeWindow();
 		},
 		notificacion: function(mensaje, tipo) {

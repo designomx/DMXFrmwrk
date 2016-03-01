@@ -583,12 +583,22 @@ footer{
 
 .home-hero{
 	.size(100%);
-	.background-size(cover);
 	position: absolute;
 	left: 0;
 	top: 0;
 	z-index: 0;
-	background: transparent;
+	.hero-image{
+		.size(100%);
+		background: url('../images/hero1.jpg') no-repeat center center fixed;
+		.background-size(cover);
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 4;
+		&.active-slide{
+			z-index: 5;
+		}
+	}
 }
 
 .slide-widget{
@@ -608,6 +618,7 @@ footer{
 	bottom: 10px;
 	left: 50%;
 	z-index: 99;
+	margin-left: -50%;
 }
 
 .discover-title{
@@ -754,9 +765,9 @@ footer{
 		padding: 7px 0;
 		position: absolute;
 		left: 0;
-		top: -15px;
+		top: -18px;
 		li{
-			.size(7px, 6px);
+			.size(6px);
 			background-color: #C7C4C8;
 			.border-radius(50%);
 			display: inline-block;
@@ -776,7 +787,7 @@ footer{
 	position: relative;
 	margin: 700px auto 50px auto;
 	z-index: 0;
-	padding-top: 30px;
+	padding-top: 15px;
 	.blog-timeline-bx{
 		padding: 20px;
 		.post-box-wrapper{
