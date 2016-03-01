@@ -750,6 +750,11 @@ footer{
 	i{
 		line-height: 44px;
 		padding-right: 20px;
+		float: right;
+		display: block;
+		position: absolute;
+		right: 0;
+		top: 0;
 	}
 }
 
@@ -821,8 +826,14 @@ footer{
 					left: 0;
 					bottom: 0;
 					padding-right: 50px;
+					a{
+						color: white;
+						&:hover{
+							text-decoration: underline;
+						}
+					}
 				}
-				a{
+				.enter-post{
 					.size(100%);
 					display: block;
 					.background-image(linear-gradient(to top, rgba(0, 0, 0, 0.36) 0%, rgba(255, 255, 255, 0.36) 100%));

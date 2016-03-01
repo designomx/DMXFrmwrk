@@ -883,6 +883,11 @@ footer.stickFoot {
 .search-btn i {
   line-height: 44px;
   padding-right: 20px;
+  float: right;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .home-slide-bar {
   width: 95%;
@@ -993,7 +998,13 @@ footer.stickFoot {
   bottom: 0;
   padding-right: 50px;
 }
-#blog-module .blog-timeline-bx .post-box-wrapper .post-hero a {
+#blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 a {
+  color: white;
+}
+#blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 a:hover {
+  text-decoration: underline;
+}
+#blog-module .blog-timeline-bx .post-box-wrapper .post-hero .enter-post {
   width: 100%;
   height: 100%;
   display: block;
@@ -1005,7 +1016,7 @@ footer.stickFoot {
   top: 0;
   left: 0;
 }
-#blog-module .blog-timeline-bx .post-box-wrapper .post-hero a i {
+#blog-module .blog-timeline-bx .post-box-wrapper .post-hero .enter-post i {
   width: 31px;
   height: 31px;
   zoom: 1;
