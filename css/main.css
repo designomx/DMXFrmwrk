@@ -880,6 +880,10 @@ footer.stickFoot {
   transform: translateX(-50%);
   cursor: pointer;
 }
+.search-btn i {
+  line-height: 44px;
+  padding-right: 20px;
+}
 .home-slide-bar {
   width: 95%;
   height: 35px;
