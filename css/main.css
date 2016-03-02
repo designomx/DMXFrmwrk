@@ -92,6 +92,13 @@
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+/* ==========================================================================
+   Materialize Theme
+   ========================================================================== */
+[type="checkbox"]:checked + label:before {
+  border-right: 2px solid gray;
+  border-bottom: 2px solid gray;
+}
 * {
   font-weight: 300;
 }
@@ -1359,4 +1366,10 @@ footer.stickFoot {
 .sliders-scroll-bx .mCSB_scrollTools_horizontal {
   width: 80%;
   margin: 0 auto;
+}
+.checks-scroll-bx {
+  height: 120px;
+}
+.checks-scroll-bx p {
+  margin: 5px 10px;
 }
