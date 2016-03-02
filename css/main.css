@@ -279,6 +279,14 @@ nav {
 .dark-select .mdi-navigation-arrow-drop-down {
   color: white;
 }
+.fix-ios-shadow {
+  -webkit-border-radius: 1px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 1px;
+  -moz-background-clip: padding;
+  border-radius: 1px;
+  background-clip: padding-box;
+}
 .zero-auto {
   margin: 0 auto !important;
   position: relative !important;
@@ -960,11 +968,23 @@ footer.stickFoot {
   float: left;
   margin: 0 20px;
 }
+@media only screen and (max-width: 640px) {
+  .filter-mid-bar .slider-bx {
+    width: 120px;
+    height: 120px;
+    margin: 0;
+  }
+}
 .filter-mid-bar .slider-bx p {
   text-align: center;
   font-size: 14px;
   font-weight: 300;
   padding: 10px 0 0 0;
+}
+@media only screen and (max-width: 640px) {
+  .filter-mid-bar .slider-bx p {
+    font-size: 12px;
+  }
 }
 .filter-mid-bar .slider-bx .slide-value-bx {
   width: 100%;
@@ -1324,4 +1344,19 @@ footer.stickFoot {
 .side-bar-bx .add-promoted-bx img {
   margin: 0 auto;
   display: block;
+}
+.sliders-wrapp {
+  width: 100%;
+  height: auto;
+}
+.sliders-scroll-bx {
+  padding-right: 0 !important;
+  overflow: auto;
+}
+.sliders-scroll-bx #mCSB_2_container {
+  margin-bottom: 0;
+}
+.sliders-scroll-bx .mCSB_scrollTools_horizontal {
+  width: 80%;
+  margin: 0 auto;
 }

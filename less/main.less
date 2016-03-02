@@ -194,6 +194,10 @@ nav{
 	}
 }
 
+.fix-ios-shadow{
+	.border-radius(1px);
+}
+
 .zero-auto{
 	margin: 0 auto !important;
 	position: relative !important;
@@ -807,11 +811,18 @@ footer{
 		position: relative;
 		float: left;
 		margin: 0 20px;
+		@media @mobile {	
+			.size(120px, 120px);
+			margin: 0;
+		}
 		p{
 			text-align: center;
 			font-size: 14px;
 			font-weight: 300;
 			padding: 10px 0 0 0;
+			@media @mobile {	
+				font-size: 12px;
+			}
 		}
 		.slide-value-bx{
 			.size(100%, auto);
@@ -1114,4 +1125,18 @@ footer{
 	}
 }
 
+.sliders-wrapp{
+	.size(100%, auto);
+}
+.sliders-scroll-bx{
+	padding-right: 0 !important;
+	overflow: auto;
+	#mCSB_2_container{
+		margin-bottom: 0;
+	}
+	.mCSB_scrollTools_horizontal{
+		width: 80%;
+		margin: 0 auto;
+	}
+}
 
