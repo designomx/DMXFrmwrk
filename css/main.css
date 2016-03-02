@@ -634,7 +634,7 @@ footer.stickFoot {
 }
 #main-nav-bar {
   position: fixed;
-  z-index: 9999;
+  z-index: 99;
   background: rgba(255, 255, 255, 0.75);
 }
 #main-nav-bar i,
@@ -1372,4 +1372,7 @@ footer.stickFoot {
 }
 .checks-scroll-bx p {
   margin: 5px 10px;
+}
+#modalLocation select:focus {
+  outline: none;
 }

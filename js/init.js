@@ -429,6 +429,12 @@ FRMWRK.main = (function($) {
 			$('.home-hero .hero-image.active-slide').fadeToggle(1000);		
 		}, 8000);
 	};
+	
+	var _selectDflt = function() {
+		if (isMobile.any) {
+			$('select').addClass('browser-default');
+		}
+	};
 
 
 	//FIN CLASES////////////////////////////////////////////////////////////////////////////////////
@@ -448,6 +454,7 @@ FRMWRK.main = (function($) {
 			_scrollResizer();
 			_positionWidget();
 			_homeSlideFade();
+			_selectDflt();
 			_reSizeWindow();
 		},
 		notificacion: function(mensaje, tipo) {
