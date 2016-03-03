@@ -86,6 +86,14 @@ FRMWRK.comparador = (function ($) {
 				autoHideScrollbar: true,
 				updateOnContentResize: true
 			});
+			$(".checks-scroll-bx form").mCustomScrollbar({
+				axis: "y",
+				theme: "dark-thin",
+				autoHideScrollbar: true,
+				updateOnContentResize: true
+			});
+ 		}else {
+ 			$(".sliders-scroll-bx, .checks-scroll-bx form").addClass('ismobilescroll');
  		}
  	};
 
