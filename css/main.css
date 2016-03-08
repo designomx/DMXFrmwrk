@@ -1448,7 +1448,8 @@ footer.stickFoot {
   margin-left: -10px;
 }
 .paq-list-bx .paq-content-bx .paq-bx {
-  padding: 0 20px 20px 20px;
+  height: 169px;
+  padding: 0 20px;
 }
 .paq-list-bx .paq-content-bx .paq-bx h4 {
   color: #393939;
