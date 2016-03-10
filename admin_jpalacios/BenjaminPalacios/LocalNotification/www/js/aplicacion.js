@@ -48,7 +48,9 @@ document.addEventListener("deviceready", function(){
         cancelar(1);
         cancelar(2);
         cancelar(3);
-        cancelar(4);  
+        cancelar(4);
+        cancelar(5);
+        cancelar(6);  
         limpiarALL();
         localStorage.despertador=0;
       }
@@ -65,6 +67,9 @@ document.addEventListener("deviceready", function(){
         cancelar(12);
         cancelar(13);
         cancelar(14);
+        cancelar(15);
+        cancelar(16);
+        cancelar(17);
         limpiarALL();
         localStorage.alimentos=0;
       }
@@ -178,7 +183,9 @@ window.localStorage.clear();
         cancelar(1);
         cancelar(2);
         cancelar(3);
-        cancelar(4); 
+        cancelar(4);
+        cancelar(5);
+        cancelar(6);
         limpiarALL();
       }else{
 //Funcion para agregar notificacion, y se agregan las variables locales para la hora, lo minutos y la repetición
@@ -201,7 +208,7 @@ window.localStorage.clear();
         //Recordatorio despertar
         add_reminder(0,'Ya es hora de despertar',0,horaRepetidor1,minutos_repeticion1,'¡Despertar!','day'); 
         //Recordatorio desayuno
-        minutos_repeticion1=minutos_repeticion1+30;
+        minutos_repeticion1=minutos_repeticion1+15;
         add_reminder(1,'Ya es hora de tu desayuno',0,horaRepetidor1,minutos_repeticion1,'Desayunar','day');
         //Recordatorio primer snack
         add_reminder(2,'Ya es hora de un snack',0,horaRepetidor1+3,minutos_repeticion1,'Tiempo de un Snack','day');
@@ -268,7 +275,7 @@ window.localStorage.clear();
         window.localStorage.setItem("confirmacionAlimentos","32");
         add_reminder(10,'Ya es hora de despertar',0,horaRepetidor2,minutos_repeticion2,'¡Despertar!','day'); 
         //Recordatorio entrenamiento
-        minutos_repeticion2=minutos_repeticion2+20;
+        minutos_repeticion2=minutos_repeticion2+10;
         add_reminder(11,'Ya es hora de tu entrenamiento',0,horaRepetidor2,minutos_repeticion2,'Entrenar','day');
         //Recordatorio desayuno
         add_reminder(12,'Ya es hora de tu desayuno',0,horaRepetidor2+1,minutos_repeticion2,'Desayunar','day');
