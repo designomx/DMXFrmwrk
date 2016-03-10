@@ -1,1 +1,0 @@
-FRMWRK.registro=function($){var n=function(){$("#birthdate").focus(function(n){n.preventDefault(),$("#datepckr").openModal(),$(this).blur()})},t=function(){};return{init:function(){n()}}}(jQuery);

@@ -1,332 +1,161 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<link href="img/profile/apple-touch-icon.png" rel="apple-touch-icon" />
-		<link href="img/profile/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
-		<link href="img/profile/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
-		<link href="img/profile/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
-		<link rel="icon" sizes="192x192" href="img/profile/android-touch-icon-192x192.png">
-		<link rel="icon" sizes="128x128" href="img/profile/android-touch-icon-128x128.png">
-		<link rel="icon" type="image/png" href="img/profile/favicon.png" />
-		<!--WINDOWS PHONE 8.1-->
-		<meta name="application-name" content="Perfil by tooth.me®" />
-		<meta name="msapplication-TileColor" content=" #00b0ff" />
-		<meta name="msapplication-square70x70logo" content="/img/profile/smalltile.png" />
-		<meta name="msapplication-square150x150logo" content="/img/profile/mediumtile.png" />
-		<meta name="msapplication-wide310x150logo" content="/img/profile/widetile.png" />
-		<meta name="msapplication-square310x310logo" content="/img/profile/largetile.png" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Framework 0.1.b | designo.mx®</title>
+		<title>WiFi by tooth.me®</title>
 		<!-- CSS -->
-		<link href="materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-		<link href="css/iosOverlay.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="css/animate.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-		<link href="css/magic.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-		<link href="css/jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet" media="screen,projection" />
-		<link href="css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
-		<!-- This is FontsAwesome 4.3.0-->
-		<link href="fawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link href="css/nifty.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="css/main.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	</head>
 	<body>
-		<nav id="main-nav-bar">
-			<div class="nav-wrapper" class="fix-ios-shadow">
-				<a href="index.html" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
-				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
-				<ul class="right hide-on-med-and-down">
-					<li>
-						<a href="sass.html" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
-						<span class="nav-mid-line"></span>
-					</li>
-					<li>
-						<a href="badges.html" class="magictime slideUpRetourn fix-pos-nav">Enterate</a>
-						<span class="nav-mid-line"></span>
-					</li>
-					<li>
-						<a href="collapsible.html" class="magictime slideUpRetourn fix-pos-nav">Contacto</a>
-					</li>
-					<li>
-						<a href="mobile.html" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
-					</li>
-					<li>
-						<a href="mobile.html" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
-					</li>
-				</ul>
-				<ul class="side-nav" id="mobile-demo">
-					<li>
-						<a href="sass.html"><i class="fa fa-search left"></i> Descubre</a>
-					</li>
-					<li>
-						<a href="badges.html"><i class="fa fa-newspaper-o left"></i> Enterate</a>
-					</li>
-					<li>
-						<a href="collapsible.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
-					</li>
-					<li>
-						<a href="mobile.html"><i class="fa fa-twitter left"></i> Twitter</a>
-					</li>
-					<li>
-						<a href="mobile.html"><i class="fa fa-facebook left"></i> Facebook</a>
-					</li>
-				</ul>
+		<div id="main-top-nav" class="fix-ios-shadow">
+			<img class="main-logo" src="images/toothme-logo.svg" height="30px" alt="">
+			<a href="#!" class="url-modal-close"><i class="font-icon icon-cancel"></i></a>
+		</div>
+		<div id="main-hero" class="container-fluid" style="background-image: url('images/main-hero-fish.jpg');">
+			<div class="gradient-o"></div>
+			<div class="pm-logo">
+				<img src="images/fishers_logo.png" width="100px" alt="" />
 			</div>
-		</nav>
-		<div class="clearfix"></div>
-		<br />
-		<div id="blog-module" class="row grey lighten-5">
-			<div class="col m12 l8 blog-timeline-bx">
-				<div class="col s12 post-box-wrapper">
-					<div class="post-hero" style="background-image: url('images/post-hero.jpg');">
-						<h1><a href="#!">El Apple Watch a lo grande: 20 trucos y apps para ser  productivo</a></h1>
-						<a class="enter-post" href="#!"><i class="fa fa-angle-right"></i></a>
-					</div>
-					<p class="abstractr-post">
-						Duis mollis, est non <a href="#!">commodo luctus</a>, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis.
-					</p>
-					<div class="social-btn-row">
-						<a href="https://twitter.com/share" class="twitter-share-button" data-via="toothmemx">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
-					</div>
-				</div>
-				<div class="col s12 post-box-wrapper">
-					<div class="post-hero" style="background-image: url('images/post-hero.jpg');">
-						<h1><a href="#!">El Apple Watch a lo grande: 20 trucos y apps para ser  productivo</a></h1>
-						<a class="enter-post" href="#!"><i class="fa fa-angle-right"></i></a>
-					</div>
-					<p class="abstractr-post">
-						Duis mollis, est non <a href="#!">commodo luctus</a>, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis.
-					</p>
-					<div class="social-btn-row">
-						<a href="https://twitter.com/share" class="twitter-share-button" data-via="toothmemx">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
-					</div>
-				</div>
-				<div class="col s12 post-box-wrapper">
-					<div class="post-hero" style="background-image: url('images/post-hero.jpg');">
-						<h1><a href="#!">El Apple Watch a lo grande: 20 trucos y apps para ser  productivo</a></h1>
-						<a class="enter-post" href="#!"><i class="fa fa-angle-right"></i></a>
-					</div>
-					<p class="abstractr-post">
-						Duis mollis, est non <a href="#!">commodo luctus</a>, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis.
-					</p>
-					<div class="social-btn-row">
-						<a href="https://twitter.com/share" class="twitter-share-button" data-via="toothmemx">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
-					</div>
-				</div>
-				<div class="reload-button-bx">
-					<a href="#!" class="z-depth-1 hoverable"><i class="fa fa-refresh"></i> Cargar Más</a>
-				</div>
-				
-			</div>
-			<div class="col m4 grey lighten-3 side-bar-bx hide-on-med-and-down">
-				<div class="side-bar-separator grey lighten-2"></div>
-				<h5>Recomendado:</h5>
-				<div class="post-promoted-bx">
-					<div class="col s12 z-depth-1 hoverable">
-						<img src="images/recomended.jpg" alt="" />
-						<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-						<a href="#!"></a>
-					</div>
-				</div>
-				<div class="post-promoted-bx">
-					<div class="col s12 z-depth-1 hoverable">
-						<img src="images/recomended.jpg" alt="" />
-						<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-						<a href="#!"></a>
-					</div>
-				</div>
-				<div class="post-promoted-bx">
-					<div class="col s12 z-depth-1 hoverable">
-						<img src="images/recomended.jpg" alt="" />
-						<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-						<a href="#!"></a>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-				<br />
-				<div class="add-promoted-bx">
-					<div class="col s12">
-						<a href="#!"><img class="responsive-img" src="images/side-add.jpg" alt="" /></a>
-					</div>
-				</div>
-				
-			</div>
-			<div class="clearfix"></div>
-			<div class="footer-bx">
-				<ul>
-					<li><a href="#!">Quiénes somos</a> / </li>
-					<li><a href="#!">Mapa del sitio</a> / </li>
-					<li><a href="#!">Aviso de privacidad</a> / </li>
-					<li><a href="#!">Anúnciate con nosotros</a> / </li>
-					<li><a href="#!">Ayuda</a></li>
-				</ul>
-				<p class="copy-foot">Todos los derechos reservados 2016®</p>
+			<div class="pm-info">
+				<h1>Fisher's
+					<span class="">
+						<i class="font-icon icon-star voted-star"></i>
+						<i class="font-icon icon-star voted-star"></i>
+						<i class="font-icon icon-star voted-star"></i>
+						<i class="font-icon icon-star-half-alt voted-star"></i>
+						<i class="font-icon icon-star"></i>
+					</span>
+				</h1>
+				<a href="promociones-wifi.html#gotomenu" class="tab-btn col-xs-4">Promos</a>
+				<a href="colecciones-wifi.html#gotomenu" class="tab-btn col-xs-4">Especiales</a>
+				<a href="menu-wifi.html#gotomenu" class="tab-btn col-xs-4">Menú</a>
+				<!-- Tiene los 3 
+				<a href="#!" class="tab-btn col-xs-4">Promos</a>
+				<a href="#!" class="tab-btn col-xs-4">Especiales</a>
+				<a href="#!" class="tab-btn col-xs-4">Menú</a>
+				-->
+				<!-- Tiene solo 2 
+				<a href="#!" class="tab-btn col-xs-6">Especiales</a>
+				<a href="#!" class="tab-btn col-xs-6">Menú</a>
+				-->
+				<!-- Tiene solo 1 
+				<a href="#!" class="tab-btn col-xs-6 offbtn">...</a>
+				<a href="#!" class="tab-btn col-xs-6">Menú</a>-->
 			</div>
 		</div>
-		<div class="home-hero">
-			<div class="hero-image active-slide" style="background-image: url('images/hero1.jpg');"></div>
-			<div class="hero-image" style="background-image: url('images/hero2.jpg');"></div>
+		<div class="sucursal-select">
+			<select>
+				<option value="volvo">Mexicas</option>
+				<option value="saab">Polanco</option>
+				<option value="mercedes">Roma</option>
+				<option value="audi">Santa Fe</option>
+			</select>
 		</div>
-		<div class="slide-widget animated slideInUp">
-			<div class="home-slide-bar">
-				<ul>
-					<li class="active"></li>
-					<li></li>
-					<li></li>
-				</ul>
+		<div class="pm-description">
+			<p>Excelencia desde 1989, cocina mexicana de vanguardia, nuestros platillos se preparan al momento, contamos con servicio de bar a la vista.</p>
+		</div>
+		<div class="social-bar-bx">
+			<p class="social-meter">
+				<span>
+					<i class="font-icon icon-ok-circled"></i>&nbsp;&nbsp; 24k &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<span>
+					<i class="font-icon icon-heart"></i>&nbsp;&nbsp; 12 &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<span>
+					<i class="font-icon icon-comment"></i>&nbsp;&nbsp; 36 &nbsp;&nbsp;</span>
+				<a class="dropdown-button btn btn-flat right more-pm grey lighten-4 circle" href="#more-elip" data-activates="moreBtn">
+				<i class="fa fa-ellipsis-h grey-text text-grey"></i>
+			</a>
+			</p>
+		</div>
+		<div class="schedule-bx container-fluid">
+			<div class="col-xs-6">
+				<p>Abre:
+					<em>9:30 am</em>
+				</p>
 			</div>
-			<div class="widget-wrapper">
-				<div class="discover-title">!DESCUBRE TU PLAN!</div>
-				<div class="scroll-box">
-					<div class="alignr-box">
-						<div class="products-box">
-							<div class="plan-box cellplan">
-								<div class="content-bx hvr-grow">
-									<div class="valigny">
-										<i class="material-icons">phone_android</i>
-										<p>celular</p>
-									</div>
-								</div>
-								<div class="check-plan">
-									<i class="fa fa-check"></i>
-								</div>
-								<div class="cancel-plan">
-									<i class="fa fa-times-circle"></i>
-								</div>
-							</div>
-							<div class="plan-box nocell nostreaming tripleplay3">
-								<div class="content-bx hvr-grow">
-									<div class="valigny">
-										<i class="material-icons">wifi</i>
-										<p>internet</p>
-									</div>
-								</div>
-								<div class="check-plan">
-									<i class="fa fa-check"></i>
-								</div>
-								<div class="cancel-plan">
-									<i class="fa fa-times-circle"></i>
-								</div>
-							</div>
-							<div class="plan-box nocell nostreaming tripleplay1">
-								<div class="content-bx hvr-grow">
-									<div class="valigny">
-										<i class="material-icons">phone</i>
-										<p>tel. fijo</p>
-									</div>
-								</div>
-								<div class="check-plan">
-									<i class="fa fa-check"></i>
-								</div>
-								<div class="cancel-plan">
-									<i class="fa fa-times-circle"></i>
-								</div>
-							</div>
-							<div class="plan-box nocell nostreaming tripleplay2">
-								<div class="content-bx hvr-grow">
-									<div class="valigny">
-										<i class="material-icons">tv</i>
-										<p>tv</p>
-									</div>
-								</div>
-								<div class="check-plan">
-									<i class="fa fa-check"></i>
-								</div>
-								<div class="cancel-plan">
-									<i class="fa fa-times-circle"></i>
-								</div>
-							</div>
-							<div class="plan-box nocell streaming">
-								<div class="content-bx hvr-grow">
-									<div class="valigny">
-										<i class="material-icons">live_tv</i>
-										<p>Streaming</p>
-									</div>
-								</div>
-								<div class="check-plan">
-									<i class="fa fa-check"></i>
-								</div>
-								<div class="cancel-plan">
-									<i class="fa fa-times-circle"></i>
-								</div>
-							</div>
+			<div class="col-xs-6 fix-ios-shadow">
+				<p>Cierra:
+					<em>9:30 pm</em>
+				</p>
+			</div>
+		</div>
+		<div class="sec-title-bar">Comentarios</div>
+		<div class="container-fluid comments-bx">
+			<div class="col-xs-12 clear-pad-marg comment-bx">
+				<div class="avatar-c-bx">
+					<img src="http://materializecss.com/images/yuna.jpg" alt="" class="z-depth-1 circle responsive-img valign">
+				</div>
+				<p class="user-mention">@NormaGless</p>
+				<span class="comment-date">09·12·15</span>
+			</div>
+			<div class="col-xs-12 clear-pad-marg comment-input">
+				<p class="">Vestibulum id ligula porta felis euismod semper. Cras justo odio, dapibus ac facilisis in, egestas euismod eget quema ligula porta dapibus.</p>
+			</div>
+			<div class="col-xs-12 clear-pad-marg comment-bx">
+				<div class="avatar-c-bx">
+					<img src="http://materializecss.com/images/yuna.jpg" alt="" class="z-depth-1 circle responsive-img valign">
+				</div>
+				<p class="user-mention">@NormaGless</p>
+				<span class="comment-date">09·12·15</span>
+			</div>
+			<div class="col-xs-12 clear-pad-marg comment-input">
+				<p class="">Vestibulum id ligula porta felis euismod semper. Cras justo odio, dapibus ac facilisis in, egestas euismod eget quema ligula porta dapibus.</p>
+			</div>
+		</div>
+		<div class="wifi-footer">
+			<p>Todos los derechos reservados - tooth.me 2015®</p>
+		</div>
+		<button id="conect-action-btn" class="animated slideInUp clickme">Conectar</button>
+		<div class="not-connected"></div>
+		<div id="url-modal">
+			<div id="url-modal-frame">
+				<iframe src="http://www.w3schools.com"></iframe>
+			</div>
+		</div>
+		<!-- MODALS - ALERTS - DROP DOWNS-->
+		<!--<button id="conect-action-btn" data-trigger='modal' data-target='#modalID'>Show Modal</button>-->
+		<div class="nifty-modal super-scaled md-locked" id="modalID">
+			<div class="md-content">
+				<div class='md-title'>
+					<h5>¿Estas esperando mesa?</h5>
+				</div>
+				<div class='md-body'>
+					<p>Usa nuestra App o conectate a nuestra red WiFi mientras esperas mesa y elige una bebida especial.
+						<br />
+					</p>
+					<br />
+					<div class="modal-question-btn container-fluid">
+						<div class="col-xs-6">
+							<button class="btn btn-success btn-xs md-close question-btn">Si</button>
+						</div>
+						<div class="col-xs-6">
+							<button class="btn btn-danger btn-xs md-close question-btn">No</button>
 						</div>
 					</div>
 				</div>
-				<a class="search-btn z-depth-1 hoverable modal-trigger" href="#modalLocation">Buscar <i class="fa fa-angle-right right"></i></a>
 			</div>
 		</div>
-		
-		<!-- MODALS - ALERTS - DROP DOWNS-->
-				
-		  <!-- Modal Structure -->
-		  <div id="modalLocation" class="modal">
-		    <div class="modal-content">
-		   	  <div class="input-field col s12">
-		   	  	<h5>Elige tu estado:</h5>
-		   	    <select class="browser-default">
-		   	      <option value="1">Option 1</option>
-		   	      <option value="2">Option 2</option>
-		   	      <option value="3">Option 3</option>
-		   	      <option value="4">Option 4</option>
-		   	      <option value="5">Option 5</option>
-	   	          <option value="6">Option 6</option>
-	   	          <option value="7">Option 7</option>
-	   	          <option value="8">Option 8</option>
-		   	    </select>
-		   	    <div class="clearfix"></div>
-		   	    <br />
-		   	  </div>
-		    </div>
-		    <div class="modal-footer">
-		      <a href="#!" class=" modal-action modal-close waves-effect waves-grey btn-flat">Cancelar</a>
-		    </div>
-		  </div>
-		
+		<div class='md-overlay'></div>
 		<!--[if IE]>
 			<script src="js/html5.js"></script>
-			<script type="text/javascript" src="js/respond.js"></script>
 		<![endif]-->
 		<!-- Scripts-->
 		<script src="js/jquery-2.1.1.min.js"></script>
-		<script src="js/jquery.stayInWebApp.min.js"></script>
-		<script src="js/spin.js"></script>
-		<script src="js/iosOverlay.js"></script>
-		<script src="js/charCount.js"></script>
-		<script src="js/backtotop.js"></script>
-		<script src="js/materialize.min.js"></script>
-		<!--<script src="js/parallax.min.js"></script>-->
-		<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="js/nifty.min.js"></script>
 		<script src="js/init.config.js"></script>
 		<script src="js/init.js"></script>
-		<!--INTERNET CHECK-->
-		<script src="offline07/offline.min.js"></script>
-		<link rel="stylesheet" href="offline07/themes/offline-theme-dark.css" />
-		<link rel="stylesheet" href="offline07/themes/offline-language-spanish.css" />
-		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-		<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
-
 		<script>
 			jQuery(function() {
 		  	
 		  		FRMWRK.main.init();
-			
+
 		  	});
 		</script>
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.5&appId=327135760765560";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
 	</body>
 
 </html>

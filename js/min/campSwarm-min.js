@@ -1,1 +1,0 @@
-TOOTH.campSwarm=function($){var i=function(){$(".brandWifiAvatar").css({"margin-top":"-95px"}),setTimeout(function(){n()},100)},n=function(){var i=$("body").height(),n=$(window).height(),t=n-i,o=$("#wifi-hero").height()+t;$("#wifi-hero").height(o)},t=function(){$(window).resize(function(){n()})},o=function(){};return{init:function(){n(),t(),i()}}}(jQuery);
