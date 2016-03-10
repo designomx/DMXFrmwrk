@@ -624,12 +624,22 @@ hr{
 	background-color: #40c4ff;
     background: #40c4ff url("../images/arrowdown.gif") no-repeat 95% 50%;
     font-weight: 200;
-    color: white;
     font-size: 18px;
     line-height: 39px;
     padding-left: 10px;
     .box-sizing(border-box) !important;
+    color: white;
     select {
+    	option:active,
+    	option:checked {
+    	  color: white;
+    	}
+    	option{
+    		color: gray;
+    	}
+    	optgroup{
+    		color: black;
+    	}
         padding: 5px 8px;
         width: 130%;
         border: none;
