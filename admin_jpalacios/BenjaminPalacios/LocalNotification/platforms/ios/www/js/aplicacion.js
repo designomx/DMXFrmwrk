@@ -77,17 +77,29 @@ document.addEventListener("deviceready", function(){
   $('input[name="hidratacion"]').on('switchChange.bootstrapSwitch', function(event, state) {
       if(state==true){
         window.localStorage.setItem("hidratacion","1");
-//Envío -1 en la hora para notificar que es un mensaje de hidratación y que necesita comenzar a notificar de inmediato
         var current_time = new Date();
-        var proximaNotificacion=current_time.setMinutes(current_time.getMinutes()+15);
-        window.localStorage.setItem("confirmacionHidratacion", proximaNotificacion);      
-        var minutosProximaNotificacion = current_time.getMinutes()+15;
+        var minutosProximaNotificacion = current_time.getMinutes()+10;
         var horaProximaNotificacion = current_time.getHours();
         add_reminder(20,'Mensaje de Hidratación',0,horaProximaNotificacion,minutosProximaNotificacion,'Hidratación!','hour');
+        minutosProximaNotificacion = current_time.getMinutes()+20;
+        add_reminder(21,'Mensaje de Hidratación',0,horaProximaNotificacion,minutosProximaNotificacion,'Hidratación!','hour');
+        minutosProximaNotificacion = current_time.getMinutes()+30;
+        add_reminder(22,'Mensaje de Hidratación',0,horaProximaNotificacion,minutosProximaNotificacion,'Hidratación!','hour');
+        minutosProximaNotificacion = current_time.getMinutes()+40;
+        add_reminder(23,'Mensaje de Hidratación',0,horaProximaNotificacion,minutosProximaNotificacion,'Hidratación!','hour');
+        minutosProximaNotificacion = current_time.getMinutes()+50;
+        add_reminder(24,'Mensaje de Hidratación',0,horaProximaNotificacion,minutosProximaNotificacion,'Hidratación!','hour');
+        minutosProximaNotificacion = current_time.getMinutes()+60;
+        add_reminder(25,'Mensaje de Hidratación',0,horaProximaNotificacion,minutosProximaNotificacion,'Hidratación!','hour');
         localStorage.hidratacion=1;
       }else{
         window.localStorage.setItem("hidratacion","0");
         cancelar(20);
+        cancelar(21);
+        cancelar(22);
+        cancelar(23);
+        cancelar(24);
+        cancelar(25);
         limpiarALL();
         localStorage.hidratacion=0;
       }
@@ -102,7 +114,7 @@ document.addEventListener("deviceready", function(){
         add_reminder(30,'Recordatorios Directos',0,hora_recordatorios,minutos_recordatorios,'Recordatorios!','hour');
       }else{
         window.localStorage.setItem("recordatorios","0");
-        canelar(30);
+        cancelar(30);
         limpiarALL();
         localStorage.recordatorios=0;
       }
@@ -327,7 +339,8 @@ window.localStorage.clear();
             }
             else
             {
-              alert("Reminder cannot be added because app doesn't have permission");
+              //alert("Reminder cannot be added because app doesn't have permission");
+              showToast("Reminder cannot be added because app doesn't have permission");
             }
         });
       }
@@ -355,6 +368,7 @@ window.localStorage.clear();
   function cancelar(id){
     cordova.plugins.notification.local.cancel(id, function() {
         //alert("done");
+        //showToast("Notificación apagada");
     }, this);
   }
   
@@ -423,7 +437,7 @@ window.localStorage.clear();
       }, 100);
   };
 
-//Función que se ejecuta cuando se reabre la aplicación, y comprueba que todos los valores estén en como la última vez que lo dejó el usuario por medio de windol.localStorage
+//Función que se ejecuta cuando se reabre la aplicación, y comprueba que todos los valores estén como la última vez que lo dejó el usuario por medio de window.localStorage
   function onResume() {
     //Cargar lista de Notificaciones pendientes para que el usuario las acepte
 
@@ -507,31 +521,14 @@ window.localStorage.clear();
       $('input[name="hidratacion"]').bootstrapSwitch('state', false, false);
       limpiarALL();
       cancelar(20);
+      cancelar(21);
+      cancelar(22);
+      cancelar(23);
+      cancelar(24);
+      cancelar(25);
     }else if(window.localStorage.getItem("hidratacion")==1){
         $("#hidratacion").attr( "checked", true );
         $('input[name="hidratacion"]').bootstrapSwitch('state', true, true);
-        var current_time = new Date();
-        if(window.localStorage.getItem("confirmacionHidratacion")< current_time.getTime()){
-          var r = confirm("¿Ya se hidrató?");
-          if (r == true) {
-            var proximaNotificacion=current_time.setMinutes(current_time.getMinutes()+15);
-            window.localStorage.setItem("confirmacionHidratacion", proximaNotificacion);
-            var minutosProximaNotificacion = current_time.getMinutes()+15;
-            var horaProximaNotificacion = current_time.getHours();
-            add_reminder(20,'Mensaje de Hidratación',0,horaProximaNotificacion,minutosProximaNotificacion,'Hidratación!','hour');
-          }else{
-            //alert("Enrta a Cancel");
-            var proximaNotificacion=current_time.setMinutes(current_time.getMinutes()+5);
-            window.localStorage.setItem("confirmacionHidratacion", proximaNotificacion);
-            var minutosProximaNotificacion = current_time.getMinutes()+5;
-            var horaProximaNotificacion = current_time.getHours();
-            add_reminder(20,'Mensaje de Hidratación',0,horaProximaNotificacion,minutosProximaNotificacion,'Hidratación!','hour');
-          }
-          //alert("Recuerde que tiene que alimentarse bien y entrenar!");
-          limpiarALL();
-        }else{
-          //Si ya pasó el tiempo que debería mostrarse
-        }
     }
     if(window.localStorage.getItem("recordatorios")==0){
       $("#recordatorios").attr( "checked", false );
@@ -560,6 +557,13 @@ window.localStorage.clear();
     }
     $("#repetidor1").val(window.localStorage.getItem("repetidor1"));
     $("#repetidor2").val(window.localStorage.getItem("repetidor2"));
+
+    
+    if(window.localStorage.getItem("despertador")==0 && window.localStorage.getItem("alimentos")==0 && window.localStorage.getItem("hidratacion")==0 && window.localStorage.getItem("recordatorios")==0){
+      limpiarALL();
+      cancelarALL();
+    }
+
   }
 
 
