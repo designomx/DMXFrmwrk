@@ -408,7 +408,6 @@ FRMWRK.main = (function($) {
 						$("#mCSB_1_container").outerWidth(_algoMes).css('min-width', 500);
 
 					});
-					$('.tripleplay1').addClass('active-selection');
 				} else if (tripleCheck == 2) {} else if (tripleCheck == 3) {} else if (tripleCheck == 0) {
 					$('div').filter($(".streaming, .cellplan")).fadeIn('500', function() {
 
@@ -435,6 +434,33 @@ FRMWRK.main = (function($) {
 			$('select').addClass('browser-default');
 		}
 	};
+	
+	var _slideInBanner = function() {
+		$('#slide-in-banner').hide();
+		function _slideInB(){
+		  $('#slide-in-banner').slideDown();
+		}
+		setTimeout(_slideInB, 5000);
+		
+		$('#slide-in-banner .close-modal-btn').bind('click', function() {
+			$('#slide-in-banner').slideUp();
+		});
+	}
+	
+	var _timeLineBanner = function() {
+	
+		var _doitOnce = 0;
+		
+		$(window).scroll(function() {
+		  var _getScrollPos = $('.blog-timeline-bx').offset().top - $(window).scrollTop();
+
+		  if (_getScrollPos <= -225 && _getScrollPos >= -228 && _doitOnce == 0) {
+		  	$('.timeline-banner').slideDown();
+		  	$("#embed01")[0].src += "&autoplay=1";
+		  	_doitOnce = 1;
+		  }
+		});
+	}
 
 
 	//FIN CLASES////////////////////////////////////////////////////////////////////////////////////
@@ -455,6 +481,8 @@ FRMWRK.main = (function($) {
 			_positionWidget();
 			_homeSlideFade();
 			_selectDflt();
+			_slideInBanner();
+			_timeLineBanner();
 			_reSizeWindow();
 		},
 		notificacion: function(mensaje, tipo) {

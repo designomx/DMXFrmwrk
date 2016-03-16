@@ -245,6 +245,28 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/images\/banner-base.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 62097,
+		"inputAbbreviatedPath": "\/images\/banner-base.jpg",
+		"outputAbbreviatedPath": "\/images\/banner-base.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/banner-grid.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 66475,
+		"inputAbbreviatedPath": "\/images\/banner-grid.jpg",
+		"outputAbbreviatedPath": "\/images\/banner-grid.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/hero1.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -282,7 +304,7 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 585777,
+		"initialSize": 219315,
 		"inputAbbreviatedPath": "\/images\/post-hero.jpg",
 		"outputAbbreviatedPath": "\/images\/post-hero.jpg",
 		"outputPathIsOutsideProject": 0,
@@ -293,7 +315,7 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 20845,
+		"initialSize": 19379,
 		"inputAbbreviatedPath": "\/images\/recomended.jpg",
 		"outputAbbreviatedPath": "\/images\/recomended.jpg",
 		"outputPathIsOutsideProject": 0,
@@ -310,6 +332,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
+		},
+	"\/index-owl.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/index-owl.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/index.html": {
 		"fileType": 8192,

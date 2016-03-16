@@ -824,6 +824,9 @@ footer{
 		position: relative;
 		float: left;
 		margin: 0 20px;
+		.switch{
+			text-align: center;
+		}
 		@media @mobile {	
 			.size(120px, 120px);
 			margin: 0;
@@ -1192,6 +1195,32 @@ footer{
 		background-color: white;
 		.border-radius(5px);
 		.box-shadow(0 3px 11px rgba(0, 0, 0, 0.2));
+		position: relative;
+		max-height: 370px;
+		&.banner-ovrflw{
+			overflow: hidden;
+		}
+		.banner-art{
+			height: 100%;
+			min-height: 370px;
+			width: auto;
+			position: relative;
+			right: 0;
+			top: 0;
+			&:last-child{
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+		}
+		.go-banner{
+			.size(100%);
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 9;
+			display: block;
+		}
 		.brand-label{
 			.size(auto, 51px);
 			background-color: rgb(174, 32, 51);
@@ -1209,8 +1238,11 @@ footer{
 			margin-left: -10px;
 		}
 		.paq-bx{
-			height: 169px;
+			height: 180px;
 			padding: 0 20px;
+			overflow-x: scroll; /* has to be scroll, not auto */
+			-webkit-overflow-scrolling: touch;
+			margin-bottom: 10px;
 			h4{
 				color: #393939;
 				font-family: "Visby CF";
@@ -1220,7 +1252,7 @@ footer{
 			li{
 				list-style: disc;
 				list-style-position: inside;
-				padding: 0 0 10px 20px;
+				padding: 0 0 5px 20px;
 			}
 		}
 		.paq-price{
@@ -1280,6 +1312,143 @@ footer{
 		}
 	}
 }
+
+
+#slide-in-banner{
+	.size(100%,130px);
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: #424242;
+	z-index: 999;
+	padding-top: 20px;
+	display: none;
+	img{
+		width: 100%;
+		height: auto;
+		max-width: 728px;
+		margin: 0 auto;
+		display: block;
+	}
+	.close-modal-btn{
+		.size(40px);
+		background: black;
+		position: absolute;
+		right: 0;
+		top: 0;
+		cursor: pointer;
+		i{
+			color: white;
+			font-size: 22px;
+			padding: 10px;
+			line-height: 22px;
+		}
+	}
+	@media (max-width: 728px) {
+		padding:10px;
+		height: auto;
+	}
+}
+
+.timeline-banner{
+	margin-bottom: 20px;
+	display: none;
+}
+
+#compare-tools{
+	.size(93%, auto);
+	min-height: 70px;
+	position: absolute;
+	left: 50%;
+	top: 100%;
+	z-index: 98;
+	.translateX(-50%);
+	background-color: rgba(225, 225, 225, .95);
+	border: 1px solid white;
+	.border-radius(10px);
+	.box-shadow(0 0 14px rgba(107, 38, 10, 0.22));
+}
+
+.compare-tools{
+	padding-top: 80px !important;
+}
+
+.elige-six-bx{
+	height: 60px;
+	color: #333;
+	font-family: "Visby CF";
+	font-size: 12px;
+	font-weight: 500;
+	text-align: center;
+	line-height: 70px;
+	position: relative;
+	span{
+		.size(1px, 14px);
+		background-color: #B5B5B5;
+		position: absolute;
+		left: 15px;
+		top: 40px;
+	}
+}
+
+.comparando-six-bx{
+	height: 70px;
+	.span-bx{
+		display: inline-block;
+		width: 21px;
+		height: 70px;
+		margin-right: 5px;
+		position: relative;
+		span{
+			.size(4px);
+			position: absolute;
+			left: 50%;
+			bottom: 5px;
+			margin-left: -2px;
+			.border-radius(10px);
+		}
+		i{
+			text-align: center;
+			.size(21px);
+			display: inline-block;
+			.border-radius(50%);
+			border: 1px solid white;
+			font-size: 15px;
+			line-height: 20px;
+			vertical-align: middle;
+			float: left;
+			margin-right: 15px;
+			margin-top: 35px;
+			cursor: pointer;
+			color: rgba(255, 255, 255, 0);
+			&.selected-check{
+				color: white;
+				background: #64dd17;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

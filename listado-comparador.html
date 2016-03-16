@@ -81,6 +81,17 @@
 			<div class="col s6 sliders-scroll-bx">
 				<div class="sliders-wrapp">
 					<div class="slider-bx">
+						<p class="truncate">Menor precio</p>
+						<div class="slide-bar-bx">
+							<div class="switch">
+							    <label>
+							      <input checked type="checkbox">
+							      <span class="lever"></span>
+							    </label>
+							</div>
+						</div>
+					</div>
+					<div class="slider-bx">
 						<p class="truncate">Rango de Precio</p>
 						<div class="slide-bar-bx">
 							<div id="slidertest"></div>
@@ -147,16 +158,44 @@
 			</div>
 			<div class="clearfix"></div>
 		</div>
+		<div id="compare-tools" class="row">
+			<div class="col s12 m4">
+				<div class="input-field col s12">
+				   <select>
+				     <option value="" disabled selected>Ciudad de México</option>
+				     <option value="1">Option 1</option>
+				     <option value="2">Option 2</option>
+				     <option value="3">Option 3</option>
+				   </select>
+				 </div>
+			</div>
+			<div class="col s12 m3 elige-six-bx">
+				<span></span>
+				<p>Elige hasta 6 planes para comparar:</p>
+			</div>
+			<div class="col s12 m5 comparando-six-bx">
+				<span class="span-bx"><span style="background-color: #ae2033;"></span><i class="material-icons selected-check">done</i></span>
+				<span class="span-bx"><span style="background-color: #337de1;"></span><i class="material-icons selected-check">done</i></span>
+				<span class="span-bx"><i class="material-icons">done</i></span>
+				<span class="span-bx"><i class="material-icons">done</i></span>
+				<span class="span-bx"><i class="material-icons">done</i></span>
+				<span class="span-bx"><i class="material-icons">done</i></span>
+			</div>
+		</div>
 		<div class="clearfix"></div>
 		<br />
 		<div id="blog-module" class="row grey lighten-5">
-			<div class="col s12 blog-timeline-bx">
+			<div class="col s12 blog-timeline-bx compare-tools">
 				<div class="col s12 m6 l4 paq-list-bx">
 					<div class="paq-content-bx">
 						<div class="brand-label">Axtel</div>
 						<div class="paq-bx">
 							<h4 class="truncate">Paquete 333</h4>
 							<ul>
+								<li>5 Mbps de Velocidad</li>
+								<li>100 llamadas locales</li>
+								<li>No incluye larga distancia</li>
+								<li>0 Minutos a celular</li>
 								<li>5 Mbps de Velocidad</li>
 								<li>100 llamadas locales</li>
 								<li>No incluye larga distancia</li>
@@ -211,6 +250,55 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="col s12 m6 l4 paq-list-bx">
+					<div class="paq-content-bx banner-ovrflw">
+						<a href="http://axtel.mx" target="_blank" class="go-banner"></a>
+						<img src="images/banner-grid.jpg" alt="" class="banner-art" />
+						<img src="images/banner-grid.jpg" alt="" class="banner-art" />
+					</div>
+				</div>
+				<div class="col s12 m6 l4 paq-list-bx">
+					<div class="paq-content-bx">
+						<div class="brand-label">Axtel</div>
+						<div class="paq-bx">
+							<h4 class="truncate">Paquete 333</h4>
+							<ul>
+								<li>5 Mbps de Velocidad</li>
+								<li>100 llamadas locales</li>
+								<li>No incluye larga distancia</li>
+								<li>0 Minutos a celular</li>
+							</ul>
+						</div>
+						<div class="paq-price">$275</div>
+						<div class="more-actions-bx">
+							<a href="#!">Ver detalles</a>
+							<a href="#!" class="compare-slct">Comparar <i class="material-icons">done</i></a>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m6 l4 paq-list-bx">
+					<div class="paq-content-bx">
+						<div class="brand-label">Axtel</div>
+						<div class="paq-bx">
+							<h4 class="truncate">Paquete 333</h4>
+							<ul>
+								<li>5 Mbps de Velocidad</li>
+								<li>100 llamadas locales</li>
+								<li>No incluye larga distancia</li>
+								<li>0 Minutos a celular</li>
+							</ul>
+						</div>
+						<div class="paq-price">$275</div>
+						<div class="more-actions-bx">
+							<a href="#!">Ver detalles</a>
+							<a href="#!" class="compare-slct">Comparar <i class="material-icons">done</i></a>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				
 				<div class="reload-button-bx">
 					<a href="#!" class="z-depth-1 hoverable"><i class="fa fa-refresh"></i> Cargar Más</a>
 				</div>
