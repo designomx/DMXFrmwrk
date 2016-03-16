@@ -1,0 +1,142 @@
+/*!
+Animate.css - http://daneden.me/animate
+Licensed under the MIT license - http://opensource.org/licenses/MIT
+
+Copyright (c) 2015 Daniel Eden
+*/
+
+// CONFIGURATION
+// ====================================
+
+// Animation class hook
+// Set the class name to trigger animations
+// Defaults to "animated"
+$AnimateHook: "animated";
+
+// Animation duration
+// Sets the hook's animation duration
+// Defaults to 1s
+$AnimateDuration: 1s;
+
+// FUNCTIONS
+// ====================================
+//
+// Include functions and mixins provided by Animate.css
+
+@import "animatecss/_functions/mixins";
+
+
+// BASE STYLES
+// ====================================
+//
+// Setting styles for the animation hook class
+
+.#{$AnimateHook} {
+  animation-duration: $AnimateDuration;
+  animation-fill-mode: both;
+
+  // Modifier for infinite repetition
+  &--infinite {
+    animation-iteration-count: infinite;
+  }
+}
+
+/*
+
+// IMPORT
+// ====================================
+//
+// Imports desired animations. Configuration is pretty straight-forward; just
+// remove the import rules for animations you don't want.
+
+// Attention seekers
+@import "animatecss/attention_seekers/bounce";
+@import "animatecss/attention_seekers/flash";
+@import "animatecss/attention_seekers/pulse";
+@import "animatecss/attention_seekers/rubberBand";
+@import "animatecss/attention_seekers/shake";
+@import "animatecss/attention_seekers/swing";
+@import "animatecss/attention_seekers/tada";
+@import "animatecss/attention_seekers/wobble";
+
+// Bouncing entrances
+@import "animatecss/bouncing_entrances/bounceIn";
+@import "animatecss/bouncing_entrances/bounceInDown";
+@import "animatecss/bouncing_entrances/bounceInLeft";
+@import "animatecss/bouncing_entrances/bounceInRight";
+@import "animatecss/bouncing_entrances/bounceInUp";
+
+// Bouncing exits
+@import "animatecss/bouncing_exits/bounceOut";
+@import "animatecss/bouncing_exits/bounceOutDown";
+@import "animatecss/bouncing_exits/bounceOutLeft";
+@import "animatecss/bouncing_exits/bounceOutRight";
+@import "animatecss/bouncing_exits/bounceOutUp";
+
+// Fading entrances
+@import "animatecss/fading_entrances/fadeIn";
+@import "animatecss/fading_entrances/fadeInDown";
+@import "animatecss/fading_entrances/fadeInLeft";
+@import "animatecss/fading_entrances/fadeInRight";
+@import "animatecss/fading_entrances/fadeInUp";
+@import "animatecss/fading_entrances/fadeInDownBig";
+@import "animatecss/fading_entrances/fadeInLeftBig";
+@import "animatecss/fading_entrances/fadeInRightBig";
+@import "animatecss/fading_entrances/fadeInUpBig";
+
+// Fading exits
+@import "animatecss/fading_exits/fadeOut";
+@import "animatecss/fading_exits/fadeOutDown";
+@import "animatecss/fading_exits/fadeOutLeft";
+@import "animatecss/fading_exits/fadeOutRight";
+@import "animatecss/fading_exits/fadeOutUp";
+@import "animatecss/fading_exits/fadeOutDownBig";
+@import "animatecss/fading_exits/fadeOutLeftBig";
+@import "animatecss/fading_exits/fadeOutRightBig";
+@import "animatecss/fading_exits/fadeOutUpBig";
+
+// Flippers
+@import "animatecss/flippers/flip";
+@import "animatecss/flippers/flipInX";
+@import "animatecss/flippers/flipInY";
+@import "animatecss/flippers/flipOutX";
+@import "animatecss/flippers/flipOutY";
+
+// Lightspeed
+@import "animatecss/lightspeed/lightSpeedIn";
+@import "animatecss/lightspeed/lightSpeedOut";
+
+// Rotating entrances
+@import "animatecss/rotating_entrances/rotateIn";
+@import "animatecss/rotating_entrances/rotateInDownLeft";
+@import "animatecss/rotating_entrances/rotateInDownRight";
+@import "animatecss/rotating_entrances/rotateInUpLeft";
+@import "animatecss/rotating_entrances/rotateInUpRight";
+
+// Rotating exits
+@import "animatecss/rotating_exits/rotateOut";
+@import "animatecss/rotating_exits/rotateOutDownLeft";
+@import "animatecss/rotating_exits/rotateOutDownRight";
+@import "animatecss/rotating_exits/rotateOutUpLeft";
+@import "animatecss/rotating_exits/rotateOutUpRight";
+
+// Specials
+@import "animatecss/specials/hinge";
+@import "animatecss/specials/rollIn";
+@import "animatecss/specials/rollOut";
+
+// Zooming entrances
+@import "animatecss/zooming_entrances/zoomIn";
+@import "animatecss/zooming_entrances/zoomInDown";
+@import "animatecss/zooming_entrances/zoomInLeft";
+@import "animatecss/zooming_entrances/zoomInRight";
+@import "animatecss/zooming_entrances/zoomInUp";
+
+// Zooming exits
+@import "animatecss/zooming_exits/zoomOut";
+@import "animatecss/zooming_exits/zoomOutDown";
+@import "animatecss/zooming_exits/zoomOutLeft";
+@import "animatecss/zooming_exits/zoomOutRight";
+@import "animatecss/zooming_exits/zoomOutUp";
+*/
+
