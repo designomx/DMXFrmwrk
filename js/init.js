@@ -454,7 +454,7 @@ FRMWRK.main = (function($) {
 		$(window).scroll(function() {
 		  var _getScrollPos = $('.blog-timeline-bx').offset().top - $(window).scrollTop();
 
-		  if (_getScrollPos <= -225 && _getScrollPos >= -228 && _doitOnce == 0) {
+		  if (_getScrollPos <= -225 && _getScrollPos >= -238 && _doitOnce == 0) {
 		  	$('.timeline-banner').slideDown();
 		  	$("#embed01")[0].src += "&autoplay=1";
 		  	_doitOnce = 1;
