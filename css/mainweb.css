@@ -105,3 +105,6 @@
 .switch label input[type=checkbox]:checked + .lever {
   background-color: #e65100;
 }
+select:focus {
+  outline: none;
+}

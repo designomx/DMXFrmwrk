@@ -593,7 +593,7 @@ footer{
 	z-index: 0;
 	.hero-image{
 		.size(100%);
-		background: url('../images/hero1.jpg') no-repeat center center fixed;
+		background: url('../images/hero1.jpg') no-repeat center center;
 		.background-size(cover);
 		position: absolute;
 		left: 0;
@@ -1063,12 +1063,18 @@ footer{
 		font-weight: 500;
 		text-align: center;
 		padding-bottom: 30px;
+		@media @mobile{
+			font-size: 12px;
+		}
 	}
 	ul{
 		width: 100%;
 		text-align: center;
 		padding: 60px 0 40px 0;
 		margin-top: 0 !important;
+		@media @tablet{
+			padding: 40px 0 20px 0;
+		}
 		li{
 			color: white;
 			font-family: 'Visby CF';
@@ -1076,6 +1082,9 @@ footer{
 			font-weight: 700;
 			text-transform: uppercase;
 			display: inline-block;
+			@media @mobile{
+				font-size: 12px;
+			}
 			a{
 				color: white;
 				font-size: 14px;
@@ -1240,7 +1249,7 @@ footer{
 		.paq-bx{
 			height: 180px;
 			padding: 0 20px;
-			overflow-x: scroll; /* has to be scroll, not auto */
+			overflow-y: scroll; /* has to be scroll, not auto */
 			-webkit-overflow-scrolling: touch;
 			margin-bottom: 10px;
 			h4{
@@ -1248,6 +1257,9 @@ footer{
 				font-family: "Visby CF";
 				font-size: 24px;
 				font-weight: 700;
+			}
+			ul{
+				margin-bottom: 0;
 			}
 			li{
 				list-style: disc;
@@ -1357,20 +1369,28 @@ footer{
 
 #compare-tools{
 	.size(93%, auto);
-	min-height: 70px;
+	min-height: 75px;
 	position: absolute;
 	left: 50%;
 	top: 100%;
 	z-index: 98;
 	.translateX(-50%);
-	background-color: rgba(225, 225, 225, .95);
+	background-color: rgba(235, 235, 235, 1);
 	border: 1px solid white;
 	.border-radius(10px);
 	.box-shadow(0 0 14px rgba(107, 38, 10, 0.22));
+	.compare-slktr{
+		height: 35px;
+		margin-top: 12px;
+		border: 1px solid #bdbdbd;
+	}
 }
 
 .compare-tools{
-	padding-top: 80px !important;
+	padding-top: 85px !important;
+	@media (max-width: 599px){
+		padding-top: 135px !important;
+	}
 }
 
 .elige-six-bx{
@@ -1380,25 +1400,42 @@ footer{
 	font-size: 12px;
 	font-weight: 500;
 	text-align: center;
-	line-height: 70px;
+	line-height: 65px;
 	position: relative;
+	@media @mobile{
+		font-size: 10px;
+	}
+	@media (max-width: 599px){
+		line-height: 15px;
+		height:30px;
+	}
 	span{
 		.size(1px, 14px);
 		background-color: #B5B5B5;
 		position: absolute;
 		left: 15px;
-		top: 40px;
+		top: 38px;
+		@media @mobile{
+			display: none;
+		}
 	}
 }
 
 .comparando-six-bx{
 	height: 70px;
+	@media (max-width: 599px){
+		height:40px;
+		text-align: center;
+	}
 	.span-bx{
 		display: inline-block;
 		width: 21px;
 		height: 70px;
 		margin-right: 5px;
 		position: relative;
+		@media (max-width: 599px){
+			height:40px;
+		}
 		span{
 			.size(4px);
 			position: absolute;
@@ -1418,9 +1455,12 @@ footer{
 			vertical-align: middle;
 			float: left;
 			margin-right: 15px;
-			margin-top: 35px;
+			margin-top: 33px;
 			cursor: pointer;
 			color: rgba(255, 255, 255, 0);
+			@media (max-width: 599px){
+				margin-top: 5px;
+			}
 			&.selected-check{
 				color: white;
 				background: #64dd17;
@@ -1429,7 +1469,9 @@ footer{
 	}
 }
 
-
+.side-nav{
+	z-index: 999 !important;
+}
 
 
 

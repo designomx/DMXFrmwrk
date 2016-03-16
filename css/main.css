@@ -105,6 +105,9 @@
 .switch label input[type=checkbox]:checked + .lever {
   background-color: #e65100;
 }
+select:focus {
+  outline: none;
+}
 * {
   font-weight: 300;
 }
@@ -693,7 +696,7 @@ footer.stickFoot {
 .home-hero .hero-image {
   width: 100%;
   height: 100%;
-  background: url('../images/hero1.jpg') no-repeat center center fixed;
+  background: url('../images/hero1.jpg') no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -1302,11 +1305,21 @@ footer.stickFoot {
   text-align: center;
   padding-bottom: 30px;
 }
+@media only screen and (max-width: 640px) {
+  .footer-bx .copy-foot {
+    font-size: 12px;
+  }
+}
 .footer-bx ul {
   width: 100%;
   text-align: center;
   padding: 60px 0 40px 0;
   margin-top: 0 !important;
+}
+@media only screen and (max-width: 768px) {
+  .footer-bx ul {
+    padding: 40px 0 20px 0;
+  }
 }
 .footer-bx ul li {
   color: white;
@@ -1315,6 +1328,11 @@ footer.stickFoot {
   font-weight: 700;
   text-transform: uppercase;
   display: inline-block;
+}
+@media only screen and (max-width: 640px) {
+  .footer-bx ul li {
+    font-size: 12px;
+  }
 }
 .footer-bx ul li a {
   color: white;
@@ -1486,7 +1504,7 @@ footer.stickFoot {
 .paq-list-bx .paq-content-bx .paq-bx {
   height: 180px;
   padding: 0 20px;
-  overflow-x: scroll;
+  overflow-y: scroll;
   /* has to be scroll, not auto */
   -webkit-overflow-scrolling: touch;
   margin-bottom: 10px;
@@ -1496,6 +1514,9 @@ footer.stickFoot {
   font-family: "Visby CF";
   font-size: 24px;
   font-weight: 700;
+}
+.paq-list-bx .paq-content-bx .paq-bx ul {
+  margin-bottom: 0;
 }
 .paq-list-bx .paq-content-bx .paq-bx li {
   list-style: disc;
@@ -1612,7 +1633,7 @@ footer.stickFoot {
 #compare-tools {
   width: 93%;
   height: auto;
-  min-height: 70px;
+  min-height: 75px;
   position: absolute;
   left: 50%;
   top: 100%;
@@ -1622,7 +1643,7 @@ footer.stickFoot {
   -o-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
-  background-color: rgba(225, 225, 225, 0.95);
+  background-color: #ebebeb;
   border: 1px solid white;
   -webkit-border-radius: 10px;
   -webkit-background-clip: padding-box;
@@ -1634,8 +1655,18 @@ footer.stickFoot {
   -moz-box-shadow: 0 0 14px rgba(107, 38, 10, 0.22);
   box-shadow: 0 0 14px rgba(107, 38, 10, 0.22);
 }
+#compare-tools .compare-slktr {
+  height: 35px;
+  margin-top: 12px;
+  border: 1px solid #bdbdbd;
+}
 .compare-tools {
-  padding-top: 80px !important;
+  padding-top: 85px !important;
+}
+@media (max-width: 599px) {
+  .compare-tools {
+    padding-top: 135px !important;
+  }
 }
 .elige-six-bx {
   height: 60px;
@@ -1644,8 +1675,19 @@ footer.stickFoot {
   font-size: 12px;
   font-weight: 500;
   text-align: center;
-  line-height: 70px;
+  line-height: 65px;
   position: relative;
+}
+@media only screen and (max-width: 640px) {
+  .elige-six-bx {
+    font-size: 10px;
+  }
+}
+@media (max-width: 599px) {
+  .elige-six-bx {
+    line-height: 15px;
+    height: 30px;
+  }
 }
 .elige-six-bx span {
   width: 1px;
@@ -1653,10 +1695,21 @@ footer.stickFoot {
   background-color: #B5B5B5;
   position: absolute;
   left: 15px;
-  top: 40px;
+  top: 38px;
+}
+@media only screen and (max-width: 640px) {
+  .elige-six-bx span {
+    display: none;
+  }
 }
 .comparando-six-bx {
   height: 70px;
+}
+@media (max-width: 599px) {
+  .comparando-six-bx {
+    height: 40px;
+    text-align: center;
+  }
 }
 .comparando-six-bx .span-bx {
   display: inline-block;
@@ -1664,6 +1717,11 @@ footer.stickFoot {
   height: 70px;
   margin-right: 5px;
   position: relative;
+}
+@media (max-width: 599px) {
+  .comparando-six-bx .span-bx {
+    height: 40px;
+  }
 }
 .comparando-six-bx .span-bx span {
   width: 4px;
@@ -1696,11 +1754,19 @@ footer.stickFoot {
   vertical-align: middle;
   float: left;
   margin-right: 15px;
-  margin-top: 35px;
+  margin-top: 33px;
   cursor: pointer;
   color: rgba(255, 255, 255, 0);
+}
+@media (max-width: 599px) {
+  .comparando-six-bx .span-bx i {
+    margin-top: 5px;
+  }
 }
 .comparando-six-bx .span-bx i.selected-check {
   color: white;
   background: #64dd17;
+}
+.side-nav {
+  z-index: 999 !important;
 }
