@@ -1949,9 +1949,10 @@ footer.stickFoot {
   height: 100%;
   position: fixed;
   left: 0;
-  top: 0;
+  top: 100%;
   z-index: 9999;
   background: #212121;
+  display: none;
 }
 #modal-comparador .close-modal-btn {
   width: 40px;

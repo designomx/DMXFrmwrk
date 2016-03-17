@@ -487,8 +487,20 @@ FRMWRK.main = (function($) {
 	};
 	
 	var _fixedCompareH = function() {
-		var _winHgt = $(window).outerHeight();
-		var _slideCH = $('.slider-container').outerHeight();
+		
+		$('.filterBtn').bind('click', function() {
+			$('#modal-comparador').show().animate({
+			    top: 0
+			  });
+		});
+		$('#modal-comparador .close-modal-btn').bind('click', function() {
+			$('#modal-comparador').animate({
+			    top: '100%'
+			    }, 1000, function() {
+			      $('#modal-comparador').hide()
+			  });
+		});
+		
 	}
 
 
