@@ -323,6 +323,8 @@ FRMWRK.main = (function($) {
 			var blogHbx = $('#blog-module').outerHeight();
 
 			$('#blog-module').css('margin-top', (winH - 20));
+			
+			$('#contact-module').css('margin-top', (winH - 310));
 
 			$('.side-bar-bx').height(blogHbx - 185);
 
@@ -457,7 +459,7 @@ FRMWRK.main = (function($) {
 		$(window).scroll(function() {
 		  var _getScrollPos = $('.blog-timeline-bx').offset().top - $(window).scrollTop();
 
-		  if (_getScrollPos <= -225 && _getScrollPos >= -250 && _doitOnce == 0) {
+		  if (_getScrollPos <= -225 && _getScrollPos >= -300 && _doitOnce == 0) {
 		  	$('.timeline-banner').slideDown();
 		  	$("#embed01")[0].src += "&autoplay=1";
 		  	_doitOnce = 1;
