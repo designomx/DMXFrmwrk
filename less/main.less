@@ -1263,9 +1263,12 @@ footer{
 		.paq-bx{
 			height: 180px;
 			padding: 0 20px;
-			overflow-y: scroll; /* has to be scroll, not auto */
-			-webkit-overflow-scrolling: touch;
 			margin-bottom: 10px;
+			overflow-y: auto;
+			&.mobile-scroll{
+				overflow-y: scroll; /* has to be scroll, not auto */
+				-webkit-overflow-scrolling: touch;
+			}
 			h4{
 				color: #393939;
 				font-family: "Visby CF";
@@ -1567,7 +1570,7 @@ footer{
 	position: fixed;
 	left: 0;
 	top: 100%;
-	z-index: 9999;
+	z-index: 1000;
 	background: #212121;
 	display: none;
 	.close-modal-btn{
@@ -1587,9 +1590,61 @@ footer{
 	}
 }
 
+#deatilsModal{
+	.brand-label{
+		.size(auto, 51px);
+		background-color: rgb(174, 32, 51);
+		-webkit-border-radius: 0px 26px 26px 0px;
+		-moz-border-radius: 0px 26px 26px 0px;
+		border-radius: 0px 26px 26px 0px;
+		display: inline-block;
+		color: white;
+		font-family: 'Visby CF';
+		font-size: 24px;
+		font-weight: 700;
+		line-height: 48px;
+		padding: 0 20px;
+		margin-bottom: 15px;
+		margin-left: -10px;
+	}
+	.modal-content{
+		h1,h2,h3,h4,h5,h6{
+			font-weight: 500;
+		}
+		.plan-main-options{
+			margin-top: 20px;
+			margin-bottom: 20px;
+			.col{
+				min-height: 103px;
+				border: 5px solid white;
+				border-bottom: 2px solid #ff671b;
+				border-top: 2px solid #ff671b;
+				text-align: center;
+				padding: 10px 10px;
+				background: #fffde7;
+			}
+		}
+		ul{
+			padding-top: 10px;
+			padding-bottom: 10px;
+			li{
+				list-style-type: disc !important;
+				list-style-position: inside;
+				padding-left: 25px;
+			}
+		}
+	}
+	.fixed-action-btn{
+		right: auto !important;
+		left: 10px !important;
+		bottom: 30px !important;
+	}
+}
 
-
-
+.modal-share-bx{
+	float: left;
+	padding: 5px 0 0 10px;
+}
 
 
 

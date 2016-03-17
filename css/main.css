@@ -108,6 +108,35 @@
 select:focus {
   outline: none;
 }
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #ff6d00;
+  box-shadow: 0 1px 0 0 #ff6d00;
+}
+input:not([type]):focus:not([readonly]) + label,
+input[type=text]:focus:not([readonly]) + label,
+input[type=password]:focus:not([readonly]) + label,
+input[type=email]:focus:not([readonly]) + label,
+input[type=url]:focus:not([readonly]) + label,
+input[type=time]:focus:not([readonly]) + label,
+input[type=date]:focus:not([readonly]) + label,
+input[type=datetime-local]:focus:not([readonly]) + label,
+input[type=tel]:focus:not([readonly]) + label,
+input[type=number]:focus:not([readonly]) + label,
+input[type=search]:focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #ff6d00;
+}
 /* ==========================================================================
      OWL Slider Theme
      ========================================================================== */
@@ -1590,10 +1619,13 @@ footer.stickFoot {
 .paq-list-bx .paq-content-bx .paq-bx {
   height: 180px;
   padding: 0 20px;
+  margin-bottom: 10px;
+  overflow-y: auto;
+}
+.paq-list-bx .paq-content-bx .paq-bx.mobile-scroll {
   overflow-y: scroll;
   /* has to be scroll, not auto */
   -webkit-overflow-scrolling: touch;
-  margin-bottom: 10px;
 }
 .paq-list-bx .paq-content-bx .paq-bx h4 {
   color: #393939;
@@ -1950,7 +1982,7 @@ footer.stickFoot {
   position: fixed;
   left: 0;
   top: 100%;
-  z-index: 9999;
+  z-index: 1000;
   background: #212121;
   display: none;
 }
@@ -1969,4 +2001,60 @@ footer.stickFoot {
   font-size: 22px;
   padding: 10px;
   line-height: 22px;
+}
+#deatilsModal .brand-label {
+  width: auto;
+  height: 51px;
+  background-color: #ae2033;
+  -webkit-border-radius: 0px 26px 26px 0px;
+  -moz-border-radius: 0px 26px 26px 0px;
+  border-radius: 0px 26px 26px 0px;
+  display: inline-block;
+  color: white;
+  font-family: 'Visby CF';
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 48px;
+  padding: 0 20px;
+  margin-bottom: 15px;
+  margin-left: -10px;
+}
+#deatilsModal .modal-content h1,
+#deatilsModal .modal-content h2,
+#deatilsModal .modal-content h3,
+#deatilsModal .modal-content h4,
+#deatilsModal .modal-content h5,
+#deatilsModal .modal-content h6 {
+  font-weight: 500;
+}
+#deatilsModal .modal-content .plan-main-options {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#deatilsModal .modal-content .plan-main-options .col {
+  min-height: 103px;
+  border: 5px solid white;
+  border-bottom: 2px solid #ff671b;
+  border-top: 2px solid #ff671b;
+  text-align: center;
+  padding: 10px 10px;
+  background: #fffde7;
+}
+#deatilsModal .modal-content ul {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#deatilsModal .modal-content ul li {
+  list-style-type: disc !important;
+  list-style-position: inside;
+  padding-left: 25px;
+}
+#deatilsModal .fixed-action-btn {
+  right: auto !important;
+  left: 10px !important;
+  bottom: 30px !important;
+}
+.modal-share-bx {
+  float: left;
+  padding: 5px 0 0 10px;
 }

@@ -432,6 +432,9 @@ FRMWRK.main = (function($) {
 	var _selectDflt = function() {
 		if (isMobile.any) {
 			$('select').addClass('browser-default');
+			
+			$('.paq-bx').addClass('mobile-scroll');
+			
 		}
 	};
 	
@@ -491,7 +494,7 @@ FRMWRK.main = (function($) {
 		$('.filterBtn').bind('click', function() {
 			$('#modal-comparador').show().animate({
 			    top: 0
-			  });
+			  },1000);
 		});
 		$('#modal-comparador .close-modal-btn').bind('click', function() {
 			$('#modal-comparador').animate({
