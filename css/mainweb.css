@@ -108,3 +108,31 @@
 select:focus {
   outline: none;
 }
+/* ==========================================================================
+     OWL Slider Theme
+     ========================================================================== */
+#owl-demo .item {
+  display: block;
+  padding: 30px;
+  margin: 5px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.owl-theme .owl-controls .owl-buttons div {
+  padding: 5px 9px;
+}
+.owl-theme .owl-buttons i {
+  margin-top: 2px;
+}
+.owl-theme .owl-controls .owl-buttons div {
+  position: absolute;
+}
+.owl-theme .owl-controls .owl-buttons .owl-prev {
+  left: 5px;
+  top: 55px;
+}
+.owl-theme .owl-controls .owl-buttons .owl-next {
+  right: 5px;
+  top: 55px;
+}

@@ -461,6 +461,30 @@ FRMWRK.main = (function($) {
 		  }
 		});
 	}
+	
+	var _fixedFiltersBx = function() {
+		$(window).scroll(function() {
+		  var _getFilterPos = $('.filter-mid-bar').offset().top - $(window).scrollTop();
+		  var _getHomeHeroPos = $('.home-hero').offset().top - $(window).scrollTop();
+		  console.log(_getHomeHeroPos);
+		  
+		  if (_getFilterPos < 65) {
+		  	$('#main-nav-bar').slideUp();
+		  }else if (_getFilterPos > 65) {
+		  	$('#main-nav-bar').slideDown();
+		  }
+		  
+		  if (_getFilterPos <= 0) {
+		  	$('.filter-mid-bar').addClass('fixed-filter-cl');
+		  	$('#compare-tools').addClass('fixed-filter-ct');
+		  }
+		  if (_getHomeHeroPos > -583){
+		  	$('.filter-mid-bar').removeClass('fixed-filter-cl');
+		  	$('#compare-tools').removeClass('fixed-filter-ct');
+		  }
+
+		});
+	};
 
 
 	//FIN CLASES////////////////////////////////////////////////////////////////////////////////////
@@ -483,6 +507,7 @@ FRMWRK.main = (function($) {
 			_selectDflt();
 			_slideInBanner();
 			_timeLineBanner();
+			_fixedFiltersBx();
 			_reSizeWindow();
 		},
 		notificacion: function(mensaje, tipo) {

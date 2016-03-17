@@ -29,6 +29,8 @@
 		<link href="css/magic.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="css/jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet" />
 		<link href="css/nouislider.min.css" type="text/css" rel="stylesheet" />
+		<link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+		<link rel="stylesheet" href="owl-carousel/owl.theme.css">
 		<link href="css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<!-- This is FontsAwesome 4.3.0-->
 		<link href="fawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -41,42 +43,42 @@
 				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 				<ul class="right hide-on-med-and-down">
 					<li>
-						<a href="sass.html" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
+						<a href="listado-comparador.html" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="badges.html" class="magictime slideUpRetourn fix-pos-nav">Enterate</a>
+						<a href="index.html#blog-timeline" class="magictime slideUpRetourn fix-pos-nav">Enterate</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
 						<a href="collapsible.html" class="magictime slideUpRetourn fix-pos-nav">Contacto</a>
 					</li>
 					<li>
-						<a href="mobile.html" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
+						<a href="http://twitter.com" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
 					</li>
 					<li>
-						<a href="mobile.html" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
-					</li>
-				</ul>
-				<ul class="side-nav" id="mobile-demo">
-					<li>
-						<a href="sass.html"><i class="fa fa-search left"></i> Descubre</a>
-					</li>
-					<li>
-						<a href="badges.html"><i class="fa fa-newspaper-o left"></i> Enterate</a>
-					</li>
-					<li>
-						<a href="collapsible.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
-					</li>
-					<li>
-						<a href="mobile.html"><i class="fa fa-twitter left"></i> Twitter</a>
-					</li>
-					<li>
-						<a href="mobile.html"><i class="fa fa-facebook left"></i> Facebook</a>
+						<a href="http://facebook.com" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
 					</li>
 				</ul>
 			</div>
 		</nav>
+		<ul class="side-nav" id="mobile-demo">
+			<li>
+				<a href="listado-comparador.html"><i class="fa fa-search left"></i> Descubre</a>
+			</li>
+			<li>
+				<a href="#blog-timeline"><i class="fa fa-newspaper-o left"></i> Enterate</a>
+			</li>
+			<li>
+				<a href="collapsible.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
+			</li>
+			<li>
+				<a href="http://twitter.com"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
+			</li>
+			<li>
+				<a href="http://facebook.com"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
+			</li>
+		</ul>
 		<div class="filter-mid-bar row">
 			<div class="col s6 sliders-scroll-bx">
 				<div class="sliders-wrapp">
@@ -514,6 +516,98 @@
 		      <a href="#!" class="modal-action modal-close waves-effect btn-flat ">Cerrar</a>
 		    </div>
 		  </div>
+		  
+		  <a class="cd-top btn-floating btn-large blue-grey darken-1">
+		  	<i class="material-icons">keyboard_arrow_up</i>
+		  </a>
+		  
+		  <!--COMPARADOR MODAL-->
+		  
+		  <div id="modal-comparador">
+		  	<div class="close-modal"></div>
+		  	
+		  	<div class="slider-container">
+		  		<div id="owl-demo" class="owl-carousel owl-theme">
+		  		  <div class="item">
+		  		  	<div class="col s12 paq-list-bx compare-status">
+		  		  		<div class="paq-content-bx">
+		  		  			<div class="brand-label">Axtel</div>
+		  		  			<div class="paq-bx">
+		  		  				<h4 class="truncate">Paquete 333</h4>
+		  		  				<ul>
+		  		  					<li>5 Mbps de Velocidad</li>
+		  		  					<li>100 llamadas locales</li>
+		  		  					<li>No incluye larga distancia</li>
+		  		  					<li>0 Minutos a celular</li>
+		  		  				</ul>
+		  		  			</div>
+		  		  			<div class="paq-price">$275</div>
+		  		  			<div class="more-actions-bx">
+		  		  				<a href="#!">Ver detalles</a>
+		  		  				<a href="#!" class="compare-slct">Comparar <i class="material-icons">done</i></a>
+		  		  				<div class="clearfix"></div>
+		  		  			</div>
+		  		  		</div>
+		  		  	</div>
+		  		  </div>
+		  		  <div class="item darkCyan">
+		  		  	<div class="col s12 paq-list-bx compare-status ">
+		  		  			<div class="paq-content-bx">
+		  		  				<div class="brand-label">Axtel</div>
+		  		  				<div class="paq-bx">
+		  		  					<h4 class="truncate">Paquete 333</h4>
+		  		  					<ul>
+		  		  						<li>5 Mbps de Velocidad</li>
+		  		  						<li>100 llamadas locales</li>
+		  		  						<li>No incluye larga distancia</li>
+		  		  						<li>0 Minutos a celular</li>
+		  		  					</ul>
+		  		  				</div>
+		  		  				<div class="paq-price">$275</div>
+		  		  				<div class="more-actions-bx">
+		  		  					<a href="#!">Ver detalles</a>
+		  		  					<a href="#!" class="compare-slct">Comparar <i class="material-icons">done</i></a>
+		  		  					<div class="clearfix"></div>
+		  		  				</div>
+		  		  			</div>
+		  		  		</div>
+		  		  </div>
+		  		  <div class="item">
+		  		  	<div class="col s12 paq-list-bx">
+		  		  			<div class="paq-content-bx">
+		  		  				<div class="brand-label">Axtel</div>
+		  		  				<div class="paq-bx">
+		  		  					<h4 class="truncate">Paquete 333</h4>
+		  		  					<ul>
+		  		  						<li>5 Mbps de Velocidad</li>
+		  		  						<li>100 llamadas locales</li>
+		  		  						<li>No incluye larga distancia</li>
+		  		  						<li>0 Minutos a celular</li>
+		  		  					</ul>
+		  		  				</div>
+		  		  				<div class="paq-price">$275</div>
+		  		  				<div class="more-actions-bx">
+		  		  					<a href="#!">Ver detalles</a>
+		  		  					<a href="#!" class="compare-slct">Comparar <i class="material-icons">done</i></a>
+		  		  					<div class="clearfix"></div>
+		  		  				</div>
+		  		  			</div>
+		  		  		</div>
+		  		  </div>
+		  		  <div class="item forestGreen"><h1>4</h1></div>
+		  		  <div class="item dodgerBlue"><h1>5</h1></div>
+		  		  <div class="item skyBlue"><h1>6</h1></div>
+		  		</div>
+		  	</div>
+		  	
+		  </div>
+		  
+		  <!--BANNER SLIDE DOWN-->
+		  
+		  <div id="slide-in-banner" class="z-depth-2">
+		  	<img src="images/banner-base.jpg" alt="" />
+		  	<div class="close-modal-btn"><i class="material-icons">close</i></div>
+		  </div>
 		
 		<!--[if IE]>
 			<script src="js/html5.js"></script>
@@ -530,6 +624,7 @@
 		<script src="js/materialize.min.js"></script>
 		<!--<script src="js/parallax.min.js"></script>-->
 		<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="owl-carousel/owl.carousel.min.js"></script>
 		<script src="js/init.config.js"></script>
 		<script src="js/init.js"></script>
 		<!--INTERNET CHECK-->
@@ -545,6 +640,31 @@
 		  	
 		  		FRMWRK.main.init();
 		  		FRMWRK.comparador.init();
+		  		
+		  		//Sort random function
+		  		  function random(owlSelector){
+		  		    owlSelector.children().sort(function(){
+		  		        return Math.round(Math.random()) - 0.5;
+		  		    }).each(function(){
+		  		      $(this).appendTo(owlSelector);
+		  		    });
+		  		  }
+		  		 
+		  		  $("#owl-demo").owlCarousel({
+		  		  	items : 3,
+		  		  	itemsDesktop : [980,3],
+		  		  	itemsDesktopSmall : [980,2],
+		  		  	itemsTablet: [768,1.5],
+		  		    navigation: true,
+		  		    navigationText: [
+		  		      "<i class='icon-chevron-left icon-white'></i>",
+		  		      "<i class='icon-chevron-right icon-white'></i>"
+		  		      ],
+		  		    beforeInit : function(elem){
+		  		      //Parameter elem pointing to $("#owl-demo")
+		  		    }
+		  		 
+		  		  });
 		  		
 		  	});
 		</script>

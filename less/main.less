@@ -817,6 +817,11 @@ footer{
 	z-index: 99;
 	overflow: hidden;
 	margin-bottom: 0;
+	&.fixed-filter-cl{
+		position: fixed;
+		bottom: auto;
+		top: 0;
+	}
 	.slider-bx{
 		.size(150px, 120px);
 		padding: 0 15px 0 10px;
@@ -878,6 +883,9 @@ footer{
 				.box-shadow(0 5px 11px rgba(0, 0, 0, 0.4));
 				.border-radius(5px);
 				position: relative;
+				@media @mobile{
+					.size(100%, 205px);
+				}
 				h1{
 					color: white;
 					font-family: "Museo Sans 300";
@@ -890,6 +898,9 @@ footer{
 					left: 0;
 					bottom: 0;
 					padding-right: 50px;
+					@media @mobile{
+						font-size: 16px;
+					}
 					a{
 						color: white;
 						&:hover{
@@ -928,6 +939,9 @@ footer{
 				font-weight: 500;
 				color: #6d6d6d;
 				padding: 5px 20px;
+				@media @mobile{
+					font-size: 14px;
+				}
 				a{
 					color: rgb(242, 103, 37);
 				}
@@ -1200,6 +1214,12 @@ footer{
 
 .paq-list-bx{
 	margin-bottom: 30px;
+	&.compare-status{
+		margin-bottom: 0;
+		.banner-art{
+			height: 500px;
+		}
+	}
 	.paq-content-bx{
 		background-color: white;
 		.border-radius(5px);
@@ -1303,6 +1323,24 @@ footer{
 					float: right;
 					margin-right: 15px;
 				}
+				@media (min-width: 600px) and (max-width: 700px){
+					font-size: 12px;
+					i{
+						.size(14px);
+						line-height: 13px;
+						font-size: 10px;
+						margin-top: 2px;
+					}
+				}
+				@media (max-width: 360px){
+					font-size: 12px;
+					i{
+						.size(14px);
+						line-height: 13px;
+						font-size: 10px;
+						margin-top: 2px;
+					}
+				}
 				&.compare-slct{
 					background-color: #ccc;
 					color: white;
@@ -1379,6 +1417,10 @@ footer{
 	border: 1px solid white;
 	.border-radius(10px);
 	.box-shadow(0 0 14px rgba(107, 38, 10, 0.22));
+	&.fixed-filter-ct{
+		position: fixed;
+		top: 100px;
+	}
 	.compare-slktr{
 		height: 35px;
 		margin-top: 12px;
@@ -1473,11 +1515,36 @@ footer{
 	z-index: 999 !important;
 }
 
+#mobile-demo{
+	li{
+		width: 100%;
+		display: table;
+		
+		a{
+			display: table-cell;
+			vertical-align: middle;
+			i{
+				display: inline-block;
+				margin-top: 25px;
+				margin-right: 25px;
+			}
+		}
+	}
+}	
 
+.cd-top{
+	right: 10px;
+	bottom: 10px;
+}
 
-
-
-
+#modal-comparador{
+	.size(100%);
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 9999;
+	background: #212121;
+}
 
 
 

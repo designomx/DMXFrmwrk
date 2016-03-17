@@ -108,6 +108,34 @@
 select:focus {
   outline: none;
 }
+/* ==========================================================================
+     OWL Slider Theme
+     ========================================================================== */
+#owl-demo .item {
+  display: block;
+  padding: 30px;
+  margin: 5px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.owl-theme .owl-controls .owl-buttons div {
+  padding: 5px 9px;
+}
+.owl-theme .owl-buttons i {
+  margin-top: 2px;
+}
+.owl-theme .owl-controls .owl-buttons div {
+  position: absolute;
+}
+.owl-theme .owl-controls .owl-buttons .owl-prev {
+  left: 5px;
+  top: 55px;
+}
+.owl-theme .owl-controls .owl-buttons .owl-next {
+  right: 5px;
+  top: 55px;
+}
 * {
   font-weight: 300;
 }
@@ -993,6 +1021,11 @@ footer.stickFoot {
   overflow: hidden;
   margin-bottom: 0;
 }
+.filter-mid-bar.fixed-filter-cl {
+  position: fixed;
+  bottom: auto;
+  top: 0;
+}
 .filter-mid-bar .slider-bx {
   width: 150px;
   height: 120px;
@@ -1087,6 +1120,12 @@ footer.stickFoot {
   background-clip: padding-box;
   position: relative;
 }
+@media only screen and (max-width: 640px) {
+  #blog-module .blog-timeline-bx .post-box-wrapper .post-hero {
+    width: 100%;
+    height: 205px;
+  }
+}
 #blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 {
   color: white;
   font-family: "Museo Sans 300";
@@ -1099,6 +1138,11 @@ footer.stickFoot {
   left: 0;
   bottom: 0;
   padding-right: 50px;
+}
+@media only screen and (max-width: 640px) {
+  #blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 {
+    font-size: 16px;
+  }
 }
 #blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 a {
   color: white;
@@ -1151,6 +1195,11 @@ footer.stickFoot {
   font-weight: 500;
   color: #6d6d6d;
   padding: 5px 20px;
+}
+@media only screen and (max-width: 640px) {
+  #blog-module .blog-timeline-bx .post-box-wrapper p {
+    font-size: 14px;
+  }
 }
 #blog-module .blog-timeline-bx .post-box-wrapper p a {
   color: #f26725;
@@ -1445,6 +1494,12 @@ footer.stickFoot {
 .paq-list-bx {
   margin-bottom: 30px;
 }
+.paq-list-bx.compare-status {
+  margin-bottom: 0;
+}
+.paq-list-bx.compare-status .banner-art {
+  height: 500px;
+}
 .paq-list-bx .paq-content-bx {
   background-color: white;
   -webkit-border-radius: 5px;
@@ -1567,6 +1622,30 @@ footer.stickFoot {
   float: right;
   margin-right: 15px;
 }
+@media (min-width: 600px) and (max-width: 700px) {
+  .paq-list-bx .paq-content-bx .more-actions-bx a {
+    font-size: 12px;
+  }
+  .paq-list-bx .paq-content-bx .more-actions-bx a i {
+    width: 14px;
+    height: 14px;
+    line-height: 13px;
+    font-size: 10px;
+    margin-top: 2px;
+  }
+}
+@media (max-width: 360px) {
+  .paq-list-bx .paq-content-bx .more-actions-bx a {
+    font-size: 12px;
+  }
+  .paq-list-bx .paq-content-bx .more-actions-bx a i {
+    width: 14px;
+    height: 14px;
+    line-height: 13px;
+    font-size: 10px;
+    margin-top: 2px;
+  }
+}
 .paq-list-bx .paq-content-bx .more-actions-bx a.compare-slct {
   background-color: #ccc;
   color: white;
@@ -1654,6 +1733,10 @@ footer.stickFoot {
   -webkit-box-shadow: 0 0 14px rgba(107, 38, 10, 0.22);
   -moz-box-shadow: 0 0 14px rgba(107, 38, 10, 0.22);
   box-shadow: 0 0 14px rgba(107, 38, 10, 0.22);
+}
+#compare-tools.fixed-filter-ct {
+  position: fixed;
+  top: 100px;
 }
 #compare-tools .compare-slktr {
   height: 35px;
@@ -1769,4 +1852,30 @@ footer.stickFoot {
 }
 .side-nav {
   z-index: 999 !important;
+}
+#mobile-demo li {
+  width: 100%;
+  display: table;
+}
+#mobile-demo li a {
+  display: table-cell;
+  vertical-align: middle;
+}
+#mobile-demo li a i {
+  display: inline-block;
+  margin-top: 25px;
+  margin-right: 25px;
+}
+.cd-top {
+  right: 10px;
+  bottom: 10px;
+}
+#modal-comparador {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  background: #212121;
 }
