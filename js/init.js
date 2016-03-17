@@ -485,6 +485,11 @@ FRMWRK.main = (function($) {
 
 		});
 	};
+	
+	var _fixedCompareH = function() {
+		var _winHgt = $(window).outerHeight();
+		var _slideCH = $('.slider-container').outerHeight();
+	}
 
 
 	//FIN CLASES////////////////////////////////////////////////////////////////////////////////////
@@ -508,6 +513,7 @@ FRMWRK.main = (function($) {
 			_slideInBanner();
 			_timeLineBanner();
 			_fixedFiltersBx();
+			_fixedCompareH();
 			_reSizeWindow();
 		},
 		notificacion: function(mensaje, tipo) {

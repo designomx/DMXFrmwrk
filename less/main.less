@@ -1214,12 +1214,6 @@ footer{
 
 .paq-list-bx{
 	margin-bottom: 30px;
-	&.compare-status{
-		margin-bottom: 0;
-		.banner-art{
-			height: 500px;
-		}
-	}
 	.paq-content-bx{
 		background-color: white;
 		.border-radius(5px);
@@ -1357,6 +1351,37 @@ footer{
 					&:hover{
 						background: #44b600;
 					}
+				}
+			}
+		}
+	}
+	&.compare-status{
+		margin-bottom: 0;
+		.paq-content-bx{
+			max-height: 410px;
+			@media ( max-height: 480px ){ //iPhone 4
+			    max-height: 410px;
+			}
+			@media ( max-height: 568px ){ //iPhone 5
+			    max-height: 600px;
+			}
+			@media ( min-height: 569px ){ //iPhone 6
+			    max-height: 700px;
+			}
+			.paq-bx{
+				height: 210px;
+				@media ( max-height: 480px ){ //iPhone 4
+				    height: 210px;
+				}
+				@media ( max-height: 568px ){ //iPhone 5
+				    height: 280px;
+				}
+				@media ( min-height: 569px ){ //iPhone 6
+				    height: 320px;
+				}
+				table{
+					margin: 20px auto;
+					border: 1px solid #eee;
 				}
 			}
 		}
@@ -1544,6 +1569,21 @@ footer{
 	top: 0;
 	z-index: 9999;
 	background: #212121;
+	.close-modal-btn{
+		.size(40px);
+		position: absolute;
+		background: black;
+		right: 0;
+		top: 0;
+		cursor: pointer;
+		z-index: 999;
+		i{
+			color: white;
+			font-size: 22px;
+			padding: 10px;
+			line-height: 22px;
+		}
+	}
 }
 
 
