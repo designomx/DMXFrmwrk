@@ -76,7 +76,7 @@ FRMWRK.main = (function($) {
 	
 	var _URLModalActions = function() {
 		$( ".clickme" ).click(function() {
-		  $(this).fadeOut(250);
+		  $('#conect-action-btn').fadeOut(250);
 		  $('.not-connected').hide();
 		  $('body').toggleClass('body-no-overflow');
 		  $( "#url-modal" ).animate({
@@ -95,7 +95,7 @@ FRMWRK.main = (function($) {
 		  }, 500, function() {
 		  	$('.not-connected').show();
 		    $('body').toggleClass('body-no-overflow');
-		    $('.clickme').fadeIn(250);
+		    $('#conect-action-btn').fadeIn(250);
 		  });
 		});
 	}
