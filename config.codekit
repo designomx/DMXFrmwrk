@@ -952,7 +952,7 @@
 		},
 	"\/js\/min\/web-min.js": {
 		"fileType": 64,
-		"ignore": 1,
+		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/min\/web-min.js",
 		"outputAbbreviatedPath": "\/js\/min\/min\/web-min-min.js",
@@ -963,7 +963,7 @@
 		},
 	"\/js\/min\/webapp-min.js": {
 		"fileType": 64,
-		"ignore": 1,
+		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/min\/webapp-min.js",
 		"outputAbbreviatedPath": "\/js\/min\/min\/webapp-min-min.js",
@@ -974,7 +974,7 @@
 		},
 	"\/js\/min\/webappVenue-min.js": {
 		"fileType": 64,
-		"ignore": 1,
+		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/min\/webappVenue-min.js",
 		"outputAbbreviatedPath": "\/js\/min\/min\/webappVenue-min-min.js",
@@ -985,7 +985,7 @@
 		},
 	"\/js\/min\/wifi-min.js": {
 		"fileType": 64,
-		"ignore": 1,
+		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/min\/wifi-min.js",
 		"outputAbbreviatedPath": "\/js\/min\/min\/wifi-min-min.js",
