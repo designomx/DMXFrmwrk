@@ -511,6 +511,12 @@ body{
 	.border-radius(1px);
 	background: white;
 	margin: 0 auto;
+	@media all and (orientation:landscape) {
+	    max-width: 30%;
+	}
+	@media (min-width:1023px) and (min-height:767px) and (orientation:landscape) {
+	    max-width: 50%;
+	}
 }
 
 .top-row-bx{
@@ -669,6 +675,7 @@ body{
 	text-align: center;
 	margin-left: -92px;
 	margin-top: -67px;
+	.box-shadow(0 0px 8px rgba(0, 0, 0, 1));
 	display: none;
 	button{
 		border: none;
@@ -767,8 +774,71 @@ body{
 	}
 }	
 
-
-
+.id-modal-bx{
+	.size(100%);
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: black;
+	background: rgba(38, 50, 56, 1);
+	z-index: 99;
+	padding: 20px;
+	display: none;
+	form{
+		color: white;
+		input{
+			display: inline-block;
+			margin: 0 auto;
+			padding: 10px;
+			margin: 3px;
+			border: 1px solid #ccc;
+			.box-shadow(none) !important;
+		}
+	}
+	.input-field{
+		text-align: center;
+		small{
+			font-size: 8px;
+		}
+	}
+	.s12{
+		.size(100%,auto);
+	}
+	.close-product{
+		.size(40px);
+		position: absolute;
+		right: 0;
+		top: 0;
+		background: #37474f;
+		z-index: 999;
+		cursor: pointer;
+		i{
+			color: white;
+			font-size: 18px;
+			padding: 10px 0 0 3px;
+		}
+	}
+	.get-action-btn{
+		.size(100%,48px);
+		background: #00c853;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		border: none;
+		color: white;
+		text-transform: uppercase;
+		font-weight: 200;
+		letter-spacing: 2px;
+		border-top: 1px solid rgba(255, 255, 255, 0.5);
+		.box-shadow(0 -1px 8px rgba(0, 0, 0, 0.3));
+		.opacity(.9);
+		z-index: 999;
+		font-weight: 700;
+		@media @desktop-x {
+			font-weight: 300;
+		}
+	}
+}
 
 
 
