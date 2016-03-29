@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>WiFi by tooth.me®</title>
+		<!-- CSS -->
+		<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="css/animate.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="css/slot-machine.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	</head>
+	<body>
+	
+		<div class="jugamos-title"><img src="images/slot/jugamos.svg" alt="" /></div>
+	
+		<div class="game-slot-bx">
+			<div class="top-row-bx">
+				<div class="move-top-row">
+					<div class="a-top-img"><img src="images/slot/beera.jpg" alt="" /></div>
+					<div class="b-top-img"><img src="images/slot/camarona.jpg" alt="" /></div>
+					<div class="c-top-img"><img src="images/slot/xxxa.jpg" alt="" /></div>
+					<div class="d-top-img"><img src="images/slot/peza.jpg" alt="" /></div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="mid-row-bx">
+				<div class="move-mid-row">
+					<div class="a-mid-img"><img src="images/slot/beerb.jpg" alt="" /></div>
+					<div class="b-mid-img"><img src="images/slot/camaronb.jpg" alt="" /></div>
+					<div class="c-mid-img"><img src="images/slot/xxxb.jpg" alt="" /></div>
+					<div class="d-mid-img"><img src="images/slot/pezb.jpg" alt="" /></div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="bot-row-bx">
+				<div class="move-bot-row">
+					<div class="a-bot-img"><img src="images/slot/beerc.jpg" alt="" /></div>
+					<div class="b-bot-img"><img src="images/slot/camaronc.jpg" alt="" /></div>
+					<div class="c-bot-img"><img src="images/slot/xxxc.jpg" alt="" /></div>
+					<div class="d-bot-img"><img src="images/slot/pezc.jpg" alt="" /></div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		
+		<div class="copy-bar-bx">
+			<p>¡Completa la imagen central parando fila por fila y gana un platillo o bebida!</p>
+		</div>
+		
+		
+		<!--Estado 1 Antes de empezar-->
+		<div class="action-bar-bx">
+			Comenzar
+		</div>
+		
+		<!--Estado 2 para detener
+		<div class="action-bar-bx stop-row-btn">
+			Parar
+		</div>-->
+		
+		<!--Estado 2 Esperando a que pare la fila
+		
+		<div class="action-bar-bx stop-row-btn stand-by-btn">
+			Espera
+		</div>-->
+				
+		<div class="clearfix"></div>
+		<br />
+		
+		<!-- MODALS - ALERTS - DROP DOWNS-->
+		
+		<div id="overlay-bx"></div>
+		
+		<div class="fail-modal">
+			<p>Suerte para la próxima,<br />
+			gracias por participar</p>
+			<button>OK</button>
+		</div>
+		
+		<div class="winner-modal">
+			<p><b>¡Felicidades ganaste!</b><br />
+			Selecciona el premio que más te guste.</p>
+			<hr />
+			<div class="col-xs6">
+				<div class="prize-image-bx">
+					<img class="image-post" src="images/slot/bar-4.jpg" alt="" />
+				</div>
+				<p>
+					<b>BOULEVARDIER</b><br />
+					Bulleit Bourbon, Campari y Vermouth Rosso.
+				</p>
+				<a href="#!"></a>
+			</div>
+			<div class="col-xs6">
+				<div class="prize-image-bx">
+					<img class="image-post" src="images/slot/bar-3.jpg" alt="" />
+				</div>
+				<p>
+					<b>SANGRÍA</b><br />
+					Hecha con Vodka, limonada y vino tinto de la casa.
+				</p>
+				<a href="#!"></a>
+			</div>
+			<div class="col-xs6">
+				<div class="prize-image-bx">
+					<img class="image-post" src="images/slot/bar-2.jpg" alt="" />
+				</div>
+				<p>
+					<b>ROCK MELON</b><br />
+					Vodka, lychee, jarabe de melón y un toque de Absinth.
+				</p>
+				<a href="#!"></a>
+			</div>
+			<div class="col-xs6">
+				<div class="prize-image-bx">
+					<img class="image-post" src="images/slot/bar-1.jpg" alt="" />
+				</div>
+				<p>
+					<b>BOULEVARDIER</b><br />
+					Bulleit Bourbon, Campari y Vermouth Rosso.
+				</p>
+				<a href="#!"></a>
+			</div>
+		</div>
+		
+		<!--[if IE]>
+			<script src="js/html5.js"></script>
+		<![endif]-->
+		<!-- Scripts-->
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/init.config.bar.js"></script>
+		<script src="js/campana-bar-cortesia.js"></script>
+		<script>
+			jQuery(function() {
+		  	
+		  		BARCRTSA.main.init();
+
+		  	});
+		</script>
+	</body>
+
+</html>
