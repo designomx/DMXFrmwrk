@@ -7,8 +7,8 @@ document.addEventListener("deviceready", function(){
     window.localStorage.setItem("alimentos","0");
     window.localStorage.setItem("hidratacion","0");
     window.localStorage.setItem("recordatorios","0");
-    window.localStorage.setItem("repetidor1","1");
-    window.localStorage.setItem("repetidor2","1");
+    window.localStorage.setItem("repetidor1","5");
+    window.localStorage.setItem("repetidor2","5");
     window.localStorage.setItem("time-repetidor1",$("#time-repetidor1").val());
     window.localStorage.setItem("time-repetidor2",$("#time-repetidor2").val());
     onResume();
@@ -36,6 +36,21 @@ document.addEventListener("deviceready", function(){
   $('input[name="despertador"]').on('switchChange.bootstrapSwitch', function(event, state) {
       if(state==true){
         //alert("cambio a verde");
+        cancelar("0");
+        cancelar("1");
+        cancelar("2");
+        cancelar("3");
+        cancelar("4");
+        cancelar("5");
+        cancelar("6");
+        cancelar("50");
+        cancelar("51");
+        cancelar("52");
+        cancelar("53");
+        cancelar("54");
+        cancelar("55");
+        cancelar("56");
+        limpiarALL();
         window.localStorage.setItem("despertador","1"); //1 está activa la notificación.
         //alert(window.localStorage.getItem("despertador"));
         agregar_DESPERTADORyALIMENTOS();
@@ -43,39 +58,81 @@ document.addEventListener("deviceready", function(){
         //alert("cambio a rojo");
         window.localStorage.setItem("despertador","0");
         //alert(window.localStorage.getItem("despertador"));
-
-        cancelar(0);
-        cancelar(1);
-        cancelar(2);
-        cancelar(3);
-        cancelar(4);
-        cancelar(5);
-        cancelar(6);  
+        cancelar("0");
+        cancelar("1");
+        cancelar("2");
+        cancelar("3");
+        cancelar("4");
+        cancelar("5");
+        cancelar("6");
+        cancelar("50");
+        cancelar("51");
+        cancelar("52");
+        cancelar("53");
+        cancelar("54");
+        cancelar("55");
+        cancelar("56");
         limpiarALL();
         localStorage.despertador=0;
       }
   });
   $('input[name="alimentos"]').on('switchChange.bootstrapSwitch', function(event, state) {
       if(state==true){
+        cancelar("10");
+        cancelar("11");
+        cancelar("12");
+        cancelar("13");
+        cancelar("14");
+        cancelar("15");
+        cancelar("16");
+        cancelar("17");
+        cancelar("40");
+        cancelar("41"); 
+        cancelar("42"); 
+        cancelar("43"); 
+        cancelar("44"); 
+        cancelar("45"); 
+        cancelar("46"); 
+        cancelar("47"); 
+        cancelar("48"); 
+        cancelar("49");    
+        limpiarALL();
         window.localStorage.setItem("alimentos","1");      
         agregar_ALIMENTOSyENTRENAMIENTO();   
         localStorage.alimentos=1;   
       }else{
         window.localStorage.setItem("alimentos","0");
-        cancelar(10);
-        cancelar(11);
-        cancelar(12);
-        cancelar(13);
-        cancelar(14);
-        cancelar(15);
-        cancelar(16);
-        cancelar(17);
+        cancelar("10");
+        cancelar("11");
+        cancelar("12");
+        cancelar("13");
+        cancelar("14");
+        cancelar("15");
+        cancelar("16");
+        cancelar("17");
+        cancelar("40");
+        cancelar("41"); 
+        cancelar("42"); 
+        cancelar("43"); 
+        cancelar("44"); 
+        cancelar("45"); 
+        cancelar("46"); 
+        cancelar("47"); 
+        cancelar("48"); 
+        cancelar("49");    
         limpiarALL();
         localStorage.alimentos=0;
       }
   });
   $('input[name="hidratacion"]').on('switchChange.bootstrapSwitch', function(event, state) {
       if(state==true){
+        cancelar("20");
+        cancelar("21");
+        cancelar("22");
+        cancelar("23");
+        cancelar("24");
+        cancelar("25");
+        limpiarALL();
         window.localStorage.setItem("hidratacion","1");
         var current_time = new Date();
         var minutosProximaNotificacion = current_time.getMinutes()+10;
@@ -94,14 +151,15 @@ document.addEventListener("deviceready", function(){
         localStorage.hidratacion=1;
       }else{
         window.localStorage.setItem("hidratacion","0");
-        cancelar(20);
-        cancelar(21);
-        cancelar(22);
-        cancelar(23);
-        cancelar(24);
-        cancelar(25);
+        cancelar("20");
+        cancelar("21");
+        cancelar("22");
+        cancelar("23");
+        cancelar("24");
+        cancelar("25");
         limpiarALL();
         localStorage.hidratacion=0;
+        showToast("Recordatorio de Hidratación Cancelado");
       }
   });
   $('input[name="recordatorios"]').on('switchChange.bootstrapSwitch', function(event, state) {
@@ -120,7 +178,7 @@ document.addEventListener("deviceready", function(){
       }
   });
 
-  $
+
 
   $( "#repetidor1" ).change(function() {
     //alert( "entra a change" );
@@ -153,26 +211,26 @@ document.addEventListener("deviceready", function(){
 
 
 
-$( "#cerrarSesion" ).click(function(){
-    //var dataStringCS = $(this).data("registro");
-    //var formData = 'email='+ dataString;        
-    //alert(formData);
-    //alert("entra a funcion");
-  var cerrar_sesion = confirm("¿Está seguro que desea cerrar la sesion?");
-  if (cerrar_sesion == true) {
-    //limpiarALL();
-    //cancelarALL();
-    cancelarALL();
-    //alert("pasa");
-
-window.localStorage.clear();
-          window.location = "index.html";
-
-    
-    } else {
-        txt = "You pressed Cancel!";
-    }
+  $( "#cerrarSesion" ).click(function(){
+      navigator.notification.confirm(
+        '¿Está seguro que desea cerrar la sesion?',  // message
+        onConfirm,                                   // callback to invoke with index of button pressed
+        'BenjaminPalacios',                                 // title
+        'Salir, Cancelar'                            // buttonLabels
+      );
   });
+
+function onConfirm(buttonIndex) {
+    //alert('You selected button ' + buttonIndex);
+    if(buttonIndex==1){
+      window.localStorage.clear();
+      window.location = "index.html";
+    }
+    if (buttonIndex==2) {
+      showToast("Gracias por continuar")
+    }
+
+}
   
 
 //Funciones para agregar las dos primeras notificaciones que pueden 'setear' la hora y el número de repeticiones cada 5 minutos
@@ -191,16 +249,41 @@ window.localStorage.clear();
       window.localStorage.setItem("repetidor1",$("#repetidor1").val());
       if($("#repetidor1").val()<=0){
         //Funcion para cancelar las 5 notificaciones del primer grupo de repeticiones, de 0 al 9 máximo
-        cancelar(0);
-        cancelar(1);
-        cancelar(2);
-        cancelar(3);
-        cancelar(4);
-        cancelar(5);
-        cancelar(6);
+        cancelar("0");
+        cancelar("1");
+        cancelar("2");
+        cancelar("3");
+        cancelar("4");
+        cancelar("5");
+        cancelar("6");
+        cancelar("50");
+        cancelar("51");
+        cancelar("52");
+        cancelar("53");
+        cancelar("54");
+        cancelar("55");
+        cancelar("56");
+        cancelar("57");
+        cancelar("58");
         limpiarALL();
       }else{
-//Funcion para agregar notificacion, y se agregan las variables locales para la hora, lo minutos y la repetición
+        //Funcion para agregar notificacion, y se agregan las variables locales para la hora, lo minutos y la repetición, además de cancelar por que puede que esté modificando las horas, o número de repeticiones.
+        cancelar("0");
+        cancelar("1");
+        cancelar("2");
+        cancelar("3");
+        cancelar("4");
+        cancelar("5");
+        cancelar("6");
+        cancelar("50");
+        cancelar("51");
+        cancelar("52");
+        cancelar("53");
+        cancelar("54");
+        cancelar("55");
+        cancelar("56");
+        cancelar("57");
+        cancelar("58");
         var repeticiones1=$("#repetidor1").val();
         window.localStorage.setItem("repeticiones1",repeticiones1);
         var timeRepetidor1 = window.localStorage.getItem("time-repetidor1");
@@ -219,20 +302,29 @@ window.localStorage.clear();
         window.localStorage.setItem("confirmacionDespertador","32");
         //Recordatorio despertar
         add_reminder(0,'Ya es hora de despertar',0,horaRepetidor1,minutos_repeticion1,'¡Despertar!','day'); 
+        add_reminder(50,'Recuerda, ya es hora de despertar',0,horaRepetidor1,minutos_repeticion1+2,'¡Despertar!','day'); 
+        add_reminder(51,'Recuerda, ya es hora de despertar',0,horaRepetidor1,minutos_repeticion1+4,'¡Despertar!','day'); 
+        add_reminder(52,'Recuerda, ya es hora de despertar',0,horaRepetidor1,minutos_repeticion1+6,'¡Despertar!','day'); 
         //Recordatorio desayuno
-        minutos_repeticion1=minutos_repeticion1+15;
+        minutos_repeticion1=minutos_repeticion1+30;
         add_reminder(1,'Ya es hora de tu desayuno',0,horaRepetidor1,minutos_repeticion1,'Desayunar','day');
+        add_reminder(53,'Recuerda, ya es hora de tu desayuno',0,horaRepetidor1,minutos_repeticion1+5,'Desayunar','day');
         //Recordatorio primer snack
         add_reminder(2,'Ya es hora de un snack',0,horaRepetidor1+3,minutos_repeticion1,'Tiempo de un Snack','day');
+        add_reminder(54,'Ya es hora de un snack',0,horaRepetidor1+3,minutos_repeticion1+5,'Tiempo de un Snack','day');
         //Recordatorio Almorzar
         add_reminder(3,'Ya es hora de almorzar',0,horaRepetidor1+6,minutos_repeticion1,'Almorzar','day');
+        add_reminder(55,'Recuerda, ya es hora de almorzar',0,horaRepetidor1+6,minutos_repeticion1+5,'Almorzar','day');
         //Recordatorio segundo snack
         add_reminder(4,'Ya es hora de un snack',0,horaRepetidor1+9,minutos_repeticion1,'Tiempo de un Snack','day');
+        add_reminder(56,'Recuerda, ya es hora de un snack',0,horaRepetidor1+9,minutos_repeticion1+5,'Tiempo de un Snack','day');
         //Recordatorio cena
         add_reminder(5,'Ya es hora de cenar',0,horaRepetidor1+12,minutos_repeticion1,'Cenar','day');
+        add_reminder(57,'Recuerda, ya es hora de cenar',0,horaRepetidor1+12,minutos_repeticion1+5,'Cenar','day');
         //Recordatorio opcional de snack antes de dormir
         if(repeticiones1==6){
           add_reminder(6,'Ya es hora de un snack',0,horaRepetidor1+15,minutos_repeticion1,'Tiempo de un Snack','day');
+          add_reminder(58,'Recuerda, ya es hora de un snack',0,horaRepetidor1+15,minutos_repeticion1+5,'Tiempo de un Snack','day');
         }
         /*
         for (var i = 0; i <= repeticiones1 -1; i++) {
@@ -258,17 +350,46 @@ window.localStorage.clear();
       window.localStorage.setItem("repetidor2",$("#repetidor2").val());
       if($("#repetidor2").val()<=0){
         //Funcion para cancelar 
-        cancelar(10);
-        cancelar(11);
-        cancelar(12);
-        cancelar(13);
-        cancelar(14);
-        cancelar(15);
-        cancelar(16);
-        cancelar(17);  
+        cancelar("10");
+        cancelar("11");
+        cancelar("12");
+        cancelar("13");
+        cancelar("14");
+        cancelar("15");
+        cancelar("16");
+        cancelar("17");
+        cancelar("40");
+        cancelar("41"); 
+        cancelar("42"); 
+        cancelar("43"); 
+        cancelar("44"); 
+        cancelar("45"); 
+        cancelar("46"); 
+        cancelar("47"); 
+        cancelar("48"); 
+        cancelar("49");    
         limpiarALL();
       }else{
-        //Funcion para agregar notificacion
+        //Funcion para agregar notificacion, cancelar primero todas las anteriores por que puede que este modificando la hora o numero de repeticiones
+        cancelar("10");
+        cancelar("11");
+        cancelar("12");
+        cancelar("13");
+        cancelar("14");
+        cancelar("15");
+        cancelar("16");
+        cancelar("17"); 
+        cancelar("40");
+        cancelar("41"); 
+        cancelar("42"); 
+        cancelar("43"); 
+        cancelar("44"); 
+        cancelar("45"); 
+        cancelar("46"); 
+        cancelar("47"); 
+        cancelar("48"); 
+        cancelar("49"); 
+        limpiarALL();        
         var repeticiones2=Number($("#repetidor2").val());
         window.localStorage.setItem("repeticiones2",repeticiones2);
         var timeRepetidor2 = window.localStorage.getItem("time-repetidor2");
@@ -286,22 +407,32 @@ window.localStorage.clear();
         window.localStorage.setItem("minutos_repeticion2",minutos_repeticion2);
         window.localStorage.setItem("confirmacionAlimentos","32");
         add_reminder(10,'Ya es hora de despertar',0,horaRepetidor2,minutos_repeticion2,'¡Despertar!','day'); 
+        add_reminder(40,'Ya es hora de despertar',0,horaRepetidor2,minutos_repeticion2+2,'¡Despertar!','day'); 
+        add_reminder(41,'Ya es hora de despertar',0,horaRepetidor2,minutos_repeticion2+4,'¡Despertar!','day'); 
+        add_reminder(42,'Ya es hora de despertar',0,horaRepetidor2,minutos_repeticion2+6,'¡Despertar!','day'); 
         //Recordatorio entrenamiento
         minutos_repeticion2=minutos_repeticion2+10;
         add_reminder(11,'Ya es hora de tu entrenamiento',0,horaRepetidor2,minutos_repeticion2,'Entrenar','day');
+        add_reminder(43,'Recuerda, ya es hora de tu entrenamiento',0,horaRepetidor2,minutos_repeticion2+5,'Entrenar','day');
         //Recordatorio desayuno
         add_reminder(12,'Ya es hora de tu desayuno',0,horaRepetidor2+1,minutos_repeticion2,'Desayunar','day');
+        add_reminder(44,'Recuerda, ya es hora de tu desayuno',0,horaRepetidor2+1,minutos_repeticion2,'Desayunar','day');
         //Recordatorio primer snack
         add_reminder(13,'Ya es hora de un snack',0,horaRepetidor2+4,minutos_repeticion2,'Tiempo de un Snack','day');
+        add_reminder(45,'Recuerda, ya es hora de un snack',0,horaRepetidor2+4,minutos_repeticion2,'Tiempo de un Snack','day');
         //Recordatorio Almorzar
         add_reminder(14,'Ya es hora de almorzar',0,horaRepetidor2+7,minutos_repeticion2,'Almorzar','day');
+        add_reminder(46,'Recuerda, ya es hora de almorzar',0,horaRepetidor2+7,minutos_repeticion2,'Almorzar','day');
         //Recordatorio segundo snack
         add_reminder(15,'Ya es hora de un snack',0,horaRepetidor2+10,minutos_repeticion2,'Tiempo de un Snack','day');
+        add_reminder(47,'Recuerda, ya es hora de un snack',0,horaRepetidor2+10,minutos_repeticion2,'Tiempo de un Snack','day');
         //Recordatorio cena
         add_reminder(16,'Ya es hora de cenar',0,horaRepetidor2+13,minutos_repeticion2,'Cenar','day');
+        add_reminder(48,'Recuerda, ya es hora de cenar',0,horaRepetidor2+13,minutos_repeticion2,'Cenar','day');
         //Recordatorio opcional de snack antes de dormir
         if(repeticiones2==6){
           add_reminder(17,'Ya es hora de un snack',0,horaRepetidor2+16,minutos_repeticion2,'Tiempo de un Snack','day');
+          add_reminder(49,'Recuerda, ya es hora de un snack',0,horaRepetidor2+16,minutos_repeticion2,'Tiempo de un Snack','day');
         }
         /*
         for (var i = 10; i <= repeticiones2 -1; i++) {
@@ -451,14 +582,21 @@ window.localStorage.clear();
     if(window.localStorage.getItem("despertador")==0){
       $('input[name="despertador"]').bootstrapSwitch('state', false, false);
       limpiarALL();
-      cancelar(0);
-      cancelar(1);
-      cancelar(2);
-      cancelar(3);
-      cancelar(4);
-      cancelar(5);
+      cancelar("0");
+      cancelar("1");
+      cancelar("2");
+      cancelar("3");
+      cancelar("4");
+      cancelar("5");
+      cancelar("50");
+      cancelar("51");
+      cancelar("52");
+      cancelar("53");
+      cancelar("54");
+      cancelar("55");
       if(window.localStorage.getItem("repeticiones1")==6){
         cancelar(6);
+        cancelar(56);
       }
     }else if(window.localStorage.getItem("despertador")==1){
         $("#despertador").prop('checked', true);
@@ -485,15 +623,25 @@ window.localStorage.clear();
       $("#alimentos").attr( "checked", false );
       $('input[name="alimentos"]').bootstrapSwitch('state', false, false);
       limpiarALL();
-      cancelar(10);
-      cancelar(11);
-      cancelar(12);
-      cancelar(13);
-      cancelar(14);
-      cancelar(15);
-      cancelar(16);
+      cancelar("10");
+      cancelar("11");
+      cancelar("12");
+      cancelar("13");
+      cancelar("14");
+      cancelar("15");
+      cancelar("16");
+      cancelar("40");
+      cancelar("41"); 
+      cancelar("42"); 
+      cancelar("43"); 
+      cancelar("44"); 
+      cancelar("45"); 
+      cancelar("46"); 
+      cancelar("47"); 
+      cancelar("48"); 
       if(window.localStorage.getItem("repeticiones1")==6){
         cancelar(17);
+        cancelar(49); 
       }
     }else if(window.localStorage.getItem("alimentos")==1){
         $("#alimentos").attr( "checked", true );
@@ -519,13 +667,13 @@ window.localStorage.clear();
     if(window.localStorage.getItem("hidratacion")==0){
       $("#hidratacion").attr( "checked", false );
       $('input[name="hidratacion"]').bootstrapSwitch('state', false, false);
+      cancelar("20");
+      cancelar("21");
+      cancelar("22");
+      cancelar("23");
+      cancelar("24");
+      cancelar("25");
       limpiarALL();
-      cancelar(20);
-      cancelar(21);
-      cancelar(22);
-      cancelar(23);
-      cancelar(24);
-      cancelar(25);
     }else if(window.localStorage.getItem("hidratacion")==1){
         $("#hidratacion").attr( "checked", true );
         $('input[name="hidratacion"]').bootstrapSwitch('state', true, true);
@@ -558,17 +706,9 @@ window.localStorage.clear();
     $("#repetidor1").val(window.localStorage.getItem("repetidor1"));
     $("#repetidor2").val(window.localStorage.getItem("repetidor2"));
 
-    
     if(window.localStorage.getItem("despertador")==0 && window.localStorage.getItem("alimentos")==0 && window.localStorage.getItem("hidratacion")==0 && window.localStorage.getItem("recordatorios")==0){
-      limpiarALL();
       cancelarALL();
+      limpiarALL();
     }
-
   }
-
-
-
-
 }, false);
-
-
