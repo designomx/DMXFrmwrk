@@ -442,10 +442,16 @@ FRMWRK.main = (function($) {
 	
 	var _slideInBanner = function() {
 		$('#slide-in-banner').hide();
+		
 		function _slideInB(){
 		  $('#slide-in-banner').slideDown();
 		}
 		setTimeout(_slideInB, 5000);
+		
+		function _slideOutB(){
+		  $('#slide-in-banner').slideUp();
+		}
+		setTimeout(_slideOutB, 12000);
 		
 		$('#slide-in-banner .close-modal-btn').bind('click', function() {
 			$('#slide-in-banner').slideUp();
@@ -461,7 +467,7 @@ FRMWRK.main = (function($) {
 
 		  if (_getScrollPos <= -225 && _getScrollPos >= -300 && _doitOnce == 0) {
 		  	$('.timeline-banner').slideDown();
-		  	$("#embed01")[0].src += "&autoplay=1";
+//		  	$("#embed01")[0].src += "&autoplay=1";
 		  	_doitOnce = 1;
 		  }
 		});

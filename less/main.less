@@ -194,6 +194,10 @@ nav{
 	}
 }
 
+.margin-btm-no{
+	margin-bottom: 5px !important;
+}
+
 .fix-ios-shadow{
 	.border-radius(1px);
 }
@@ -751,20 +755,6 @@ footer{
 	left: 50%;
 	.translateX(-50%);
 	cursor: pointer;
-	&.filterBtn{
-		bottom: auto;
-		left: auto;
-		.translateX(0);
-		right: 30px;
-		top: 32px;
-		&.cBtn{
-			.size(56px);
-			right: 0px;
-			i{
-				padding-right: 19px;
-			}
-		}
-	}
 	i{
 		line-height: 44px;
 		padding-right: 20px;
@@ -773,6 +763,31 @@ footer{
 		position: absolute;
 		right: 0;
 		top: 0;
+	}
+	&.filterBtn{
+		.size(180px, 36px);
+		bottom: auto;
+		left: auto;
+		.translateX(0);
+		right: auto;
+		top: auto;
+		position: relative;
+		display: block;
+		line-height: 22px;
+		margin-top: 27px;
+		i{
+			line-height: 24px;
+		}
+		&.noCompare{
+			background-color: #757575;
+			color: #9e9e9e;
+			i{
+				color: #9e9e9e;
+			}
+		}
+		@media @mobile {		
+			margin: 12px auto;
+		}
 	}
 }
 
@@ -1412,8 +1427,21 @@ footer{
 			font-weight: 800;
 			text-align: center;
 			padding: 10px;
+			position: relative;
+			p{
+				color: white;
+				background: #9e9e9e;
+				font-size: 10px;
+				margin: 0;
+				padding: 5px 10px;
+				line-height: 10px;
+				position: absolute;
+				right: 0;
+				top: 0px;
+			}
 		}
 		.more-actions-bx{
+			position: relative;
 			a{
 				.size(50%, auto);
 				display: block;
@@ -1473,6 +1501,15 @@ footer{
 					&:hover{
 						background: #44b600;
 					}
+				}
+				&.compare-delete{
+					width: 100%;
+					background-color: transparent;
+					color: white;
+					position: absolute;
+					left: 0;
+					top: 0;
+					padding: 5px;
 				}
 			}
 		}
@@ -1578,7 +1615,7 @@ footer{
 .compare-tools{
 	padding-top: 85px !important;
 	@media (max-width: 599px){
-		padding-top: 135px !important;
+		padding-top: 165px !important;
 	}
 }
 
@@ -1593,6 +1630,7 @@ footer{
 	position: relative;
 	@media @mobile{
 		font-size: 10px;
+		margin-top: 15px;
 	}
 	@media (max-width: 599px){
 		line-height: 15px;
@@ -1612,9 +1650,9 @@ footer{
 
 .comparando-six-bx{
 	height: 70px;
+	text-align: center;
 	@media (max-width: 599px){
 		height:40px;
-		text-align: center;
 	}
 	.span-bx{
 		display: inline-block;
@@ -1765,10 +1803,40 @@ footer{
 	padding: 5px 0 0 10px;
 }
 
+.switch{
+	em{
+		font-size: 18px;
+		line-height: 18px;
+		font-style: normal;
+	}
+}
 
+.slide-bar-bx{
+	.input-field{
+		margin: 0 !important;
+		padding: 0 !important;
+		select{
+			height: 28px;
+			border: 1px solid #bdbdbd;
+		}
+	}
+}
 
-
-
+.comparando-icons{
+	position: absolute;
+	right: 0;
+	top: 30px;
+	padding-right: 5px;
+	text-align: center;
+	i{
+		background: #bdbdbd;
+		color: white;
+		font-size: 12px;
+		margin: 0px;
+		padding: 3px;
+		.border-radius(50%);
+	}
+}
 
 
 

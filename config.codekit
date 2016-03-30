@@ -351,15 +351,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/index-owl.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/index-owl.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/index.html": {
 		"fileType": 8192,
 		"ignore": 0,

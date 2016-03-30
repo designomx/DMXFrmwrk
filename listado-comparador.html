@@ -80,19 +80,54 @@
 			</li>
 		</ul>
 		<div class="filter-mid-bar row">
-			<div class="col s6 sliders-scroll-bx">
+			<div class="col s6 m8 sliders-scroll-bx">
 				<div class="sliders-wrapp">
-					<div class="slider-bx">
-						<p class="truncate">Modalidad</p>
+					<div class="slider-bx clear-pad-marg">
+						<p class="truncate">Estado</p>
+						<div class="slide-bar-bx">
+							<div class="input-field col s12">
+								<select class="browser-default compare-slktr">
+									<option value="0" disabled selected>Ciudad de México</option>
+									<option value="1">Option 1</option>
+									<option value="2">Option 2</option>
+									<option value="3">Option 3</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="slider-bx clear-pad-marg">
+						<p class="truncate">Orden precio</p>
 						<div class="slide-bar-bx">
 							<div class="switch">
 								<label>
-									Prepago
+									<em>-</em>
 									<input type="checkbox">
 									<span class="lever"></span>
-									Plan
+									<em>+</em>
 								</label>
 							</div>
+						</div>
+					</div>
+					<div class="slider-bx clear-pad-marg">
+						<p class="truncate margin-btm-no">Modalidad</p>
+						<div class="slide-bar-bx row">
+							<div class="col s12">
+							  <input class="with-gap" name="group1" type="radio" id="test3" checked />
+							  <label for="test3">Plan</label>
+							  <input class="with-gap" name="group1" type="radio" id="test2"  />
+							  <label for="test2">Prepago</label>
+						    </div>
+						</div>
+					</div>
+					<div class="slider-bx clear-pad-marg">
+						<p class="truncate margin-btm-no">- -</p>
+						<div class="slide-bar-bx row">
+							<div class="col s12">
+							  <input type="checkbox" id="test11" />
+							  <label for="test11">Libre</label>
+							  <input type="checkbox" id="test12" />
+							  <label for="test12">Controlado</label>
+						    </div>
 						</div>
 					</div>
 					<div class="slider-bx">
@@ -138,7 +173,7 @@
 					<div class="clearfix"></div>
 				</div>
 			</div>
-			<div class="col s6 z-depth-1 fix-ios-shadow checks-scroll-bx">
+			<div class="col s6 m4 z-depth-1 fix-ios-shadow checks-scroll-bx">
 				<form action="#">
 					<p class="truncate">
 						<input type="checkbox" id="test1" />
@@ -157,24 +192,11 @@
 						<label for="test3">Streaming Video</label>
 					</p>
 				</form>
-				<a class="search-btn filterBtn z-depth-1 hoverable hide-on-med-and-down" href="#!">Comparar <i class="fa fa-angle-right right"></i></a>
-				<a class="search-btn filterBtn cBtn z-depth-1 hoverable hide-on-med-and-up" href="#!"><i class="fa fa-angle-right right"></i></a>
 			</div>
 			<div class="clearfix"></div>
 		</div>
 		<div id="compare-tools" class="row">
-			<div class="col s12 m4">
-				<div class="input-field col s12">
-					<select class="browser-default compare-slktr">
-						<option value="0" disabled selected>Ciudad de México</option>
-						<option value="1">Option 1</option>
-						<option value="2">Option 2</option>
-						<option value="3">Option 3</option>
-					</select>
-				</div>
-			</div>
 			<div class="col s12 m4 elige-six-bx">
-				<span></span>
 				<p>Elige hasta 6 planes para comparar:</p>
 			</div>
 			<div class="col s12 m4 comparando-six-bx">
@@ -199,6 +221,9 @@
 					<i class="material-icons">done</i>
 				</span>
 			</div>
+			<div class="col s12 m4">
+				<a class="search-btn filterBtn z-depth-1 hoverable noCompare" href="#!">Comparar <i class="fa fa-angle-right right"></i></a>
+			</div>
 		</div>
 		<div class="clearfix"></div>
 		<br />
@@ -206,6 +231,13 @@
 			<div class="col s12 blog-timeline-bx compare-tools">
 				<div class="col s12 m6 l4 paq-list-bx">
 					<div class="paq-content-bx">
+						<div class="comparando-icons">
+							<i class="material-icons">phone_android</i>
+							<i class="material-icons">wifi</i>
+							<i class="material-icons">phone</i>
+							<i class="material-icons">tv</i>
+							<i class="material-icons">live_tv</i>
+						</div>
 						<div class="brand-label">Axtel</div>
 						<div class="paq-bx">
 							<h4 class="truncate">Paquete 333</h4>
@@ -220,7 +252,7 @@
 								<li>0 Minutos a celular</li>
 							</ul>
 						</div>
-						<div class="paq-price">$275</div>
+						<div class="paq-price">$275 <p><span>Sugerido</span></p></div>
 						<div class="more-actions-bx">
 							<a class="modal-trigger waves-effect" href="#deatilsModal">Ver detalles</a>
 							<a href="#!" class="compare-slct slctd-plan">Comparar <i class="material-icons">done</i></a>
@@ -325,9 +357,7 @@
 					<li>
 						<a href="#!">Quiénes somos</a>/</li>
 					<li>
-						<a href="#!">Mapa del sitio</a>/</li>
-					<li>
-						<a href="#!">Aviso de privacidad</a>/</li>
+						<a href="#!">Legales</a>/</li>
 					<li>
 						<a href="#!">Anúnciate con nosotros</a>/</li>
 					<li>
@@ -343,7 +373,7 @@
 		</div>
 		<div class="slide-widget animated slideInUp">
 			<div class="widget-wrapper">
-				<div class="discover-title">!DESCUBRE TU PLAN!</div>
+				<div class="discover-title">¡Decidir nunca fue tan simple!</div>
 				<div class="scroll-box">
 					<div class="alignr-box">
 						<div class="products-box">
@@ -606,6 +636,7 @@
 								<div class="more-actions-bx">
 									<a href="#!" class="grey"></a>
 									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" class="compare-delete">Eliminar</a>
 									<div class="clearfix"></div>
 								</div>
 							</div>
@@ -655,6 +686,7 @@
 								<div class="more-actions-bx">
 									<a href="#!" class="grey"></a>
 									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" class="compare-delete">Eliminar</a>
 									<div class="clearfix"></div>
 								</div>
 							</div>
@@ -704,6 +736,7 @@
 								<div class="more-actions-bx">
 									<a href="#!" class="grey"></a>
 									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" class="compare-delete">Eliminar</a>
 									<div class="clearfix"></div>
 								</div>
 							</div>
@@ -753,6 +786,7 @@
 								<div class="more-actions-bx">
 									<a href="#!" class="grey"></a>
 									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" class="compare-delete">Eliminar</a>
 									<div class="clearfix"></div>
 								</div>
 							</div>
@@ -802,6 +836,7 @@
 								<div class="more-actions-bx">
 									<a href="#!" class="grey"></a>
 									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" class="compare-delete">Eliminar</a>
 									<div class="clearfix"></div>
 								</div>
 							</div>
@@ -851,6 +886,7 @@
 								<div class="more-actions-bx">
 									<a href="#!" class="grey"></a>
 									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" class="compare-delete">Eliminar</a>
 									<div class="clearfix"></div>
 								</div>
 							</div>
@@ -860,12 +896,24 @@
 			</div>
 		</div>
 		<!-- Modal Mail Share -->
-		  <div id="modalMailShare" class="modal">
+		  <div id="modalMailShare" class="modal modal-fixed-footer">
 		    <div class="modal-content">
-		      <h4>Compartir vía Mail</h4>
-		      <p>Escribe el nombre y correo para compartir:</p>
+		      <h4>Enviar a Mail</h4>
+		      
 		      <div class="row">
 		          <form class="col s12">
+		          	<p>Escribe tu nombre y correo:</p>
+		            <div class="row">
+		              <div class="input-field col s12 m6">
+		                <input id="first_name" type="text" class="validate">
+		                <label for="first_name">Tu Nombre</label>
+		              </div>
+		              <div class="input-field col s12 m6">
+		                <input id="email" type="email" class="validate">
+		                <label for="email">Tu Email</label>
+		              </div>
+		            </div>
+		            <p>Escribe el nombre y correo para compartir:</p>
 		            <div class="row">
 		              <div class="input-field col s12 m6">
 		                <input id="first_name" type="text" class="validate">
