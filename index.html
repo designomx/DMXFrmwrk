@@ -19,7 +19,9 @@
 		<div id="main-hero" class="container-fluid" style="background-image: url('images/main-hero-fish.jpg');">
 			<div class="gradient-o"></div>
 			<div class="pm-logo">
-				<img src="images/fishers_logo.png" width="100px" alt="" />
+				<div class="center-logo">
+				       <img src="images/fishers_logo.png" alt="" />
+				</div>
 			</div>
 			<div class="pm-info">
 				<h1>Fisher's
@@ -34,17 +36,14 @@
 				<a href="promociones-wifi.html#gotomenu" class="tab-btn col-xs-4">Promos</a>
 				<a href="colecciones-wifi.html#gotomenu" class="tab-btn col-xs-4">Especiales</a>
 				<a href="menu-wifi.html#gotomenu" class="tab-btn col-xs-4">Menú</a>
-				<!-- Tiene los 3 
-				<a href="#!" class="tab-btn col-xs-4">Promos</a>
+				<!-- Tiene los 3 <a href="#!" class="tab-btn col-xs-4">Promos</a>
 				<a href="#!" class="tab-btn col-xs-4">Especiales</a>
 				<a href="#!" class="tab-btn col-xs-4">Menú</a>
 				-->
-				<!-- Tiene solo 2 
-				<a href="#!" class="tab-btn col-xs-6">Especiales</a>
+				<!-- Tiene solo 2 <a href="#!" class="tab-btn col-xs-6">Especiales</a>
 				<a href="#!" class="tab-btn col-xs-6">Menú</a>
 				-->
-				<!-- Tiene solo 1 
-				<a href="#!" class="tab-btn col-xs-6 offbtn">...</a>
+				<!-- Tiene solo 1 <a href="#!" class="tab-btn col-xs-6 offbtn">...</a>
 				<a href="#!" class="tab-btn col-xs-6">Menú</a>-->
 			</div>
 		</div>
@@ -141,6 +140,120 @@
 			</div>
 		</div>
 		<div class='md-overlay'></div>
+		<div class='md-login-overlay'>
+			<div id="login-modal-bx" class="container-fluid">
+				<p>Entra o registrate:
+					<br />
+					<small>Para validar tu recompensa.</small>
+				</p>
+				<form id="login-form-tab" method="" action="" class="">
+					<div class="col-xs-12">
+						<input placeholder="Mail*" id="last_name" type="email" class="validate">
+					</div>
+					<div class="col-xs-12">
+						<input placeholder="Password*" id="last_name" type="password" class="validate">
+					</div>
+					<div class="col-xs-12">
+						<button class="btn btn-default">Entrar</button>
+					</div>
+					<div class="input-field col s12">
+						<p>
+							<small>
+								<i>*Para tu comodidad recordaremos tu cuenta.</i>
+							</small>
+						</p>
+					</div>
+				</form>
+				<form id="register-form-tab" method="" action="" class="">
+					<div class="col-xs-12">
+						<input placeholder="Nombre*" id="last_name" type="text" class="validate">
+					</div>
+					<div class="col-xs-12">
+						<input placeholder="Mail*" id="last_name" type="email" class="validate">
+					</div>
+					<div class="col-xs-12">
+						<input placeholder="Password*" id="last_name" type="password" class="validate">
+					</div>
+					<div class="col-xs-12">
+						<button class="btn btn-default">Entrar</button>
+					</div>
+					<div class="input-field col s12">
+						<p>
+							<small>
+								<i>*Para tu comodidad recordaremos tu cuenta.</i>
+							</small>
+						</p>
+					</div>
+				</form>
+				<div class="col-xs-12">
+					<button class="btn btn-primary">
+						<i class="font-icon icon-facebook-official"></i>Entrar con Facebook</button>
+				</div>
+				<div class="col-xs-12">
+					<button class="btn btn-warning login-btn-bx">Ya tengo cuenta</button>
+				</div>
+				<div class="clearfix"></div>
+				<br />
+				<div class="col-xs-6">
+					<button class="btn btn-default btn-xs registro-btn-bx">Registro</button>
+				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-default btn-xs cancel-btn-bx">Cancelar</button>
+				</div>
+			</div>
+		</div>
+		<div class='md-logedin-overlay'>
+
+			<div id="logedin-modal-bx" class="container-fluid">
+				<p>¡Hola Luis!<br /> <small>-&nbsp; Tu recompensa esta lista &nbsp;-</small>
+				</p>
+				<form id="logedin-form-tab" method="" action="" class="">
+					<div class="col-xs-12">
+						<select class="form-control" disabled="disabled">
+						  <option>Fisher's Mexicas</option>
+						</select>
+					</div>
+					<div class="col-xs-12">
+						<input placeholder="Mesa/Referencia*" id="refernc" type="text" class="validate">
+					</div>
+					<div class="col-xs-12">
+						<button class="btn btn-success validate-prze">Validar</button>
+					</div>
+					<div class="col-xs-12">
+						<button class="btn btn-default btn-sm close-valdtn">Cancelar</button>
+					</div>
+					<div class="clearfix"></div>
+					<div class="input-field col s12">
+						<p class="small-lh">
+							<small>
+								*Antes de validar avisa a tu anfitrión.
+							</small>
+						</p>
+						<div class="clearfix"></div>
+						<a href="#!" class="notme-wtf">¿No eres Luis? presiona aquí</a>
+					</div>
+				</form>
+			</div>
+			
+			<div id="validate-modal-bx" class="container-fluid">
+				<p>¡Esperando Validación!<br /> <small>-&nbsp; Estamos validando tu recompensa &nbsp;-</small>
+				</p>
+				<div class="col-xs-12 validation-timer">
+					<h1>10:00</h1>
+				</div>
+				<div class="col-xs-12">
+					<p class="small-lh">
+						<small>
+							*Avisa a tu anfitrión que estas esperando esta validación.
+						</small>
+					</p>
+				</div>
+				<div class="col-xs-12">
+					<button class="btn btn-default cancel-valdtn">Cancelar</button>
+				</div>
+			</div>
+			
+		</div>
 		<!--[if IE]>
 			<script src="js/html5.js"></script>
 		<![endif]-->

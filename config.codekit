@@ -259,6 +259,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/logo-h.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 11136,
+		"inputAbbreviatedPath": "\/images\/logo-h.png",
+		"outputAbbreviatedPath": "\/images\/logo-h.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/logo-v.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 11766,
+		"inputAbbreviatedPath": "\/images\/logo-v.png",
+		"outputAbbreviatedPath": "\/images\/logo-v.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/main-hero-fish.jpg": {
 		"fileType": 16384,
 		"ignore": 0,

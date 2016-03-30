@@ -105,6 +105,44 @@ FRMWRK.main = (function($) {
 		    $clamp(element, {clamp: 3, useNativeClamp: true});
 		});
 	}
+	
+	var _wifiLogInBx = function() {
+		$('.login-btn-bx').bind('click',function() {
+			$(this).hide();
+			$('#register-form-tab').hide();
+			$('#login-form-tab,.registro-btn-bx').show();
+		});
+		
+		$('.registro-btn-bx').bind('click',function() {
+			$('.login-btn-bx,#register-form-tab').show();
+			$('#login-form-tab').hide();
+		});
+		
+		$('.cancel-btn-bx').bind('click',function() {
+			$('.md-login-overlay').fadeOut(500,function() {
+				$('#register-form-tab,#login-form-tab').hide();
+				$('.login-btn-bx,.registro-btn-bx').show();
+			});
+		});
+		
+		$('.validate-prze').bind('click',function(ev) {
+			ev.preventDefault();
+			$('#logedin-modal-bx').slideUp();
+			$('#validate-modal-bx').slideDown();
+		});
+		
+		$('.cancel-valdtn').bind('click',function(ev) {
+			ev.preventDefault();
+			$('#logedin-modal-bx').slideDown();
+			$('#validate-modal-bx').slideUp();
+		});
+		
+		$('.close-valdtn').bind('click',function(ev) {
+			ev.preventDefault();
+			$('.md-logedin-overlay').fadeOut();
+		});
+		
+	};
 		
 	//CLASES////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////
@@ -126,6 +164,7 @@ FRMWRK.main = (function($) {
 			_modalOnLoad();
 			_URLModalActions();
 			_productsClamp();
+			_wifiLogInBx();
 			_reSizeWindow();
 		}
 	};
