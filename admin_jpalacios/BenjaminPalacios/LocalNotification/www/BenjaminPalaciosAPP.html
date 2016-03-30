@@ -43,7 +43,7 @@
             <input class="hora input-lg form-control" type="time" id="time-repetidor1" value="08:00" />
         </div>
         <div class="col-xs-4 col-sm-4 col-md-16 texto-der">
-            <input id="repetidor1" type="number" inputmode="numeric" pattern="[0-9]*" name="cantidad" class="input-lg form-control" placeholder="5" min="5" max="5" value=5 required>
+            <input id="repetidor1" type="number" inputmode="numeric" pattern="[0-9]*" name="cantidad" class="input-lg form-control" placeholder="5" min="5" max="6" value=5 required>
         </div>
         <span class="input-group form-control">
           <span class="pull-left" id="">Alimentos y Entrenamiento</span>
@@ -58,7 +58,7 @@
             <input class="hora form-control input-lg" type="time" id="time-repetidor2" value="08:40" />
         </div>
         <div class="col-xs-4 col-sm-4 col-md-16 texto-der">
-            <input id="repetidor2" type="number" pattern="\d*" name="cantidad" class="input-lg form-control" placeholder="5" min="5" max="5" value=1 required>
+            <input id="repetidor2" type="number" pattern="\d*" name="cantidad" class="input-lg form-control" placeholder="5" min="5" max="6" value=5 required>
         </div>
         <span class="input-group form-control">
           <span class="pull-left" id="">Hidratación</span>
@@ -76,7 +76,14 @@
         <div>
           <button id="cerrarSesion" onclick='cerrarSesion()' class="btn btn-primary btn-block">Salir</button>
         </div>
-
+        <!--
+        <div>
+          <button id="notificacionesPendientes" onclick='callback()' class="btn btn-primary btn-block">Notificaciones</button>
+        </div>
+        <div>
+          <button id="notificacionesPendientes" onclick='checkPresencia()' class="btn btn-primary btn-block">Notificaciones pendientes presente 0?</button>
+        </div>
+        -->
         <br><br>
         <div class="text-center">
           <a class="btn btn-social-icon btn-github">

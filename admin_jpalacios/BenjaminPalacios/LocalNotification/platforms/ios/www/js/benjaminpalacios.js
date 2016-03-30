@@ -8,9 +8,6 @@ $(document).ready(function(){
 		if(window.localStorage.getItem("autorizado")=="1"){
 			window.location = "BenjaminPalaciosAPP.html";
 		}
-    
-  
-
 });
 
 //Script para registrar usuarios
