@@ -11,6 +11,16 @@ document.addEventListener("deviceready", function(){
     window.localStorage.setItem("repetidor2","5");
     window.localStorage.setItem("time-repetidor1",$("#time-repetidor1").val());
     window.localStorage.setItem("time-repetidor2",$("#time-repetidor2").val());
+    cordova.plugins.notification.local.registerPermission(function(granted) {
+      if(granted == true)
+      {
+        showToast("Gracias por aceptar");
+      }
+      else
+      {
+        showToast("Reminder cannot be added because app doesn't have permission");
+      }
+    });
     onResume();
   }else{
     /*
@@ -366,7 +376,7 @@ function onConfirm(buttonIndex) {
   }
   <!-- initialize -->
 //Funcion que registra la notificación en el equipo
-    function schedule(id, titulo, mensaje, schedule_time,every)
+  function schedule(id, titulo, mensaje, schedule_time,every)
   {
     cordova.plugins.notification.local.schedule({
         id: id,

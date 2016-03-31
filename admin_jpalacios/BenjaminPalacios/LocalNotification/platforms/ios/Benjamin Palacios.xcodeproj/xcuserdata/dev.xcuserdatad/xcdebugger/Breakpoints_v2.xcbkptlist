@@ -17,38 +17,6 @@
             endingLineNumber = "30"
             landmarkName = "@interface APPLocalNotification()"
             landmarkType = "2">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[APPLocalNotification deviceready]"
-                  moduleName = "Benjamin Palacios"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dev/github/DMXFrmwrk/admin_jpalacios/BenjaminPalacios/LocalNotification/platforms/ios/Benjamin%20Palacios/Plugins/de.appplant.cordova.plugin.local-notification/APPLocalNotification.m"
-                  timestampString = "481072079.972833"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[APPLocalNotification setDeviceready:]"
-                  moduleName = "Benjamin Palacios"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dev/github/DMXFrmwrk/admin_jpalacios/BenjaminPalacios/LocalNotification/platforms/ios/Benjamin%20Palacios/Plugins/de.appplant.cordova.plugin.local-notification/APPLocalNotification.m"
-                  timestampString = "481072079.972973"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "10">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
