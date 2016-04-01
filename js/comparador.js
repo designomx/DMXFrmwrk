@@ -10,65 +10,7 @@ FRMWRK.comparador = (function ($) {
     /////////////////////////////////////////////////////////////////////////////////
  	
  	var _compaRadorSlide = function() {
- 		var slider = document.getElementById('slidertest');
  		
- 		noUiSlider.create(slider, {
- 		start: [0, 1000],
- 		connect: true,
- 		step: 10,
- 		range: {
- 		 'min': 0,
- 		 'max': 1000
- 		},
- 		  format: wNumb({
- 			decimals: 0
- 		  })
- 		});
- 		
- 		var slider2 = document.getElementById('slidertest2');
- 			 	
- 		noUiSlider.create(slider2, {
- 		start: [0, 350],
- 		connect: true,
- 		step: 10,
- 		range: {
- 		 'min': 10,
- 		 'max': 350
- 		},
- 		  format: wNumb({
- 			decimals: 0
- 		  })
- 		});
- 		
- 		var slider3 = document.getElementById('slidertest3');
- 			 	
- 		noUiSlider.create(slider3, {
- 		start: [0, 1000],
- 		connect: true,
- 		step: 50,
- 		range: {
- 		 'min': 0,
- 		 'max': 1000
- 		},
- 		  format: wNumb({
- 			decimals: 0
- 		  })
- 		});
- 		
- 		var slider4 = document.getElementById('slidertest4');
- 			 	
- 		noUiSlider.create(slider4, {
- 		start: [0, 1000],
- 		connect: true,
- 		step: 50,
- 		range: {
- 		 'min': 0,
- 		 'max': 1000
- 		},
- 		  format: wNumb({
- 			decimals: 0
- 		  })
- 		});
  	};
  	
  	var _scrollSlides = function() {

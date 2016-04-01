@@ -373,7 +373,7 @@ FRMWRK.main = (function($) {
 			$('.streaming').click(function() {
 
 				$("div").filter($(".nostreaming, .cellplan")).fadeToggle('500', function() {
-					console.log('filter');
+					//console.log('filter');
 					if (_selfClick <= 3) {
 						_scrollPlansResizer();
 						_selfClick++;
@@ -477,7 +477,7 @@ FRMWRK.main = (function($) {
 		$(window).scroll(function() {
 		  var _getFilterPos = $('.filter-mid-bar').offset().top - $(window).scrollTop();
 		  var _getHomeHeroPos = $('.home-hero').offset().top - $(window).scrollTop();
-		  console.log(_getHomeHeroPos);
+		  //console.log(_getHomeHeroPos);
 		  
 		  if (_getFilterPos < 65) {
 		  	$('#main-nav-bar').slideUp();
@@ -499,11 +499,7 @@ FRMWRK.main = (function($) {
 	
 	var _fixedCompareH = function() {
 		
-		$('.filterBtn').bind('click', function() {
-			$('#modal-comparador').show().animate({
-			    top: 0
-			  },1000);
-		});
+
 		$('#modal-comparador .close-modal-btn').bind('click', function() {
 			$('#modal-comparador').animate({
 			    top: '100%'
