@@ -493,6 +493,10 @@ hr{
 /* UI /////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////*/
 
+*{
+	outline: none;
+}
+
 html{
 	.size(100%);
 	position: absolute;
@@ -613,7 +617,7 @@ body{
 			z-index: 999;
 			background: rgba(0, 0, 0, .75);
 			visibility: visible;
-			overflow-y: scroll;
+			overflow-y: auto;
 			-webkit-overflow-scrolling: touch;
 			.crop-img{
 				.size(100%, auto);

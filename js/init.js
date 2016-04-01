@@ -143,6 +143,19 @@ FRMWRK.main = (function($) {
 		});
 		
 	};
+	
+	var _closePrizeModal = function() {
+	
+		$('.close-product').bind('click', function() {
+			
+			var r = confirm("¿Estas seguro de cerrar esta ventana? Si la cierras sin avisar a tu anfitrión, es probable que pierdas tu recompensa.");
+		    if (r == true) {
+		        $('.materialized-prize').fadeOut();
+		        $('body').toggleClass('body-no-overflow');
+		    }
+		});
+	
+	};
 		
 	//CLASES////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////
@@ -165,6 +178,7 @@ FRMWRK.main = (function($) {
 			_URLModalActions();
 			_productsClamp();
 			_wifiLogInBx();
+			_closePrizeModal();
 			_reSizeWindow();
 		}
 	};

@@ -14,23 +14,25 @@ BARCRTSA.main = (function($) {
 	
 		$('.col-xs-6 a').bind('click', function(e) {
 			$('body, html').addClass('force-no-overflow');
-			$(this).parent('.col-xs-6').find('.materialized-post:first').stop(true,false).animate({top: 0,opacity: 1},0).addClass('opened-bx');
+
+			
+			var r = confirm("Haz elegido Pepillin, ¿Estas seguro?.");
+			if (r == true) {
+			   //Entregar premio
+			   
+			   $('body, html').removeClass('force-no-overflow');
+			   
+			} else {
+				$('body, html').removeClass('force-no-overflow');
+				
+			}
+						
 		});
 		
 		$('.close-product').bind('click', function(e) {
 			
-			$('.opened-bx').stop(true,false).animate({
-			    top: '100%',
-			    opacity: 0
-			  }, 0, function() {
-			    $('body, html').removeClass('force-no-overflow');
-			    setTimeout(function(){
-			      $('.animated-post .opened-bx').stop(true,false).animate({opacity: 0},500,function() {
-			      	$('.animated-post .opened-bx').removeClass('opened-bx');
-			      	$('.animated-post').css('top',0);
-			      });
-			    }, 500);
-			  });
+			$('body, html').removeClass('force-no-overflow');
+			
 		});
 	}
 
