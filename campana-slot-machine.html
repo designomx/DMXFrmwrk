@@ -18,60 +18,57 @@
 		<div class="game-slot-bx">
 			<div class="top-row-bx">
 				<div class="move-top-row">
-					<div class="a-top-img"><img src="images/slot/beera.jpg" alt="" /></div>
-					<div class="b-top-img"><img src="images/slot/camarona.jpg" alt="" /></div>
-					<div class="c-top-img"><img src="images/slot/xxxa.jpg" alt="" /></div>
-					<div class="d-top-img"><img src="images/slot/peza.jpg" alt="" /></div>
-					<div class="clearfix"></div>
+					<div class="slot-bx a-top-img prizeone"><img src="images/slot/beera.jpg" alt="" /></div>
+					<div class="slot-bx b-top-img prizetwo"><img src="images/slot/camarona.jpg" alt="" /></div>
+					<div class="slot-bx c-top-img prizethr"><img src="images/slot/xxxa.jpg" alt="" /></div>
+					<div class="slot-bx d-top-img prizefou"><img src="images/slot/peza.jpg" alt="" /></div>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 			
 			<div class="mid-row-bx">
 				<div class="move-mid-row">
-					<div class="a-mid-img"><img src="images/slot/beerb.jpg" alt="" /></div>
-					<div class="b-mid-img"><img src="images/slot/camaronb.jpg" alt="" /></div>
-					<div class="c-mid-img"><img src="images/slot/xxxb.jpg" alt="" /></div>
-					<div class="d-mid-img"><img src="images/slot/pezb.jpg" alt="" /></div>
-					<div class="clearfix"></div>
+					<div class="slot-bx a-mid-img prizeone"><img src="images/slot/beerb.jpg" alt="" /></div>
+					<div class="slot-bx b-mid-img prizetwo"><img src="images/slot/camaronb.jpg" alt="" /></div>
+					<div class="slot-bx c-mid-img prizethr"><img src="images/slot/xxxb.jpg" alt="" /></div>
+					<div class="slot-bx d-mid-img prizefou"><img src="images/slot/pezb.jpg" alt="" /></div>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 			
 			<div class="bot-row-bx">
 				<div class="move-bot-row">
-					<div class="a-bot-img"><img src="images/slot/beerc.jpg" alt="" /></div>
-					<div class="b-bot-img"><img src="images/slot/camaronc.jpg" alt="" /></div>
-					<div class="c-bot-img"><img src="images/slot/xxxc.jpg" alt="" /></div>
-					<div class="d-bot-img"><img src="images/slot/pezc.jpg" alt="" /></div>
-					<div class="clearfix"></div>
+					<div class="slot-bx a-bot-img prizeone"><img src="images/slot/beerc.jpg" alt="" /></div>
+					<div class="slot-bx b-bot-img prizetwo"><img src="images/slot/camaronc.jpg" alt="" /></div>
+					<div class="slot-bx c-bot-img prizethr"><img src="images/slot/xxxc.jpg" alt="" /></div>
+					<div class="slot-bx d-bot-img prizefou"><img src="images/slot/pezc.jpg" alt="" /></div>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 		</div>
+
+		<div id="instructed-ovrly">
 		
-		<div class="copy-bar-bx">
-			<p>
-				¡Completa la imagen central y gana!<br /> Abusado sólo tienes una oportunidad.
-			</p>
+			<div class="container-bx">
+				<div class="jugamos-title"><img src="images/slot/jugamos.svg" alt="" /></div>
+				<img src="images/slot/ejemplo.gif" alt="" />
+				<!--<p>
+					Completa la imagen central fila por fila y gana un plato o bebida relacionado.<br />
+					<em>¡Abusado sólo tienes una oportunidad!</em>
+				</p>-->
+				<p>
+					Completa una imagen fila por fila y gana un Taco de Camarón .<br />
+					<em>¡Abusado sólo tienes una oportunidad!</em>
+				</p>
+			</div>
+		
 		</div>
 		
+		<div id="touch-stop-overlay"></div>
 		
-		<!--Estado 1 Antes de empezar-->
 		<div class="action-bar-bx">
 			Comenzar
 		</div>
-		
-		<!--Estado 2 para detener
-		<div class="action-bar-bx stop-row-btn">
-			Parar
-		</div>-->
-		
-		<!--Estado 2 Esperando a que pare la fila
-		
-		<div class="action-bar-bx stop-row-btn stand-by-btn">
-			Espera
-		</div>-->
 				
 		<div class="clearfix"></div>
 		<br />
@@ -81,12 +78,20 @@
 		<div id="overlay-bx"></div>
 		
 		<div class="fail-modal">
-			<p>¡Tal como vino se fue!<br />
+			<p><b>¡Tal como vino se fue!</b><br />
 			Más suerte para la próxima.</p>
 			<button>OK</button>
 		</div>
 		
 		<div class="winner-modal">
+			<p><b>¡Pero que habilidad!</b><br />
+			Ya tienes tu Taco de Camarón cortesía de Fisher's by tooth.me®.</p>
+			<button>Continuar</button>
+		</div>
+		
+		<audio id="audio-loop" src="images/slot/game-16-mono.mp3" preload="auto"></audio>
+				
+		<!--<div class="winner-modal">
 			<p><b>¡Felicidades ganaste!</b><br />
 			Disfruta el que más te guste.</p>
 			<hr />
@@ -151,19 +156,19 @@
 				</form>
 				<button class="get-action-btn">Pedir</button>
 			</div>
-		</div>
+		</div>-->
 		
 		<!--[if IE]>
 			<script src="js/html5.js"></script>
 		<![endif]-->
 		<!-- Scripts-->
 		<script src="js/jquery-2.1.1.min.js"></script>
-		<script src="js/init.config.bar.js"></script>
-		<script src="js/campana-bar-cortesia.js"></script>
+		<script src="js/init.config.slotm.js"></script>
+		<script src="js/slot-machine.js"></script>
 		<script>
 			jQuery(function() {
 		  	
-		  		BARCRTSA.main.init();
+		  		SLOTM.main.init();
 
 		  	});
 		</script>

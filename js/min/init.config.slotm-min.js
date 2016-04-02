@@ -1,0 +1,1 @@
+var SLOTM=SLOTM||{};SLOTM.global={},SLOTM.utils=function(){return{}}(),SLOTM.config={params:{},timers:{},ui:{}};

@@ -593,6 +593,8 @@ body {
   width: 100%;
   height: 100%;
   background: #eceff1;
+  overflow: hidden;
+  position: fixed;
 }
 .game-slot-bx {
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
@@ -624,10 +626,10 @@ body {
   overflow: hidden;
 }
 .top-row-bx .move-top-row {
-  width: 180%;
+  width: 200%;
   height: auto;
   position: relative;
-  left: -15%;
+  left: 0;
   top: 0;
 }
 .top-row-bx .a-top-img,
@@ -656,10 +658,10 @@ body {
   overflow: hidden;
 }
 .mid-row-bx .move-mid-row {
-  width: 180%;
+  width: 200%;
   height: auto;
   position: relative;
-  left: -60%;
+  left: 0;
   top: 0;
 }
 .mid-row-bx .a-mid-img,
@@ -688,10 +690,10 @@ body {
   overflow: hidden;
 }
 .bot-row-bx .move-bot-row {
-  width: 180%;
+  width: 200%;
   height: auto;
   position: relative;
-  left: -15%;
+  left: 0;
   top: 0;
 }
 .bot-row-bx .a-bot-img,
@@ -814,10 +816,12 @@ body {
   z-index: 999;
   display: none;
 }
-.fail-modal {
+.fail-modal,
+.winner-modal {
+  width: 216px;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 40%;
   background: white;
   -webkit-border-radius: 2px;
   -webkit-background-clip: padding-box;
@@ -828,57 +832,20 @@ body {
   z-index: 9999;
   padding: 10px 20px 20px 20px;
   text-align: center;
-  margin-left: -92px;
+  margin-left: -108px;
   margin-top: -67px;
   -webkit-box-shadow: 0 0px 8px #000000;
   -moz-box-shadow: 0 0px 8px #000000;
   box-shadow: 0 0px 8px #000000;
   display: none;
 }
-.fail-modal button {
-  border: none;
-  color: white;
-  background: #01ccff;
-  padding: 5px 20px;
-  margin: 0 auto;
-  display: block;
-  margin-top: 20px;
-}
-.fail-modal button:hover {
-  background: #00b3dd;
-}
-.winner-modal {
-  position: absolute;
-  left: 50%;
-  top: 20%;
-  max-height: 90%;
-  overflow: auto;
-  background: white;
-  -webkit-border-radius: 2px;
-  -webkit-background-clip: padding-box;
-  -moz-border-radius: 2px;
-  -moz-background-clip: padding;
-  border-radius: 2px;
-  background-clip: padding-box;
-  z-index: 9999;
-  text-align: center;
-  margin-left: -135px;
-  margin-top: -67px;
-  padding: 0px;
-  -webkit-box-sizing: border-box !important;
-  -moz-box-sizing: border-box !important;
-  box-sizing: border-box !important;
-  -webkit-box-shadow: 0 0px 8px #000000;
-  -moz-box-shadow: 0 0px 8px #000000;
-  box-shadow: 0 0px 8px #000000;
-  display: none;
-}
-.winner-modal p {
-  font-size: 11px;
-}
-.winner-modal p b {
+.fail-modal b,
+.winner-modal b {
+  display: inline-block;
+  margin-bottom: 10px;
   font-size: 14px;
 }
+.fail-modal button,
 .winner-modal button {
   border: none;
   color: white;
@@ -888,12 +855,48 @@ body {
   display: block;
   margin-top: 20px;
 }
+.fail-modal button:hover,
 .winner-modal button:hover {
   background: #00b3dd;
 }
-.winner-modal hr {
-  margin: 0;
-}
+/*.winner-modal{
+	position: absolute;
+	left: 50%;
+	top: 20%;
+	max-height: 90%;
+	overflow: auto;
+	background: white;
+	.border-radius(2px);
+	z-index: 9999;
+	text-align: center;
+	margin-left: -135px;
+	margin-top: -67px;
+	padding: 0px;
+	.box-sizing(border-box) !important;
+	.box-shadow(0 0px 8px rgba(0, 0, 0, 1));
+	display: none;
+	p{
+		font-size: 11px;
+		b{
+			font-size: 14px;
+		}
+	}
+	button{
+		border: none;
+		color: white;
+		background: #01ccff;
+		padding: 5px 20px;
+		margin: 0 auto;
+		display: block;
+		margin-top: 20px;
+		&:hover{
+			background: #00b3dd;
+		}
+	}
+	hr{
+		margin: 0;
+	}
+}*/
 .col-xs6 {
   width: 100%;
   height: 75px;
@@ -1031,4 +1034,71 @@ body {
   .id-modal-bx .get-action-btn {
     font-weight: 300;
   }
+}
+#touch-stop-overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: transparent;
+  z-index: 9999;
+  display: none;
+}
+#instructed-ovrly {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: black;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 998;
+}
+#instructed-ovrly .container-bx {
+  width: 100%;
+  height: 100%;
+}
+#instructed-ovrly .container-bx img {
+  width: 70%;
+  height: auto;
+  max-width: 300px;
+  border: 1px solid white;
+  margin: 0 auto;
+  display: block;
+  -webkit-border-radius: 1px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 1px;
+  -moz-background-clip: padding;
+  border-radius: 1px;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 0px 8px #000000;
+  -moz-box-shadow: 0 0px 8px #000000;
+  box-shadow: 0 0px 8px #000000;
+}
+#instructed-ovrly .container-bx p {
+  width: 70%;
+  height: auto;
+  max-width: 250px;
+  color: white;
+  text-align: center;
+  margin: 10px auto;
+  color: #eee;
+  font-size: 13px;
+}
+#instructed-ovrly .container-bx p em {
+  padding-top: 10px;
+  display: inline-block;
+}
+#instructed-ovrly .container-bx .jugamos-title img {
+  max-width: 120px;
+  border: none;
+  margin: 10px auto;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+#audio-intro,
+#audio-loop {
+  display: none;
 }

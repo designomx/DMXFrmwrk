@@ -508,6 +508,8 @@ html{
 body{	
 	.size(100%);
 	background: #eceff1;
+	overflow: hidden;
+	position: fixed;
 }
 
 .game-slot-bx{
@@ -528,9 +530,9 @@ body{
 	position: relative;
 	overflow: hidden;
 	.move-top-row{
-		.size(180%,auto);
+		.size(200%,auto);
 		position: relative;
-		left: -15%;
+		left: 0;
 		top: 0;
 	}
 	.a-top-img,.b-top-img,.c-top-img,.d-top-img{
@@ -548,9 +550,9 @@ body{
 	position: relative;
 	overflow: hidden;
 	.move-mid-row{
-		.size(180%,auto);
+		.size(200%,auto);
 		position: relative;
-		left: -60%;
+		left: 0;
 		top: 0;
 	}
 	.a-mid-img,.b-mid-img,.c-mid-img,.d-mid-img{
@@ -568,9 +570,9 @@ body{
 	position: relative;
 	overflow: hidden;
 	.move-bot-row{
-		.size(180%,auto);
+		.size(200%,auto);
 		position: relative;
-		left: -15%;
+		left: 0;
 		top: 0;
 	}
 	.a-bot-img,.b-bot-img,.c-bot-img,.d-bot-img{
@@ -668,19 +670,25 @@ body{
 	display: none;
 }
 
-.fail-modal{
+.fail-modal, .winner-modal{
+	width: 216px;
 	position: absolute;
 	left: 50%;
-	top: 50%;
+	top: 40%;
 	background: white;
 	.border-radius(2px);
 	z-index: 9999;
 	padding: 10px 20px 20px 20px;
 	text-align: center;
-	margin-left: -92px;
+	margin-left: -108px;
 	margin-top: -67px;
 	.box-shadow(0 0px 8px rgba(0, 0, 0, 1));
 	display: none;
+	b{
+		display: inline-block;
+		margin-bottom: 10px;
+		font-size: 14px;
+	}
 	button{
 		border: none;
 		color: white;
@@ -695,7 +703,7 @@ body{
 	}
 }
 
-.winner-modal{
+/*.winner-modal{
 	position: absolute;
 	left: 50%;
 	top: 20%;
@@ -732,7 +740,7 @@ body{
 	hr{
 		margin: 0;
 	}
-}
+}*/
 
 .col-xs6{
 	.size(100%,75px);
@@ -844,9 +852,62 @@ body{
 	}
 }
 
+#touch-stop-overlay{
+	.size(100%);
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: transparent;
+	z-index: 9999;
+	display: none;
+}
 
+#instructed-ovrly{
+	.size(100%);
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: black;
+	background: rgba(0, 0, 0, .9);
+	z-index: 998;
+	.container-bx{
+		.size(100%);
+		img{
+			.size(70%, auto);
+			max-width: 300px;
+			border: 1px solid white;
+			margin: 0 auto;
+			display: block;
+			.border-radius(1px);
+			.box-shadow(0 0px 8px rgba(0, 0, 0, 1));
+		}
+		p{
+			.size(70%, auto);
+			max-width: 250px;
+			color: white;
+			text-align: center;
+			margin: 10px auto;
+			color: #eee;
+			font-size: 13px;
+			em{
+				padding-top: 10px;
+				display: inline-block;
+			}
+		}
+		.jugamos-title{
+			img{
+				max-width: 120px;
+				border: none;
+				margin: 10px auto;
+				.box-shadow(none);
+			}
+		}
+	}
+}
 
-
+#audio-intro, #audio-loop{
+	display: none;
+}
 
 
 
