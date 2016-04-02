@@ -226,15 +226,33 @@ if(isset($_POST['listadoSimple'])){
 			}
 
 			foreach($rows as $row)
-			{			
-			
-				$respuesta=$respuesta.'<div class="col s12 m6 l4 paq-list-bx">
-					<div class="paq-content-bx">
+			{	$query_tipoServicio="SELECT id_tipoServicio FROM planes_tipoServicios WHERE id_plan=".$row["id_plan"];
+				$result_tipoServicio = $mysqli->query($query_tipoServicio);
+				$filas=array();
+				$respuesta=$respuesta.'
+					<div class="col s12 m6 l4 paq-list-bx">
+						<div class="paq-content-bx">
+							<div class="comparando-icons">';
+				while($fila = $result_tipoServicio->fetch_array())
+				{
+					//array_push($filas, $fila);
+					if($fila["id_tipoServicio"]==1){
+						$respuesta=$respuesta.'<i class="material-icons">phone_android</i>';
+					}
+					if($fila["id_tipoServicio"]==2){
+						$respuesta=$respuesta.'<i class="material-icons">phone</i>';
+					}
+					if($fila["id_tipoServicio"]==3){
+						$respuesta=$respuesta.'<i class="material-icons">wifi</i>';
+					}
+					if($fila["id_tipoServicio"]==4){
+						$respuesta=$respuesta.'<i class="material-icons">tv</i>';
+					}
+				}
+
+				$respuesta=$respuesta.'</div>
 						<div class="brand-label" style="background-color:'.$row["empresa_color"].'">'.$row["empresa"].'</div>
 						';
-				if($row["sugerido"]==1){
-					$respuesta=$respuesta."SUGERIDO";
-				}
 				$respuesta=$respuesta.'
 						<div class="paq-bx">
 							<h4 class="truncate">'.$row["nombre"].'</h4>
@@ -296,6 +314,9 @@ if(isset($_POST['listadoSimple'])){
 							}
 						}else{
 							$respuesta=$respuesta.'$'.$row["precio"];
+						}
+						if($row["sugerido"]==1){
+							$respuesta=$respuesta."<p><span style='color: #FFF'>Sugerencia Elige Fácil</span></p>";
 						}
 						$respuesta=$respuesta.'</div>
 						<div id="botonesPlan" class="more-actions-bx">
@@ -897,7 +918,7 @@ if(isset($_POST['verDetalles'])){
 }//if(isset($_POST['verDetalles']))
 
 if (isset($_POST['filtros'])) {
-//FILTRAR CON LOS FILTROS
+//CARGAR PLANES CON LOS FILTROS
 	$query_filtros="SELECT 
 			DISTINCT(P.id_plan),
 		 	P.nombre, 
@@ -1134,67 +1155,86 @@ if (isset($_POST['filtros'])) {
 		}
 		*/		
 	
-		$respuesta=$respuesta.'<div class="col s12 m6 l4 paq-list-bx">
-			<div class="paq-content-bx">
-				<div class="brand-label" style="background-color:'.$row["empresa_color"].'">'.$row["empresa"].'</div>
-				';
-		if($row["sugerido"]==1){
-			$respuesta=$respuesta."SUGERIDO";
-		}
-		
-		$respuesta=$respuesta.'
-				<div class="paq-bx">
-					<h4 class="truncate">'.$row["nombre"].'</h4>
-					<ul>';
+		$query_tipoServicio="SELECT id_tipoServicio FROM planes_tipoServicios WHERE id_plan=".$row["id_plan"];
+				$result_tipoServicio = $mysqli->query($query_tipoServicio);
+				$filas=array();
+				$respuesta=$respuesta.'
+					<div class="col s12 m6 l4 paq-list-bx">
+						<div class="paq-content-bx">
+							<div class="comparando-icons">';
+				while($fila = $result_tipoServicio->fetch_array())
+				{
+					//array_push($filas, $fila);
+					if($fila["id_tipoServicio"]==1){
+						$respuesta=$respuesta.'<i class="material-icons">phone_android</i>';
+					}
+					if($fila["id_tipoServicio"]==2){
+						$respuesta=$respuesta.'<i class="material-icons">phone</i>';
+					}
+					if($fila["id_tipoServicio"]==3){
+						$respuesta=$respuesta.'<i class="material-icons">wifi</i>';
+					}
+					if($fila["id_tipoServicio"]==4){
+						$respuesta=$respuesta.'<i class="material-icons">tv</i>';
+					}
+				}
+
+				$respuesta=$respuesta.'</div>
+						<div class="brand-label" style="background-color:'.$row["empresa_color"].'">'.$row["empresa"].'</div>
+						';
+				$respuesta=$respuesta.'
+						<div class="paq-bx">
+							<h4 class="truncate">'.$row["nombre"].'</h4>
+							<ul>';
 
 
-							switch ($row['tipoDato1']) {
-							    case "texto":
-									$respuesta=$respuesta.'<li>'.$row["dato_principal_1"].'</li>';
-							        break;
-							    case "integer":
-									$respuesta=$respuesta.'<li>'.$row["dato_principal_1"].' '.$row["dato1"].'</li>';
-							        break;
-							    case "boolean":
-									$respuesta=$respuesta.'<li>'.$row["dato1"].'</li>';
-							        break;
-							}
-							switch ($row['tipoDato2']) {
-							    case "texto":
-									$respuesta=$respuesta.'<li>'.$row["dato_principal_2"].'</li>';
-							        break;
-							    case "integer":
-									$respuesta=$respuesta.'<li>'.$row["dato_principal_2"].' '.$row["dato2"].'</li>';
-							        break;
-							    case "boolean":
-									$respuesta=$respuesta.'<li>'.$row["dato2"].'</li>';
-							        break;
-							}
-							switch ($row['tipoDato3']) {
-							    case "texto":
-									$respuesta=$respuesta.'<li>'.$row["dato_principal_3"].'</li>';
-							        break;
-							    case "integer":
-									$respuesta=$respuesta.'<li>'.$row["dato_principal_3"].' '.$row["dato3"].'</li>';
-							        break;
-							    case "boolean":
-									$respuesta=$respuesta.'<li>'.$row["dato3"].'</li>';
-							        break;
-							}
-							switch ($row['tipoDato4']) {
-							    case "texto":
-									$respuesta=$respuesta.'<li>'.$row["dato_principal_4"].'</li>';
-							        break;
-							    case "integer":
-									$respuesta=$respuesta.'<li>'.$row["dato_principal_4"].' '.$row["dato4"].'</li>';
-							        break;
-							    case "boolean":
-									$respuesta=$respuesta.'<li>'.$row["dato4"].'</li>';
-							        break;
-							}
-					$respuesta=$respuesta.'</ul>
-				</div>
-				<div class="paq-price">';
+									switch ($row['tipoDato1']) {
+									    case "texto":
+											$respuesta=$respuesta.'<li>'.$row["dato_principal_1"].'</li>';
+									        break;
+									    case "integer":
+											$respuesta=$respuesta.'<li>'.$row["dato_principal_1"].' '.$row["dato1"].'</li>';
+									        break;
+									    case "boolean":
+											$respuesta=$respuesta.'<li>'.$row["dato1"].'</li>';
+									        break;
+									}
+									switch ($row['tipoDato2']) {
+									    case "texto":
+											$respuesta=$respuesta.'<li>'.$row["dato_principal_2"].'</li>';
+									        break;
+									    case "integer":
+											$respuesta=$respuesta.'<li>'.$row["dato_principal_2"].' '.$row["dato2"].'</li>';
+									        break;
+									    case "boolean":
+											$respuesta=$respuesta.'<li>'.$row["dato2"].'</li>';
+									        break;
+									}
+									switch ($row['tipoDato3']) {
+									    case "texto":
+											$respuesta=$respuesta.'<li>'.$row["dato_principal_3"].'</li>';
+									        break;
+									    case "integer":
+											$respuesta=$respuesta.'<li>'.$row["dato_principal_3"].' '.$row["dato3"].'</li>';
+									        break;
+									    case "boolean":
+											$respuesta=$respuesta.'<li>'.$row["dato3"].'</li>';
+									        break;
+									}
+									switch ($row['tipoDato4']) {
+									    case "texto":
+											$respuesta=$respuesta.'<li>'.$row["dato_principal_4"].'</li>';
+									        break;
+									    case "integer":
+											$respuesta=$respuesta.'<li>'.$row["dato_principal_4"].' '.$row["dato4"].'</li>';
+									        break;
+									    case "boolean":
+											$respuesta=$respuesta.'<li>'.$row["dato4"].'</li>';
+									        break;
+									}
+							$respuesta=$respuesta.'</ul>
+						</div>
+						<div class="paq-price">';
 						if($row['id_tipoDato_principal_1']==2 || $row['id_tipoDato_principal_2']==2 || $row['id_tipoDato_principal_3']==2 || $row['id_tipoDato_principal_4']==2){
 							if ($row["precio"]==0){
 								$respuesta=$respuesta.'Sin Recarga Mínima';
@@ -1204,6 +1244,9 @@ if (isset($_POST['filtros'])) {
 						}else{
 							$respuesta=$respuesta.'$'.$row["precio"];
 						}
+						if($row["sugerido"]==1){
+							$respuesta=$respuesta."<p><span style='color: #FFF'>Sugerencia Elige Fácil</span></p>";
+						}
 						$respuesta=$respuesta.'</div>
 						<div id="botonesPlan" class="more-actions-bx">
 							<a id="verPlan" href="#deatilsModal" class="modal-trigger waves-effect" data-value="'.$row["id_plan"].'">Ver detalles</a>
@@ -1211,7 +1254,7 @@ if (isset($_POST['filtros'])) {
 							<div class="clearfix"></div>
 						</div>
 					</div>
-				</div>';		
+				</div>';	
 			
 	}//foreach
 echo $respuesta;
@@ -1311,7 +1354,7 @@ if(isset($_POST['CompararPlanes'])){
 		while($row = $result->fetch_array())
 		{
 			//array_push($rows, $row);
-			$respuesta='<div class="item">
+			$respuesta='<div class="item" id="'.$row["id_plan"].'">
 						<div class="col s12 paq-list-bx compare-status">
 							<div class="paq-content-bx">
 								<div class="brand-label" style="background-color:'.$row["empresa_color"].'">'.$row["empresa"].'</div>
@@ -1368,6 +1411,7 @@ if(isset($_POST['CompararPlanes'])){
 								<div class="more-actions-bx">
 									<a href="#!" class="grey"></a>
 									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" onclick="eliminarDelComparador('.$row["id_plan"].')" class="compare-delete">Eliminar</a>
 									<div class="clearfix"></div>
 								</div>
 							</div>

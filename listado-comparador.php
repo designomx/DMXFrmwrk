@@ -655,6 +655,49 @@
 				}
 			})
 
+			function eliminarDelComparador(id_plan){
+			//Funcion para eliminar planes dentro de la vista del comparador
+				jQuery("#"+id_plan).remove();
+				var id_plan="plan_"+id_plan;
+				var VaciarComparador='<i class="material-icons">done</i>';
+					$("."+id_plan).html(VaciarComparador);
+					$( "#" + id_plan ).removeClass( "slctd-plan" );
+					$( "." + id_plan ).removeClass( "span-bx-selected" );
+					$( "." + id_plan ).removeClass( "slctd-plan" );
+					$( "." + id_plan ).removeClass( id_plan );
+				if($(".item").length>1){
+					$("#owl-demo").data('owlCarousel').destroy();
+					if($(".item").length==2){
+						var primero=2,
+							segundo=2,
+							tercero=2
+					}
+					if($(".item").length>2){
+						var primero=3,
+							segundo=3,
+							tercero=2
+					}
+					$("#owl-demo").owlCarousel({
+			  		  	items : primero,
+			  		  	itemsDesktop : [980,segundo],
+			  		  	itemsDesktopSmall : [980,tercero],
+			  		  	itemsTablet: [768,1],
+			  			navigation: true,
+			  			mouseDrag: false,
+			  			touchDrag: false,
+			  			navigationText: [
+			  			  "<i class='material-icons'>navigate_before</i>",
+			  			  "<i class='material-icons'>navigate_next</i>"
+			  			  ],
+			  			beforeInit : function(elem){
+			  			  //Parameter elem pointing to $("#owl-demo")
+			  			}
+					});
+				}else{
+					jQuery( ".close-modal-btn" ).trigger( "click" );
+				}		
+			}
+
 		//$.noConflict();
 		jQuery(function() {
 	  	
@@ -688,6 +731,13 @@
 	  	function CargarPlanesConFiltros(){
 	  		//alert("Comparar!");
 				//Funcion para revisar los SELECT del selector principal
+				var target = document.createElement("div");
+				document.body.appendChild(target);
+				var spinner = new Spinner(opts).spin(target);
+				var overlay = iosOverlay({
+					text: "Cargando",
+					spinner: spinner
+				});
 				var celular=0,internet=0,telefono=0,television=0,streaming=0;
 				if(jQuery("#celular").hasClass( "active-selection" )){
 					//alert("celular");
@@ -775,6 +825,16 @@
 						botones();
 						VaciarComparador()
 						jQuery('.modal-trigger').leanModal();
+						window.setTimeout(function() {
+							overlay.update({
+								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								text: "Listo"
+							});
+						}, 1000);
+
+						window.setTimeout(function() {
+							overlay.hide();
+						}, 2000);
 				    })
 				}else{
 					var getFiltros= JSON.parse(sessionStorage.getItem("filtros"));
@@ -868,6 +928,16 @@
 						botones();
 						VaciarComparador()
 						jQuery('.modal-trigger').leanModal();
+						window.setTimeout(function() {
+							overlay.update({
+								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								text: "Listo"
+							});
+						}, 1000);
+
+						window.setTimeout(function() {
+							overlay.hide();
+						}, 2000);
 				    })
 				}
 	  	}
@@ -925,12 +995,12 @@
 			//alert($( "#selectEstado" ).val());
 			sessionStorage.setItem("estado",$( "#selectEstado" ).val());	
 			$.when(
-				CargarFiltrosCheckEmpresas(),
-				CargarFiltrosCheck(),
-				CargarFiltrosSliders()
+				CargarPlanes()
 			).then(function(){
 			   //alert('All AJAX Methods Have Completed!');
-			   CargarPlanes();
+			   	CargarFiltrosCheckEmpresas(),
+				CargarFiltrosCheck(),
+				CargarFiltrosSliders()
 			});
 		})
 
@@ -1019,6 +1089,14 @@
 				var orden="ASC";
 			}
 			//console.log(orden);
+			
+			var target = document.createElement("div");
+			document.body.appendChild(target);
+			var spinner = new Spinner(opts).spin(target);
+			var overlay = iosOverlay({
+				text: "Cargando",
+				spinner: spinner
+			});
 			if(sessionStorage.getItem("ServicioStreaming")==1){
 				//alert("Streaming");
 				var data={
@@ -1041,13 +1119,27 @@
 			jQuery.ajax({
 				type: "POST",
 				url: "listado.php",
-				data: data
+				data: data,
+				async : false
+
 			})
 		    .done(function(data){
 				jQuery("#planes").html(data);
 				botones();
 				VaciarComparador()
 				jQuery('.modal-trigger').leanModal();
+
+				window.setTimeout(function() {
+					overlay.update({
+						icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+						text: "Listo"
+					});
+				}, 1000);
+
+				window.setTimeout(function() {
+					overlay.hide();
+				}, 2000);
+
 		    })
 		    .fail(function(data){
 		    	console.log(data);
@@ -1616,6 +1708,24 @@
 				    });
 				}
 			}
+			var opts = {
+				lines: 9,
+				length: 12,
+				width: 8,
+				radius: 18,
+				corners: 1,
+				rotate: 0,
+				direction: 1,
+				color: '#ffffff',
+				speed: 1.2,
+				trail: 60,
+				shadow: false,
+				hwaccel: false,
+				className: 'loadingSpinner',
+				zIndex: 2e9,
+				top: '40%',
+				left: '50%'
+			};
 		</script>
 	</body>
 

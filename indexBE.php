@@ -98,7 +98,7 @@
 	                      		echo $src[0];
 	                    	?>
 	                    );">
-							<h1><a href="<?php echo "http://www.eligefacil.com/blog/?p=".get_the_ID(); ?>"><?php the_title();?></a></h1>
+							<h1><a href="<?php echo "blog-post.php?p=".get_the_ID(); ?>"><?php the_title();?></a></h1>
 							<a class="enter-post" href="<?php echo "blog/?p=".get_the_ID(); ?>"><i class="fa fa-angle-right"></i></a>
 						</div>
 						<p class="abstractr-post">
