@@ -127,9 +127,9 @@
 			<div class="footer-bx">
 				<ul>
 					<li>
-						<a href="#!">Quiénes somos</a>/</li>
+						<a href="quienes-somos.html">Quiénes somos</a>/</li>
 					<li>
-						<a href="#!">Legales</a>/</li>
+						<a href="pdf/legal1.pdf" target="_blank">Legales</a>/</li>
 					<li>
 						<a href="#!">Anúnciate con nosotros</a>/</li>
 					<li>

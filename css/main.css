@@ -2331,3 +2331,24 @@ footer.stickFoot {
   border-radius: 50%;
   background-clip: padding-box;
 }
+.nocriteria {
+  width: 80%;
+  text-align: center;
+  color: gray;
+  margin: 0 auto;
+  font-size: 32px;
+  padding: 50px 20px;
+}
+@media only screen and (max-width: 768px) {
+  .nocriteria {
+    width: 100%;
+    font-size: 32px;
+    padding: 20px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .nocriteria {
+    width: 100%;
+    font-size: 22px;
+  }
+}

@@ -173,7 +173,7 @@
 			<div class="clearfix"></div>
 			<div class="footer-bx">
 				<ul>
-					<li><a href="#!">Quiénes somos</a> / </li>
+					<li><a href="quienes-somos.html">Quiénes somos</a> / </li>
 					<li><a href="#!">Mapa del sitio</a> / </li>
 					<li><a href="#!">Aviso de privacidad</a> / </li>
 					<li><a href="#!">Anúnciate con nosotros</a> / </li>

@@ -318,7 +318,7 @@
 			<div class="footer-bx">
 				<ul>
 					<li>
-						<a href="#!">Quiénes somos</a>/</li>
+						<a href="quienes-somos.html">Quiénes somos</a>/</li>
 					<li>
 						<a href="#!">Mapa del sitio</a>/</li>
 					<li>
