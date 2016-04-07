@@ -36,15 +36,15 @@
 	<body>
 		<nav id="main-nav-bar">
 			<div class="nav-wrapper" class="fix-ios-shadow">
-				<a href="indexBE.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
+				<a href="index.html" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 				<ul class="right hide-on-med-and-down">
 					<li>
-						<a id="descubreBTN" href="listado-comparador.php" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
+						<a href="listado-comparador.html" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="indexBE.php#blog-timeline" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
+						<a href="#blog-timeline" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
@@ -61,10 +61,10 @@
 		</nav>
 		<ul class="side-nav" id="mobile-demo">
 			<li>
-				<a id="descubreBTN" href="listado-comparador.php"><i class="fa fa-search left"></i> Descubre</a>
+				<a href="listado-comparador.html"><i class="fa fa-search left"></i> Descubre</a>
 			</li>
 			<li>
-				<a href="indexBE.php#blog-module"><i class="fa fa-newspaper-o left"></i> Entérate</a>
+				<a href="index.html#blog-timeline"><i class="fa fa-newspaper-o left"></i> Entérate</a>
 			</li>
 			<li>
 				<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
@@ -78,58 +78,86 @@
 		</ul>
 		<div class="clearfix"></div>
 		<br />
-		<?php
-				require('../blog/wp-blog-header.php');
-				if (isset($_GET["p"])){
-					$post_ = get_post( $_GET["p"] ); 
-					$title = $post_->post_title;
-					$excerpt = $post_->post_excerpt;
-					
-					
-				}
-				
-		?>
 		<div id="contact-module" class="row grey lighten-5">
-			<div class="post-page-bx row">
-				<h1><?php echo $title;?></h1>
-				<?php
-					if ( has_post_thumbnail() ) {
-					    //the_post_thumbnail();
-					    $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 5600,1000 ), false, '' );
-						echo '<img class="responsive-img" src="'.$src[0].'">';
-
-					} 
-				?>
-				<!--<img class="responsive-img" src="images/post-hero.jpg">-->
-
-				<div class="social-btn-row">
-					<a href="https://twitter.com/share" class="twitter-share-button" data-via="toothmemx">Tweet</a>
-					<script>
-						!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-					</script>
-					<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
+			<div class="contacto-form-bx row">
+				<div class="col s12 form-head-bx">
+					<h4>Contacto:</h4>
+					<p>Llamanos o escríbenos si tienes cualquier duda o comentario:</p>
+					<hr />
 				</div>
-				<?php
-					echo "<p class='responsive-img'>";
-					$contenido=$post_->post_content;
-					echo $contenido;
-					echo "</p>";
-				?>
-				
-				<div class="backblog-button-bx">
-					<a href="indexBE.php#blog-module" class="z-depth-1 hoverable"><i class="fa fa-angle-double-left"></i> Regresar</a>
+				<div class="row clear-pad-marg">
+					<div class="col s12 m6">
+						<p class="center">Teléfono:
+							<a href="tel:+1525510156533">+1 (52) 55.10.15.65.33</a>
+						</p>
+					</div>
+					<div class="col s12 m6">
+						<p class="center">Email:
+							<a href="mailto:contacto@eligefacil.com">contacto@eligefacil.com</a>
+						</p>
+					</div>
+					<div class="clearfix"></div>
+					<p class="down-arrw"><i class="material-icons">keyboard_arrow_down</i></p>
 				</div>
-				
-				<div class="clearfix"></div>
-				<br />
+				<div class="col s12 form-head-bx">
+					<p>
+						<i>Llena el siguiente formulario para ponerte en contacto con nosotros:</i>
+					</p>
+					<hr />
+				</div>
+				<form class="col s12">
+					<div class="row">
+						<div class="input-field col s12 m6 fix-input-mt">
+							<input id="first_name" type="text" class="validate">
+							<label for="first_name">Nombre</label>
+						</div>
+						<div class="input-field col s12 m6 fix-input-mt">
+							<input id="email" type="email" class="validate">
+							<label for="email">Email</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<select class="browser-default">
+								<option value="1">Elige tu estado:</option>
+								<option value="2">Option 2</option>
+								<option value="3">Option 3</option>
+								<option value="4">Option 4</option>
+								<option value="5">Option 5</option>
+								<option value="6">Option 6</option>
+								<option value="7">Option 7</option>
+								<option value="8">Option 8</option>
+							</select>
+						</div>
+						<div class="input-field col s12 m6">
+							<select class="browser-default">
+								<option value="1">Tema:</option>
+								<option value="2">Sugerencia</option>
+								<option value="3">Queja</option>
+								<option value="4">Comentario</option>
+								<option value="5">Otro</option>
+							</select>
+						</div>
+						<div class="input-field col s12 fix-input-mt">
+							<textarea id="textarea1" class="materialize-textarea"></textarea>
+							<label for="textarea1">Comentario:</label>
+						</div>
+					</div>
+					<div class="row">
+						<a class="col s6 m4 waves-effect btn orange accent-4 right send-form-btn">Enviar</a>
+					</div>
+				</form>
 			</div>
 			<div class="clearfix"></div>
 			<div class="footer-bx">
 				<ul>
-					<li><a href="quienes-somos.html">Quiénes somos</a> / </li>
-					<li><a href="pdf/legal1.pdf" target="_blank">Legales</a> / </li>
-					<li><a href="#!">Anúnciate con nosotros</a> / </li>
-					<li><a href="#!">Ayuda</a></li>
+					<li>
+						<a href="#!">Quiénes somos</a>/</li>
+					<li>
+						<a href="#!">Legales</a>/</li>
+					<li>
+						<a href="#!">Anúnciate con nosotros</a>/</li>
+					<li>
+						<a href="#!">Ayuda</a>
+					</li>
 				</ul>
 				<p class="copy-foot">Todos los derechos reservados 2016®</p>
 			</div>
@@ -211,30 +239,6 @@
 					  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.5&appId=327135760765560";
 					  fjs.parentNode.insertBefore(js, fjs);
 					}(document, 'script', 'facebook-jssdk'));
-		</script>
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		
-		  ga('create', 'UA-70371933-1', 'auto');
-		  ga('send', 'pageview');
-		
-		</script>
-		<script type="text/javascript">
-			$( "#descubreBTN" ).click(function() {
-				if (sessionStorage.getItem("estado") === null) {
-					return false;
-				}else{
-					if((sessionStorage.getItem("ServicioCelular") === null || sessionStorage.getItem("ServicioCelular")==0) && (sessionStorage.getItem("ServicioInternet") === null || sessionStorage.getItem("ServicioInternet")==0) && (sessionStorage.getItem("ServicioTelefono") === null || sessionStorage.getItem("ServicioTelefono")==0) && (sessionStorage.getItem("ServicioTelevision") === null || sessionStorage.getItem("ServicioTelevision")==0) && (sessionStorage.getItem("ServicioStreaming") === null || sessionStorage.getItem("ServicioStreaming")==0)   ){
-								return false;
-					}else{
-						
-					}
-				}
-
-			});
 		</script>
 	</body>
 

@@ -12,29 +12,31 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 }
 */
 
+require('dbconn.php');
 
-	session_start();
-	$_SESSION['Servicios'] = array();
-	if(isset($_POST['estado'])){
-		$_SESSION['estado']=$_POST['estado'];
-	}
-	$Servicios = array();
-	if($_POST['celular']==1){
-		//echo 'Query para planes celulares '.$ip;
-		array_push($_SESSION['Servicios'], "1");
-	}
-	if($_POST['telefono']==1){
-		//echo 'Query para planes celulares '.$ip;
-		array_push($_SESSION['Servicios'], "2");
-	}
-	if($_POST['internet']==1){
-		//echo 'Query para planes celulares '.$ip;
-		array_push($_SESSION['Servicios'], "3");
-	}
-	if($_POST['television']==1){
-		//echo 'Query para planes celulares '.$ip;
-		array_push($_SESSION['Servicios'], "4");
-	}
+
+session_start();
+$_SESSION['Servicios'] = array();
+if(isset($_POST['estado'])){
+	$_SESSION['estado']=$_POST['estado'];
+}
+$Servicios = array();
+if($_POST['celular']==1){
+	//echo 'Query para planes celulares '.$ip;
+	array_push($_SESSION['Servicios'], "1");
+}
+if($_POST['telefono']==1){
+	//echo 'Query para planes celulares '.$ip;
+	array_push($_SESSION['Servicios'], "2");
+}
+if($_POST['internet']==1){
+	//echo 'Query para planes celulares '.$ip;
+	array_push($_SESSION['Servicios'], "3");
+}
+if($_POST['television']==1){
+	//echo 'Query para planes celulares '.$ip;
+	array_push($_SESSION['Servicios'], "4");
+}
 
 
 if(isset($_POST['VerificarServicios'])){
@@ -124,14 +126,6 @@ if(isset($_POST['listadoSimple'])){
 				  	 ");
 			//echo $query;
 
-			$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
-			$mysqli->set_charset("utf8");	
-
-			/* verificar la conexión */
-			if (mysqli_connect_errno()) {
-			    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-			    exit();
-			}
 
 			$result = $mysqli->query($query);
 			$_SESSION['numero_planes']=mysqli_num_rows($result);	
@@ -224,13 +218,13 @@ if(isset($_POST['listadoSimple'])){
 			if($_POST["orden"]=="ASC"){
 				usort($rows,'invenAscSort');
 			}
-
+			$i=0;
 			foreach($rows as $row)
 			{	$query_tipoServicio="SELECT id_tipoServicio FROM planes_tipoServicios WHERE id_plan=".$row["id_plan"];
 				$result_tipoServicio = $mysqli->query($query_tipoServicio);
 				$filas=array();
 				$respuesta=$respuesta.'
-					<div class="col s12 m6 l4 paq-list-bx">
+					<div id="cargarmas'.$i.'" class="col s12 m6 l4 paq-list-bx cargarmas">
 						<div class="paq-content-bx">
 							<div class="comparando-icons">';
 				while($fila = $result_tipoServicio->fetch_array())
@@ -303,6 +297,24 @@ if(isset($_POST['listadoSimple'])){
 											$respuesta=$respuesta.'<li>'.$row["dato4"].'</li>';
 									        break;
 									}
+									if(isset($_POST["celular"])){
+										if($_POST["celular"]==1){
+											$query_redesSociales="SELECT PRS.id_redSocial,
+												RS.nombre
+												FROM planes_redesSociales PRS
+												INNER JOIN redesSociales RS ON PRS.id_redSocial=RS.id_redSocial 
+												WHERE PRS.id_plan=".$row["id_plan"];
+											$result_redesSociales = $mysqli->query($query_redesSociales);
+											$numero_filasRS = mysqli_num_rows($result_redesSociales);
+											if($numero_filasRS>0){
+												$respuesta=$respuesta.'<li>Redes Sociales</li>';
+												while($rowRedSocial = $result_redesSociales->fetch_array())
+												{
+													$respuesta=$respuesta.'<li>('.$rowRedSocial["nombre"].')</li>';
+												} 
+											}
+										}
+									}
 							$respuesta=$respuesta.'</ul>
 						</div>
 						<div class="paq-price">';
@@ -326,7 +338,7 @@ if(isset($_POST['listadoSimple'])){
 						</div>
 					</div>
 				</div>';	
-					
+			$i+=1;	
 			}//foreach
 
 		}//$_POST['CargarPlanes']
@@ -348,14 +360,7 @@ if(isset($_POST['listadoSimple'])){
 								AND C.id_estado=".$_SESSION['estado'].") 
 							AND tipo='integer'");
 //echo $query;
-			$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
-			$mysqli->set_charset("utf8");	
 
-			/* verificar la conexión */
-			if (mysqli_connect_errno()) {
-			    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-			    exit();
-			}
 
 			$result = $mysqli->query($query);
 
@@ -554,16 +559,8 @@ if(isset($_POST['listadoSimple'])){
 									WHERE PTS.id_tipoServicio IN (".implode(', ', $_SESSION['Servicios']).") 
 									AND PTS.id_plan NOT IN(SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio NOT IN (".implode(', ', $_SESSION['Servicios']).")) 
 									AND C.id_estado=".$_SESSION['estado'].") 
-								AND tipo='boolean' ORDER BY orden ASC");
+								AND tipo='boolean' ORDER BY orden ASC");	
 
-			$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
-			$mysqli->set_charset("utf8");	
-
-			/* verificar la conexión */
-			if (mysqli_connect_errno()) {
-			    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-			    exit();
-			}
 
 			$result = $mysqli->query($query);
 
@@ -616,7 +613,12 @@ if(isset($_POST['listadoSimple'])){
 						$i+=1;
 				}
 			}//END FOREACH
-
+			if(isset($_POST['CargarRedes'])){
+				echo '	<p class="truncate">
+							<input type="checkbox" onchange="CargarPlanesConFiltros();" id="checkboxRedes" />
+							<label for="checkboxRedes">Redes Sociales</label>
+						</p>';
+			}
 		}//END if(isset($_POST['CargarFiltrosCheck']))
 
 		if(isset($_POST['CargarFiltrosCheckCelulares'])){
@@ -637,15 +639,6 @@ if(isset($_POST['listadoSimple'])){
 									AND PTS.id_plan NOT IN(SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio NOT IN (".implode(', ', $_SESSION['Servicios']).")) 
 									AND C.id_estado=".$_SESSION['estado'].") 
 								AND tipo='boolean' ORDER BY orden ASC");
-
-			$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
-			$mysqli->set_charset("utf8");	
-
-			/* verificar la conexión */
-			if (mysqli_connect_errno()) {
-			    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-			    exit();
-			}
 
 			$result = $mysqli->query($query);
 
@@ -745,14 +738,6 @@ if(isset($_POST['listadoSimple'])){
 				  	");
 			//echo $query;
 
-			$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
-			$mysqli->set_charset("utf8");	
-
-			/* verificar la conexión */
-			if (mysqli_connect_errno()) {
-			    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-			    exit();
-			}
 
 			$result = $mysqli->query($query);
 
@@ -791,8 +776,6 @@ if(isset($_POST['listadoSimple'])){
 		/* liberar la serie de resultados */
 		$result->free();
 
-		/* cerrar la conexión */
-		$mysqli->close();
 	}//ERROR
 	echo $respuesta;
 }
@@ -833,13 +816,6 @@ if(isset($_POST['verDetalles'])){
 	  	LEFT JOIN tipoDatosServicios TDS4 ON P.id_tipoDato_principal_4 = TDS4.id_tipoDato 
 	  	WHERE P.id_plan=".$_POST['id_plan']);
 
-	  	$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
-		$mysqli->set_charset("utf8");	
-		/* verificar la conexión */
-		if (mysqli_connect_errno()) {
-		    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-		    exit();
-		}
 
 		$result = $mysqli->query($query);
 
@@ -901,19 +877,29 @@ if(isset($_POST['verDetalles'])){
 				        break;
 				}
 				$respuesta=$respuesta.'
-				</div>
+				</div>';
+				$query_redesSociales="SELECT PRS.id_redSocial,
+					RS.nombre
+					FROM planes_redesSociales PRS
+					INNER JOIN redesSociales RS ON PRS.id_redSocial=RS.id_redSocial 
+					WHERE PRS.id_plan=".$row["id_plan"];
+				$result_redesSociales = $mysqli->query($query_redesSociales);
+				$numero_filasRS = mysqli_num_rows($result_redesSociales);
+				if($numero_filasRS>0){
+					$respuesta=$respuesta.'<h5>Redes Sociales</h5>';
+					while($rowRedSocial = $result_redesSociales->fetch_array())
+					{
+						$respuesta=$respuesta.'<li>'.$rowRedSocial["nombre"].'</li>';
+					} 
+				}
+				$respuesta=$respuesta.'						
 				<h5>Opciones y características adicionales</h5>
-				<p>'.$row['mas_datos'];
+				<p>'.$row['mas_datos'].'</p>';
 		}
 		echo $respuesta;
 
 		/* liberar la serie de resultados */
 		$result->free();
-
-		/* cerrar la conexión */
-		$mysqli->close();
-
-
   	}
 }//if(isset($_POST['verDetalles']))
 
@@ -943,7 +929,13 @@ if (isset($_POST['filtros'])) {
 			TDS4.label as dato4,
 			TDS4.tipo as tipoDato4
 		  	FROM planes P
-		  	INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
+		  	INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA ";
+		  	if (isset($_POST["redesSociales"])){
+		  		if($_POST["redesSociales"] == 1){
+		  			$query_filtros=$query_filtros."INNER JOIN planes_redesSociales PRS ON P.id_plan=PRS.id_plan ";
+		  		}
+		  	}
+		  	$query_filtros=$query_filtros."
 		  	INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
 		  	INNER JOIN planes_tipoServicios PT ON P.ID_PLAN=PT.ID_PLAN
 		  	LEFT JOIN tipoDatosServicios TDS1 ON P.id_tipoDato_principal_1 = TDS1.id_tipoDato 
@@ -1002,14 +994,6 @@ if (isset($_POST['filtros'])) {
     }
     $query_filtros=$query_filtros."GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios']);
   	//echo $query_filtros;
-  	$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
-	$mysqli->set_charset("utf8");	
-
-	/* verificar la conexión */
-	if (mysqli_connect_errno()) {
-	    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-	    exit();
-	}
 
 	//$result = $mysqli->query($query);
   	$result_filtros = $mysqli->query($query_filtros);
@@ -1135,9 +1119,7 @@ if (isset($_POST['filtros'])) {
 	if($_POST["orden"]=="ASC"){
 		usort($rows,'invenAscSort');
 	}
-
-
-
+	$i=0;
 	foreach($rows as $row)
 	{	
 		//print_r($row);
@@ -1159,7 +1141,7 @@ if (isset($_POST['filtros'])) {
 				$result_tipoServicio = $mysqli->query($query_tipoServicio);
 				$filas=array();
 				$respuesta=$respuesta.'
-					<div class="col s12 m6 l4 paq-list-bx">
+					<div id="cargarmas'.$i.'" class="col s12 m6 l4 paq-list-bx cargarmas">
 						<div class="paq-content-bx">
 							<div class="comparando-icons">';
 				while($fila = $result_tipoServicio->fetch_array())
@@ -1232,6 +1214,24 @@ if (isset($_POST['filtros'])) {
 											$respuesta=$respuesta.'<li>'.$row["dato4"].'</li>';
 									        break;
 									}
+									if(isset($_POST["celular"])){
+										if($_POST["celular"]==1){
+											$query_redesSociales="SELECT PRS.id_redSocial,
+												RS.nombre
+												FROM planes_redesSociales PRS
+												INNER JOIN redesSociales RS ON PRS.id_redSocial=RS.id_redSocial 
+												WHERE PRS.id_plan=".$row["id_plan"];
+											$result_redesSociales = $mysqli->query($query_redesSociales);
+											$numero_filasRS = mysqli_num_rows($result_redesSociales);
+											if($numero_filasRS>0){
+												$respuesta=$respuesta.'<li>Redes Sociales</li>';
+												while($rowRedSocial = $result_redesSociales->fetch_array())
+												{
+													$respuesta=$respuesta.'<li>('.$rowRedSocial["nombre"].')</li>';
+												} 
+											}
+										}
+									}
 							$respuesta=$respuesta.'</ul>
 						</div>
 						<div class="paq-price">';
@@ -1255,20 +1255,14 @@ if (isset($_POST['filtros'])) {
 						</div>
 					</div>
 				</div>';	
-			
+	$i+=1;
 	}//foreach
 echo $respuesta;
 }//if (isset($_POST['filtros']))
 
 if(isset($_POST['SelectDeEstados'])){
 	$query="SELECT * from estados";
-				   	    $mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593");
-
-						/* verificar la conexión */
-						if (mysqli_connect_errno()) {
-						    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-						    exit();
-						}
+				   	   
 
 						$result = $mysqli->query($query);
 						echo '<div class="input-field col s12">
@@ -1300,9 +1294,6 @@ if(isset($_POST['SelectDeEstados'])){
 						echo "</select>";
 						/* liberar la serie de resultados */
 						$result->free();
-
-						/* cerrar la conexión */
-						$mysqli->close();
 }
 
 if(isset($_POST['CompararPlanes'])){
@@ -1340,13 +1331,6 @@ if(isset($_POST['CompararPlanes'])){
 	  	LEFT JOIN tipoDatosServicios TDS4 ON P.id_tipoDato_principal_4 = TDS4.id_tipoDato 
 	  	WHERE P.id_plan=".$_POST['id_plan']);
 
-	  	$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
-		$mysqli->set_charset("utf8");	
-		/* verificar la conexión */
-		if (mysqli_connect_errno()) {
-		    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-		    exit();
-		}
 
 		$result = $mysqli->query($query);
 
@@ -1405,6 +1389,20 @@ if(isset($_POST['CompararPlanes'])){
 												$respuesta=$respuesta.'<li>'.$row["dato4"].'</li>';
 										        break;
 										}
+										$query_redesSociales="SELECT PRS.id_redSocial,
+											RS.nombre
+											FROM planes_redesSociales PRS
+											INNER JOIN redesSociales RS ON PRS.id_redSocial=RS.id_redSocial 
+											WHERE PRS.id_plan=".$row["id_plan"];
+										$result_redesSociales = $mysqli->query($query_redesSociales);
+										$numero_filasRS = mysqli_num_rows($result_redesSociales);
+										if($numero_filasRS>0){
+											$respuesta=$respuesta.'<li>Redes Sociales</li>';
+											while($rowRedSocial = $result_redesSociales->fetch_array())
+											{
+												$respuesta=$respuesta.'<li>('.$rowRedSocial["nombre"].')</li>';
+											} 
+										}
 			$respuesta=$respuesta.'</ul>'.$row["mas_datos"].'
 								</div>
 								<div class="paq-price">$'.$row["precio"].'</div>
@@ -1423,11 +1421,6 @@ if(isset($_POST['CompararPlanes'])){
 
 		/* liberar la serie de resultados */
 		$result->free();
-
-		/* cerrar la conexión */
-		$mysqli->close();
-
-
   	}
 }
 
@@ -1447,15 +1440,6 @@ if(isset($_POST['CargarPlanesStreaming'])){
 			FROM paquetes_ott P
 			INNER JOIN empresas_ott E ON P.id_empresa=E.id_empresa
 			ORDER BY precio ".$_POST['orden'];
-
-	$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
-	$mysqli->set_charset("utf8");	
-
-	/* verificar la conexión */
-	if (mysqli_connect_errno()) {
-	    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-	    exit();
-	}
 
 	//$result = $mysqli->query($query);
   	$result = $mysqli->query($query);
@@ -1495,9 +1479,6 @@ if(isset($_POST['CargarPlanesStreaming'])){
 echo $respuesta;
 	/* liberar la serie de resultados */
 	$result->free();
-
-	/* cerrar la conexión */
-	$mysqli->close();
 }//if(isset($_POST['CargarPlanesStreaming']))
 
 
@@ -1551,9 +1532,6 @@ if(isset($_POST['CargarSliderStreaming'])){
 	/* liberar la serie de resultados */
 	$result->free();
 
-	/* cerrar la conexión */
-	$mysqli->close();
-
 }//if(isset($_POST['CargarSliderStreaming'])){
 
 if(isset($_POST['Streamingfiltros'])){
@@ -1599,14 +1577,6 @@ if(isset($_POST['Streamingfiltros'])){
     }
     $query_filtros=$query_filtros."ORDER BY P.precio ".$_POST['orden'];
   	//echo $query_filtros;
-  	$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
-	$mysqli->set_charset("utf8");	
-
-	/* verificar la conexión */
-	if (mysqli_connect_errno()) {
-	    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-	    exit();
-	}
 
 	//$result = $mysqli->query($query);
   	$result_filtros = $mysqli->query($query_filtros);
@@ -1647,23 +1617,11 @@ echo $respuesta;
 	/* liberar la serie de resultados */
 	$result_filtros->free();
 
-	/* cerrar la conexión */
-	$mysqli->close();
-
 }
 
 if(isset($_POST['CargarFiltrosCheckEmpresasStreaming'])){
 	$query=("SELECT DISTINCT(nombre) as empresa FROM paquetes_ott");
 			//echo $query;
-
-	$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
-	$mysqli->set_charset("utf8");	
-
-	/* verificar la conexión */
-	if (mysqli_connect_errno()) {
-	    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-	    exit();
-	}
 
 	$result = $mysqli->query($query);
 
@@ -1699,9 +1657,6 @@ if(isset($_POST['CargarFiltrosCheckEmpresasStreaming'])){
 	/* liberar la serie de resultados */
 	$result->free();
 
-	/* cerrar la conexión */
-	$mysqli->close();
-
 }//if(isset($_POST['CargarFiltrosCheckEmpresas']))
 
 
@@ -1723,14 +1678,6 @@ if(isset($_POST['CompararPaqueteOTT'])){
 			INNER JOIN empresas_ott E ON P.id_empresa=E.id_empresa
 			WHERE P.id_paquete=".$_POST['id_paquete']."
 			ORDER BY precio ".$_POST['orden'];
-
-	  	$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
-		$mysqli->set_charset("utf8");	
-		/* verificar la conexión */
-		if (mysqli_connect_errno()) {
-		    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-		    exit();
-		}
 
 		$result = $mysqli->query($query);
 
@@ -1767,10 +1714,6 @@ if(isset($_POST['CompararPaqueteOTT'])){
 		/* liberar la serie de resultados */
 		$result->free();
 
-		/* cerrar la conexión */
-		$mysqli->close();
-
-
   	}
 }//if(isset($_POST['CompararPaqueteOTT']))
 
@@ -1792,13 +1735,6 @@ if(isset($_POST['verDetallesStreaming'])){
 			INNER JOIN empresas_ott E ON P.id_empresa=E.id_empresa
 			WHERE P.id_paquete=".$_POST['id_paquete'];
 
-	  	$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
-		$mysqli->set_charset("utf8");	
-		/* verificar la conexión */
-		if (mysqli_connect_errno()) {
-		    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-		    exit();
-		}
 
 		$result = $mysqli->query($query);
 
@@ -1821,9 +1757,6 @@ if(isset($_POST['verDetallesStreaming'])){
 
 		/* liberar la serie de resultados */
 		$result->free();
-
-		/* cerrar la conexión */
-		$mysqli->close();
   	}
 }//if(isset($_POST['verDetalles']))
 
@@ -1833,14 +1766,6 @@ if(isset($_POST['CargarAnuncio'])){
 	$query="SELECT *
 		FROM anuncios
 		WHERE id_anuncio=".$id_anuncio;
-
-	  	$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
-		$mysqli->set_charset("utf8");	
-		/* verificar la conexión */
-		if (mysqli_connect_errno()) {
-		    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
-		    exit();
-		}
 
 		$result = $mysqli->query($query);
 
@@ -1863,8 +1788,10 @@ if(isset($_POST['CargarAnuncio'])){
 		/* liberar la serie de resultados */
 		$result->free();
 
-		/* cerrar la conexión */
-		$mysqli->close();
 }
+
+/* cerrar la conexión */
+
+$mysqli->close();
 
 ?>

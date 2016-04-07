@@ -36,7 +36,7 @@
 	<body>
 		<nav id="main-nav-bar">
 			<div class="nav-wrapper" class="fix-ios-shadow">
-				<a href="index.html" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
+				<a href="indexBE.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 				<ul class="right hide-on-med-and-down">
 					<li>
@@ -44,7 +44,7 @@
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="badges.html" class="magictime slideUpRetourn fix-pos-nav">Enterate</a>
+						<a href="#blog-module" class="magictime slideUpRetourn fix-pos-nav">Enterate</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
@@ -62,10 +62,10 @@
 						<a id="descubreBTN" href="listado-comparador.php"><i class="fa fa-search left"></i> Descubre</a>
 					</li>
 					<li>
-						<a href="badges.html"><i class="fa fa-newspaper-o left"></i> Enterate</a>
+						<a href="#blog-module"><i class="fa fa-newspaper-o left"></i> Enterate</a>
 					</li>
 					<li>
-						<a href="collapsible.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
+						<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
 					</li>
 					<li>
 						<a href="mobile.html"><i class="fa fa-twitter left"></i> Twitter</a>
@@ -99,7 +99,7 @@
 	                    	?>
 	                    );">
 							<h1><a href="<?php echo "blog-post.php?p=".get_the_ID(); ?>"><?php the_title();?></a></h1>
-							<a class="enter-post" href="<?php echo "blog/?p=".get_the_ID(); ?>"><i class="fa fa-angle-right"></i></a>
+							<a class="enter-post" href="<?php echo "blog-post.php?p=".get_the_ID(); ?>"><i class="fa fa-angle-right"></i></a>
 						</div>
 						<p class="abstractr-post">
 				    		<?php the_excerpt(); ?>
@@ -155,7 +155,7 @@
 										echo "<p>" . $trunc_ex . "</p>"; //display excerpt
 									?>
 								
-								<a href="#!"></a>
+								<a href="<?php echo "blog-post.php?p=".get_the_ID(); ?>"></a>
 							</div>
 						</div>
 					<?php endwhile; ?>
@@ -174,28 +174,28 @@
 			<div class="footer-bx">
 				<ul>
 					<li><a href="quienes-somos.html">Quiénes somos</a> / </li>
-					<li><a href="#!">Mapa del sitio</a> / </li>
-					<li><a href="#!">Aviso de privacidad</a> / </li>
+					<li><a href="pdf/legal1.pdf" target="_blank">Legales</a> / </li>
 					<li><a href="#!">Anúnciate con nosotros</a> / </li>
 					<li><a href="#!">Ayuda</a></li>
 				</ul>
 				<p class="copy-foot">Todos los derechos reservados 2016®</p>
 			</div>
 		</div>
-		<div class="home-hero">
-			<div class="hero-image active-slide" style="background-image: url('images/hero1.jpg');"></div>
-			<div class="hero-image" style="background-image: url('images/hero2.jpg');"></div>
+		<div id="slideshow" class="home-hero"> 
+		        <div class="hero-image" style="background-image: url('images/hero7.jpg');"/></div> <!-- This is the last image in the slideshow -->
+		        <div class="hero-image" style="background-image: url('images/hero6.jpg');"/></div>
+	         	<div class="hero-image" style="background-image: url('images/hero5.jpg');"/></div>
+	          	<div class="hero-image" style="background-image: url('images/hero4.jpg');"/></div>
+	           	<div class="hero-image" style="background-image: url('images/hero3.jpg');"/></div>
+	            <div class="hero-image" style="background-image: url('images/hero2.jpg');"/></div>
+		        <div class="hero-image" style="background-image: url('images/hero1.jpg');"/></div> <!-- This is the first image in the slideshow -->
 		</div>
 		<div class="slide-widget animated slideInUp">
-			<div class="home-slide-bar">
-				<ul>
-					<li class="active"></li>
-					<li></li>
-					<li></li>
-				</ul>
+			<div id="controlSlide" class="home-slide-bar">
+				
 			</div>
 			<div class="widget-wrapper">
-				<div class="discover-title">!DESCUBRE TU PLAN!</div>
+				<div class="discover-title">¡Decidir nunca fue tan simple!</div>
 				<div class="scroll-box">
 					<div class="alignr-box">
 						<div class="products-box">
@@ -272,7 +272,8 @@
 						</div>
 					</div>
 				</div>
-				<a class="search-btn z-depth-1 hoverable modal-trigger" href="#modalLocation">Buscar <i class="fa fa-angle-right right"></i></a>
+				<a id="btnBuscar" class="search-btn z-depth-1 hoverable">Buscar <i class="fa fa-angle-right right"></i></a>
+				<a id="btnBuscarHidden" class="modal-trigger" href="#modalLocation" style="display: none;"></a>
 			</div>
 		</div>
 
@@ -291,7 +292,7 @@
 		   	  </div>
 		    </div>
 		    <div class="modal-footer">
-		      	<a id="btnSelecEstado" href="listado-comparador.php" class=" modal-action waves-effect waves-grey btn-flat">Continuar</a>
+		      	<a id="btnSelecEstado" href="listado-comparador.php#filter-go" class=" modal-action waves-effect waves-grey btn-flat">Continuar</a>
 		    	<a href="#!" class=" modal-action modal-close waves-effect waves-grey btn-flat">Cancelar</a>
 		    </div>
 		  </div>
@@ -327,6 +328,8 @@
 		<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
 		<!--PERFIL-->
 		<script src="js/web.js"></script>
+		<script type="text/javascript" src="js/fadeSlideShow.js"></script>
+		
 		<script>
 			jQuery(function() {
 		  	
@@ -348,53 +351,16 @@
 		<script >
 
 			$( "#btnSelecEstado" ).click(function() {
-				//Funcion para revisar los SELECT del selector principal
-				var contador=0,celular=0,internet=0,telefono=0,television=0,streaming=0;
-				if($("#celular").hasClass( "active-selection" )){
-					//alert("celular");
-					celular=1;
-					contador+=1;
-					sessionStorage.setItem("ServicioCelular","1");			
+				if($( "#selectEstado" ).val()!=-1){
+					//Funcion para revisar los SELECT del selector principal
+					sessionStorage.setItem("estado",$( "#selectEstado" ).val());
+					//console.log(sessionStorage.getItem("estado"));
+					//window.location.href = "listado-comparador.php#filter-go";
+					//Llamada ajax para servicio en listar.php
 				}else{
-					sessionStorage.setItem("ServicioCelular","0");
+					alert("Debe seleccionar un estado");
+					return false;
 				}
-				if($("#internet").hasClass( "active-selection" )){
-					//alert("internet");
-					internet=1;
-					contador+=1;
-					sessionStorage.setItem("ServicioInternet","1");	
-				}else{
-					sessionStorage.setItem("ServicioInternet","0");
-				}
-				if($("#telefono").hasClass( "active-selection" )){
-					//alert("telefono");
-					telefono=1;
-					contador+=1;
-					sessionStorage.setItem("ServicioTelefono","1");	
-				}else{
-					sessionStorage.setItem("ServicioTelefono","0");
-				}
-				if($("#television").hasClass( "active-selection" )){
-					//alert("television");
-					television=1;
-					contador+=1;
-					sessionStorage.setItem("ServicioTelevision","1");
-				}else{
-					sessionStorage.setItem("ServicioTelevision","0");
-				}
-				if($("#streaming").hasClass( "active-selection" )){
-					//alert("streaming");
-					streaming=1;
-					contador+=1;
-					sessionStorage.setItem("ServicioStreaming","1");
-				}else{
-					sessionStorage.setItem("ServicioStreaming","0");
-				}
-				//Llamar directo a listado-comparador.php sin archivo de por medio (servicio)
-				sessionStorage.setItem("estado",$( "#selectEstado" ).val());
-				//console.log(sessionStorage.getItem("estado"));
-				window.location.href = "listado-comparador.php#filter-go";
-				//Llamada ajax para servicio en listar.php
 			});
 			jQuery(document).ready(function(){
 				CargarAnuncio();
@@ -414,6 +380,9 @@
 			    	console.log(data);
 			    	window.location.href = "indexBE.php";
 			    });
+
+			    jQuery('#slideshow').fadeSlideShow();
+
 			});
 
 			function CargarAnuncio(){
@@ -473,7 +442,67 @@
 				}
 
 			});
+			$("#btnBuscar").click(function(){
+				var contador=0,celular=0,internet=0,telefono=0,television=0,streaming=0;
+				if($("#celular").hasClass( "active-selection" )){
+					//alert("celular");
+					celular=1;
+					contador+=1;
+					sessionStorage.setItem("ServicioCelular","1");			
+				}else{
+					sessionStorage.setItem("ServicioCelular","0");
+				}
+				if($("#internet").hasClass( "active-selection" )){
+					//alert("internet");
+					internet=1;
+					contador+=1;
+					sessionStorage.setItem("ServicioInternet","1");	
+				}else{
+					sessionStorage.setItem("ServicioInternet","0");
+				}
+				if($("#telefono").hasClass( "active-selection" )){
+					//alert("telefono");
+					telefono=1;
+					contador+=1;
+					sessionStorage.setItem("ServicioTelefono","1");	
+				}else{
+					sessionStorage.setItem("ServicioTelefono","0");
+				}
+				if($("#television").hasClass( "active-selection" )){
+					//alert("television");
+					television=1;
+					contador+=1;
+					sessionStorage.setItem("ServicioTelevision","1");
+				}else{
+					sessionStorage.setItem("ServicioTelevision","0");
+				}
+				if($("#streaming").hasClass( "active-selection" )){
+					//alert("streaming");
+					streaming=1;
+					contador+=1;
+					sessionStorage.setItem("ServicioStreaming","1");
+				}else{
+					sessionStorage.setItem("ServicioStreaming","0");
+				}
+				//Llamar directo a listado-comparador.php sin archivo de por medio (servicio)
+				if(contador<1){
+					alert("Debe seleccionar al menos un tipo de servicio");
+					return false;
+				}else{
+					jQuery( "#btnBuscarHidden" ).trigger( "click" );
+				}
+			});
 
+		</script>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+		  ga('create', 'UA-70371933-1', 'auto');
+		  ga('send', 'pageview');
+		
 		</script>
 	</body>
 

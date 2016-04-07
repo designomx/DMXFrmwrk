@@ -103,7 +103,7 @@
 		-->
 		<nav id="main-nav-bar" class="fix-ios-shadow">
 			<div class="nav-wrapper">
-				<a href="index.html" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
+				<a href="indexBE.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 				<ul class="right hide-on-med-and-down">
 					<li>
@@ -111,7 +111,7 @@
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="index.html#blog-timeline" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
+						<a href="indexBE.php#blog-module" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
@@ -128,10 +128,10 @@
 		</nav>
 		<ul class="side-nav" id="mobile-demo">
 			<li>
-				<a href="listado-comparador.html"><i class="fa fa-search left"></i> Descubre</a>
+				<a href="listado-comparador.php"><i class="fa fa-search left"></i> Descubre</a>
 			</li>
 			<li>
-				<a href="index.html#blog-timeline"><i class="fa fa-newspaper-o left"></i> Entérate</a>
+				<a href="indexBE.php#blog-module"><i class="fa fa-newspaper-o left"></i> Entérate</a>
 			</li>
 			<li>
 				<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
@@ -311,23 +311,16 @@
 
 				</div>
 				<div class="reload-button-bx">
-					<a href="#!" class="z-depth-1 hoverable"><i class="fa fa-refresh"></i> Cargar Más</a>
+					<a id="btnCargarMas" onclick="cargarmas()" href="#!" class="z-depth-1 hoverable"><i class="fa fa-refresh"></i> Cargar Más</a>
 				</div>
 			</div>
 			<div class="clearfix"></div>
 			<div class="footer-bx">
 				<ul>
-					<li>
-						<a href="quienes-somos.html">Quiénes somos</a>/</li>
-					<li>
-						<a href="#!">Mapa del sitio</a>/</li>
-					<li>
-						<a href="#!">Aviso de privacidad</a>/</li>
-					<li>
-						<a href="#!">Anúnciate con nosotros</a>/</li>
-					<li>
-						<a href="#!">Ayuda</a>
-					</li>
+					<li><a href="quienes-somos.html">Quiénes somos</a> / </li>
+					<li><a href="pdf/legal1.pdf" target="_blank">Legales</a> / </li>
+					<li><a href="#!">Anúnciate con nosotros</a> / </li>
+					<li><a href="#!">Ayuda</a></li>
 				</ul>
 				<p class="copy-foot">Todos los derechos reservados 2016®</p>
 			</div>
@@ -338,7 +331,7 @@
 		</div>
 		<div class="slide-widget animated slideInUp">
 			<div class="widget-wrapper">
-				<div class="discover-title">!DESCUBRE TU PLAN!</div>
+				<div class="discover-title">¡Decidir nunca fue tan simple!</div>
 				<div class="scroll-box">
 					<div class="alignr-box">
 						<div class="products-box">
@@ -429,7 +422,7 @@
 		    </div>
 		    <div class="fixed-action-btn" style="bottom: 10px; right: 10px;">
 				<a class="btn-floating btn-large orange accent-4">
-				 <i class="fa fa-share"></i>
+				 <i class="fa fa-share-alt"></i>
 			   </a>
 				<ul>
 					<li>
@@ -454,7 +447,7 @@
 			</div>
 			<div class="fixed-action-btn" style="bottom: 10px; right: 10px;">
 				<a class="btn-floating btn-large orange accent-4">
-				 <i class="fa fa-share"></i>
+				 <i class="fa fa-share-alt"></i>
 			   </a>
 				<ul>
 					<li>
@@ -522,6 +515,7 @@
 
 		<script src="js/init.config.js"></script>
 		<script src="js/init.js"></script>
+		<script src="js/blockUI.js"></script>
 		<!--INTERNET CHECK-->
 		<script src="offline07/offline.min.js"></script>
 		<link rel="stylesheet" href="offline07/themes/offline-theme-dark.css" />
@@ -563,6 +557,7 @@
 					jQuery.ajax({
 						type: "POST",
 						url: "listado.php",
+						async : false,
 						data: data
 					})
 				    .done(function(data){
@@ -605,6 +600,7 @@
 						jQuery.ajax({
 							type: "POST",
 							url: "listado.php",
+							async : false,
 							data: data
 						})
 					    .done(function(data){
@@ -731,6 +727,7 @@
 	  	function CargarPlanesConFiltros(){
 	  		//alert("Comparar!");
 				//Funcion para revisar los SELECT del selector principal
+				$.blockUI({ message: null });
 				var target = document.createElement("div");
 				document.body.appendChild(target);
 				var spinner = new Spinner(opts).spin(target);
@@ -818,6 +815,7 @@
 					jQuery.ajax({
 						type: "POST",
 						url: "listado.php",
+						async : false,
 						data: data
 					})
 				    .done(function(data){
@@ -831,7 +829,8 @@
 								text: "Listo"
 							});
 						}, 1000);
-
+						$(".cargarmas").hide();
+						cargarmas();
 						window.setTimeout(function() {
 							overlay.hide();
 						}, 2000);
@@ -907,6 +906,12 @@
 					}else{
 						var orden="ASC";
 					}
+					if($('#checkboxRedes').is(':checked')){
+						console.log("checkboxRedes");
+						var redesSociales= 1;
+					}else{
+						var redesSociales= 0;
+					}
 					var data=	{
 							'filtros[]':Filtros,
 							celular:sessionStorage.getItem("ServicioCelular"),
@@ -915,7 +920,8 @@
 							television:sessionStorage.getItem("ServicioTelevision"),
 							streaming:sessionStorage.getItem("ServicioStreaming"),
 							estado:$( "#selectEstado" ).val(),
-							orden:orden
+							orden:orden,
+							redesSociales: redesSociales
 					}
 					//CargarPlanes();
 					jQuery.ajax({
@@ -926,8 +932,10 @@
 				    .done(function(data){
 						jQuery("#planes").html(data);
 						botones();
-						VaciarComparador()
+						VaciarComparador();
 						jQuery('.modal-trigger').leanModal();
+						$(".cargarmas").hide();
+						cargarmas();
 						window.setTimeout(function() {
 							overlay.update({
 								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
@@ -938,6 +946,23 @@
 						window.setTimeout(function() {
 							overlay.hide();
 						}, 2000);
+						
+						//document.querySelector('.discover-title').scrollIntoView();
+						document.querySelector('#filter-go').scrollIntoView();
+						setTimeout($.unblockUI, 3000);
+				    })
+				    .fail(function(data){
+				    	setTimeout($.unblockUI, 1000);
+				    	window.setTimeout(function() {
+							overlay.update({
+								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								text: "ERROR"
+							});
+						}, 1000);
+						window.setTimeout(function() {
+							overlay.hide();
+						}, 2000);
+						window.location.href = "indexBE.php";
 				    })
 				}
 	  	}
@@ -1089,7 +1114,8 @@
 				var orden="ASC";
 			}
 			//console.log(orden);
-			
+        	$.blockUI({ message: null }); 
+
 			var target = document.createElement("div");
 			document.body.appendChild(target);
 			var spinner = new Spinner(opts).spin(target);
@@ -1126,25 +1152,43 @@
 		    .done(function(data){
 				jQuery("#planes").html(data);
 				botones();
-				VaciarComparador()
+				VaciarComparador();
 				jQuery('.modal-trigger').leanModal();
-
+				$(".cargarmas").hide();
+				cargarmas();
 				window.setTimeout(function() {
 					overlay.update({
 						icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
 						text: "Listo"
 					});
 				}, 1000);
-
 				window.setTimeout(function() {
 					overlay.hide();
 				}, 2000);
+				//document.querySelector('.discover-title').scrollIntoView();
+				document.querySelector('#filter-go').scrollIntoView();
+				setTimeout($.unblockUI, 3000);
+
 
 		    })
 		    .fail(function(data){
 		    	console.log(data);
+		    	setTimeout($.unblockUI, 1000);
+				window.setTimeout(function() {
+					overlay.update({
+						icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+						text: "Listo"
+					});
+				}, 1000);
+				window.setTimeout(function() {
+					overlay.hide();
+				}, 2000);
+				window.setTimeout(function() {
+					overlay.hide();
+				}, 2000);
 		    	window.location.href = "indexBE.php";
 		    });
+		    
 		}
 
 		function CargarFiltrosSliders(){
@@ -1155,6 +1199,7 @@
 				jQuery.ajax({
 					type: "POST",
 					url: "listado.php",
+					async : false,
 					data: data
 				})
 			    .done(function(data){
@@ -1208,6 +1253,7 @@
 				jQuery.ajax({
 					type: "POST",
 					url: "listado.php",
+					async : false,
 					data: data
 				})
 			    .done(function(data){
@@ -1262,6 +1308,7 @@
 					jQuery.ajax({
 						type: "POST",
 						url: "listado.php",
+						async : false,
 						data: data
 					})
 				    .done(function(data){
@@ -1277,6 +1324,7 @@
 				    var data={
 						listadoSimple:"true",
 						CargarFiltrosCheck:"true",
+						CargarRedes:true,
 						celular:sessionStorage.getItem("ServicioCelular"),
 						internet:sessionStorage.getItem("ServicioInternet"),
 						telefono:sessionStorage.getItem("ServicioTelefono"),
@@ -1287,6 +1335,7 @@
 					jQuery.ajax({
 						type: "POST",
 						url: "listado.php",
+						async : false,
 						data: data
 					})
 				    .done(function(data){
@@ -1313,6 +1362,7 @@
 					jQuery.ajax({
 						type: "POST",
 						url: "listado.php",
+						async : false,
 						data: data
 					})
 				    .done(function(data){
@@ -1336,6 +1386,7 @@
 				jQuery.ajax({
 					type: "POST",
 					url: "listado.php",
+					async : false,
 					data: data
 				})
 			    .done(function(data){
@@ -1360,6 +1411,7 @@
 				jQuery.ajax({
 					type: "POST",
 					url: "listado.php",
+					async : false,
 					data: data
 				})
 			    .done(function(data){
@@ -1665,67 +1717,98 @@
 		}
 
 		function CargarAnuncio(){
-				if($('.AnuncioHomeDerecho').length){
-					var data={
-							CargarAnuncio:true,
-							id_anuncio:3
-						}
-				
-					jQuery.ajax({
-						//dataType:"json",
-						type: "POST",
-						url: "listado.php",
-						data: data
-					})
-				    .done(function(data){
-				    	//$(".AnuncioDerechoHome").html("PruebaCargando")
-						jQuery(".AnuncioHomeDerecho").append(data);
-				    })
-				    .fail(function(data){
-				    	console.log(data);
-				    	window.location.href = "indexBE.php";
-				    });
-				}
-				if($('.AnuncioComparadorCentro').length){
-					var data={
-							CargarAnuncio:true,
-							id_anuncio:5
-						}
-				
-					jQuery.ajax({
-						//dataType:"json",
-						type: "POST",
-						url: "listado.php",
-						data: data
-					})
-				    .done(function(data){
-				    	//$(".AnuncioDerechoHome").html("PruebaCargando")
-						jQuery(".AnuncioComparadorCentro").append(data);
-				    })
-				    .fail(function(data){
-				    	console.log(data);
-				    	window.location.href = "indexBE.php";
-				    });
-				}
+			if($('.AnuncioHomeDerecho').length){
+				var data={
+						CargarAnuncio:true,
+						id_anuncio:3
+					}
+			
+				jQuery.ajax({
+					//dataType:"json",
+					type: "POST",
+					url: "listado.php",
+					data: data
+				})
+			    .done(function(data){
+			    	//$(".AnuncioDerechoHome").html("PruebaCargando")
+					jQuery(".AnuncioHomeDerecho").append(data);
+			    })
+			    .fail(function(data){
+			    	console.log(data);
+			    	window.location.href = "indexBE.php";
+			    });
 			}
-			var opts = {
-				lines: 9,
-				length: 12,
-				width: 8,
-				radius: 18,
-				corners: 1,
-				rotate: 0,
-				direction: 1,
-				color: '#ffffff',
-				speed: 1.2,
-				trail: 60,
-				shadow: false,
-				hwaccel: false,
-				className: 'loadingSpinner',
-				zIndex: 2e9,
-				top: '40%',
-				left: '50%'
-			};
+			if($('.AnuncioComparadorCentro').length){
+				var data={
+						CargarAnuncio:true,
+						id_anuncio:5
+					}
+			
+				jQuery.ajax({
+					//dataType:"json",
+					type: "POST",
+					url: "listado.php",
+					data: data
+				})
+			    .done(function(data){
+			    	//$(".AnuncioDerechoHome").html("PruebaCargando")
+					jQuery(".AnuncioComparadorCentro").append(data);
+			    })
+			    .fail(function(data){
+			    	console.log(data);
+			    	window.location.href = "indexBE.php";
+			    });
+			}
+		}
+		function cargarmas(){
+			//console.log("cargar mas")
+			//console.log($(".cargarmas").length);
+
+			if($(".cargarmas").length<18){
+				var j=$(".cargarmas").length;
+			}else{
+				var j=18;
+			}
+			var k=$(".planmostrado").length;
+			//console.log(k);
+			for(var i=k; i<k+j;i++){
+				$("#cargarmas"+i).removeClass("cargarmas");
+				$("#cargarmas"+i).addClass("planmostrado");
+			}
+			$(".planmostrado").show();
+			if($(".cargarmas").length<1){
+				$("#btnCargarMas").hide();
+				//$( "#btnCargarMas" ).prop( "disabled", true );
+			}
+		}
+		var opts = {
+			lines: 9,
+			length: 12,
+			width: 8,
+			radius: 18,
+			corners: 1,
+			rotate: 0,
+			direction: 1,
+			color: '#ffffff',
+			speed: 1.2,
+			trail: 60,
+			shadow: false,
+			hwaccel: false,
+			className: 'loadingSpinner',
+			zIndex: 2e9,
+			top: '40%',
+			left: '50%'
+		};
+		</script>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+		  ga('create', 'UA-70371933-1', 'auto');
+		  ga('send', 'pageview');
+		
 		</script>
 	</body>
 

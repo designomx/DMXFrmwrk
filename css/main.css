@@ -2352,3 +2352,7 @@ footer.stickFoot {
     font-size: 22px;
   }
 }
+#fssList li{
+  margin-right: 5px;
+  cursor: pointer;
+}
