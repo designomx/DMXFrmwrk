@@ -544,11 +544,13 @@
 					var url = "#deatilsModal";
 					//window.location('#deatilsModal');
 					if(sessionStorage.getItem("ServicioStreaming")==1){
+						$( "#selectEstado" ).prop('disabled', 'disabled');
 						var data={
 							verDetallesStreaming:"true",
 							id_paquete:id_plan
 						}
 					}else{
+						$( "#selectEstado" ).removeAttr("disabled");
 						var data={
 							verDetalles:"true",
 							id_plan:id_plan
@@ -585,11 +587,13 @@
 					    //$(this).attr(value);
 					    //alert($(this).attr("value"))
 					    if(sessionStorage.getItem("ServicioStreaming")==1){
+					    	$( "#selectEstado" ).prop('disabled', 'disabled');
 					    	var data=	{
 								CompararPaqueteOTT:true,
 								id_paquete:$(this).attr("value")
 							}
 					    }else{
+					    	$( "#selectEstado" ).removeAttr("disabled");
 					    	var data=	{
 								CompararPlanes:true,
 								id_plan:$(this).attr("value")
@@ -775,7 +779,9 @@
 				}else{
 					sessionStorage.setItem("ServicioStreaming","0");
 				}
+
 				if(sessionStorage.getItem("ServicioStreaming")==1){
+					$( "#selectEstado" ).prop('disabled', 'disabled');
 					var Filtros = [];
 					var getFiltrosCheckEmpresasStreaming=JSON.parse(sessionStorage.getItem("filtrosCheckEmpresasStreaming"));
 					var get1 = window["slidertest"]["noUiSlider"]["get"]();
@@ -834,8 +840,11 @@
 						window.setTimeout(function() {
 							overlay.hide();
 						}, 2000);
+						document.querySelector('#filter-go').scrollIntoView();
+						setTimeout($.unblockUI, 3000);
 				    })
 				}else{
+					$( "#selectEstado" ).removeAttr("disabled");
 					var getFiltros= JSON.parse(sessionStorage.getItem("filtros"));
 					var getFiltrosCheck= JSON.parse(sessionStorage.getItem("filtrosCheck"));
 					var getFiltrosCheckEmpresas=JSON.parse(sessionStorage.getItem("filtrosCheckEmpresas"));
@@ -927,10 +936,14 @@
 					jQuery.ajax({
 						type: "POST",
 						url: "listado.php",
-						data: data
+						data: data,
+						async: false
 					})
 				    .done(function(data){
 						jQuery("#planes").html(data);
+						if($(".cargarmas").length<1){
+							jQuery("#planes").html('<h1 class="nocriteria center">No hay resultados que mostrar con los criterios seleccionados.</h1>');
+						}
 						botones();
 						VaciarComparador();
 						jQuery('.modal-trigger').leanModal();
@@ -946,7 +959,6 @@
 						window.setTimeout(function() {
 							overlay.hide();
 						}, 2000);
-						
 						//document.querySelector('.discover-title').scrollIntoView();
 						document.querySelector('#filter-go').scrollIntoView();
 						setTimeout($.unblockUI, 3000);
@@ -962,6 +974,8 @@
 						window.setTimeout(function() {
 							overlay.hide();
 						}, 2000);
+						document.querySelector('#filter-go').scrollIntoView();
+						setTimeout($.unblockUI, 3000);
 						window.location.href = "indexBE.php";
 				    })
 				}
@@ -1124,12 +1138,14 @@
 				spinner: spinner
 			});
 			if(sessionStorage.getItem("ServicioStreaming")==1){
+				$( "#selectEstado" ).prop('disabled', 'disabled');
 				//alert("Streaming");
 				var data={
 					CargarPlanesStreaming:"true",
 					orden:orden
 				}
 			}else{
+				$( "#selectEstado" ).removeAttr("disabled");
 				var data={
 					listadoSimple:"true",
 					CargarPlanes:"true",
@@ -1151,6 +1167,9 @@
 			})
 		    .done(function(data){
 				jQuery("#planes").html(data);
+				if($(".cargarmas").length<1){
+							jQuery("#planes").html('<h1 class="nocriteria center">No hay resultados que mostrar con los criterios seleccionados.</h1>');
+				}
 				botones();
 				VaciarComparador();
 				jQuery('.modal-trigger').leanModal();
@@ -1168,6 +1187,12 @@
 				//document.querySelector('.discover-title').scrollIntoView();
 				document.querySelector('#filter-go').scrollIntoView();
 				setTimeout($.unblockUI, 3000);
+				/*
+				if(sessionStorage.getItem("ServicioCelular")==1){
+					jQuery( "#checkbox1" ).trigger( "click" );
+					habilitar();
+				}
+				*/
 
 
 		    })
@@ -1186,13 +1211,16 @@
 				window.setTimeout(function() {
 					overlay.hide();
 				}, 2000);
-		    	window.location.href = "indexBE.php";
+				document.querySelector('#filter-go').scrollIntoView();
+				setTimeout($.unblockUI, 3000);
+				window.location.href = "indexBE.php";
 		    });
 		    
 		}
 
 		function CargarFiltrosSliders(){
 			if(sessionStorage.getItem("ServicioStreaming")==1){
+				$( "#selectEstado" ).prop('disabled', 'disabled');
 				var data={
 					CargarSliderStreaming:"true"
 				}
@@ -1223,7 +1251,7 @@
 							autoHideScrollbar: true,
 							updateOnContentResize: true
 						});
-						$("#filtros, .sliders-scroll-bx, .sliders-wrapp, .slide-bar-bx, .slider-bx, .noUi-base, slider-bx,.filter-mid-bar").mouseup(function() {
+						$("#filtros").mouseup(function() {
 						    CargarPlanesConFiltros();
 						})
 						$( ".sliders-scroll-bx" ).bind( "mouseenter mouseleave", function() {
@@ -1240,6 +1268,7 @@
 			    	console.log("Error llamada en llamada Streaming a CargarFiltrosSliders");
 			    });
 			}else{
+				$( "#selectEstado" ).removeAttr("disabled");
 				var data={
 					listadoSimple:"true",
 					CargarFiltrosSliders:"true",
@@ -1380,6 +1409,7 @@
 		}
 		function CargarFiltrosCheckEmpresas(){
 			if(sessionStorage.getItem("ServicioStreaming")==1){
+				$( "#selectEstado" ).prop('disabled', 'disabled');
 				var data={
 					CargarFiltrosCheckEmpresasStreaming:"true"
 				}
@@ -1398,6 +1428,7 @@
 			    });
 
 			}else{
+				$( "#selectEstado" ).removeAttr("disabled");
 				var data={
 					listadoSimple:"true",
 					CargarFiltrosCheckEmpresas:"true",
@@ -1714,6 +1745,11 @@
 			}else{
 				alert("Debe seleccionar máximo 6 planes para comparar");
 			}
+			if(($(".span-bx-selected").length<2 || $(".span-bx-selected").length==null)){
+				$("#btnComparar" ).addClass( "noCompare" );
+			}else{
+				$("#btnComparar" ).removeClass( "noCompare" );
+			}
 		}
 
 		function CargarAnuncio(){
@@ -1779,6 +1815,8 @@
 			if($(".cargarmas").length<1){
 				$("#btnCargarMas").hide();
 				//$( "#btnCargarMas" ).prop( "disabled", true );
+			}else{
+				$("#btnCargarMas").show();
 			}
 		}
 		var opts = {

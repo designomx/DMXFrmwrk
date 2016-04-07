@@ -123,7 +123,7 @@
 				
 
 				<div class="reload-button-bx">
-					<a href="!#" class="z-depth-1 hoverable"><i class="fa fa-refresh"></i> Cargar Más</a>
+					<a href="#blog-module" class="z-depth-1 hoverable"><i class="fa fa-refresh"></i> Cargar Más</a>
 				</div>
 				
 			</div>

@@ -219,8 +219,26 @@ if(isset($_POST['listadoSimple'])){
 				usort($rows,'invenAscSort');
 			}
 			$i=0;
+			$random=0;
+			$publicidad=mt_rand(2,4);
 			foreach($rows as $row)
-			{	$query_tipoServicio="SELECT id_tipoServicio FROM planes_tipoServicios WHERE id_plan=".$row["id_plan"];
+			{	
+				if($random==$publicidad){
+					$respuesta=$respuesta.'	<div id="cargarmas'.$i.'" class="col s12 m6 l4 paq-list-bx cargarmas">
+												<div class="paq-content-bx banner-ovrflw">
+													<a href="http://axtel.mx" target="_blank" class="go-banner"></a>
+													<img src="images/banner-grid.jpg" alt="" class="banner-art" />
+													<img src="images/banner-grid.jpg" alt="" class="banner-art" />
+												</div>
+											</div>';
+					$i+=1;
+				}
+				$random+=1;
+				if($random==5 ){
+					$random=0;
+					$publicidad=mt_rand(2,4);
+				}
+				$query_tipoServicio="SELECT id_tipoServicio FROM planes_tipoServicios WHERE id_plan=".$row["id_plan"];
 				$result_tipoServicio = $mysqli->query($query_tipoServicio);
 				$filas=array();
 				$respuesta=$respuesta.'
@@ -1120,6 +1138,8 @@ if (isset($_POST['filtros'])) {
 		usort($rows,'invenAscSort');
 	}
 	$i=0;
+	$random=0;
+	$publicidad=mt_rand(2,4);
 	foreach($rows as $row)
 	{	
 		//print_r($row);
@@ -1135,7 +1155,22 @@ if (isset($_POST['filtros'])) {
 				$_SESSION['Preciomin']=$row['precio'];
 			}
 		}
-		*/		
+		*/	
+		if($random==$publicidad){
+			$respuesta=$respuesta.'	<div id="cargarmas'.$i.'" class="col s12 m6 l4 paq-list-bx cargarmas">
+										<div class="paq-content-bx banner-ovrflw">
+											<a href="http://axtel.mx" target="_blank" class="go-banner"></a>
+											<img src="images/banner-grid.jpg" alt="" class="banner-art" />
+											<img src="images/banner-grid.jpg" alt="" class="banner-art" />
+										</div>
+									</div>';
+			$i+=1;
+		}
+		$random+=1;
+		if($random==5 ){
+			$random=0;
+			$publicidad=mt_rand(2,4);
+		}	
 	
 		$query_tipoServicio="SELECT id_tipoServicio FROM planes_tipoServicios WHERE id_plan=".$row["id_plan"];
 				$result_tipoServicio = $mysqli->query($query_tipoServicio);
@@ -1422,7 +1457,7 @@ if(isset($_POST['CompararPlanes'])){
 		/* liberar la serie de resultados */
 		$result->free();
   	}
-}
+}//if(isset($_POST['CompararPlanes']))
 
 if(isset($_POST['CargarPlanesStreaming'])){
 	$query="SELECT 
@@ -1450,11 +1485,11 @@ if(isset($_POST['CargarPlanesStreaming'])){
 	{
 		array_push($rows, $row);
 	}
-
+$i=0;
 	foreach($rows as $row)
 	{		
 		//Logo de la empresa, falta ruta <img src='.$row["logo_empresa"].'>
-		$respuesta=$respuesta.'<div class="col s12 m6 l4 paq-list-bx">
+		$respuesta=$respuesta.'	<div id="cargarmas'.$i.'" class="col s12 m6 l4 paq-list-bx cargarmas">
 			<div class="paq-content-bx">
 				<div class="brand-label" style="background-color: #424242">'.$row["nombre"].'</div>
 				<div class="paq-bx">
@@ -1474,7 +1509,7 @@ if(isset($_POST['CargarPlanesStreaming'])){
 						</div>
 					</div>
 				</div>';		
-			
+			$i+=1;
 	}//foreach
 echo $respuesta;
 	/* liberar la serie de resultados */
@@ -1593,7 +1628,7 @@ if(isset($_POST['Streamingfiltros'])){
 		//Logo de la empresa, falta ruta <img src='.$row["logo_empresa"].'>
 		$respuesta=$respuesta.'<div class="col s12 m6 l4 paq-list-bx">
 			<div class="paq-content-bx">
-				<div class="brand-label">'.$row["nombre"].'</div>
+				<div class="brand-label" style="background-color: #424242">'.$row["nombre"].'</div>
 				<div class="paq-bx">
 					<h4 class="truncate"></h4>
 					<ul>
@@ -1685,10 +1720,10 @@ if(isset($_POST['CompararPaqueteOTT'])){
 		while($row = $result->fetch_array())
 		{
 			//array_push($rows, $row);
-			$respuesta='<div class="item">
+			$respuesta='<div class="item" id="'.$row["id_paquete"].'">
 						<div class="col s12 paq-list-bx compare-status">
 							<div class="paq-content-bx">
-								<div class="brand-label">'.$row["nombre"].'</div>
+								<div class="brand-label style="background-color: #424242"" style="background-color: #424242">'.$row["nombre"].'</div>
 								<div class="paq-bx">
 									<h4 class="truncate"></h4>
 									<ul>
@@ -1702,6 +1737,7 @@ if(isset($_POST['CompararPaqueteOTT'])){
 								<div class="more-actions-bx">
 									<a href="#!" class="grey"></a>
 									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" onclick="eliminarDelComparador('.$row["id_paquete"].')" class="compare-delete">Eliminar</a>
 									<div class="clearfix"></div>
 								</div>
 							</div>
@@ -1742,7 +1778,7 @@ if(isset($_POST['verDetallesStreaming'])){
 		while($row = $result->fetch_array())
 		{
 			//array_push($rows, $row);
-			$respuesta='<div class="brand-label">'.$row["nombre"].'</div>
+			$respuesta='<div class="brand-label" style="background-color: #424242">'.$row["nombre"].'</div>
 				<h4>'.$row["precio"].'</h4>
 				<div class="plan-main-options row">
 					<div class="col s6 m3"><p>'.$row["dato_principal_1"].'</p></div>
