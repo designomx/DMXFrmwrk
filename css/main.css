@@ -960,10 +960,6 @@ hr {
   -webkit-opacity: 0;
   -moz-opacity: 0;
   opacity: 0;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  transition: all 1s ease;
 }
 .url-modal-close.opened-url {
   visibility: visible;
@@ -985,10 +981,6 @@ hr {
   left: 0;
   top: 0;
   background: #f5f5f5;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  transition: all 1s ease;
 }
 .back-navigation i {
   color: #40c4ff;
@@ -1527,10 +1519,6 @@ hr {
   padding: 0;
   z-index: 999999;
   background: rgba(0, 0, 0, 0.75);
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   display: none;
