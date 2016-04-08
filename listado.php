@@ -185,7 +185,7 @@ if(isset($_POST['listadoSimple'])){
 				WHERE C.ID_ESTADO='".$_SESSION['estado']."' 
 				AND PT.id_plan IN (SELECT id_plan from planes_tipoServicios where id_tipoServicio IN (".implode(', ', $_SESSION['Servicios']).")  ) 
 				AND visible=1
-				AND P.precio < ".$_SESSION['Preciomax']."+100
+				AND P.precio < ".$_SESSION['Preciomax']."+80
 				GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])."+1");
 
 			$result_sugeridos = $mysqli->query($query_sugeridos);
@@ -1071,7 +1071,7 @@ if (isset($_POST['filtros'])) {
 	  	WHERE C.ID_ESTADO=".$_SESSION['estado']."
 	  	AND PT.id_plan IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (".implode(', ', $_SESSION['Servicios'])." ) )
 	  	AND P.visible=1
-	  	AND P.precio<".$_SESSION['Preciomax']."+100
+	  	AND P.precio<".$_SESSION['Preciomax']."+80
 	";
     $Filtros = $_POST['filtros'];
     //print_r($_POST['filtros']);

@@ -1037,9 +1037,19 @@
 				CargarPlanes()
 			).then(function(){
 			   //alert('All AJAX Methods Have Completed!');
-			   	CargarFiltrosCheckEmpresas(),
-				CargarFiltrosCheck(),
-				CargarFiltrosSliders()
+			   if($(".cargarmas").length>1){
+				   	CargarFiltrosCheckEmpresas();
+				   	if(sessionStorage.getItem("ServicioCelular")==1){
+						CargarFiltrosCheck();
+					}
+					CargarFiltrosSliders();
+				}else{
+					jQuery("#filtrosCheck").html("");
+					jQuery("#filtrosCheckEmpresas").html("");
+					jQuery("#filtros").html("");	
+					jQuery("#filtrosCheckCelulares").html("");		
+	
+				}
 			});
 		})
 
@@ -1115,9 +1125,19 @@
 			}
 			if(contador>0){
 			    CargarPlanes();
-				CargarFiltrosCheckEmpresas();
-				CargarFiltrosCheck();
-				CargarFiltrosSliders();
+			    if($(".cargarmas").length>1){
+					CargarFiltrosCheckEmpresas();
+					if(sessionStorage.getItem("ServicioCelular")==1){
+						CargarFiltrosCheck();
+					}
+					CargarFiltrosSliders();
+				}else{
+					jQuery("#filtrosCheck").html("");
+					jQuery("#filtrosCheckEmpresas").html("");
+					jQuery("#filtros").html("");
+					jQuery("#filtrosCheckCelulares").html("");		
+
+				}
 			}
 		});
 
@@ -1168,7 +1188,17 @@
 		    .done(function(data){
 				jQuery("#planes").html(data);
 				if($(".cargarmas").length<1){
-							jQuery("#planes").html('<h1 class="nocriteria center">No hay resultados que mostrar con los criterios seleccionados.</h1>');
+					jQuery("#planes").html('<h1 class="nocriteria center">No hay resultados que mostrar con los criterios seleccionados.</h1>');
+					jQuery("#filtrosCheck").html("");
+					jQuery("#filtrosCheckEmpresas").html("");
+					jQuery("#filtros").html("");
+					jQuery("#filtrosCheckCelulares").html("");		
+				}
+				if($(".cargarmas").length==1){
+					jQuery("#filtrosCheck").html("");
+					jQuery("#filtrosCheckEmpresas").html("");
+					jQuery("#filtros").html("");
+					jQuery("#filtrosCheckCelulares").html("");
 				}
 				botones();
 				VaciarComparador();
@@ -1349,7 +1379,7 @@
 				    .fail(function(data){
 				    	console.log(data);
 				    });
-
+				    /* No cargar filtros Check
 				    var data={
 						listadoSimple:"true",
 						CargarFiltrosCheck:"true",
@@ -1376,8 +1406,10 @@
 				    .fail(function(data){
 				    	console.log(data);
 				    });
+				    */
 
 				}else{
+					/* No cargar filtros Check
 					var data={
 						listadoSimple:"true",
 						CargarFiltrosCheck:"true",
@@ -1404,6 +1436,7 @@
 				    .fail(function(data){
 				    	console.log(data);
 				    });
+				    */
 				}
 			}
 		}
@@ -1533,7 +1566,9 @@
 
 
 					CargarFiltrosSliders();
-					CargarFiltrosCheck();
+					if(sessionStorage.getItem("ServicioCelular")==1){
+						CargarFiltrosCheck();
+					}
 					CargarFiltrosCheckEmpresas();
 					VaciarComparador();
 			}
