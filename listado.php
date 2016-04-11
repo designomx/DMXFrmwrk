@@ -186,7 +186,7 @@ if(isset($_POST['listadoSimple'])){
 				AND PT.id_plan IN (SELECT id_plan from planes_tipoServicios where id_tipoServicio IN (".implode(', ', $_SESSION['Servicios']).")  ) 
 				AND visible=1
 				AND P.precio < ".$_SESSION['Preciomax']."+80
-				GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])."+1");
+				GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])."+1 LIMIT 0, 5" );
 
 			$result_sugeridos = $mysqli->query($query_sugeridos);
 
@@ -249,16 +249,16 @@ if(isset($_POST['listadoSimple'])){
 				{
 					//array_push($filas, $fila);
 					if($fila["id_tipoServicio"]==1){
-						$respuesta=$respuesta.'<i class="material-icons">phone_android</i>';
+						$respuesta=$respuesta.'<i class="material-icons iconosPlanes">phone_android</i>';
 					}
 					if($fila["id_tipoServicio"]==2){
-						$respuesta=$respuesta.'<i class="material-icons">phone</i>';
+						$respuesta=$respuesta.'<i class="material-icons iconosPlanes">phone</i>';
 					}
 					if($fila["id_tipoServicio"]==3){
-						$respuesta=$respuesta.'<i class="material-icons">wifi</i>';
+						$respuesta=$respuesta.'<i class="material-icons iconosPlanes">wifi</i>';
 					}
 					if($fila["id_tipoServicio"]==4){
-						$respuesta=$respuesta.'<i class="material-icons">tv</i>';
+						$respuesta=$respuesta.'<i class="material-icons iconosPlanes">tv</i>';
 					}
 				}
 
@@ -491,6 +491,10 @@ if(isset($_POST['listadoSimple'])){
 			 			decimals: 0
 			 		  })
 			 		});
+			 		slidertest.noUiSlider.on("change", function(){
+						console.log("cambia precio");
+						CargarPlanesConFiltros();
+					})
 				</script>
 				';
 
@@ -554,6 +558,10 @@ if(isset($_POST['listadoSimple'])){
 						 			decimals: 0
 						 		  })
 						 		});
+						slidertest'.$i.'.noUiSlider.on("change", function(){
+							console.log("cambia slider filtro");
+							CargarPlanesConFiltros();
+						})
 					</script>';
 					$i+=1;
 				}
@@ -1071,7 +1079,7 @@ if (isset($_POST['filtros'])) {
 	  	WHERE C.ID_ESTADO=".$_SESSION['estado']."
 	  	AND PT.id_plan IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (".implode(', ', $_SESSION['Servicios'])." ) )
 	  	AND P.visible=1
-	  	AND P.precio<".$_SESSION['Preciomax']."+80
+	  	AND P.precio<".$_SESSION['Preciomax']."+80 
 	";
     $Filtros = $_POST['filtros'];
     //print_r($_POST['filtros']);
@@ -1121,7 +1129,8 @@ if (isset($_POST['filtros'])) {
     if($contEmpresas>0){
     	$query_filtros_sugeridos=$query_filtros_sugeridos.$queryEmpresas.") ";
     }
-    $query_filtros_sugeridos=$query_filtros_sugeridos."GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])."+1";
+    $query_filtros_sugeridos=$query_filtros_sugeridos."GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])."+1 LIMIT 0, 10
+";
 
   	$result_filtros_sugeridos = $mysqli->query($query_filtros_sugeridos);
 
@@ -1183,16 +1192,16 @@ if (isset($_POST['filtros'])) {
 				{
 					//array_push($filas, $fila);
 					if($fila["id_tipoServicio"]==1){
-						$respuesta=$respuesta.'<i class="material-icons">phone_android</i>';
+						$respuesta=$respuesta.'<i class="material-icons iconosPlanes">phone_android</i>';
 					}
 					if($fila["id_tipoServicio"]==2){
-						$respuesta=$respuesta.'<i class="material-icons">phone</i>';
+						$respuesta=$respuesta.'<i class="material-icons iconosPlanes">phone</i>';
 					}
 					if($fila["id_tipoServicio"]==3){
-						$respuesta=$respuesta.'<i class="material-icons">wifi</i>';
+						$respuesta=$respuesta.'<i class="material-icons iconosPlanes">wifi</i>';
 					}
 					if($fila["id_tipoServicio"]==4){
-						$respuesta=$respuesta.'<i class="material-icons">tv</i>';
+						$respuesta=$respuesta.'<i class="material-icons iconosPlanes">tv</i>';
 					}
 				}
 

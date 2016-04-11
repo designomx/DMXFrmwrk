@@ -39,6 +39,8 @@
 	<body>
 	<script src="js/nouislider.min.js"></script>
 	<script src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/fadeSlideShow.js"></script>
+
 
 	<script type="text/javascript">
 		//Iniciar un arreglo que contiene los id de los filtros que hay, para poder consultar los valores cuando hago la llamada, dichos filtros se guardan en una variable sessionStorage para poder acceder en las distintas partes del codigo.
@@ -325,9 +327,11 @@
 				<p class="copy-foot">Todos los derechos reservados 2016®</p>
 			</div>
 		</div>
-		<div class="home-hero">
-			<div class="hero-image active-slide" style="background-image: url('images/hero1.jpg');"></div>
-			<div class="hero-image" style="background-image: url('images/hero2.jpg');"></div>
+		<div id="slideshow" class="home-hero"> 
+				<!-- This is the last image in the slideshow -->
+	          	<div class="hero-image" style="background-image: url('images/hero4.jpg');"/></div>
+	            <div class="hero-image" style="background-image: url('images/hero2.jpg');"/></div>
+		        <div class="hero-image" style="background-image: url('images/hero1.jpg');"/></div> <!-- This is the first image in the slideshow -->
 		</div>
 		<div class="slide-widget animated slideInUp">
 			<div class="widget-wrapper">
@@ -979,7 +983,8 @@
 						window.location.href = "indexBE.php";
 				    })
 				}
-	  	}
+				checkMobile();
+	  	}//function CargarPlanesConFiltros()
 	  	function habilitar(item,value) {
 			//console.log("value "+value);
 			//console.log("$(item).attr('id') "+$(item).attr('id'));
@@ -1066,6 +1071,7 @@
 			});
 			CargarAnuncio();
 			document.querySelector('#filter-go').scrollIntoView();
+			jQuery('#slideshow').fadeSlideShow();
 		});//document ready
 		jQuery('.products-box').click(function() {
 			var celular=0,internet=0,telefono=0,television=0,streaming=0;
@@ -1245,8 +1251,8 @@
 				setTimeout($.unblockUI, 3000);
 				window.location.href = "indexBE.php";
 		    });
-		    
-		}
+		    checkMobile();
+		}//function CargarPlanes()
 
 		function CargarFiltrosSliders(){
 			if(sessionStorage.getItem("ServicioStreaming")==1){
@@ -1281,13 +1287,17 @@
 							autoHideScrollbar: true,
 							updateOnContentResize: true
 						});
+						/*
 						$("#filtros").mouseup(function() {
 						    CargarPlanesConFiltros();
 						})
+						*/
+						/*
 						$( ".sliders-scroll-bx" ).bind( "mouseenter mouseleave", function() {
 						  //$( this ).toggleClass( "entered" );
 						  //alert("Entra o sale de slide-bar-bx")
 						});
+						*/
 			 		}else {
 			 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form").addClass('ismobilescroll');
 			 		}
@@ -1336,9 +1346,11 @@
 							autoHideScrollbar: true,
 							updateOnContentResize: true
 						});
+						/*
 						$(".slide-bar-bx").mouseup(function() {
 						    CargarPlanesConFiltros();
 						})
+						*/
 			 		}else {
 			 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form").addClass('ismobilescroll');
 			 		}
@@ -1872,6 +1884,13 @@
 			top: '40%',
 			left: '50%'
 		};
+
+		function checkMobile(){
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	 			// some code..
+			 	$(".iconosPlanes").hide();
+			}
+		}
 		</script>
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

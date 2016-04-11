@@ -182,11 +182,8 @@
 			</div>
 		</div>
 		<div id="slideshow" class="home-hero"> 
-		        <div class="hero-image" style="background-image: url('images/hero7.jpg');"/></div> <!-- This is the last image in the slideshow -->
-		        <div class="hero-image" style="background-image: url('images/hero6.jpg');"/></div>
-	         	<div class="hero-image" style="background-image: url('images/hero5.jpg');"/></div>
+				<!-- This is the last image in the slideshow -->
 	          	<div class="hero-image" style="background-image: url('images/hero4.jpg');"/></div>
-	           	<div class="hero-image" style="background-image: url('images/hero3.jpg');"/></div>
 	            <div class="hero-image" style="background-image: url('images/hero2.jpg');"/></div>
 		        <div class="hero-image" style="background-image: url('images/hero1.jpg');"/></div> <!-- This is the first image in the slideshow -->
 		</div>
