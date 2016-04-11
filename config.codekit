@@ -20,6 +20,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/contacto-FE.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/contacto-FE.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/contacto.html": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -236,6 +245,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/dbconn.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dbconn.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/fawesome\/css\/font-awesome.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -380,11 +398,33 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/iphone6-big.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 12939,
+		"inputAbbreviatedPath": "\/images\/iphone6-big.jpg",
+		"outputAbbreviatedPath": "\/images\/iphone6-big.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/iphone6-th.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 5425,
+		"inputAbbreviatedPath": "\/images\/iphone6-th.jpg",
+		"outputAbbreviatedPath": "\/images\/iphone6-th.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/logo_eligefacil.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 6697,
+		"initialSize": 22356,
 		"inputAbbreviatedPath": "\/images\/logo_eligefacil.png",
 		"outputAbbreviatedPath": "\/images\/logo_eligefacil.png",
 		"outputPathIsOutsideProject": 0,
@@ -462,6 +502,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/blockUI.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/blockUI.js",
+		"outputAbbreviatedPath": "\/js\/min\/blockUI-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/charCount.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -479,6 +530,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/comparador.js",
 		"outputAbbreviatedPath": "\/js\/min\/comparador-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/fadeSlideShow.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/fadeSlideShow.js",
+		"outputAbbreviatedPath": "\/js\/min\/fadeSlideShow-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,

@@ -2288,6 +2288,33 @@ footer.stickFoot {
   list-style-type: disc !important;
   list-style-position: inside;
   padding-left: 25px;
+  position: relative;
+}
+#deatilsModal .modal-content ul.info-collapsible {
+  margin-top: 10px;
+  list-style: none !important;
+}
+#deatilsModal .modal-content ul.info-collapsible > li,
+#deatilsModal .modal-content ul.info-collapsible i {
+  list-style: none !important;
+  padding-left: 0;
+}
+#deatilsModal .modal-content ul .phone-th {
+  width: 60px;
+  height: 60px;
+  -webkit-border-radius: 50%;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 50%;
+  -moz-background-clip: padding;
+  border-radius: 50%;
+  background-clip: padding-box;
+  border: 2px solid #bdbdbd;
+  margin: 10px 0 0 0;
+}
+#deatilsModal .modal-content ul .phone-title {
+  position: absolute;
+  left: 100px;
+  top: 18px;
 }
 #deatilsModal .fixed-action-btn {
   right: auto !important;
@@ -2351,8 +2378,4 @@ footer.stickFoot {
     width: 100%;
     font-size: 22px;
   }
-}
-#fssList li{
-  margin-right: 5px;
-  cursor: pointer;
 }
