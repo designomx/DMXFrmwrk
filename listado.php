@@ -904,25 +904,126 @@ if(isset($_POST['verDetalles'])){
 				}
 				$respuesta=$respuesta.'
 				</div>';
-				$query_redesSociales="SELECT PRS.id_redSocial,
-					RS.nombre
-					FROM planes_redesSociales PRS
-					INNER JOIN redesSociales RS ON PRS.id_redSocial=RS.id_redSocial 
-					WHERE PRS.id_plan=".$row["id_plan"];
-				$result_redesSociales = $mysqli->query($query_redesSociales);
-				$numero_filasRS = mysqli_num_rows($result_redesSociales);
-				if($numero_filasRS>0){
-					$respuesta=$respuesta.'<h5>Redes Sociales</h5>';
-					while($rowRedSocial = $result_redesSociales->fetch_array())
-					{
-						$respuesta=$respuesta.'<li>'.$rowRedSocial["nombre"].'</li>';
-					} 
+				if(isset($_POST["celular"])){
+					if($_POST["celular"]==1){
+						$query_redesSociales="SELECT PRS.id_redSocial,
+							RS.nombre
+							FROM planes_redesSociales PRS
+							INNER JOIN redesSociales RS ON PRS.id_redSocial=RS.id_redSocial 
+							WHERE PRS.id_plan=".$row["id_plan"];
+						$result_redesSociales = $mysqli->query($query_redesSociales);
+						$numero_filasRS = mysqli_num_rows($result_redesSociales);
+						if($numero_filasRS>0){
+							$respuesta=$respuesta.'<h5>Redes Sociales</h5>';
+							while($rowRedSocial = $result_redesSociales->fetch_array())
+							{
+								$respuesta=$respuesta.'<li>'.$rowRedSocial["nombre"].'</li>';
+							} 
+						}
+						$respuesta=$respuesta.'						
+						<h5>Opciones y características adicionales</h5>
+						<p>'.$row['mas_datos'].'</p>';
+						//Buscar celulares en tabla planes_celulares para la vista de los equipos asociados al plan.
+						$query_equipos=("SELECT PC.id_celular,
+										PC.precio_12m,
+				 						PC.precio_18m,
+				 						PC.precio_24m,
+				 						PC.precio_prepago,
+				 						PC.orden,
+				 						CEL.foto,
+				 						CEL.nombre 
+				 						FROM planes_celulares PC
+				 						INNER JOIN celularesMasPopulares CEL ON PC.id_celular=CEL.id_celular
+				 						WHERE id_plan=".$row["id_plan"]);
+				 		//echo $query_equipos;
+				 		$result_equipos = $mysqli->query($query_equipos);
+						$numero_filasEquipos = mysqli_num_rows($result_equipos);
+						if($numero_filasEquipos>0){
+							$respuesta=$respuesta.'
+							<h5>Equipos Recomendados:</h5>
+							<ul class="collapsible popout info-collapsible acordionEquipos" data-collapsible="accordion">';
+							while($rowEquipos = $result_equipos->fetch_array())
+							{	
+								$respuesta=$respuesta.'
+								<li>
+									<div class="collapsible-header active">
+										<img class="phone-th z-depth-1" src="http://www.eligefacil.com/uploads/celulares_mas_populares/'.$rowEquipos["id_celular"].'/'.$rowEquipos["foto"].'" alt="" /> 
+										<b class="phone-title">'.$rowEquipos["nombre"].'</b>
+									</div>
+									<div class="collapsible-body">
+										<div class="row">
+											<div class="col s3">
+												<img class="responsive-img" src="../../uploads/celulares_mas_populares/'.$rowEquipos["id_celular"].'/'.$rowEquipos["foto"].'" alt="" /> 
+											</div>
+											<div class="col s9">
+												<table class="responsive-table striped centered">
+													<thead>
+														<tr>
+															<th data-field="id"><b>Plazo Forzoso</b></th>
+															<th data-field="name"><b>Costo Equipo</b></th>
+															<th data-field="price"><b>Total Acumulado</b></th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>12</td>';
+															if($rowEquipos["precio_12m"]>0){
+																$respuesta.='<td>$'.$rowEquipos["precio_12m"].'</td>';
+															}else{
+																$respuesta.='<td>GRATIS</td>';
+															}
+															$respuesta.='<td>'.($row["precio"]*12)+$rowEquipos["precio_12m"].'</td>
+														</tr>
+														<tr>
+															<td>18</td>';
+															if($rowEquipos["precio_18m"]>0){
+																$respuesta.='<td>$'.$rowEquipos["precio_18m"].'</td>';
+															}else{
+																$respuesta.='<td>GRATIS</td>';
+															}
+															$respuesta.='<td>'.($row["precio"]*18)+$rowEquipos["precio_18m"].'</td>
+														</tr>
+														<tr>
+															<td>12</td>';
+															if($rowEquipos["precio_24m"]>0){
+																$respuesta.='<td>$'.$rowEquipos["precio_24m"].'</td>';
+															}else{
+																$respuesta.='<td>GRATIS</td>';
+															}
+															$respuesta.='<td>'.($row["precio"]*24)+$rowEquipos["precio_24m"].'</td>
+														</tr>
+														<tr>
+															<td>12</td>';
+															if($rowEquipos["precio_prepago"]>0){
+																$respuesta.='<td>$'.$rowEquipos["precio_prepago"].'</td>';
+															}else{
+																$respuesta.='<td>GRATIS</td>';
+															}
+															$respuesta.='<td>'.$rowEquipos["precio_prepago"].'</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</li>';
+							}
+							$respuesta.='</ul>';
+						}
+					}
+				}else{
+					$respuesta.='
+						<h5>Opciones y características adicionales</h5>
+						'.$row['mas_datos'].'';
 				}
-				$respuesta=$respuesta.'						
-				<h5>Opciones y características adicionales</h5>
-				<p>'.$row['mas_datos'].'</p>';
+			$footer.='<div class="modal-footer">
+							<a href="#!" class="modal-action modal-close waves-effect btn-flat grey white-text" id="plan_'.$row["id_plan"].'" onclick="Comparar(this,'.$row["id_plan"].','."'".$row["empresa_color"]."'".')">Comparar</a>
+							<a href="#!" class="modal-action modal-close waves-effect btn-flat ">Cerrar</a>
+						</div>';
 		}
-		echo $respuesta;
+		$miArray = array("contenido"=>$respuesta, "footer"=>$footer);
+		echo json_encode($miArray);
+		//echo $respuesta;
 
 		/* liberar la serie de resultados */
 		$result->free();
@@ -1569,6 +1670,10 @@ if(isset($_POST['CargarSliderStreaming'])){
 			 			decimals: 0
 			 		  })
 			 		});
+			 		slidertest.noUiSlider.on("change", function(){
+						console.log("cambia precio");
+						CargarPlanesConFiltros();
+					})
 				</script>
 				';
 	}

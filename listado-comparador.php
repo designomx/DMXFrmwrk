@@ -420,9 +420,8 @@
 		    <div id="ContenidoModal" class="modal-content">
 
 		    </div>
+		    <div id="footerBotonesModal">
 
-		    <div class="modal-footer">
-		      <a href="#!" class="modal-action modal-close waves-effect btn-flat ">Cerrar</a>
 		    </div>
 		    <div class="fixed-action-btn" style="bottom: 10px; right: 10px;">
 				<a class="btn-floating btn-large orange accent-4">
@@ -555,23 +554,44 @@
 						}
 					}else{
 						$( "#selectEstado" ).removeAttr("disabled");
-						var data={
-							verDetalles:"true",
-							id_plan:id_plan
-						}	
+						if(sessionStorage.getItem("ServicioCelular")==1){
+							var data={
+								celular:"1",
+								verDetalles:"true",
+								id_plan:id_plan,
+								async:false
+							}	
+						}else{
+							var data={
+								verDetalles:"true",
+								id_plan:id_plan,
+								async:false
+							}	
+						}
 					}
 					jQuery.ajax({
 						type: "POST",
 						url: "listado.php",
 						async : false,
-						data: data
+						data: data,
+
 					})
 				    .done(function(data){
-						$("#ContenidoModal").html(data);
+				    	//data downloaded so we call parseJSON function 
+                        //and pass downloaded data
+                        var json = $.parseJSON(data);
+                        //now json variable contains data in json format
+                        //let's display a few items
+                        //$('#results').html('Plugin name: ' + json.name + '<br />Author: ' + json.author.name);
+						jQuery("#ContenidoModal").html(json.contenido);
+						jQuery("#footerBotonesModal").html(json.footer);
 
 						if($('#ContenidoModal table').length) {
 					        $('#ContenidoModal table').addClass('responsive-table striped');
 					    }
+				     	$('.acordionEquipos').collapsible({
+					      	accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+					    });
 				    })
 				    .fail(function(data){
 				    	console.log(data);
@@ -1705,6 +1725,7 @@
 			}else{
 				$("#btnComparar" ).removeClass( "noCompare" );
 			}
+			return false;
 		}
 		function RemoverSeleccionado(item,plan){
 			var VaciarComparador='<i class="material-icons">done</i>';
