@@ -1094,7 +1094,7 @@
 			jQuery('#slideshow').fadeSlideShow();
 		});//document ready
 		jQuery('.products-box').click(function() {
-			var celular=0,internet=0,telefono=0,television=0,streaming=0;
+			var celular=0,internet=0,telefono=0,television=0,streaming=0,CambioEnServicio=0;
 			var contador=0;
 			sessionStorage.removeItem("filtros");
 			sessionStorage.removeItem("filtrosCheck");
@@ -1102,40 +1102,76 @@
 			if(jQuery("#celular").hasClass( "active-selection" )){
 				celular=1;
 				contador+=1;
-				sessionStorage.setItem("ServicioCelular","1");
-				//console.log("CELULAR");			
+				if(sessionStorage.getItem("ServicioCelular")!=1){
+					CambioEnServicio=1;
+					sessionStorage.setItem("ServicioCelular","1");
+					//console.log("CELULAR");			
+				}
 			}else{
-				sessionStorage.setItem("ServicioCelular","0");
+				if(sessionStorage.getItem("ServicioCelular")!=0){
+					CambioEnServicio=1;
+					sessionStorage.setItem("ServicioCelular","0");
+				}
 			}
 			if(jQuery("#internet").hasClass( "active-selection" )){
 				internet=1;
 				contador+=1;
-				sessionStorage.setItem("ServicioInternet","1");	
-				//console.log("INTERNET");			
-
+				if(sessionStorage.getItem("ServicioInternet")!=1){
+					CambioEnServicio=1;
+					sessionStorage.setItem("ServicioInternet","1");	
+					//console.log("INTERNET");		
+				}	
 			}else{
-				sessionStorage.setItem("ServicioInternet","0");
+				if(sessionStorage.getItem("ServicioInternet")!=0){
+					CambioEnServicio=1;
+					sessionStorage.setItem("ServicioInternet","0");	
+					//console.log("INTERNET");		
+				}	
 			}
 			if(jQuery("#telefono").hasClass( "active-selection" )){
 				telefono=1;
 				contador+=1;
-				sessionStorage.setItem("ServicioTelefono","1");
+				if(sessionStorage.getItem("ServicioTelefono")!=1){
+					CambioEnServicio=1;
+					sessionStorage.setItem("ServicioTelefono","1");	
+					//console.log("INTERNET");		
+				}	
 				//console.log("TELEFONO");	
 			}else{
-				sessionStorage.setItem("ServicioTelefono","0");
+				if(sessionStorage.getItem("ServicioTelefono")!=0){
+					CambioEnServicio=1;
+					sessionStorage.setItem("ServicioTelefono","0");	
+					//console.log("INTERNET");		
+				}	
 			}
 			if(jQuery("#television").hasClass( "active-selection" )){
 				television=1;
 				contador+=1;
-				sessionStorage.setItem("ServicioTelevision","1");
+				if(sessionStorage.getItem("ServicioTelevision")!=1){
+					CambioEnServicio=1;
+					sessionStorage.setItem("ServicioTelevision","1");	
+					//console.log("INTERNET");		
+				}	
 			}else{
-				sessionStorage.setItem("ServicioTelevision","0");
+				if(sessionStorage.getItem("ServicioTelevision")!=0){
+					CambioEnServicio=1;
+					sessionStorage.setItem("ServicioTelevision","0");	
+					//console.log("INTERNET");		
+				}	
 			}
 			if(jQuery("#streaming").hasClass( "active-selection" )){
 				contador+=1;
-				sessionStorage.setItem("ServicioStreaming","1");
+				if(sessionStorage.getItem("ServicioStreaming")!=1){
+					CambioEnServicio=1;
+					sessionStorage.setItem("ServicioStreaming","1");	
+					//console.log("INTERNET");		
+				}	
 			}else{
-				sessionStorage.setItem("ServicioStreaming","0");
+				if(sessionStorage.getItem("ServicioStreaming")!=0){
+					CambioEnServicio=1;
+					sessionStorage.setItem("ServicioStreaming","0");	
+					//console.log("INTERNET");		
+				}	
 			}
 
 			var celular=sessionStorage.getItem("ServicioCelular");
@@ -1149,9 +1185,9 @@
 			}else{
 				$( "#selectEstado" ).removeAttr("disabled");
 			}
-			if(contador>0){
+			if(contador>0 && CambioEnServicio==1){
 			    CargarPlanes();
-			    if($(".cargarmas").length>1){
+			    if($(".cargarmas").length>1 || $(".planmostrado").length>1){
 					CargarFiltrosCheckEmpresas();
 					if(sessionStorage.getItem("ServicioCelular")==1){
 						CargarFiltrosCheck();
