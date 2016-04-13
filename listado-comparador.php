@@ -550,7 +550,8 @@
 						$( "#selectEstado" ).prop('disabled', 'disabled');
 						var data={
 							verDetallesStreaming:"true",
-							id_paquete:id_plan
+							id_paquete:id_plan,
+							async:false
 						}
 					}else{
 						$( "#selectEstado" ).removeAttr("disabled");

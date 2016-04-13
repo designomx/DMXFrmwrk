@@ -1601,6 +1601,9 @@ $i=0;
 		//Logo de la empresa, falta ruta <img src='.$row["logo_empresa"].'>
 		$respuesta=$respuesta.'	<div id="cargarmas'.$i.'" class="col s12 m6 l4 paq-list-bx cargarmas">
 			<div class="paq-content-bx">
+				<div class="comparando-icons">
+					<i class="material-icons">live_tv</i>
+				</div>
 				<div class="brand-label" style="background-color: #424242">'.$row["nombre"].'</div>
 				<div class="paq-bx">
 					<h4 class="truncate"></h4>
@@ -1742,6 +1745,9 @@ if(isset($_POST['Streamingfiltros'])){
 		//Logo de la empresa, falta ruta <img src='.$row["logo_empresa"].'>
 		$respuesta=$respuesta.'<div class="col s12 m6 l4 paq-list-bx">
 			<div class="paq-content-bx">
+				<div class="comparando-icons">
+					<i class="material-icons">live_tv</i>
+				</div>
 				<div class="brand-label" style="background-color: #424242">'.$row["nombre"].'</div>
 				<div class="paq-bx">
 					<h4 class="truncate"></h4>
@@ -1893,7 +1899,7 @@ if(isset($_POST['verDetallesStreaming'])){
 		{
 			//array_push($rows, $row);
 			$respuesta='<div class="brand-label" style="background-color: #424242">'.$row["nombre"].'</div>
-				<h4>'.$row["precio"].'</h4>
+				<h4>$'.$row["precio"].'</h4>
 				<div class="plan-main-options row">
 					<div class="col s6 m3"><p>'.$row["dato_principal_1"].'</p></div>
 					<div class="col s6 m3"><p>'.$row["dato_principal_2"].'</p></div>
@@ -1902,8 +1908,14 @@ if(isset($_POST['verDetallesStreaming'])){
 				</div>
 				<h5>Opciones y características adicionales</h5>
 				<p>'.$row['mas_datos'];
+			$footer.='<div class="modal-footer">
+						<a href="#!" class="modal-action modal-close waves-effect btn-flat grey white-text" id="plan_'.$row["id_paquete"].'" onclick="Comparar(this,'.$row["id_paquete"].','."'".$row["empresa_color"]."'".')">Comparar</a>
+						<a href="#!" class="modal-action modal-close waves-effect btn-flat ">Cerrar</a>
+					</div>';
 		}
-		echo $respuesta;
+		$miArray = array("contenido"=>$respuesta, "footer"=>$footer);
+		echo json_encode($miArray);
+		//echo $respuesta;
 
 		/* liberar la serie de resultados */
 		$result->free();
