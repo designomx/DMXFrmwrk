@@ -3837,6 +3837,15 @@
 		"strictMath": 0,
 		"strictUnits": 0
 		},
+	"\/listado-comparador-longtext.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/listado-comparador-longtext.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/listado-comparador-vacio.html": {
 		"fileType": 8192,
 		"ignore": 0,

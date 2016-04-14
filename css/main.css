@@ -2387,3 +2387,10 @@ footer.stickFoot {
     font-size: 22px;
   }
 }
+.lngtxt {
+  font-size: 14px !important;
+}
+p blockquote {
+  display: block;
+  padding-left: 100px !important;
+}
