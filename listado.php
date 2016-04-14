@@ -476,8 +476,8 @@ if(isset($_POST['listadoSimple'])){
 						<div class="slide-bar-bx">
 							<div id="slidertest"></div>
 							<div class="slide-value-bx">
-								<span class="left">$'.$_SESSION["Preciomin"].'</span>
-								<span class="right">$'.$_SESSION["Preciomax"].'+</span>
+								<span class="left">$'.(empty($_SESSION["Preciomin"])? 0:$_SESSION["Preciomin"]).'</span>
+								<span class="right">$'.(empty($_SESSION["Preciomax"])? 3999:$_SESSION["Preciomax"]).'+</span>
 							</div>
 						</div>
 					</div>
@@ -485,12 +485,12 @@ if(isset($_POST['listadoSimple'])){
 					var slider = document.getElementById("slidertest");
 
 			 		noUiSlider.create(slidertest, {
-			 		start: ['.$_SESSION["Preciomin"].', '.$_SESSION["Preciomax"].'],
+			 		start: ['.(empty($_SESSION["Preciomin"])? 0:$_SESSION["Preciomin"]).', '.(empty($_SESSION["Preciomax"])? 3999:$_SESSION["Preciomax"]).'],
 			 		connect: true,
 			 		step: 10,
 			 		range: {
-			 		 "min": '.$_SESSION["Preciomin"].',
-			 		 "max": '.$_SESSION["Preciomax"].'
+			 		 "min": '.(empty($_SESSION["Preciomin"])? 0:$_SESSION["Preciomin"]).',
+			 		 "max": '.(empty($_SESSION["Preciomax"])? 3999:$_SESSION["Preciomax"]).'
 			 		},
 			 		  format: wNumb({
 			 			decimals: 0
@@ -1384,18 +1384,29 @@ if (isset($_POST['filtros'])) {
 									}
 							$respuesta=$respuesta.'</ul>
 						</div>';
-						if($row["sugerido"]==1){
-							$respuesta.='<div class="paq-price sgrdo">';
-						}else{
-							$respuesta.='<div class="paq-price">';
-						}
+						
 						if($row['id_tipoDato_principal_1']==2 || $row['id_tipoDato_principal_2']==2 || $row['id_tipoDato_principal_3']==2 || $row['id_tipoDato_principal_4']==2){
 							if ($row["precio"]==0){
+								if($row["sugerido"]==1){
+									$respuesta.='<div class="paq-price sgrdo lngtxt">';
+								}else{
+									$respuesta.='<div class="paq-price lngtxt">';
+								}
 								$respuesta=$respuesta.'Sin Recarga Mínima';
 							}else{
+								if($row["sugerido"]==1){
+									$respuesta.='<div class="paq-price sgrdo lngtxt">';
+								}else{
+									$respuesta.='<div class="paq-price lngtxt">';
+								}
 								$respuesta=$respuesta.'Recarga de $'.$row["precio"];
 							}
 						}else{
+							if($row["sugerido"]==1){
+								$respuesta.='<div class="paq-price sgrdo">';
+							}else{
+								$respuesta.='<div class="paq-price">';
+							}
 							$respuesta=$respuesta.'$'.$row["precio"];
 						}
 						if($row["sugerido"]==1){

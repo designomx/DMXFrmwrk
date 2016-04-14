@@ -514,7 +514,7 @@
 		<script src="js/materialize.min.js"></script>
 		<!--<script src="js/parallax.min.js"></script>-->
 		<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-		<script src="owl-carousel/owl.carousel.min.js"></script>
+				<script src="owl-carousel/owl.carousel.min.js"></script>
 
 		<script src="js/init.config.js"></script>
 		<script src="js/init.js"></script>
@@ -1069,6 +1069,7 @@
 						CargarFiltrosCheck();
 					}else{
 						jQuery("#filtrosCheckCelulares").html("");		
+
 					}
 					CargarFiltrosSliders();
 				}else{
