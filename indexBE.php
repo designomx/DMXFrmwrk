@@ -98,8 +98,29 @@
 	                      		echo $src[0];
 	                    	?>
 	                    );">
-							<h1><a href="<?php echo "blog-post.php?p=".get_the_ID(); ?>"><?php the_title();?></a></h1>
-							<a class="enter-post" href="<?php echo "blog-post.php?p=".get_the_ID(); ?>"><i class="fa fa-angle-right"></i></a>
+	                    <?php
+	                    	$esvideo=false;
+							foreach ( get_the_category( $post->ID ) as $category ) {
+								$categoria=$category->term_id;
+								if($categoria==4){
+									$esvideo=true;
+								}
+							}
+							$tituloPost=$post->post_title;
+							$contenido=$post->post_content;
+							$PostID=$post->ID;
+							//$tituloPost="TIULO";
+							if($esvideo){
+								//$contenido=$post_->post_content;
+								echo '<h1><a id="btnVerVideo" data-url="'.$contenido.'" data-id="'.$PostID.'" href="#modalVB" class="modal-trigger">'.$tituloPost.'</a></h1>
+								<a class="enter-post" id="btnVerVideo2" data-url="'.$contenido.'" data-id="'.$PostID.'" href="#modalVB" class="modal-trigger"><i class="fa fa-angle-right"></i></a>';
+
+							}else{
+								echo '<h1><a href="blog-post.php?p='.$PostID.'">'.$tituloPost.'</a></h1>
+								<a class="enter-post" href="blog-post.php?p='.$PostID.'"><i class="fa fa-angle-right"></i></a>';
+							}
+	                    ?>
+
 						</div>
 						<p class="abstractr-post">
 				    		<?php the_excerpt(); ?>
@@ -300,6 +321,21 @@
 		  	<div class="close-modal-btn"><i class="material-icons">close</i></div>
 		  </div>
 
+		  <!-- Modal Video Blog -->
+		    <div id="modalVB" class="modal">
+		      <div class="modal-content">
+		        <h4 id="tituloVideo"></h4>
+		        <div id="contenedorVideo" class="video-container">
+                	
+                </div>
+		      </div>
+		      <div class="modal-footer">
+		      	<div id="videoModalFooter">
+		        </div>
+		        <a href="#!" class="modal-action modal-close waves-effect btn-flat">Cerrar</a>
+		      </div>
+		    </div>
+
 		<!--[if IE]>
 			<script src="js/html5.js"></script>
 			<script type="text/javascript" src="js/respond.js"></script>
@@ -488,6 +524,43 @@
 				}else{
 					jQuery( "#btnBuscarHidden" ).trigger( "click" );
 				}
+			});
+			function VerVideo(url){
+				alert("verVideo: "+url);
+			}
+
+			$('#btnVerVideo2').on('click', function() {
+				jQuery( "#btnVerVideo" ).trigger( "click" );
+			});
+			$('#btnVerVideo').on('click', function() {
+	 			// This is the URL of the video you want to load
+			    var videoUrl = $("#btnVerVideo").data("url");;
+			    // This is the oEmbed endpoint for Vimeo (we're using JSON)
+		    	//alert(videoUrl);
+			    // (Vimeo also supports oEmbed discovery. See the PHP example.)
+			    var endpoint = 'http://www.vimeo.com/api/oembed.json';
+
+			    // Put together the URL
+			    var url = endpoint + '?url=' + encodeURIComponent(videoUrl)+ '&width=853 &height=480';
+			    
+			    //PostId
+			    var id=	$("#btnVerVideo").data("id");;
+
+				$.ajax({
+				    url: url,
+				    // Tell jQuery we're expecting JSONP
+				    dataType: "jsonp",
+				    async:false,					 
+				    // Work with the response
+				    success: function( response ) {
+				        console.log( response ); // server response
+				        $('#contenedorVideo').html( unescape(response.html));
+				        //document.getElementByClass('videoModalFooter').innerHTML = unescape(response.description);
+				        $('#videoModalFooter').html('<a href="blog-post.php?p='+id+'" class="waves-effect btn-flat">Más</a>');
+				        $("#tituloVideo").html(unescape(response.title));
+
+				    }
+				});
 			});
 
 		</script>

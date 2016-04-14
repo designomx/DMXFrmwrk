@@ -84,8 +84,7 @@
 					$post_ = get_post( $_GET["p"] ); 
 					$title = $post_->post_title;
 					$excerpt = $post_->post_excerpt;
-					
-					
+
 				}
 				
 		?>
@@ -93,12 +92,23 @@
 			<div class="post-page-bx row">
 				<h1><?php echo $title;?></h1>
 				<?php
-					if ( has_post_thumbnail() ) {
-					    //the_post_thumbnail();
-					    $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 5600,1000 ), false, '' );
-						echo '<img class="responsive-img" src="'.$src[0].'">';
-
-					} 
+					$esvideo=false;
+					foreach ( get_the_category( $post_ ) as $category ) {
+						$categoria=$category->term_id;
+						if($categoria==4){
+							$esvideo=true;
+						}
+					}
+					if($esvideo){
+						$contenido=$post_->post_content;
+						echo "<div id='embedVideo' data-url='".$contenido."'> </div>";
+					}else{
+						if ( has_post_thumbnail() ) {
+						    //the_post_thumbnail();
+						    $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 5600,1000 ), false, '' );
+							echo '<img class="responsive-img" src="'.$src[0].'">';
+						} 
+					}
 				?>
 				<!--<img class="responsive-img" src="images/post-hero.jpg">-->
 
@@ -112,10 +122,14 @@
 				<?php
 					echo "<p class='responsive-img'>";
 					$contenido=$post_->post_content;
-					echo $contenido;
+					if($esvideo){
+						echo "<div id='descripcion'></div>";
+					}else{
+						echo "<div>".$contenido."</div>";
+					}
 					echo "</p>";
 				?>
-				
+				<div id="embed"></div>
 				<div class="backblog-button-bx">
 					<a href="indexBE.php#blog-module" class="z-depth-1 hoverable"><i class="fa fa-angle-double-left"></i> Regresar</a>
 				</div>
@@ -235,6 +249,71 @@
 				}
 
 			});
+			$(document).ready(function () {
+			 
+				/*$('#linksEmbed').ready(function(){
+					tagdata = [];
+					eventdata = [];
+					var scriptruns = [];
+					var text = $('#linksEmbed').val();
+					text = $('<span>'+text+'</span>').text(); //strip html
+					text = text.replace(/(\s|>|^)(https?:[^\s<]*)/igm,'$1<div><a href="$2" class="oembed">$2</a></div>');
+					text = text.replace(/(\s|>|^)(mailto:[^\s<]*)/igm,'$1<div><a href="$2" class="oembed">$2</a></div>');
+
+					
+						
+					
+					
+					$('#linksEmbed').empty().html("John");
+					
+					$(".oembed").oembed(null,{
+						apikeys: {
+							//etsy : 'd0jq4lmfi5bjbrxq2etulmjr',
+							amazon : 'caterwall-20',
+							//eventbrite: 'SKOFRBQRGNQW5VAS6P',
+						},
+						//maxHeight: 200, maxWidth:300
+					});
+					
+				});*/
+
+				if ($('#linksEmbed:contains("https://vimeo")').length >= 0){
+					//alert("!!!!")
+				}
+				if ($('#field > div.field-item:contains("someText")').length > 0) {
+				    $("#somediv").addClass("thisClass");
+				}				
+				$(this).data("url");
+				$("#embedVideo").ready(function (){
+					 // This is the URL of the video you want to load
+			        var videoUrl = $("#embedVideo").data("url");;
+			        // This is the oEmbed endpoint for Vimeo (we're using JSON)
+
+			        // (Vimeo also supports oEmbed discovery. See the PHP example.)
+			        var endpoint = 'http://www.vimeo.com/api/oembed.json';
+
+			        // Tell Vimeo what function to call
+			        var callback = 'embedVideo';
+
+			        // Put together the URL
+			        var url = endpoint + '?url=' + encodeURIComponent(videoUrl)+ '&width=640';
+			        //alert(url);
+
+					$.ajax({
+					    url: url,
+					    // Tell jQuery we're expecting JSONP
+					    dataType: "jsonp",					 
+					    // Work with the response
+					    success: function( response ) {
+					        console.log( response ); // server response
+					        document.getElementById('embedVideo').innerHTML = unescape(response.html);
+					        document.getElementById('descripcion').innerHTML = unescape(response.description);
+
+					    }
+					});
+				})
+			});
+
 		</script>
 	</body>
 

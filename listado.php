@@ -334,8 +334,13 @@ if(isset($_POST['listadoSimple'])){
 										}
 									}
 							$respuesta=$respuesta.'</ul>
-						</div>
-						<div class="paq-price">';
+						</div>'
+						;
+						if($row["sugerido"]==1){
+							$respuesta.='<div class="paq-price sgrdo">';
+						}else{
+							$respuesta.='<div class="paq-price">';
+						}
 						if($row['id_tipoDato_principal_1']==2 || $row['id_tipoDato_principal_2']==2 || $row['id_tipoDato_principal_3']==2 || $row['id_tipoDato_principal_4']==2){
 							if ($row["precio"]==0){
 								$respuesta=$respuesta.'Sin Recarga Mínima';
@@ -1378,8 +1383,12 @@ if (isset($_POST['filtros'])) {
 										}
 									}
 							$respuesta=$respuesta.'</ul>
-						</div>
-						<div class="paq-price">';
+						</div>';
+						if($row["sugerido"]==1){
+							$respuesta.='<div class="paq-price sgrdo">';
+						}else{
+							$respuesta.='<div class="paq-price">';
+						}
 						if($row['id_tipoDato_principal_1']==2 || $row['id_tipoDato_principal_2']==2 || $row['id_tipoDato_principal_3']==2 || $row['id_tipoDato_principal_4']==2){
 							if ($row["precio"]==0){
 								$respuesta=$respuesta.'Sin Recarga Mínima';
