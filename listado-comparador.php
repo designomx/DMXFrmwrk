@@ -21,7 +21,7 @@
 		<meta name="msapplication-wide310x150logo" content="/img/profile/widetile.png" />
 		<meta name="msapplication-square310x310logo" content="/img/profile/largetile.png" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Framework 0.1.b | designo.mx®</title>
+		<title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
 		<!-- CSS -->
 		<link href="materialize/css/materialize.min.css" type="text/css" rel="stylesheet" />
 		<link href="css/iosOverlay.css" type="text/css" rel="stylesheet" media="screen,projection" />
@@ -400,7 +400,7 @@
 									<div class="content-bx hvr-grow">
 										<div class="valigny">
 											<i class="material-icons">live_tv</i>
-											<p>Streaming</p>
+											<p>streaming</p>
 										</div>
 									</div>
 									<div class="check-plan">
@@ -1067,6 +1067,8 @@
 				   	CargarFiltrosCheckEmpresas();
 				   	if(sessionStorage.getItem("ServicioCelular")==1){
 						CargarFiltrosCheck();
+					}else{
+						jQuery("#filtrosCheckCelulares").html("");		
 					}
 					CargarFiltrosSliders();
 				}else{
@@ -1192,6 +1194,8 @@
 					CargarFiltrosCheckEmpresas();
 					if(sessionStorage.getItem("ServicioCelular")==1){
 						CargarFiltrosCheck();
+					}else{
+						jQuery("#filtrosCheckCelulares").html("");		
 					}
 					CargarFiltrosSliders();
 				}else{

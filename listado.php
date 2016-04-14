@@ -1126,7 +1126,7 @@ if (isset($_POST['filtros'])) {
     }
     $query_filtros=$query_filtros."GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios']);
   	//echo $query_filtros;
-
+  	//exit();
 	//$result = $mysqli->query($query);
   	$result_filtros = $mysqli->query($query_filtros);
 	//$_SESSION['numero_planes']=mysqli_num_rows($result_filtros);				
@@ -1613,9 +1613,9 @@ $i=0;
 				<div class="comparando-icons">
 					<i class="material-icons">live_tv</i>
 				</div>
-				<div class="brand-label" style="background-color: #424242">'.$row["nombre"].'</div>
+				<div class="brand-label" style="background-color: #424242">'.$row["nombre_empresa"].'</div>
 				<div class="paq-bx">
-					<h4 class="truncate"></h4>
+					<h4 class="truncate">'.$row["nombre"].'</h4>
 					<ul>
 						<li>'.$row["dato_principal_1"].'</li>	
 						<li>'.$row["dato_principal_2"].'</li>
@@ -1696,7 +1696,7 @@ if(isset($_POST['CargarSliderStreaming'])){
 }//if(isset($_POST['CargarSliderStreaming'])){
 
 if(isset($_POST['Streamingfiltros'])){
-//FILTRAR CON LOS FILTROS
+//Mostrar planes con los filtros
 	$query_filtros="SELECT 
 			P.id_paquete,
 			P.nombre,
@@ -1757,9 +1757,9 @@ if(isset($_POST['Streamingfiltros'])){
 				<div class="comparando-icons">
 					<i class="material-icons">live_tv</i>
 				</div>
-				<div class="brand-label" style="background-color: #424242">'.$row["nombre"].'</div>
+				<div class="brand-label" style="background-color: #424242">'.$row["nombre_empresa"].'</div>
 				<div class="paq-bx">
-					<h4 class="truncate"></h4>
+					<h4 class="truncate">'.$row["nombre"].'</h4>
 					<ul>
 						<li>'.$row["dato_principal_1"].'</li>	
 						<li>'.$row["dato_principal_2"].'</li>

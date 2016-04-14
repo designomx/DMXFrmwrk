@@ -21,7 +21,7 @@
 		<meta name="msapplication-wide310x150logo" content="/img/profile/widetile.png" />
 		<meta name="msapplication-square310x310logo" content="/img/profile/largetile.png" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Elige Fácil | designo.mx®</title>
+		<title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
 		<!-- CSS -->
 		<link href="materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="css/iosOverlay.css" type="text/css" rel="stylesheet" media="screen,projection" />
