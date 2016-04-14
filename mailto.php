@@ -172,5 +172,11 @@ $headers .= 'From: Eligefacil <contacto@eligefacil.com>' . "\r\n";
 //$headers .= 'Bcc: birthdaycheck@example.com' . "\r\n";
 
 // Mail it
-mail($to, $subject, $message, $headers);
+//mail($to, $subject, $message, $headers);
+if (mail($to, $subject, $message, $headers)){
+	echo true;
+}else{
+	echo false;
+}
+
 ?>

@@ -101,7 +101,7 @@
 					}
 					if($esvideo){
 						$contenido=$post_->post_content;
-						echo "<div id='embedVideo' data-url='".$contenido."'> </div>";
+						echo "<div class='video-container' id='embedVideo' data-url='".$contenido."'> </div><div class='clearfix'></div> <br> ";
 					}else{
 						if ( has_post_thumbnail() ) {
 						    //the_post_thumbnail();

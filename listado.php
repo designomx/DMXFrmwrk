@@ -1419,7 +1419,7 @@ if(isset($_POST['SelectDeEstados'])){
 				   	   
 
 						$result = $mysqli->query($query);
-						echo '<div class="input-field col s12">
+						echo '<div id="SelectEstadosPHP" class="input-field col s12">
 				   				<select id="selectEstado" class="browser-default">';
 				   		if(!isset($_POST['estado'])){
 		   	    			echo '<option value="-1" selected="selected">Seleccione un Estado</option>';

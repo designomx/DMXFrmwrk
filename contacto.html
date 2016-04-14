@@ -115,9 +115,8 @@
 							<input id="email" type="email" class="validate">
 							<label for="email">Email</label>
 						</div>
-						<div class="input-field col s12 m6">
-							<div id="SelectDeEstados">
-							</div>
+						<div id="SelectDeEstados" class="input-field col s12 m6">
+							
 						</div>
 						<div class="input-field col s12 m6">
 							<select id="tema" class="browser-default">
@@ -195,6 +194,8 @@
 		<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 		<script src="js/init.config.js"></script>
 		<script src="js/init.js"></script>
+		<script src="js/blockUI.js"></script>
+
 		<!--INTERNET CHECK-->
 		<script src="offline07/offline.min.js"></script>
 		<link rel="stylesheet" href="offline07/themes/offline-theme-dark.css" />
@@ -219,6 +220,24 @@
 					}(document, 'script', 'facebook-jssdk'));
 		</script>
 		<script>
+		var opts = {
+				lines: 9,
+				length: 12,
+				width: 8,
+				radius: 18,
+				corners: 1,
+				rotate: 0,
+				direction: 1,
+				color: '#ffffff',
+				speed: 1.2,
+				trail: 60,
+				shadow: false,
+				hwaccel: false,
+				className: 'loadingSpinner',
+				zIndex: 2e9,
+				top: '40%',
+				left: '50%'
+			};
 		jQuery(document).ready(function(){
 			CargarEstados();
 		});
@@ -235,6 +254,7 @@
 			})
 		    .done(function(data){
 				jQuery("#SelectDeEstados").html(data);
+				jQuery("#SelectEstadosPHP").removeClass("input-field col s12");
 		    })
 		    .fail(function(data){
 		    	console.log(data);
@@ -248,6 +268,14 @@
 			//alert("Estado: "+$( "#selectEstado" ).val());
 			//alert("Tema: "+$( "#tema" ).val());
 			//alert("Comentario: "+$( "#comentario" ).val());
+			$.blockUI({ message: null }); 
+			var target = document.createElement("div");
+			document.body.appendChild(target);
+			var spinner = new Spinner(opts).spin(target);
+			var overlay = iosOverlay({
+				text: "Cargando",
+				spinner: spinner
+			});
 			var data={
 					nombre:$( "#nombre" ).val(),
 					email:$( "#email" ).val(),
@@ -262,6 +290,39 @@
 				data: data
 			})
 		    .done(function(data){
+
+		    	if(data==true){
+		    		//alert("true");
+		    		$( "#nombre" ).val("");
+					$( "#email" ).val("");
+					$( "#selectEstado" ).val("");
+					$( "#tema" ).val("1");
+					$( "#comentario" ).val("");
+		    		window.setTimeout(function() {
+						overlay.update({
+							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							text: "Listo"
+						});
+					}, 1000);
+					window.setTimeout(function() {
+						overlay.hide();
+					}, 2000);
+					setTimeout($.unblockUI, 3000);
+
+		    	}else{
+		    		//alert("false");
+		    		window.setTimeout(function() {
+						overlay.update({
+							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							text: "ERROR"
+						});
+					}, 1000);
+					window.setTimeout(function() {
+						overlay.hide();
+					}, 2000);
+					setTimeout($.unblockUI, 3000);
+
+		    	}
 		    	console.log(data)
 		    })
 		    .fail(function(data){

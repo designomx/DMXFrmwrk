@@ -322,9 +322,9 @@
 		  </div>
 
 		  <!-- Modal Video Blog -->
-		    <div id="modalVB" class="modal">
+		    <div id="modalVB" class="modal modal-fixed-footer">
 		      <div class="modal-content">
-		        <h4 id="tituloVideo"></h4>
+		        <h5 id="tituloVideo"></h5>
 		        <div id="contenedorVideo" class="video-container">
                 	
                 </div>
