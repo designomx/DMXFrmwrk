@@ -1139,6 +1139,7 @@ footer.stickFoot {
   background-clip: padding-box;
   display: inline-block;
   cursor: pointer;
+  margin: 0 5px;
 }
 .home-slide-bar ul li.active {
   background-color: #8F8A91;
@@ -1787,7 +1788,7 @@ footer.stickFoot {
   -moz-box-shadow: 0 3px 11px rgba(0, 0, 0, 0.2);
   box-shadow: 0 3px 11px rgba(0, 0, 0, 0.2);
   position: relative;
-  max-height: 369px;
+  max-height: 370px;
 }
 .paq-list-bx .paq-content-bx.banner-ovrflw {
   overflow: hidden;
