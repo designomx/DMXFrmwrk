@@ -336,18 +336,28 @@ if(isset($_POST['listadoSimple'])){
 							$respuesta=$respuesta.'</ul>
 						</div>'
 						;
-						if($row["sugerido"]==1){
-							$respuesta.='<div class="paq-price sgrdo">';
-						}else{
-							$respuesta.='<div class="paq-price">';
-						}
 						if($row['id_tipoDato_principal_1']==2 || $row['id_tipoDato_principal_2']==2 || $row['id_tipoDato_principal_3']==2 || $row['id_tipoDato_principal_4']==2){
 							if ($row["precio"]==0){
+								if($row["sugerido"]==1){
+									$respuesta.='<div class="paq-price sgrdo lngtxt">';
+								}else{
+									$respuesta.='<div class="paq-price lngtxt">';
+								}
 								$respuesta=$respuesta.'Sin Recarga Mínima';
 							}else{
+								if($row["sugerido"]==1){
+									$respuesta.='<div class="paq-price sgrdo lngtxt">';
+								}else{
+									$respuesta.='<div class="paq-price lngtxt">';
+								}
 								$respuesta=$respuesta.'Recarga de $'.$row["precio"];
 							}
 						}else{
+							if($row["sugerido"]==1){
+								$respuesta.='<div class="paq-price sgrdo">';
+							}else{
+								$respuesta.='<div class="paq-price">';
+							}
 							$respuesta=$respuesta.'$'.$row["precio"];
 						}
 						if($row["sugerido"]==1){
@@ -811,6 +821,62 @@ if(isset($_POST['listadoSimple'])){
 	echo $respuesta;
 }
 
+
+if(isset($_POST['CargarFiltrosCheckEmpresasConFiltro'])){
+	$dato=0;
+	if($_POST['CelularPlan']==1){
+		$dato=1;
+	}
+	if($_POST['CelularPrepago']==1){
+		$dato=2;
+	}
+	$query=("SELECT 
+			DISTINCT(E.nombre) as empresa
+		  	FROM empresas E
+		  	INNER JOIN planes P ON P.ID_EMPRESA=E.ID_EMPRESA
+		  	INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
+		  	INNER JOIN planes_tipoServicios PT ON P.ID_PLAN=PT.ID_PLAN
+		  	WHERE C.ID_ESTADO='".$_SESSION['estado']."'
+		  	AND ((P.id_tipoDato_principal_1=".$dato." AND P.dato_principal_1=1) OR (P.id_tipoDato_principal_2=".$dato." AND P.dato_principal_2=1) OR (P.id_tipoDato_principal_3=".$dato." AND P.dato_principal_3=1) OR (P.id_tipoDato_principal_4=".$dato." AND P.dato_principal_4=1))
+		  	AND PT.id_plan NOT IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (SELECT id_tipoServicio from tipoServicios where id_tipoServicio NOT IN (".implode(', ', $_SESSION['Servicios']).") ) )
+		  	AND visible=1
+		  	GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])."
+		  	");
+	//echo $query;
+	//exit();
+
+	$result = $mysqli->query($query);
+
+	$rows=array();
+	while($row = $result->fetch_array())
+	{
+		array_push($rows, $row);
+	}
+	$i=1;
+	foreach($rows as $row)
+	{
+			echo '	<p class="truncate">
+					<input type="checkbox" id="checkboxEmpresas'.$i.'" onchange="CargarPlanesConFiltros();"/>
+					<label for="checkboxEmpresas'.$i.'">'.$row["empresa"].'</label>
+					</p>
+					<script type="text/javascript">
+					if(sessionStorage.filtrosCheckEmpresas){
+						var getFiltrosCheckEmpresas= JSON.parse(sessionStorage.getItem("filtrosCheckEmpresas"));
+					}else{
+						var getFiltrosCheckEmpresas = new Array();
+					}
+					getFiltrosCheckEmpresas.push({empresa:"'.$row["empresa"].'",value:"checkboxEmpresas'.$i.'"});
+					//console.log(getFiltros);
+					$.each(getFiltrosCheckEmpresas, function( index, value ) {
+						//console.log( value.id_tipoDato+":"+value.value );
+					});
+					sessionStorage.setItem("filtrosCheckEmpresas", JSON.stringify(getFiltrosCheckEmpresas));
+				</script>';
+				$i+=1;
+	}//END FOREACH
+
+
+}//if(isset($_POST['CargarFiltrosCheckEmpresasConFiltro'])){
 
 if(isset($_POST['verDetalles'])){
 	if(isset($_POST['id_plan'])){

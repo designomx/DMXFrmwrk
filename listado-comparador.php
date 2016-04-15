@@ -965,6 +965,8 @@
 						async: false
 					})
 				    .done(function(data){
+				    	if(sessionStorage.getItem("ServicioCelular")==1){
+				    	}
 						jQuery("#planes").html(data);
 						if($(".cargarmas").length<1){
 							jQuery("#planes").html('<h1 class="nocriteria center">No hay resultados que mostrar con los criterios seleccionados.</h1>');
@@ -1041,8 +1043,10 @@
 			}
 			//alert("Actualizar planes");
 			*/
+			CargarFiltrosCheckEmpresasConFiltro();
 			if($('#checkbox1').is(':checked')){
 		    	$('input.checkbox1').removeAttr("disabled");
+
 			}
 			if(!$('#checkbox1').is(':checked')){
 		    	$( "input.checkbox1" ).prop( "checked", false );
@@ -1349,17 +1353,6 @@
 							autoHideScrollbar: true,
 							updateOnContentResize: true
 						});
-						/*
-						$("#filtros").mouseup(function() {
-						    CargarPlanesConFiltros();
-						})
-						*/
-						/*
-						$( ".sliders-scroll-bx" ).bind( "mouseenter mouseleave", function() {
-						  //$( this ).toggleClass( "entered" );
-						  //alert("Entra o sale de slide-bar-bx")
-						});
-						*/
 			 		}else {
 			 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form").addClass('ismobilescroll');
 			 		}
@@ -1449,6 +1442,28 @@
 						if(document.getElementsByClassName("input.checkbox1")){
 							$('input.checkbox1').attr("disabled", true);
 						}
+						var _widthSlides = 0;
+				 		jQuery('.sliders-wrapp .slider-bx').each(function() {
+				 		    _widthSlides += jQuery(this).outerWidth( true );
+				 		});
+				 		jQuery('.sliders-wrapp').css('width', _widthSlides);
+				 	
+				 		if (isMobile.any == false) {
+				 			jQuery(".sliders-scroll-bx").mCustomScrollbar({
+								axis: "x",
+								theme: "dark-thin",
+								autoHideScrollbar: true,
+								updateOnContentResize: true
+							});
+							jQuery(".checks-scroll-bx form").mCustomScrollbar({
+								axis: "y",
+								theme: "dark-thin",
+								autoHideScrollbar: true,
+								updateOnContentResize: true
+							});
+				 		}else {
+				 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form").addClass('ismobilescroll');
+				 		}
 				    })
 				    .fail(function(data){
 				    	console.log(data);
@@ -1953,6 +1968,44 @@
 	 			// some code..
 			 	$(".iconosPlanes").hide();
 			}
+		}
+		function CargarFiltrosCheckEmpresasConFiltro(){
+			if($('#checkbox1').is(':checked')){
+				//console.log("plan: 1");
+				//console.log("prepago: 0");
+				var plan=1,prepago=0;
+			}
+			if($('#checkbox2').is(':checked')){
+				//console.log("plan: 0");
+				//console.log("prepago: 1");
+				var plan=0;prepago=1;
+			}
+			$( "#selectEstado" ).removeAttr("disabled");
+			var data={
+				//listadoSimple:"true",
+				CargarFiltrosCheckEmpresasConFiltro:"true",
+				celular:sessionStorage.getItem("ServicioCelular"),
+				internet:sessionStorage.getItem("ServicioInternet"),
+				telefono:sessionStorage.getItem("ServicioTelefono"),
+				television:sessionStorage.getItem("ServicioTelevision"),
+				streaming:sessionStorage.getItem("ServicioStreaming"),
+				estado:$( "#selectEstado" ).val(),
+				CelularPlan:plan,
+				CelularPrepago:prepago
+			}
+			jQuery.ajax({
+				type: "POST",
+				url: "listado.php",
+				async : false,
+				data: data
+			})
+		    .done(function(data){
+				jQuery("#filtrosCheckEmpresas").html(data);
+
+		    })
+		    .fail(function(data){
+		    	console.log(data);
+		    });
 		}
 		</script>
 		<script>

@@ -44,7 +44,7 @@
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="#blog-module" class="magictime slideUpRetourn fix-pos-nav">Enterate</a>
+						<a href="#blog-module" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
@@ -62,7 +62,7 @@
 						<a id="descubreBTN" href="listado-comparador.php"><i class="fa fa-search left"></i> Descubre</a>
 					</li>
 					<li>
-						<a href="#blog-module"><i class="fa fa-newspaper-o left"></i> Enterate</a>
+						<a href="#blog-module"><i class="fa fa-newspaper-o left"></i> Entérate</a>
 					</li>
 					<li>
 						<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
