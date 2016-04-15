@@ -1067,7 +1067,7 @@
 				CargarPlanes()
 			).then(function(){
 			   //alert('All AJAX Methods Have Completed!');
-			   if($(".cargarmas").length>1){
+			   if($(".cargarmas").length>1 || $(".planmostrado").length>1){
 				   	CargarFiltrosCheckEmpresas();
 				   	if(sessionStorage.getItem("ServicioCelular")==1){
 						CargarFiltrosCheck();
@@ -1353,9 +1353,16 @@
 							autoHideScrollbar: true,
 							updateOnContentResize: true
 						});
+						$(".scroll-box").mCustomScrollbar({
+							axis: "x",
+							theme: "minimal",
+							updateOnContentResize: true
+						});
 			 		}else {
 			 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form").addClass('ismobilescroll');
 			 		}
+			 		$(".sliders-scroll-bx").mCustomScrollbar("update");
+
 
 			    })
 			    .fail(function(data){
@@ -1406,9 +1413,15 @@
 						    CargarPlanesConFiltros();
 						})
 						*/
+						$(".sliders-scroll-bx .sliders-wrapp").mCustomScrollbar("update");
+
 			 		}else {
-			 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form").addClass('ismobilescroll');
+			 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form .sliders-wrapp").addClass('ismobilescroll');
 			 		}
+			 		//jQuery('.sliders-scroll-bx').css('width', _widthSlides);
+			 		console.log(".sliders-scroll-bx .sliders-wrapp update")
+			 		$(".sliders-scroll-bx .sliders-wrapp").mCustomScrollbar("update");
+
 
 			    })
 			    .fail(function(data){
@@ -1416,6 +1429,7 @@
 			    	console.log("Error llamada en llamada cargo CargarFiltrosSliders");
 			    });
 			}
+			//_fixedFiltersBx();
 		}
 
 		function CargarFiltrosCheck(){
