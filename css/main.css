@@ -1450,12 +1450,24 @@ footer.stickFoot {
 }
 #contact-module .post-page-bx h1,
 .contact-module .post-page-bx h1 {
-  font-family: 'Visby CF';
+  font-family: 'Visby CF Medium';
   font-size: 42px !important;
   margin: 0;
   padding: 20px 30px;
-  font-weight: 700;
+  font-weight: 400;
   color: #424242 !important;
+}
+@media (max-width: 600px) {
+  #contact-module .post-page-bx h1,
+  .contact-module .post-page-bx h1 {
+    font-size: 28px !important;
+  }
+}
+@media (max-width: 480px) {
+  #contact-module .post-page-bx h1,
+  .contact-module .post-page-bx h1 {
+    font-size: 22px !important;
+  }
 }
 #contact-module .post-page-bx .responsive-img,
 .contact-module .post-page-bx .responsive-img {
@@ -1503,6 +1515,12 @@ footer.stickFoot {
 #contact-module .post-page-bx table,
 .contact-module .post-page-bx table {
   margin: 30px 20px;
+}
+@media only screen and (max-width: 640px) {
+  #contact-module .post-page-bx table,
+  .contact-module .post-page-bx table {
+    margin: 30px 0px;
+  }
 }
 #contact-module .post-page-bx .social-btn-row,
 .contact-module .post-page-bx .social-btn-row {
