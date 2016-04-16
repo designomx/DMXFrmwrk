@@ -1,6 +1,11 @@
+<?php 
+header("Access-Control-Allow-Origin: *");
+?>
+<!DOCTYPE HTML>
+	<html <?php language_attributes(); ?>>
 
-<!DOCTYPE html>
-<html lang="es">
+<!--<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />-->
 
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
@@ -29,19 +34,23 @@
   
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-  <title>Framework 0.1.b | designo.mx® </title>
+	<title><?php if(is_home()) bloginfo('name'); else wp_title(''); ?></title>
 
-  <!-- CSS  -->
-  <link href="/css/iosOverlay.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="/css/animate.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="/css/magic.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="/css/gadget.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <!-- This is FontsAwesome 4.3.0-->
-  <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-  <!--http://www.getmdl.io-->
-  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  
+	<style type="text/css" media="screen">
+		@import url( <?php bloginfo('stylesheet_url'); ?> );
+	</style>
+
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('rss2_url'); ?>" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="<?php bloginfo('rss_url'); ?>" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="<?php bloginfo('atom_url'); ?>" />
+
+	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+	<?php
+    wp_get_archives('type=monthly&format=link');
+    wp_head();
+  ?>
 </head>
 
 <body>
+  <div id="canvas">
+    <div id="primaryContent">

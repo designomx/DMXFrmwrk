@@ -1,3 +1,7 @@
+<?php
+//header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: *");
+?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -44,7 +48,7 @@
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="#blog-module" class="magictime slideUpRetourn fix-pos-nav">Enterate</a>
+						<a href="#blog-module" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
@@ -62,7 +66,7 @@
 						<a id="descubreBTN" href="listado-comparador.php"><i class="fa fa-search left"></i> Descubre</a>
 					</li>
 					<li>
-						<a href="#blog-module"><i class="fa fa-newspaper-o left"></i> Enterate</a>
+						<a href="#blog-module"><i class="fa fa-newspaper-o left"></i> Entérate</a>
 					</li>
 					<li>
 						<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
@@ -112,8 +116,8 @@
 							//$tituloPost="TIULO";
 							if($esvideo){
 								//$contenido=$post_->post_content;
-								echo '<h1><a id="btnVerVideo" data-url="'.$contenido.'" data-id="'.$PostID.'" href="#modalVB" class="modal-trigger">'.$tituloPost.'</a></h1>
-								<a class="enter-post" id="btnVerVideo2" data-url="'.$contenido.'" data-id="'.$PostID.'" href="#modalVB" class="modal-trigger"><i class="fa fa-angle-right"></i></a>';
+								echo '<h1><a onclick="VerVideo(this)" id="btnVerVideo" data-url="'.$contenido.'" data-id="'.$PostID.'" href="#modalVB" class="modal-trigger">'.$tituloPost.'</a></h1>
+								<a onclick="VerVideo(this)" class="enter-post" id="btnVerVideo2" data-url="'.$contenido.'" data-id="'.$PostID.'" href="#modalVB" class="modal-trigger"><i class="fa fa-angle-right"></i></a>';
 
 							}else{
 								echo '<h1><a href="blog-post.php?p='.$PostID.'">'.$tituloPost.'</a></h1>
@@ -525,42 +529,80 @@
 					jQuery( "#btnBuscarHidden" ).trigger( "click" );
 				}
 			});
-			function VerVideo(url){
-				alert("verVideo: "+url);
+			function VerVideo(element){
+				console.log("verVideo: "+$(element).data("url"));
+				var videoUrl = $(element).data("url");
+				if( videoUrl.indexOf('vimeo') !== -1){
+					// Found vimeo
+					//console.log("vimeo");
+				    // This is the oEmbed endpoint for Vimeo (we're using JSON)
+			    	//alert(videoUrl);
+				    // (Vimeo also supports oEmbed discovery. See the PHP example.)
+				    var endpoint = 'http://www.vimeo.com/api/oembed.json';
+
+				    // Put together the URL
+				    var url = endpoint + '?url=' + encodeURIComponent(videoUrl)+ '&width=853 &height=480';
+				    
+				    //PostId
+				    var id=	$(element).data("id");;
+
+					$.ajax({
+					    url: url,
+					    // Tell jQuery we're expecting JSONP
+					    dataType: "jsonp",
+					    async:false,					 
+					    // Work with the response
+					    success: function( response ) {
+					        //console.log( response ); // server response
+					        $('#contenedorVideo').html( unescape(response.html));
+					        //document.getElementByClass('videoModalFooter').innerHTML = unescape(response.description);
+					        $('#videoModalFooter').html('<a href="blog-post.php?p='+id+'" class="waves-effect btn-flat">Más</a>');
+					        $("#tituloVideo").html(unescape(response.title));
+
+					    }
+					});
+				}
+				if( videoUrl.indexOf('youtube') !== -1){
+				  	// Found youtube
+				  	//console.log("youtube");
+				    // This is the oEmbed endpoint for Vimeo (we're using JSON)
+			    	//alert(videoUrl);
+				    // (Vimeo also supports oEmbed discovery. See the PHP example.)
+				    var endpoint = 'https://www.youtube.com/oembed';
+
+				    // Put together the URL
+				    var url = endpoint + '?url=' + encodeURIComponent(videoUrl)+ '&format=json';
+				    //url="https://www.youtube.com/oembed?url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DiwGFalTRHDA&format=json";
+				    //PostId
+				    var id=	$(element).data("id");;
+
+					$.ajax({
+					    url: url,
+					    // Tell jQuery we're expecting JSONP
+					    dataType: "json",
+					    async:false,					 
+					    // Work with the response
+					    success: function( response ) {
+					        //console.log( response ); // server response
+					        $('#contenedorVideo').html( unescape(response.html));
+					        //document.getElementByClass('videoModalFooter').innerHTML = unescape(response.description);
+					        $('#videoModalFooter').html('<a href="blog-post.php?p='+id+'" class="waves-effect btn-flat">Más</a>');
+					        $("#tituloVideo").html(unescape(response.title));
+
+					    }
+					});
+					
+				}
+				if ($(element).id=="btnVerVideo2"){
+					jQuery("#btnVerVideo").trigger("click");
+				}
 			}
 
 			$('#btnVerVideo2').on('click', function() {
 				jQuery( "#btnVerVideo" ).trigger( "click" );
 			});
 			$('#btnVerVideo').on('click', function() {
-	 			// This is the URL of the video you want to load
-			    var videoUrl = $("#btnVerVideo").data("url");;
-			    // This is the oEmbed endpoint for Vimeo (we're using JSON)
-		    	//alert(videoUrl);
-			    // (Vimeo also supports oEmbed discovery. See the PHP example.)
-			    var endpoint = 'http://www.vimeo.com/api/oembed.json';
-
-			    // Put together the URL
-			    var url = endpoint + '?url=' + encodeURIComponent(videoUrl)+ '&width=853 &height=480';
-			    
-			    //PostId
-			    var id=	$("#btnVerVideo").data("id");;
-
-				$.ajax({
-				    url: url,
-				    // Tell jQuery we're expecting JSONP
-				    dataType: "jsonp",
-				    async:false,					 
-				    // Work with the response
-				    success: function( response ) {
-				        console.log( response ); // server response
-				        $('#contenedorVideo').html( unescape(response.html));
-				        //document.getElementByClass('videoModalFooter').innerHTML = unescape(response.description);
-				        $('#videoModalFooter').html('<a href="blog-post.php?p='+id+'" class="waves-effect btn-flat">Más</a>');
-				        $("#tituloVideo").html(unescape(response.title));
-
-				    }
-				});
+	 			
 			});
 
 		</script>

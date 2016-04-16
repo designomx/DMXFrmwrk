@@ -39,9 +39,15 @@ switch ($_POST["tema"]) {
 		$message.='<h1>Comentario</h1>';
 		break;
 	case '5':
+		$message.='<h1>Agregar Plan</h1>';
+		break;
+	case '6':
+		$message.='<h1>Reportar Plan</h1>';
+		break;	
+	case '7':
 		$message.='<h1>Otro</h1>';
 		break;
-		
+
 	default:
 		$message.='<h1>Mensaje sin tema</h1>';
 		break;

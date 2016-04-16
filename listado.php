@@ -151,7 +151,7 @@ if(isset($_POST['listadoSimple'])){
 				}
 			}
 
-			$query_sugeridos=("SELECT DISTINCT(P.id_plan), 
+			/*$query_sugeridos=("SELECT DISTINCT(P.id_plan), 
 				P.nombre, 
 				P.precio, 
 				P.dato_principal_1, 
@@ -196,21 +196,8 @@ if(isset($_POST['listadoSimple'])){
 				//Los planes que cumplen las reglas de busqueda, son no sugeridos=0
 				$row["sugerido"]=1;	
 				array_push($rows, $row);
-				/*
-				if($_SESSION['Preciomin']==-1){
-					$_SESSION['Preciomax']=$row['precio'];
-					$_SESSION['Preciomin']=$row['precio'];
-				}else{
-					if($row['precio']>$_SESSION['Preciomax']){
-						$_SESSION['Preciomax']=$row['precio'];
-					}
-					if($row['precio']<$_SESSION['Preciomin']){
-						$_SESSION['Preciomin']=$row['precio'];
-					}
-				}
-				*/
 			}
-
+			*/
 
 			if($_POST["orden"]=="DESC"){
 				usort($rows,'invenDescSort');
@@ -336,18 +323,28 @@ if(isset($_POST['listadoSimple'])){
 							$respuesta=$respuesta.'</ul>
 						</div>'
 						;
-						if($row["sugerido"]==1){
-							$respuesta.='<div class="paq-price sgrdo">';
-						}else{
-							$respuesta.='<div class="paq-price">';
-						}
 						if($row['id_tipoDato_principal_1']==2 || $row['id_tipoDato_principal_2']==2 || $row['id_tipoDato_principal_3']==2 || $row['id_tipoDato_principal_4']==2){
 							if ($row["precio"]==0){
+								if($row["sugerido"]==1){
+									$respuesta.='<div class="paq-price sgrdo lngtxt">';
+								}else{
+									$respuesta.='<div class="paq-price lngtxt">';
+								}
 								$respuesta=$respuesta.'Sin Recarga Mínima';
 							}else{
+								if($row["sugerido"]==1){
+									$respuesta.='<div class="paq-price sgrdo lngtxt">';
+								}else{
+									$respuesta.='<div class="paq-price lngtxt">';
+								}
 								$respuesta=$respuesta.'Recarga de $'.$row["precio"];
 							}
 						}else{
+							if($row["sugerido"]==1){
+								$respuesta.='<div class="paq-price sgrdo">';
+							}else{
+								$respuesta.='<div class="paq-price">';
+							}
 							$respuesta=$respuesta.'$'.$row["precio"];
 						}
 						if($row["sugerido"]==1){
@@ -417,7 +414,7 @@ if(isset($_POST['listadoSimple'])){
 					}
 				}
 				$result_MaxMin->free();
-			//echo "<br>".$query_MaxMin;
+				//echo "<br>".$query_MaxMin;
 				$query_MaxMin=("SELECT MAX(CAST(dato_principal_2 as unsigned)) as maximo, MIN(CAST(dato_principal_2 as unsigned)) as minimo from planes where id_tipoDato_principal_2=".$row['id_tipoDato']);
 				$result_MaxMin=$mysqli->query($query_MaxMin);
 				$MaxMin=array();
@@ -476,8 +473,8 @@ if(isset($_POST['listadoSimple'])){
 						<div class="slide-bar-bx">
 							<div id="slidertest"></div>
 							<div class="slide-value-bx">
-								<span class="left">$'.$_SESSION["Preciomin"].'</span>
-								<span class="right">$'.$_SESSION["Preciomax"].'+</span>
+								<span class="left">$'.(empty($_SESSION["Preciomin"])? 0:$_SESSION["Preciomin"]).'</span>
+								<span class="right">$'.(empty($_SESSION["Preciomax"])? 3999:$_SESSION["Preciomax"]).'+</span>
 							</div>
 						</div>
 					</div>
@@ -485,12 +482,12 @@ if(isset($_POST['listadoSimple'])){
 					var slider = document.getElementById("slidertest");
 
 			 		noUiSlider.create(slidertest, {
-			 		start: ['.$_SESSION["Preciomin"].', '.$_SESSION["Preciomax"].'],
+			 		start: ['.(empty($_SESSION["Preciomin"])? 0:$_SESSION["Preciomin"]).', '.(empty($_SESSION["Preciomax"])? 3999:$_SESSION["Preciomax"]).'],
 			 		connect: true,
 			 		step: 10,
 			 		range: {
-			 		 "min": '.$_SESSION["Preciomin"].',
-			 		 "max": '.$_SESSION["Preciomax"].'
+			 		 "min": '.(empty($_SESSION["Preciomin"])? 0:$_SESSION["Preciomin"]).',
+			 		 "max": '.(empty($_SESSION["Preciomax"])? 3999:$_SESSION["Preciomax"]).'
 			 		},
 			 		  format: wNumb({
 			 			decimals: 0
@@ -524,8 +521,11 @@ if(isset($_POST['listadoSimple'])){
 								GROUP BY id_plan HAVING count(*) >=".count($_SESSION['Servicios'])." ORDER BY P.precio ASC");
 				$Verificar_filtros = $mysqli->query($query_verificar_filtros);
 				$numero_filas = mysqli_num_rows($Verificar_filtros);
+				//echo "Numero planes con el filtro= ".$numero_filas;
+				//echo "Numero planes mostrados= ".$_SESSION['numero_planes'];
+				//exit();
 				if($numero_filas==$_SESSION['numero_planes'] || isset($_POST['CargaRapida'])){				
-			
+				//if(true){
 					echo '	<div class="slider-bx">
 								<p class="truncate">'.$row["label"].'</p>
 								<div class="slide-bar-bx">
@@ -812,6 +812,62 @@ if(isset($_POST['listadoSimple'])){
 }
 
 
+if(isset($_POST['CargarFiltrosCheckEmpresasConFiltro'])){
+	$dato=0;
+	if($_POST['CelularPlan']==1){
+		$dato=1;
+	}
+	if($_POST['CelularPrepago']==1){
+		$dato=2;
+	}
+	$query=("SELECT 
+			DISTINCT(E.nombre) as empresa
+		  	FROM empresas E
+		  	INNER JOIN planes P ON P.ID_EMPRESA=E.ID_EMPRESA
+		  	INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
+		  	INNER JOIN planes_tipoServicios PT ON P.ID_PLAN=PT.ID_PLAN
+		  	WHERE C.ID_ESTADO='".$_SESSION['estado']."'
+		  	AND ((P.id_tipoDato_principal_1=".$dato." AND P.dato_principal_1=1) OR (P.id_tipoDato_principal_2=".$dato." AND P.dato_principal_2=1) OR (P.id_tipoDato_principal_3=".$dato." AND P.dato_principal_3=1) OR (P.id_tipoDato_principal_4=".$dato." AND P.dato_principal_4=1))
+		  	AND PT.id_plan NOT IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (SELECT id_tipoServicio from tipoServicios where id_tipoServicio NOT IN (".implode(', ', $_SESSION['Servicios']).") ) )
+		  	AND visible=1
+		  	GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])."
+		  	");
+	//echo $query;
+	//exit();
+
+	$result = $mysqli->query($query);
+
+	$rows=array();
+	while($row = $result->fetch_array())
+	{
+		array_push($rows, $row);
+	}
+	$i=1;
+	foreach($rows as $row)
+	{
+			echo '	<p class="truncate">
+					<input type="checkbox" id="checkboxEmpresas'.$i.'" onchange="CargarPlanesConFiltros();"/>
+					<label for="checkboxEmpresas'.$i.'">'.$row["empresa"].'</label>
+					</p>
+					<script type="text/javascript">
+					if(sessionStorage.filtrosCheckEmpresas){
+						var getFiltrosCheckEmpresas= JSON.parse(sessionStorage.getItem("filtrosCheckEmpresas"));
+					}else{
+						var getFiltrosCheckEmpresas = new Array();
+					}
+					getFiltrosCheckEmpresas.push({empresa:"'.$row["empresa"].'",value:"checkboxEmpresas'.$i.'"});
+					//console.log(getFiltros);
+					$.each(getFiltrosCheckEmpresas, function( index, value ) {
+						//console.log( value.id_tipoDato+":"+value.value );
+					});
+					sessionStorage.setItem("filtrosCheckEmpresas", JSON.stringify(getFiltrosCheckEmpresas));
+				</script>';
+				$i+=1;
+	}//END FOREACH
+
+
+}//if(isset($_POST['CargarFiltrosCheckEmpresasConFiltro'])){
+
 if(isset($_POST['verDetalles'])){
 	if(isset($_POST['id_plan'])){
 		$query=("SELECT 
@@ -977,7 +1033,8 @@ if(isset($_POST['verDetalles'])){
 															}else{
 																$respuesta.='<td>GRATIS</td>';
 															}
-															$respuesta.='<td>'.($row["precio"]*12)+$rowEquipos["precio_12m"].'</td>
+															$Acumulado_celular=($row["precio"]*12)+$rowEquipos["precio_12m"];
+															$respuesta.='<td>$'.$Acumulado_celular.'</td>
 														</tr>
 														<tr>
 															<td>18</td>';
@@ -986,25 +1043,27 @@ if(isset($_POST['verDetalles'])){
 															}else{
 																$respuesta.='<td>GRATIS</td>';
 															}
-															$respuesta.='<td>'.($row["precio"]*18)+$rowEquipos["precio_18m"].'</td>
+															$Acumulado_celular=($row["precio"]*18)+$rowEquipos["precio_18m"];
+															$respuesta.='<td>$'.$Acumulado_celular.'</td>
 														</tr>
 														<tr>
-															<td>12</td>';
+															<td>24</td>';
 															if($rowEquipos["precio_24m"]>0){
 																$respuesta.='<td>$'.$rowEquipos["precio_24m"].'</td>';
 															}else{
 																$respuesta.='<td>GRATIS</td>';
 															}
-															$respuesta.='<td>'.($row["precio"]*24)+$rowEquipos["precio_24m"].'</td>
+															$Acumulado_celular=($row["precio"]*24)+$rowEquipos["precio_24m"];
+															$respuesta.='<td>$'.$Acumulado_celular.'</td>
 														</tr>
 														<tr>
-															<td>12</td>';
+															<td>Prepago</td>';
 															if($rowEquipos["precio_prepago"]>0){
 																$respuesta.='<td>$'.$rowEquipos["precio_prepago"].'</td>';
 															}else{
 																$respuesta.='<td>GRATIS</td>';
 															}
-															$respuesta.='<td>'.$rowEquipos["precio_prepago"].'</td>
+															$respuesta.='<td>$'.$rowEquipos["precio_prepago"].'</td>
 														</tr>
 													</tbody>
 												</table>
@@ -1151,7 +1210,8 @@ if (isset($_POST['filtros'])) {
 	}
 	//$_SESSION['Preciomax']=0;
 	//$_SESSION['Preciomin']=-1;
-	$query_filtros_sugeridos="SELECT 
+	//Query y funcionalidad para meter planes sugeridos
+	/*$query_filtros_sugeridos="SELECT 
 			DISTINCT(P.id_plan),
 		 	P.nombre, 
 		 	P.precio, 
@@ -1195,11 +1255,7 @@ if (isset($_POST['filtros'])) {
         # code...
         $fil = json_decode($filtro);
         if($fil->tipo=='slider'){
-        	/*echo "Sliders:<br>";
-        	echo $fil->id_tipoDato."<br>";
-        	echo $fil->Mayor."<br>";
-        	echo $fil->Menor."<br>";
-        	*/
+
         	$query_filtros_sugeridos=$query_filtros_sugeridos." AND ((P.id_tipoDato_principal_1=".$fil->id_tipoDato." AND P.dato_principal_1>=".$fil->Menor." AND P.dato_principal_1<=".$fil->Mayor.")
 		  		OR (P.id_tipoDato_principal_2=".$fil->id_tipoDato." AND P.dato_principal_2>=".$fil->Menor." AND P.dato_principal_2<=".$fil->Mayor.")
 		  		OR (P.id_tipoDato_principal_3=".$fil->id_tipoDato." AND P.dato_principal_3>=".$fil->Menor." AND P.dato_principal_3<=".$fil->Mayor.")
@@ -1207,21 +1263,13 @@ if (isset($_POST['filtros'])) {
 	  		)";
         }
         if($fil->tipo=='check'){
-        	/*
-        	echo "CheckBoxes: <br>";
-        	echo $fil->id_tipoDato."<br>";
-        	*/
         	$query_filtros_sugeridos=$query_filtros_sugeridos." AND ((P.id_tipoDato_principal_1=".$fil->id_tipoDato." AND P.dato_principal_1=1 )
 	  		OR (P.id_tipoDato_principal_2=".$fil->id_tipoDato." AND P.dato_principal_2=1 )
 	  		OR (P.id_tipoDato_principal_3=".$fil->id_tipoDato." AND P.dato_principal_3=1 )
 	  		OR(P.id_tipoDato_principal_4=".$fil->id_tipoDato." AND P.dato_principal_4=1 )
 	  		)";
         }
-        /*
-        if($fil->tipo=='precio'){
-        	$query_filtros_sugeridos=$query_filtros_sugeridos." AND (P.precio>=".$fil->Minimo." AND P.precio<=".$fil->Maximo.")";
-        }
-        */
+
         if($fil->tipo=='checkEmpresas'){
         	if($contEmpresas==0){
         		$queryEmpresas=" AND (E.nombre = '".$fil->empresa."'";
@@ -1245,7 +1293,7 @@ if (isset($_POST['filtros'])) {
 		$row["sugerido"]=1;
 		array_push($rows, $row);
 	}
-
+*/
 	if($_POST["orden"]=="DESC"){
 		usort($rows,'invenDescSort');
 	}
@@ -1384,18 +1432,29 @@ if (isset($_POST['filtros'])) {
 									}
 							$respuesta=$respuesta.'</ul>
 						</div>';
-						if($row["sugerido"]==1){
-							$respuesta.='<div class="paq-price sgrdo">';
-						}else{
-							$respuesta.='<div class="paq-price">';
-						}
+						
 						if($row['id_tipoDato_principal_1']==2 || $row['id_tipoDato_principal_2']==2 || $row['id_tipoDato_principal_3']==2 || $row['id_tipoDato_principal_4']==2){
 							if ($row["precio"]==0){
+								if($row["sugerido"]==1){
+									$respuesta.='<div class="paq-price sgrdo lngtxt">';
+								}else{
+									$respuesta.='<div class="paq-price lngtxt">';
+								}
 								$respuesta=$respuesta.'Sin Recarga Mínima';
 							}else{
+								if($row["sugerido"]==1){
+									$respuesta.='<div class="paq-price sgrdo lngtxt">';
+								}else{
+									$respuesta.='<div class="paq-price lngtxt">';
+								}
 								$respuesta=$respuesta.'Recarga de $'.$row["precio"];
 							}
 						}else{
+							if($row["sugerido"]==1){
+								$respuesta.='<div class="paq-price sgrdo">';
+							}else{
+								$respuesta.='<div class="paq-price">';
+							}
 							$respuesta=$respuesta.'$'.$row["precio"];
 						}
 						if($row["sugerido"]==1){
@@ -1595,9 +1654,7 @@ if(isset($_POST['CargarPlanesStreaming'])){
 			INNER JOIN empresas_ott E ON P.id_empresa=E.id_empresa
 			ORDER BY precio ".$_POST['orden'];
 
-	//$result = $mysqli->query($query);
   	$result = $mysqli->query($query);
-	//$_SESSION['numero_planes']=mysqli_num_rows($result_filtros);				
 
 	$rows=array();
 	while($row = $result->fetch_array())
@@ -1645,9 +1702,7 @@ if(isset($_POST['CargarSliderStreaming'])){
 	$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
 	$mysqli->set_charset("utf8");	
 
-	//$result = $mysqli->query($query);
   	$result = $mysqli->query($query);
-	//$_SESSION['numero_planes']=mysqli_num_rows($result_filtros);				
 
 	$rows=array();
 	while($row = $result->fetch_array())

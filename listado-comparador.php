@@ -514,7 +514,7 @@
 		<script src="js/materialize.min.js"></script>
 		<!--<script src="js/parallax.min.js"></script>-->
 		<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-		<script src="owl-carousel/owl.carousel.min.js"></script>
+				<script src="owl-carousel/owl.carousel.min.js"></script>
 
 		<script src="js/init.config.js"></script>
 		<script src="js/init.js"></script>
@@ -965,6 +965,8 @@
 						async: false
 					})
 				    .done(function(data){
+				    	if(sessionStorage.getItem("ServicioCelular")==1){
+				    	}
 						jQuery("#planes").html(data);
 						if($(".cargarmas").length<1){
 							jQuery("#planes").html('<h1 class="nocriteria center">No hay resultados que mostrar con los criterios seleccionados.</h1>');
@@ -1041,8 +1043,10 @@
 			}
 			//alert("Actualizar planes");
 			*/
+			CargarFiltrosCheckEmpresasConFiltro();
 			if($('#checkbox1').is(':checked')){
 		    	$('input.checkbox1').removeAttr("disabled");
+
 			}
 			if(!$('#checkbox1').is(':checked')){
 		    	$( "input.checkbox1" ).prop( "checked", false );
@@ -1063,12 +1067,13 @@
 				CargarPlanes()
 			).then(function(){
 			   //alert('All AJAX Methods Have Completed!');
-			   if($(".cargarmas").length>1){
+			   if($(".cargarmas").length>1 || $(".planmostrado").length>1){
 				   	CargarFiltrosCheckEmpresas();
 				   	if(sessionStorage.getItem("ServicioCelular")==1){
 						CargarFiltrosCheck();
 					}else{
 						jQuery("#filtrosCheckCelulares").html("");		
+
 					}
 					CargarFiltrosSliders();
 				}else{
@@ -1348,20 +1353,16 @@
 							autoHideScrollbar: true,
 							updateOnContentResize: true
 						});
-						/*
-						$("#filtros").mouseup(function() {
-						    CargarPlanesConFiltros();
-						})
-						*/
-						/*
-						$( ".sliders-scroll-bx" ).bind( "mouseenter mouseleave", function() {
-						  //$( this ).toggleClass( "entered" );
-						  //alert("Entra o sale de slide-bar-bx")
+						$(".scroll-box").mCustomScrollbar({
+							axis: "x",
+							theme: "minimal",
+							updateOnContentResize: true
 						});
-						*/
 			 		}else {
 			 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form").addClass('ismobilescroll');
 			 		}
+			 		$(".sliders-scroll-bx").mCustomScrollbar("update");
+
 
 			    })
 			    .fail(function(data){
@@ -1412,9 +1413,15 @@
 						    CargarPlanesConFiltros();
 						})
 						*/
+						$(".sliders-scroll-bx .sliders-wrapp").mCustomScrollbar("update");
+
 			 		}else {
-			 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form").addClass('ismobilescroll');
+			 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form .sliders-wrapp").addClass('ismobilescroll');
 			 		}
+			 		//jQuery('.sliders-scroll-bx').css('width', _widthSlides);
+			 		console.log(".sliders-scroll-bx .sliders-wrapp update")
+			 		$(".sliders-scroll-bx .sliders-wrapp").mCustomScrollbar("update");
+
 
 			    })
 			    .fail(function(data){
@@ -1422,6 +1429,7 @@
 			    	console.log("Error llamada en llamada cargo CargarFiltrosSliders");
 			    });
 			}
+			//_fixedFiltersBx();
 		}
 
 		function CargarFiltrosCheck(){
@@ -1448,6 +1456,28 @@
 						if(document.getElementsByClassName("input.checkbox1")){
 							$('input.checkbox1').attr("disabled", true);
 						}
+						var _widthSlides = 0;
+				 		jQuery('.sliders-wrapp .slider-bx').each(function() {
+				 		    _widthSlides += jQuery(this).outerWidth( true );
+				 		});
+				 		jQuery('.sliders-wrapp').css('width', _widthSlides);
+				 	
+				 		if (isMobile.any == false) {
+				 			jQuery(".sliders-scroll-bx").mCustomScrollbar({
+								axis: "x",
+								theme: "dark-thin",
+								autoHideScrollbar: true,
+								updateOnContentResize: true
+							});
+							jQuery(".checks-scroll-bx form").mCustomScrollbar({
+								axis: "y",
+								theme: "dark-thin",
+								autoHideScrollbar: true,
+								updateOnContentResize: true
+							});
+				 		}else {
+				 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form").addClass('ismobilescroll');
+				 		}
 				    })
 				    .fail(function(data){
 				    	console.log(data);
@@ -1952,6 +1982,44 @@
 	 			// some code..
 			 	$(".iconosPlanes").hide();
 			}
+		}
+		function CargarFiltrosCheckEmpresasConFiltro(){
+			if($('#checkbox1').is(':checked')){
+				//console.log("plan: 1");
+				//console.log("prepago: 0");
+				var plan=1,prepago=0;
+			}
+			if($('#checkbox2').is(':checked')){
+				//console.log("plan: 0");
+				//console.log("prepago: 1");
+				var plan=0;prepago=1;
+			}
+			$( "#selectEstado" ).removeAttr("disabled");
+			var data={
+				//listadoSimple:"true",
+				CargarFiltrosCheckEmpresasConFiltro:"true",
+				celular:sessionStorage.getItem("ServicioCelular"),
+				internet:sessionStorage.getItem("ServicioInternet"),
+				telefono:sessionStorage.getItem("ServicioTelefono"),
+				television:sessionStorage.getItem("ServicioTelevision"),
+				streaming:sessionStorage.getItem("ServicioStreaming"),
+				estado:$( "#selectEstado" ).val(),
+				CelularPlan:plan,
+				CelularPrepago:prepago
+			}
+			jQuery.ajax({
+				type: "POST",
+				url: "listado.php",
+				async : false,
+				data: data
+			})
+		    .done(function(data){
+				jQuery("#filtrosCheckEmpresas").html(data);
+
+		    })
+		    .fail(function(data){
+		    	console.log(data);
+		    });
 		}
 		</script>
 		<script>
