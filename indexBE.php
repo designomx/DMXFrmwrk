@@ -27,12 +27,12 @@ header("Access-Control-Allow-Origin: *");
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
 		<!-- CSS -->
-		<link href="materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-		<link href="css/iosOverlay.css" type="text/css" rel="stylesheet" media="screen,projection" />
-		<link href="css/animate.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-		<link href="css/magic.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-		<link href="css/jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet" media="screen,projection" />
-		<link href="css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="all" />
+		<link href="css/iosOverlay.css" type="text/css" rel="stylesheet" media="all" />
+		<link href="css/animate.min.css" type="text/css" rel="stylesheet" media="all" />
+		<link href="css/magic.min.css" type="text/css" rel="stylesheet" media="all" />
+		<link href="css/jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet" media="all" />
+		<link href="css/main.css" type="text/css" rel="stylesheet" media="all" />
 		<!-- This is FontsAwesome 4.3.0-->
 		<link href="fawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
