@@ -14,7 +14,7 @@
 		<link rel="icon" sizes="128x128" href="img/profile/android-touch-icon-128x128.png">
 		<link rel="icon" type="image/png" href="img/profile/favicon.png" />
 		<!--WINDOWS PHONE 8.1-->
-		<meta name="application-name" content="Perfil by tooth.me®" />
+		<meta name="application-name" content="EligeFacil" />
 		<meta name="msapplication-TileColor" content=" #00b0ff" />
 		<meta name="msapplication-square70x70logo" content="/img/profile/smalltile.png" />
 		<meta name="msapplication-square150x150logo" content="/img/profile/mediumtile.png" />

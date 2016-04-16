@@ -1208,7 +1208,8 @@ footer.stickFoot {
 .filter-mid-bar .slider-bx .slide-value-bx span {
   padding: 0 6px;
 }
-#blog-module {
+#blog-module,
+.blog-module {
   width: 90%;
   height: auto;
   background-color: white;
@@ -1226,10 +1227,12 @@ footer.stickFoot {
   z-index: 0;
   padding-top: 15px;
 }
-#blog-module .blog-timeline-bx {
+#blog-module .blog-timeline-bx,
+.blog-module .blog-timeline-bx {
   padding: 20px;
 }
-#blog-module .blog-timeline-bx .post-box-wrapper {
+#blog-module .blog-timeline-bx .post-box-wrapper,
+.blog-module .blog-timeline-bx .post-box-wrapper {
   background: white;
   padding: 10px;
   background-color: white;
@@ -1244,7 +1247,8 @@ footer.stickFoot {
   box-shadow: 0 3px 11px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
 }
-#blog-module .blog-timeline-bx .post-box-wrapper .post-hero {
+#blog-module .blog-timeline-bx .post-box-wrapper .post-hero,
+.blog-module .blog-timeline-bx .post-box-wrapper .post-hero {
   width: 100%;
   height: 325px;
   background: #f5f5f5 url('../images/bg.jpg') no-repeat center center;
@@ -1263,12 +1267,14 @@ footer.stickFoot {
   position: relative;
 }
 @media only screen and (max-width: 640px) {
-  #blog-module .blog-timeline-bx .post-box-wrapper .post-hero {
+  #blog-module .blog-timeline-bx .post-box-wrapper .post-hero,
+  .blog-module .blog-timeline-bx .post-box-wrapper .post-hero {
     width: 100%;
     height: 205px;
   }
 }
-#blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 {
+#blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1,
+.blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 {
   color: white;
   font-family: "Museo Sans 300";
   font-size: 24px;
@@ -1282,17 +1288,21 @@ footer.stickFoot {
   padding-right: 50px;
 }
 @media only screen and (max-width: 640px) {
-  #blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 {
+  #blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1,
+  .blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 {
     font-size: 16px;
   }
 }
-#blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 a {
+#blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 a,
+.blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 a {
   color: white;
 }
-#blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 a:hover {
+#blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 a:hover,
+.blog-module .blog-timeline-bx .post-box-wrapper .post-hero h1 a:hover {
   text-decoration: underline;
 }
-#blog-module .blog-timeline-bx .post-box-wrapper .post-hero .enter-post {
+#blog-module .blog-timeline-bx .post-box-wrapper .post-hero .enter-post,
+.blog-module .blog-timeline-bx .post-box-wrapper .post-hero .enter-post {
   width: 100%;
   height: 100%;
   display: block;
@@ -1304,7 +1314,8 @@ footer.stickFoot {
   top: 0;
   left: 0;
 }
-#blog-module .blog-timeline-bx .post-box-wrapper .post-hero .enter-post i {
+#blog-module .blog-timeline-bx .post-box-wrapper .post-hero .enter-post i,
+.blog-module .blog-timeline-bx .post-box-wrapper .post-hero .enter-post i {
   width: 31px;
   height: 31px;
   zoom: 1;
@@ -1330,7 +1341,8 @@ footer.stickFoot {
   margin: 10px;
   padding-left: 3px;
 }
-#blog-module .blog-timeline-bx .post-box-wrapper p {
+#blog-module .blog-timeline-bx .post-box-wrapper p,
+.blog-module .blog-timeline-bx .post-box-wrapper p {
   text-shadow: -0.9px 0.5px 1px white;
   font-family: 'Visby CF Medium';
   font-size: 16px;
@@ -1339,18 +1351,22 @@ footer.stickFoot {
   padding: 5px 20px;
 }
 @media only screen and (max-width: 640px) {
-  #blog-module .blog-timeline-bx .post-box-wrapper p {
+  #blog-module .blog-timeline-bx .post-box-wrapper p,
+  .blog-module .blog-timeline-bx .post-box-wrapper p {
     font-size: 14px;
   }
 }
-#blog-module .blog-timeline-bx .post-box-wrapper p a {
+#blog-module .blog-timeline-bx .post-box-wrapper p a,
+.blog-module .blog-timeline-bx .post-box-wrapper p a {
   color: #f26725;
 }
-#blog-module .blog-timeline-bx .post-box-wrapper .social-btn-row {
+#blog-module .blog-timeline-bx .post-box-wrapper .social-btn-row,
+.blog-module .blog-timeline-bx .post-box-wrapper .social-btn-row {
   width: 100%;
   padding: 0 20px 10px 20px;
 }
-#blog-module .blog-timeline-bx .post-box-wrapper .social-btn-row .twitter-share-button {
+#blog-module .blog-timeline-bx .post-box-wrapper .social-btn-row .twitter-share-button,
+.blog-module .blog-timeline-bx .post-box-wrapper .social-btn-row .twitter-share-button {
   margin-right: 15px;
   margin-top: 2px;
   float: left;
