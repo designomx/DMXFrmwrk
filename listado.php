@@ -352,7 +352,7 @@ if(isset($_POST['listadoSimple'])){
 						}
 						$respuesta=$respuesta.'</div>
 						<div id="botonesPlan" class="more-actions-bx">
-							<a id="verPlan" href="#deatilsModal" class="modal-trigger waves-effect" data-value="'.$row["id_plan"].'">Ver detalles</a>
+							<a id="verPlan" href="#deatilsModal" class="modal-trigger waves-effect verpla_'.$row["id_plan"].'" data-value="'.$row["id_plan"].'">Ver detalles</a>
 							<a href="#!" class="compare-slct" id="plan_'.$row["id_plan"].'" onclick="Comparar(this,'.$row["id_plan"].','."'".$row["empresa_color"]."'".')">Comparar <i class="material-icons">done</i></a>
 							<div class="clearfix"></div>
 						</div>
@@ -910,7 +910,7 @@ if(isset($_POST['verDetalles'])){
 		while($row = $result->fetch_array())
 		{
 			//array_push($rows, $row);
-			$respuesta='<div class="brand-label" style="background-color:'.$row["empresa_color"].'">'.$row["empresa"].'</div>
+			$respuesta='<div id="plan_detalles" data-id="'.$row["id_plan"].'" class="brand-label" style="background-color:'.$row["empresa_color"].'">'.$row["empresa"].'</div>
 				<h4>'.$row["nombre"].' - $'.$row["precio"].'</h4>
 				<div class="plan-main-options row">';
 
@@ -1083,7 +1083,26 @@ if(isset($_POST['verDetalles'])){
 			$footer.='<div class="modal-footer">
 							<a href="#!" class="modal-action modal-close waves-effect btn-flat grey white-text" id="plan_'.$row["id_plan"].'" onclick="Comparar(this,'.$row["id_plan"].','."'".$row["empresa_color"]."'".')">Comparar</a>
 							<a href="#!" class="modal-action modal-close waves-effect btn-flat ">Cerrar</a>
-						</div>';
+						</div>
+						<div class="fixed-action-btn" style="bottom: 10px; right: 10px;">
+						<a class="btn-floating btn-large orange accent-4">
+						 <i class="fa fa-share-alt"></i>
+					   </a>
+						<ul>
+							<li>
+								<a href="https://www.facebook.com/sharer/sharer.php?u=stage.eligefacil.com" target="_blank" class="btn-floating light-blue darken-4"><i class="fa fa-facebook"></i></a>
+							</li>
+							<li>
+								<a href="https://twitter.com/home?status=stage.eligefacil.com" target="_blank" class="btn-floating light-blue lighten-2"><i class="fa fa-twitter"></i></a>
+							</li>
+							<li>
+								<a class="btn-floating grey darken-1 modal-trigger" href="#modalMailShare"><i class="fa fa-envelope"></i></a>
+							</li>
+							<li>
+								<a href="print-paq.php?plan='.$row["id_plan"].'" onclick="ImprimirPlan(this,'.$row["id_plan"].')" class="btn-floating red accent-4" target="_blank"><i class="fa fa-print"></i></a>
+							</li>
+						</ul>
+					</div>';
 		}
 		$miArray = array("contenido"=>$respuesta, "footer"=>$footer);
 		echo json_encode($miArray);
@@ -1462,7 +1481,7 @@ if (isset($_POST['filtros'])) {
 						}
 						$respuesta=$respuesta.'</div>
 						<div id="botonesPlan" class="more-actions-bx">
-							<a id="verPlan" href="#deatilsModal" class="modal-trigger waves-effect" data-value="'.$row["id_plan"].'">Ver detalles</a>
+							<a id="verPlan" href="#deatilsModal" class="modal-trigger waves-effect verpla_'.$row["id_plan"].'" data-value="'.$row["id_plan"].'">Ver detalles</a>
 							<a href="#!" class="compare-slct" id="plan_'.$row["id_plan"].'" onclick="Comparar(this,'.$row["id_plan"].','."'".$row["empresa_color"]."'".')">Comparar <i class="material-icons">done</i></a>
 							<div class="clearfix"></div>
 						</div>
@@ -1682,7 +1701,7 @@ $i=0;
 				</div>
 				<div class="paq-price">$'.$row["precio"].'</div>
 						<div id="botonesPlan" class="more-actions-bx">
-							<a id="verPlan" href="#deatilsModal" class="modal-trigger waves-effect" data-value="'.$row["id_paquete"].'">Ver detalles</a>
+							<a id="verPlan" href="#deatilsModal" class="modal-trigger waves-effect verpla_'.$row["id_paquete"].'" data-value="'.$row["id_paquete"].'">Ver detalles</a>
 							<a href="#!" class="compare-slct" id="plan_'.$row["id_paquete"].'" onclick="CompararPaqueteOTT(this,'.$row["id_paquete"].')">Comparar <i class="material-icons">done</i></a>
 							<div class="clearfix"></div>
 						</div>
@@ -1824,7 +1843,7 @@ if(isset($_POST['Streamingfiltros'])){
 				</div>
 				<div class="paq-price">$'.$row["precio"].'</div>
 						<div id="botonesPlan" class="more-actions-bx">
-							<a id="verPlan" href="#deatilsModal" class="modal-trigger waves-effect" data-value="'.$row["id_paquete"].'">Ver detalles</a>
+							<a id="verPlan" href="#deatilsModal" class="modal-trigger waves-effect verpla_'.$row["id_paquete"].'" data-value="'.$row["id_paquete"].'">Ver detalles</a>
 							<a href="#!" class="compare-slct" id="plan_'.$row["id_paquete"].'" onclick="CompararPaqueteOTT(this,'.$row["id_paquete"].')">Comparar <i class="material-icons">done</i></a>
 							<div class="clearfix"></div>
 						</div>

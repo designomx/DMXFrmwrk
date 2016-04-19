@@ -14,7 +14,7 @@
 		<link rel="icon" sizes="128x128" href="img/profile/android-touch-icon-128x128.png">
 		<link rel="icon" type="image/png" href="img/profile/favicon.png" />
 		<!--WINDOWS PHONE 8.1-->
-		<meta name="application-name" content="EligeFacil" />
+		<meta name="application-name" content="Perfil by tooth.me®" />
 		<meta name="msapplication-TileColor" content=" #00b0ff" />
 		<meta name="msapplication-square70x70logo" content="/img/profile/smalltile.png" />
 		<meta name="msapplication-square150x150logo" content="/img/profile/mediumtile.png" />
@@ -24,14 +24,14 @@
 		<title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
 		<!-- CSS -->
 		<link href="materialize/css/materialize.min.css" type="text/css" rel="stylesheet" />
-		<link href="css/iosOverlay.css" type="text/css" rel="stylesheet" media="all" />
-		<link href="css/animate.min.css" type="text/css" rel="stylesheet" media="all" />
-		<link href="css/magic.min.css" type="text/css" rel="stylesheet" media="all" />
+		<link href="css/iosOverlay.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="css/animate.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="css/magic.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="css/jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet" />
 		<link href="css/nouislider.min.css" type="text/css" rel="stylesheet" />
 		<link rel="stylesheet" href="owl-carousel/owl.carousel.css">
 		<link rel="stylesheet" href="owl-carousel/owl.theme.css">
-		<link href="css/main.css" type="text/css" rel="stylesheet" media="all" />
+		<link href="css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<!-- This is FontsAwesome 4.3.0-->
 		<link href="fawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -423,22 +423,7 @@
 		    <div id="footerBotonesModal">
 
 		    </div>
-		    <div class="fixed-action-btn" style="bottom: 10px; right: 10px;">
-				<a class="btn-floating btn-large orange accent-4">
-				 <i class="fa fa-share-alt"></i>
-			   </a>
-				<ul>
-					<li>
-						<a href="https://www.facebook.com/sharer/sharer.php?u=stage.eligefacil.com" target="_blank" class="btn-floating light-blue darken-4"><i class="fa fa-facebook"></i></a>
-					</li>
-					<li>
-						<a href="https://twitter.com/home?status=stage.eligefacil.com" target="_blank" class="btn-floating light-blue lighten-2"><i class="fa fa-twitter"></i></a>
-					</li>
-					<li>
-						<a class="btn-floating grey darken-1 modal-trigger" href="#modalMailShare"><i class="fa fa-envelope"></i></a>
-					</li>
-				</ul>
-			</div>
+		    
 		  </div>
 		<a class="cd-top btn-floating btn-large blue-grey darken-1">
 		  	<i class="material-icons">keyboard_arrow_up</i>
@@ -462,6 +447,10 @@
 					<li>
 						<a class="btn-floating grey darken-1 modal-trigger" href="#modalMailShare"><i class="fa fa-envelope"></i></a>
 					</li>
+					<li> 
+						<a onclick="ImprimirComparacion()" class="btn-floating red accent-4" href="#!"><i class="fa fa-print"></i></a>
+					</li>
+					
 				</ul>
 			</div>
 			<div class="slider-container">
@@ -1087,19 +1076,114 @@
 		})
 
 		jQuery(document).ready(function(){
-		 	$.when(
+			if((window.location.href.indexOf("plan[]=") > -1) && (window.location.href.indexOf("l=") > -1) && (window.location.href.indexOf("s[]=") > -1) ) {
+		       //alert("your url contains plan");
+
+		       	var getUrlParameterPlan = function getUrlParameterPlan(sParam) {
+				    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+				        sURLVariables = sPageURL.split('&'),
+				        sParameterName,
+				        i;
+
+				    for (i = 0; i < sURLVariables.length; i++) {
+				        sParameterName = sURLVariables[i].split('=');
+
+				        if (sParameterName[0] === sParam) {
+				            //return sParameterName[1] === undefined ? true : alert(sParameterName[1]);
+				            if (sParameterName[1] !== undefined){
+				            	jQuery( "#plan_"+sParameterName[1] ).trigger( "click" );
+				            }
+				        }
+				    }
+				};
+				var getUrlParameterServicio = function getUrlParameterServicio(sParam) {
+				    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+				        sURLVariables = sPageURL.split('&'),
+				        sParameterName,
+				        i;
+					sessionStorage.setItem("ServicioCelular","0");			
+					sessionStorage.setItem("ServicioTelefono","0");
+					sessionStorage.setItem("ServicioInternet","0");
+					sessionStorage.setItem("ServicioTelevision","0");
+					sessionStorage.setItem("ServicioStreaming","0");
+				    for (i = 0; i < sURLVariables.length; i++) {
+				        sParameterName = sURLVariables[i].split('=');
+
+				        if (sParameterName[0] === sParam) {
+				            //return sParameterName[1] === undefined ? true : alert(sParameterName[1]);
+				            alert(sParameterName[1]);
+				            if (sParameterName[1] !== undefined){
+				            	if(sParameterName[1]==1){
+									sessionStorage.setItem("ServicioCelular","1");
+									console.log("Celular URL")			
+								}
+								if(sParameterName[1]==2){
+									sessionStorage.setItem("ServicioTelefono","1");	
+								}
+								if(sParameterName[1]==3){
+									sessionStorage.setItem("ServicioInternet","1");	
+								}
+								if(sParameterName[1]==4){
+									sessionStorage.setItem("ServicioTelevision","1");
+								}
+								if(sParameterName[1]==5){
+									sessionStorage.setItem("ServicioStreaming","1");
+								}
+				            }
+				        }
+				    }
+				};
+				var getUrlParameterLocation = function getUrlParameterLocation(sParam) {
+				    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+				        sURLVariables = sPageURL.split('&'),
+				        sParameterName,
+				        i;
+
+				    for (i = 0; i < sURLVariables.length; i++) {
+				        sParameterName = sURLVariables[i].split('=');
+
+				        if (sParameterName[0] === sParam) {
+				            //return sParameterName[1] === undefined ? true : alert(sParameterName[1]);
+				            if (sParameterName[1] !== undefined){
+				            	sessionStorage.setItem("estado",sParameterName[1]);
+				            }
+				        }
+				    }
+				};
+				//alert(getUrlParameter("plan[]"));
+				getUrlParameterLocation("l");
+				getUrlParameterServicio("s[]");
+				console.log(sessionStorage.getItem("CargaInicial"))
+				$.when(
 	   			CargarEstados(),
 				VerificarServicios(),
 				Seleccion()
 			
-			).then(function(){
-			   //alert('All AJAX Methods Have Completed!');
-			   sessionStorage.setItem("CargaInicial", "0");
-			   CargarPlanes();
-			});
-			CargarAnuncio();
-			document.querySelector('#filter-go').scrollIntoView();
-			jQuery('#slideshow').fadeSlideShow();
+				).then(function(){
+				   //alert('All AJAX Methods Have Completed!');
+				   sessionStorage.setItem("CargaInicial", "0");
+				   CargarPlanes();
+				   getUrlParameterPlan("plan[]");
+				});
+				CargarAnuncio();
+				document.querySelector('#filter-go').scrollIntoView();
+				jQuery('#slideshow').fadeSlideShow();
+
+		    }else{
+		    	$.when(
+	   			CargarEstados(),
+				VerificarServicios(),
+				Seleccion()
+			
+				).then(function(){
+				   //alert('All AJAX Methods Have Completed!');
+				   sessionStorage.setItem("CargaInicial", "0");
+				   CargarPlanes();
+				});
+				CargarAnuncio();
+				document.querySelector('#filter-go').scrollIntoView();
+				jQuery('#slideshow').fadeSlideShow();
+		    }
 		});//document ready
 		jQuery('.products-box').click(function() {
 			var celular=0,internet=0,telefono=0,television=0,streaming=0,CambioEnServicio=0;
@@ -1628,7 +1712,7 @@
 			//console.log("carga inicial: "+CargaInicial);
 			if (CargaInicial == 1)
 			{
-
+				console.log("seleccion()");
 					if(jQuery("#celular").hasClass( "active-selection" )){
 						celular=1;
 						contador+=1;
@@ -2020,6 +2104,26 @@
 		    .fail(function(data){
 		    	console.log(data);
 		    });
+		}
+		function ImprimirPlan(plan,id){
+			//alert(id);
+		}
+		function ImprimirComparacion(){
+			//alert("ImprimirComparacion")
+			var url="print-paqs.php?";
+			var i=0;
+			$( ".span-bx-selected" ).each(function( index ) {
+			  //console.log( $( this ).attr("value") );
+			  if (i==0){
+			  	url+="plan[]="+$( this ).attr("value");
+			  	i=1;
+			  }else{
+			  	url+="&plan[]="+$( this ).attr("value");
+			  }
+			});
+			window.open(url,'_blank');
+			//window.location=url;
+			return false;
 		}
 		</script>
 		<script>
