@@ -100,8 +100,10 @@
 						}
 					}
 					if($esvideo){
+						$youtube = get_post_meta($post_->ID, "youtube", $single = true);
 						$contenido=$post_->post_content;
-						echo "<div class='video-container' id='embedVideo' data-url='".$contenido."'> </div><div class='clearfix'></div> <br> ";
+						echo '<iframe width="560" height="315" src="'.$youtube.'" frameborder="0" allowfullscreen></iframe>';
+						//echo "<div class='video-container' id='embedVideo' data-url='".$contenido."'> </div><div class='clearfix'></div> <br> ";
 					}else{
 						if ( has_post_thumbnail() ) {
 						    //the_post_thumbnail();
@@ -123,7 +125,8 @@
 					echo "<p class='responsive-img'>";
 					$contenido=$post_->post_content;
 					if($esvideo){
-						echo "<div id='descripcion'></div>";
+						echo "<div id='descripcion'>".$youtube."</div>";
+						echo "<div>".$contenido."</div>";
 					}else{
 						echo "<div>".$contenido."</div>";
 					}
@@ -154,29 +157,7 @@
 		</div>
 		<!-- MODALS - ALERTS - DROP DOWNS-->
 		<!-- Modal Structure -->
-		<div id="modalLocation" class="modal">
-			<div class="modal-content">
-				<div class="input-field col s12">
-					<h5>Elige tu estado:</h5>
-					<select class="browser-default">
-						<option value="1">Option 1</option>
-						<option value="2">Option 2</option>
-						<option value="3">Option 3</option>
-						<option value="4">Option 4</option>
-						<option value="5">Option 5</option>
-						<option value="6">Option 6</option>
-						<option value="7">Option 7</option>
-						<option value="8">Option 8</option>
-					</select>
-					<div class="clearfix"></div>
-					<br />
-				</div>
-			</div>
-			<div class="modal-footer">
-				<a href="listado-comparador.html" class=" modal-action waves-effect waves-grey btn-flat">Continuar</a>
-				<a href="#!" class=" modal-action modal-close waves-effect waves-grey btn-flat">Cancelar</a>
-			</div>
-		</div>
+
 		<a class="cd-top btn-floating btn-large blue-grey darken-1">
 				<i class="material-icons">keyboard_arrow_up</i>
 			</a>
@@ -237,6 +218,12 @@
 		
 		</script>
 		<script type="text/javascript">
+		setTimeout(function(){var a=document.createElement("script");
+		var b=document.getElementsByTagName("script")[0];
+		a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0048/8086.js?"+Math.floor(new Date().getTime()/3600000);
+		a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+		</script>
+		<script type="text/javascript">
 			$( "#descubreBTN" ).click(function() {
 				if (sessionStorage.getItem("estado") === null) {
 					return false;
@@ -275,8 +262,7 @@
 						//maxHeight: 200, maxWidth:300
 					});
 					
-				});*/
-
+				});
 				if ($('#linksEmbed:contains("https://vimeo")').length >= 0){
 					//alert("!!!!")
 				}
@@ -312,6 +298,7 @@
 					    }
 					});
 				})
+				*/
 			});
 
 		</script>

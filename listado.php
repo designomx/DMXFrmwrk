@@ -352,7 +352,7 @@ if(isset($_POST['listadoSimple'])){
 						}
 						$respuesta=$respuesta.'</div>
 						<div id="botonesPlan" class="more-actions-bx">
-							<a id="verPlan" href="#deatilsModal" class="modal-trigger waves-effect verpla_'.$row["id_plan"].'" data-value="'.$row["id_plan"].'">Ver detalles</a>
+							<a id="verPlan" href="#deatilsModal" class="modal-trigger waves-effect verplan_'.$row["id_plan"].'" data-value="'.$row["id_plan"].'">Ver detalles</a>
 							<a href="#!" class="compare-slct" id="plan_'.$row["id_plan"].'" onclick="Comparar(this,'.$row["id_plan"].','."'".$row["empresa_color"]."'".')">Comparar <i class="material-icons">done</i></a>
 							<div class="clearfix"></div>
 						</div>
@@ -1034,7 +1034,7 @@ if(isset($_POST['verDetalles'])){
 																$respuesta.='<td>GRATIS</td>';
 															}
 															$Acumulado_celular=($row["precio"]*12)+$rowEquipos["precio_12m"];
-															$respuesta.='<td>$'.$Acumulado_celular.'</td>
+															$respuesta.='<td class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Costo del equipo + 12 Rentas">$'.$Acumulado_celular.'</td>
 														</tr>
 														<tr>
 															<td>18</td>';
@@ -1044,7 +1044,7 @@ if(isset($_POST['verDetalles'])){
 																$respuesta.='<td>GRATIS</td>';
 															}
 															$Acumulado_celular=($row["precio"]*18)+$rowEquipos["precio_18m"];
-															$respuesta.='<td>$'.$Acumulado_celular.'</td>
+															$respuesta.='<td class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Costo del equipo + 18 Rentas">$'.$Acumulado_celular.'</td>
 														</tr>
 														<tr>
 															<td>24</td>';
@@ -1054,16 +1054,16 @@ if(isset($_POST['verDetalles'])){
 																$respuesta.='<td>GRATIS</td>';
 															}
 															$Acumulado_celular=($row["precio"]*24)+$rowEquipos["precio_24m"];
-															$respuesta.='<td>$'.$Acumulado_celular.'</td>
+															$respuesta.='<td class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Costo del equipo + 24 Rentas">$'.$Acumulado_celular.'</td>
 														</tr>
 														<tr>
 															<td>Prepago</td>';
 															if($rowEquipos["precio_prepago"]>0){
-																$respuesta.='<td>$'.$rowEquipos["precio_prepago"].'</td>';
+																$respuesta.='<td class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Costo del equipo">$'.$rowEquipos["precio_prepago"].'</td>';
 															}else{
-																$respuesta.='<td>GRATIS</td>';
+																$respuesta.='<td class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Costo del equipo">GRATIS</td>';
 															}
-															$respuesta.='<td>$'.$rowEquipos["precio_prepago"].'</td>
+															$respuesta.='<td>No aplica</td>
 														</tr>
 													</tbody>
 												</table>
@@ -1080,6 +1080,22 @@ if(isset($_POST['verDetalles'])){
 						<h5>Opciones y características adicionales</h5>
 						'.$row['mas_datos'].'';
 				}
+			$urlShare="http://www.eligefacil.com/stage/NewSite/listado-comparador.php?l=".$_POST["estado"];
+			if($_POST["celular"]==1){
+				$urlShare.="&s[]=1";
+			}
+			if($_POST["telefono"]==1){
+				$urlShare.="&s[]=2";
+			}
+			if($_POST["internet"]==1){
+				$urlShare.="&s[]=3";
+			}
+			if($_POST["television"]==1){
+				$urlShare.="&s[]=4";
+			}
+			$urlShare.="&plan[]=".$row["id_plan"];
+			$url=urlencode($urlShare);
+
 			$footer.='<div class="modal-footer">
 							<a href="#!" class="modal-action modal-close waves-effect btn-flat grey white-text" id="plan_'.$row["id_plan"].'" onclick="Comparar(this,'.$row["id_plan"].','."'".$row["empresa_color"]."'".')">Comparar</a>
 							<a href="#!" class="modal-action modal-close waves-effect btn-flat ">Cerrar</a>
@@ -1090,13 +1106,13 @@ if(isset($_POST['verDetalles'])){
 					   </a>
 						<ul>
 							<li>
-								<a href="https://www.facebook.com/sharer/sharer.php?u=stage.eligefacil.com" target="_blank" class="btn-floating light-blue darken-4"><i class="fa fa-facebook"></i></a>
+								<a href="https://www.facebook.com/sharer/sharer.php?u='.$url.'" target="_blank" class="btn-floating light-blue darken-4"><i class="fa fa-facebook"></i></a>
 							</li>
 							<li>
-								<a href="https://twitter.com/home?status=stage.eligefacil.com" target="_blank" class="btn-floating light-blue lighten-2"><i class="fa fa-twitter"></i></a>
+								<a href="https://twitter.com/home?status='.$url.'" target="_blank" class="btn-floating light-blue lighten-2"><i class="fa fa-twitter"></i></a>
 							</li>
 							<li>
-								<a class="btn-floating grey darken-1 modal-trigger" href="#modalMailShare"><i class="fa fa-envelope"></i></a>
+								<a onclick="ShareSingle('.$row["id_plan"].')" data-target="modalMailShare" class="btn-floating grey darken-1 btn modal-trigger" href="#modalMailShare"><i class="fa fa-envelope"></i></a>
 							</li>
 							<li>
 								<a href="print-paq.php?plan='.$row["id_plan"].'" onclick="ImprimirPlan(this,'.$row["id_plan"].')" class="btn-floating red accent-4" target="_blank"><i class="fa fa-print"></i></a>

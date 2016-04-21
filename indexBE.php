@@ -544,7 +544,7 @@ header("Access-Control-Allow-Origin: *");
 				    var url = endpoint + '?url=' + encodeURIComponent(videoUrl)+ '&width=853 &height=480';
 				    
 				    //PostId
-				    var id=	$(element).data("id");;
+				    var id=	$(element).data("id");
 
 					$.ajax({
 					    url: url,
@@ -615,6 +615,12 @@ header("Access-Control-Allow-Origin: *");
 		  ga('create', 'UA-70371933-1', 'auto');
 		  ga('send', 'pageview');
 		
+		</script>
+		<script type="text/javascript">
+		setTimeout(function(){var a=document.createElement("script");
+		var b=document.getElementsByTagName("script")[0];
+		a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0048/8086.js?"+Math.floor(new Date().getTime()/3600000);
+		a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 		</script>
 	</body>
 

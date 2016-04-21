@@ -24,14 +24,14 @@
 		<title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
 		<!-- CSS -->
 		<link href="materialize/css/materialize.min.css" type="text/css" rel="stylesheet" />
-		<link href="css/iosOverlay.css" type="text/css" rel="stylesheet" media="screen,projection" />
-		<link href="css/animate.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-		<link href="css/magic.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="css/iosOverlay.css" type="text/css" rel="stylesheet" media="all" />
+		<link href="css/animate.min.css" type="text/css" rel="stylesheet" media="all" />
+		<link href="css/magic.min.css" type="text/css" rel="stylesheet" media="all" />
 		<link href="css/jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet" />
 		<link href="css/nouislider.min.css" type="text/css" rel="stylesheet" />
 		<link rel="stylesheet" href="owl-carousel/owl.carousel.css">
 		<link rel="stylesheet" href="owl-carousel/owl.theme.css">
-		<link href="css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="css/main.css" type="text/css" rel="stylesheet" media="all" />
 		<!-- This is FontsAwesome 4.3.0-->
 		<link href="fawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -439,10 +439,10 @@
 			   </a>
 				<ul>
 					<li>
-						<a href="https://www.facebook.com/sharer/sharer.php?u=stage.eligefacil.com" target="_blank" class="btn-floating light-blue darken-4"><i class="fa fa-facebook"></i></a>
+						<a onclick="CompartirComparacionFacebook()" href="#!" target="_blank" class="btn-floating light-blue darken-4"><i class="fa fa-facebook"></i></a>
 					</li>
 					<li>
-						<a href="https://twitter.com/home?status=stage.eligefacil.com" target="_blank" class="btn-floating light-blue lighten-2"><i class="fa fa-twitter"></i></a>
+						<a onclick="CompartirComparacionTwitter()" href="#!" class="btn-floating light-blue lighten-2"><i class="fa fa-twitter"></i></a>
 					</li>
 					<li>
 						<a class="btn-floating grey darken-1 modal-trigger" href="#modalMailShare"><i class="fa fa-envelope"></i></a>
@@ -460,30 +460,77 @@
 			</div>
 		</div>
 		<!-- Modal Mail Share -->
-		  <div id="modalMailShare" class="modal">
-		    <div class="modal-content">
-		      <h4>Compartir vía Mail</h4>
-		      <p>Escribe el nombre y correo para compartir:</p>
-		      <div class="row">
-		          <form class="col s12">
-		            <div class="row">
-		              <div class="input-field col s12 m6">
-		                <input id="first_name" type="text" class="validate">
-		                <label for="first_name">Nombre</label>
-		              </div>
-		              <div class="input-field col s12 m6">
-		                <input id="email" type="email" class="validate">
-		                <label for="email">Email</label>
-		              </div>
-		            </div>
-		          </form>
-		        </div>
-		    </div>
-		    <div class="modal-footer">
-		      <a href="#!" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
-		      <a href="#!" class="modal-action modal-close waves-effect btn-flat">Enviar</a>
-		    </div>
-		  </div>
+		  <div id="modalMailShare" class="modal modal-fixed-footer">
+			<div class="modal-content">
+				<h4>Enviar a Mail</h4>
+				<div class="row">
+					<form class="col s12">
+						<p>Escribe tu nombre y correo:</p>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="CompareFromName" type="text" class="validate">
+								<label for="CompareFromName">Tu Nombre</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="CompareFromEmail" type="email" class="validate">
+								<label for="CompareFromEmail">Tu Email</label>
+							</div>
+						</div>
+						<p>Escribe el nombre y correo para compartir:</p>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="CompareToName" type="text" class="validate">
+								<label for="CompareToName">Nombre</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="CompareToEmail" type="email" class="validate">
+								<label for="CompareToEmail">Email</label>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
+				<a onclick="ShareComparacion()" href="#!" class="modal-action modal-close waves-effect btn-flat">Enviar</a>
+			</div>
+		</div>
+		<!-- Modal Mail Share Single plan -->
+		<div id="modalMailShareSingle" class="modal modal-fixed-footer">
+			<div class="modal-content">
+				<h4>Enviar a Mail</h4>
+				<div class="row">
+					<form class="col s12">
+						<p>Escribe tu nombre y correo:</p>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="SingleFromNombre" type="text" class="validate">
+								<label for="SingleFromNombre">Tu Nombre</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="SingleFromEmail" type="email" class="validate">
+								<label for="SingleFromEmail">Tu Email</label>
+							</div>
+						</div>
+						<p>Escribe el nombre y correo para compartir:</p>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="SingleToNombre" type="text" class="validate">
+								<label for="SingleToNombre">Nombre</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="SingleToEmail" type="email" class="validate">
+								<label for="SingleToEmail">Email</label>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
+				<a onclick="SendMailSingle()" href="#!" class="modal-action modal-close waves-effect btn-flat">Enviar</a>
+			</div>
+		</div>
 		<!--BANNER SLIDE DOWN-->
 		<div id="slide-in-banner" class="z-depth-2 AnuncioComparadorCentro">
 			<div class="close-modal-btn">
@@ -546,6 +593,7 @@
 						$( "#selectEstado" ).removeAttr("disabled");
 						if(sessionStorage.getItem("ServicioCelular")==1){
 							var data={
+								estado:sessionStorage.getItem("estado"),
 								celular:"1",
 								verDetalles:"true",
 								id_plan:id_plan,
@@ -553,6 +601,11 @@
 							}	
 						}else{
 							var data={
+								estado:sessionStorage.getItem("estado"),
+								
+								telefono:sessionStorage.getItem("ServicioTelefono"),
+								internet:sessionStorage.getItem("ServicioInternet"),
+								television:sessionStorage.getItem("ServicioTelevision"),
 								verDetalles:"true",
 								id_plan:id_plan,
 								async:false
@@ -1084,7 +1137,8 @@
 				        sURLVariables = sPageURL.split('&'),
 				        sParameterName,
 				        i;
-
+		        	var cantidadURL=0;
+		        	var ids= new Array();
 				    for (i = 0; i < sURLVariables.length; i++) {
 				        sParameterName = sURLVariables[i].split('=');
 
@@ -1092,8 +1146,16 @@
 				            //return sParameterName[1] === undefined ? true : alert(sParameterName[1]);
 				            if (sParameterName[1] !== undefined){
 				            	jQuery( "#plan_"+sParameterName[1] ).trigger( "click" );
+				            	cantidadURL+=1;
+				            	ids.push(sParameterName[1]);
 				            }
 				        }
+				    }
+				    if(cantidadURL==1){
+				        	//alert("Seleccionar ver detalles");
+				        	jQuery( ".verplan_"+ids[0] ).trigger( "click" );
+				    }else{
+				    	jQuery( "#btnComparar" ).trigger( "click" );
 				    }
 				};
 				var getUrlParameterServicio = function getUrlParameterServicio(sParam) {
@@ -1111,7 +1173,7 @@
 
 				        if (sParameterName[0] === sParam) {
 				            //return sParameterName[1] === undefined ? true : alert(sParameterName[1]);
-				            alert(sParameterName[1]);
+				            //alert(sParameterName[1]);
 				            if (sParameterName[1] !== undefined){
 				            	if(sParameterName[1]==1){
 									sessionStorage.setItem("ServicioCelular","1");
@@ -2125,6 +2187,241 @@
 			//window.location=url;
 			return false;
 		}
+
+		function ShareSingle(id){
+			sessionStorage.setItem("CompartirSingle",id);
+			$('#modalMailShareSingle').openModal();
+		}
+		function SendMailSingle(){
+			//console.log($( "#SingleFromNombre" ).val());
+			//console.log($( "#SingleFromEmail" ).val());
+			//console.log($( "#SingleToNombre" ).val());
+			//console.log($( "#SingleToEmail" ).val());
+			//console.log(sessionStorage.getItem("CompartirSingle"));	
+				
+			$.blockUI({ message: null }); 
+			var target = document.createElement("div");
+			document.body.appendChild(target);
+			var spinner = new Spinner(opts).spin(target);
+			var overlay = iosOverlay({
+				text: "Cargando",
+				spinner: spinner
+			});
+			var data={
+					celular:sessionStorage.getItem("ServicioCelular"),
+					telefono:sessionStorage.getItem("ServicioTelefono"),
+					television:sessionStorage.getItem("ServicioTelevision"),
+					internet:sessionStorage.getItem("ServicioInternet"),
+					streaming:sessionStorage.getItem("ServicioStreaming"),
+					nombreFrom:$( "#SingleFromNombre" ).val(),
+					emailFrom:$( "#SingleFromEmail" ).val(),
+					nombreTo:$( "#SingleToNombre" ).val(),
+					emailTo:$( "#SingleToEmail" ).val(),
+					estado:$( "#selectEstado" ).val(),
+					plan:sessionStorage.getItem("CompartirSingle")
+				}
+			jQuery.ajax({
+				//dataType:"json",
+				type: "POST",
+				url: "sharemail.php",
+				data: data
+			})
+		    .done(function(data){
+
+		    	if(data==true){
+		    		//alert("true");
+		    		$( "#SingleFromNombre" ).val("");
+					$( "#SingleFromEmail" ).val("");
+					$( "#SingleToNombre" ).val("");
+					$( "#SingleToEmail" ).val("");
+		    		window.setTimeout(function() {
+						overlay.update({
+							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							text: "Listo"
+						});
+					}, 1000);
+					window.setTimeout(function() {
+						overlay.hide();
+					}, 2000);
+					setTimeout($.unblockUI, 3000);
+
+		    	}else{
+		    		//alert("false");
+		    		window.setTimeout(function() {
+						overlay.update({
+							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							text: "ERROR"
+						});
+					}, 1000);
+					window.setTimeout(function() {
+						overlay.hide();
+					}, 2000);
+					setTimeout($.unblockUI, 3000);
+
+		    	}
+		    	console.log(data)
+		    })
+		    .fail(function(data){
+		    	console.log(data);
+		    	//window.location.href = "indexBE.php";
+		    });
+		    
+		}
+
+		function ShareComparacion(){
+			var i=0;
+			var planes= new Array();
+			$( ".span-bx-selected" ).each(function( index ) {
+			  //console.log( $( this ).attr("value") );
+			  planes.push($( this ).attr("value"));
+			  //JSON.stringify(newFiltro)
+			});
+			console.log(planes[0]);
+			console.log(planes[1]);
+			$.blockUI({ message: null }); 
+			var target = document.createElement("div");
+			document.body.appendChild(target);
+			var spinner = new Spinner(opts).spin(target);
+			var overlay = iosOverlay({
+				text: "Cargando",
+				spinner: spinner
+			});
+			var data={
+					celular:sessionStorage.getItem("ServicioCelular"),
+					telefono:sessionStorage.getItem("ServicioTelefono"),
+					television:sessionStorage.getItem("ServicioTelevision"),
+					internet:sessionStorage.getItem("ServicioInternet"),
+					streaming:sessionStorage.getItem("ServicioStreaming"),
+					nombreFrom:$( "#CompareFromName" ).val(),
+					emailFrom:$( "#CompareFromEmail" ).val(),
+					nombreTo:$( "#CompareToName" ).val(),
+					emailTo:$( "#CompareToEmail" ).val(),
+					estado:$( "#selectEstado" ).val(),
+					planes:planes
+				}
+			jQuery.ajax({
+				//dataType:"json",
+				type: "POST",
+				url: "sharemail.php",
+				data: data
+			})
+		    .done(function(data){
+
+		    	if(data==true){
+		    		//alert("true");
+		    		$( "#CompareFromName" ).val("");
+					$( "#CompareFromEmail" ).val("");
+					$( "#CompareToName" ).val("");
+					$( "#CompareToEmail" ).val("");
+		    		window.setTimeout(function() {
+						overlay.update({
+							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							text: "Listo"
+						});
+					}, 1000);
+					window.setTimeout(function() {
+						overlay.hide();
+					}, 2000);
+					setTimeout($.unblockUI, 3000);
+
+		    	}else{
+		    		//alert("false");
+		    		window.setTimeout(function() {
+						overlay.update({
+							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							text: "ERROR"
+						});
+					}, 1000);
+					window.setTimeout(function() {
+						overlay.hide();
+					}, 2000);
+					setTimeout($.unblockUI, 3000);
+
+		    	}
+		    	console.log(data)
+		    })
+		    .fail(function(data){
+		    	console.log(data);
+		    	window.setTimeout(function() {
+						overlay.update({
+							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							text: "ERROR"
+						});
+					}, 1000);
+					window.setTimeout(function() {
+						overlay.hide();
+					}, 2000);
+					setTimeout($.unblockUI, 3000);
+		    	//window.location.href = "indexBE.php";
+		    });
+		}
+
+		function CompartirComparacionFacebook(){
+			var urlFacebook="https://www.facebook.com/sharer/sharer.php?u=";
+			var url="http://www.eligefacil.com/stage/NewSite/listado-comparador.php?";
+			var i=0;
+			url=url+"&l="+$( "#selectEstado" ).val();
+			if(sessionStorage.getItem("ServicioCelular")==1){
+				url=url+"&s[]=1";
+			}
+			if(sessionStorage.getItem("ServicioTelefono")==1){
+				url=url+"&s[]=2";
+			}
+			if(sessionStorage.getItem("ServicioTelevision")==1){
+				url=url+"&s[]=4";
+			}
+			if(sessionStorage.getItem("ServicioInternet")==1){
+				url=url+"&s[]=3";
+			}
+			if(sessionStorage.getItem("ServicioStreaming")==1){				
+				url=url+"&s[]=5";
+			}
+
+			$( ".span-bx-selected" ).each(function( index ) {
+			  //console.log( $( this ).attr("value") );
+			  	url+="&plan[]="+$( this ).attr("value");
+			});
+			var res = encodeURIComponent(url);
+			res=urlFacebook+res;
+			window.open(res,'_blank');
+			//window.location=url;
+			return false;
+		}
+
+		function CompartirComparacionTwitter(){
+			var urlTwitter="https://twitter.com/home?status=";
+			var url="http://www.eligefacil.com/stage/NewSite/listado-comparador.php?";
+			$( ".span-bx-selected" ).each(function( index ) {
+			  //console.log( $( this ).attr("value") );
+			  url=url+"&l="+$( "#selectEstado" ).val();
+			if(sessionStorage.getItem("ServicioCelular")==1){
+				url=url+"&s[]=1";
+			}
+			if(sessionStorage.getItem("ServicioTelefono")==1){
+				url=url+"&s[]=2";
+			}
+			if(sessionStorage.getItem("ServicioTelevision")==1){
+				url=url+"&s[]=4";
+			}
+			if(sessionStorage.getItem("ServicioInternet")==1){
+				url=url+"&s[]=3";
+			}
+			if(sessionStorage.getItem("ServicioStreaming")==1){				
+				url=url+"&s[]=5";
+			}
+			$( ".span-bx-selected" ).each(function( index ) {
+			  //console.log( $( this ).attr("value") );
+			  	url+="&plan[]="+$( this ).attr("value");
+			});
+			console.log(url);
+			var res = encodeURIComponent(url);
+			console.log(res);
+			res=urlTwitter+res;
+			window.open(res,'_blank');
+			//window.location=url;
+			return false;
+			});
+		}
 		</script>
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -2135,6 +2432,12 @@
 		  ga('create', 'UA-70371933-1', 'auto');
 		  ga('send', 'pageview');
 		
+		</script>
+		<script type="text/javascript">
+			setTimeout(function(){var a=document.createElement("script");
+			var b=document.getElementsByTagName("script")[0];
+			a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0048/8086.js?"+Math.floor(new Date().getTime()/3600000);
+			a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 		</script>
 	</body>
 
