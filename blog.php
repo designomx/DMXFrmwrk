@@ -47,15 +47,15 @@ require('../blog/wp-blog-header.php');
 				<!--
 				<ul class="right hide-on-med-and-down">
 					<li>
-						<a href="listado-comparador.html" class="magictime slideUpRetourn fix-pos-nav">Innovación</a>
+						<a href="listado-comparador.html" class="magictime slideUpRetourn fix-pos-nav">Comparador</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="blog.html"  target="_blank" class="magictime slideUpRetourn fix-pos-nav">Tecnologia</a>
+						<a href="blog.html"  target="_blank" class="magictime slideUpRetourn fix-pos-nav">Tecnología</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="contacto.html" class="magictime slideUpRetourn fix-pos-nav">Smartphones</a>
+						<a href="contacto.html" class="magictime slideUpRetourn fix-pos-nav">Entretenimiento</a>
 					</li>
 					<li>
 						<a href="http://twitter.com" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
@@ -73,13 +73,13 @@ require('../blog/wp-blog-header.php');
 		<!--
 		<ul class="side-nav" id="mobile-demo">
 			<li>
-				<a href="listado-comparador.html"><i class="fa fa-search left"></i> Innovación</a>
+				<a href="listado-comparador.html"><i class="fa fa-search left"></i> Comparador</a>
 			</li>
 			<li>
 				<a href="blog.html" target="_blank"><i class="fa fa-newspaper-o left"></i> Reseñas</a>
 			</li>
 			<li>
-				<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Smartphones</a>
+				<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Entretenimiento</a>
 			</li>
 			<li>
 				<a href="http://twitter.com"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
