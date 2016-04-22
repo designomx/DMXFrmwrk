@@ -10,7 +10,7 @@ $_POST["comentario"];
 //$to  = 'aidan@example.com' . ', '; // note the comma
 //$to = 'contacto@eligefacil.com';
 $to = 'contacto@eligefacil.com' . ', ';
-$to .= 'oemilio16@gmail.com';
+$to .= 'emilioo@designo.mx';
 //$to = 'emilioo@designo.mx' . ', ';
 //$to .= 'oemilio16@gmail.com';
 

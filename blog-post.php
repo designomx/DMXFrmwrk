@@ -36,19 +36,20 @@
 	<body>
 		<nav id="main-nav-bar">
 			<div class="nav-wrapper" class="fix-ios-shadow">
-				<a href="indexBE.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
+				<a href="blog.html" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil_blog.png" width="159" alt="" /></a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
+
 				<ul class="right hide-on-med-and-down">
 					<li>
-						<a id="descubreBTN" href="listado-comparador.php" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
+						<a href="blog.php?c=41" class="magictime slideUpRetourn fix-pos-nav">Innovación</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="indexBE.php#blog-timeline" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
+						<a href="blog.php?c=42" class="magictime slideUpRetourn fix-pos-nav">Tecnología</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="contacto.html" class="magictime slideUpRetourn fix-pos-nav">Contacto</a>
+						<a href="blog.php?c=43" class="magictime slideUpRetourn fix-pos-nav">Smartphones</a>
 					</li>
 					<li>
 						<a href="http://twitter.com" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
@@ -57,17 +58,21 @@
 						<a href="http://facebook.com" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
 					</li>
 				</ul>
+
+				<ul class="right hide-on-med-and-down">
+				    
+				</ul>
 			</div>
 		</nav>
 		<ul class="side-nav" id="mobile-demo">
 			<li>
-				<a id="descubreBTN" href="listado-comparador.php"><i class="fa fa-search left"></i> Descubre</a>
+				<a href="blog.php?c=41"><i class="fa fa-search left"></i> Innovación</a>
 			</li>
 			<li>
-				<a href="indexBE.php#blog-module"><i class="fa fa-newspaper-o left"></i> Entérate</a>
+				<a href="blog.php?c=42" ><i class="fa fa-newspaper-o left"></i> Tecnología</a>
 			</li>
 			<li>
-				<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
+				<a href="blog.php?c=43"><i class="fa fa-envelope-o left"></i> Smartphones</a>
 			</li>
 			<li>
 				<a href="http://twitter.com"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
@@ -79,64 +84,167 @@
 		<div class="clearfix"></div>
 		<br />
 		<?php
-				require('../blog/wp-blog-header.php');
+
+				require('../../blog/wp-blog-header.php');
+						
 				if (isset($_GET["p"])){
 					$post_ = get_post( $_GET["p"] ); 
 					$title = $post_->post_title;
 					$excerpt = $post_->post_excerpt;
-
+					$PostID=$post_->ID;
+					the_content($post_->ID);
+					the_post($post_->ID);
 				}
 				
 		?>
-		<div id="contact-module" class="row grey lighten-5">
-			<div class="post-page-bx row">
-				<h1><?php echo $title;?></h1>
-				<?php
-					$esvideo=false;
-					foreach ( get_the_category( $post_ ) as $category ) {
-						$categoria=$category->term_id;
-						if($categoria==4){
-							$esvideo=true;
-						}
-					}
-					if($esvideo){
-						$youtube = get_post_meta($post_->ID, "youtube", $single = true);
-						$contenido=$post_->post_content;
-						echo '<iframe width="560" height="315" src="'.$youtube.'" frameborder="0" allowfullscreen></iframe>';
-						//echo "<div class='video-container' id='embedVideo' data-url='".$contenido."'> </div><div class='clearfix'></div> <br> ";
-					}else{
-						if ( has_post_thumbnail() ) {
-						    //the_post_thumbnail();
-						    $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 5600,1000 ), false, '' );
-							echo '<img class="responsive-img" src="'.$src[0].'">';
-						} 
-					}
-				?>
-				<!--<img class="responsive-img" src="images/post-hero.jpg">-->
+		<?php echo tptn_add_viewed_count( ' ' ); ?>
 
-				<div class="social-btn-row">
-					<a href="https://twitter.com/share" class="twitter-share-button" data-via="toothmemx">Tweet</a>
-					<script>
-						!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-					</script>
-					<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
+
+		<div id="contact-module" class="row grey lighten-5 contact-module">
+			<div class="post-page-bx row">
+				<div class="col m12 l8 post-info-bx">
+					<h1><?php echo $title;?></h1>
+					<?php
+						$esvideo=false;
+						$categorias=array();
+						$categoriaU=0;
+						foreach ( get_the_category( $post_ ) as $category ) {
+							$categoria=$category->term_id;
+							if($categoria==4){
+								$esvideo=true;
+							}
+							array_push($categorias,$categoria);
+							if($categoriaU==0){
+								$categoriaU=$categoria;
+							}
+						}
+						if($esvideo){
+							$URLiframe  = get_post_meta($post_->ID, "youtube", $single = true);
+							if (!empty($URLiframe)){
+								//$embed==1 es youtube
+								$embed="1";
+								//echo "<script>alert('".$URLiframe."')</script>";
+							}else{
+								$URLiframe =get_post_meta($post_->ID, "vimeo", $single = true);
+								//echo "<script>alert('".$URLiframe."')</script>";
+								if(!empty($URLiframe)){
+									//$embed==2 es vimeo
+									$embed="2";
+								}
+							}
+
+							$contenido=$post_->post_content;
+							if($embed=="1"){
+								echo '<iframe width="560" height="315" src="'.$URLiframe.'" frameborder="0" allowfullscreen></iframe>';
+							}
+							if($embed=="2"){
+								echo '<iframe src="'.$URLiframe.'" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+							}
+							//echo "<div class='video-container' id='embedVideo' data-url='".$contenido."'> </div><div class='clearfix'></div> <br> ";
+						}else{
+							// Imagen thumbnail
+					        if (function_exists('has_post_thumbnail')) {
+							    if ( has_post_thumbnail() ) {
+							         $src = wp_get_attachment_image_src( get_post_thumbnail_id($post_->ID), array( 5600,1000 ), false, '' );
+							    }
+							    $urlIMG = wp_get_attachment_url( get_post_thumbnail_id($post_->ID) );
+							    echo '<img class="responsive-img" src="'.$urlIMG.'">';
+							}
+						}
+					?>
+					<!--<img class="responsive-img" src="images/post-hero.jpg">-->
+
+					<div class="social-btn-row">
+						<a href="https://twitter.com/share" class="twitter-share-button" data-via="toothmemx">Tweet</a>
+						<script>
+							!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+						</script>
+						<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
+					</div>
+					<?php
+						//echo "<p class='responsive-img'>";
+						$contenido=$post_->post_content;
+						if($esvideo){
+							echo "<div id='descripcion'>".$youtube."</div>";
+							echo "<div>".$contenido."</div>";
+						}else{
+							echo "<div>".$contenido."</div>";
+						}
+						//echo "</p>";
+					?>
+					<!--Relacionados por categoria y tag -->
+					<?php //$ID = $wp_query->posts[0]->ID;
+
+						//$categoryvariable = get_the_category($post_->ID);
+						$query= 'category__in=' . $categorias. '&orderby=date&order=ASC&posts_per_page=2';
+						//$query_rel = new WP_Query( array( 'category__in' => $categorias,'posts_per_page'=>2 ) );
+						//query_posts($query);
+					?>
+					<div class="clearfix"></div>
+					<br />
+					<div class="row">
+						<?php 
+							wp_reset_postdata();
+
+							$query_rel = new WP_Query('cat='.$categoriaU.'&orderby=date&order=ASC&posts_per_page=2');
+							
+
+							//$query_rel = new wp_query( $args );
+							if ($query_rel -> have_posts()) : 
+								$mostrados=0;
+								while (($query_rel->have_posts()) && $mostrados<2) : 
+									$tituloPost=get_the_title( $query_rel->post->ID );
+									$contenido=get_the_content($query_rel->post->ID);
+									$PostID=$query_rel->post->ID;
+									$the_excerpt=get_the_excerpt($query_rel->post->ID);
+									$urlIMG = wp_get_attachment_url( get_post_thumbnail_id($query_rel->post->ID) );
+									echo '<div class="col s12 m6">
+											<div class="card medium">
+												<div class="card-image waves-effect waves-block waves-light">
+													<img class="activator" src="'.$urlIMG.'">
+													<span class="card-title">'.$tituloPost.'</span>
+												</div>
+												<div class="card-content">';
+												$my_excerpt = get_the_excerpt($query_rel->post->ID);
+												if ( empty($my_excerpt) ) {
+												    // Some string manipulation performed
+												    echo "<p>".$tituloPost."</p>";
+												}
+												echo $my_excerpt; // Outputs the processed value to the page
+									echo		'</div>
+												<div class="card-action">
+									                <a href="blog-post.php?p='.$PostID.'" class="btn orange accent-4 right">Leer nota</a>
+								              	</div>
+											</div>
+										</div>';
+									$mostrados+=1;
+								endwhile; 
+							endif; 
+							wp_reset_postdata(); ?>
+					</div>
+
+
+					<div class="backblog-button-bx">
+						<a href="indexBE.php#blog-module" class="z-depth-1 hoverable"><i class="fa fa-angle-double-left"></i> Regresar</a>
+					</div>
 				</div>
-				<?php
-					echo "<p class='responsive-img'>";
-					$contenido=$post_->post_content;
-					if($esvideo){
-						echo "<div id='descripcion'>".$youtube."</div>";
-						echo "<div>".$contenido."</div>";
-					}else{
-						echo "<div>".$contenido."</div>";
-					}
-					echo "</p>";
-				?>
-				<div id="embed"></div>
-				<div class="backblog-button-bx">
-					<a href="indexBE.php#blog-module" class="z-depth-1 hoverable"><i class="fa fa-angle-double-left"></i> Regresar</a>
+				<div class="col m4 grey lighten-3 side-bar-bx hide-on-med-and-down">
+					<div class="side-bar-separator grey lighten-2"></div>
+					<?php 
+						if ( function_exists( 'tptn_show_daily_pop_posts' ) ) {
+							tptn_show_daily_pop_posts(); 
+						}
+					?>		
+					<div class="clearfix"></div>
+					<br />
+					<div class="add-promoted-bx">
+						<div class="col s12 AnuncioHomeDerecho">
+							
+						</div>
+					</div>
 				</div>
-				
+
+
 				<div class="clearfix"></div>
 				<br />
 			</div>

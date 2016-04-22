@@ -1,8 +1,7 @@
 <?php
 //header('Content-Type: application/json');
-header("Access-Control-Allow-Origin: *");
-require('../blog/wp-blog-header.php');
-
+//header("Access-Control-Allow-Origin: *");
+require('../../blog/wp-blog-header.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -44,18 +43,18 @@ require('../blog/wp-blog-header.php');
 			<div class="nav-wrapper" class="fix-ios-shadow">
 				<a href="blog.html" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil_blog.png" width="159" alt="" /></a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
-				<!--
+
 				<ul class="right hide-on-med-and-down">
 					<li>
-						<a href="listado-comparador.html" class="magictime slideUpRetourn fix-pos-nav">Innovación</a>
+						<a href="blog.php?c=41" class="magictime slideUpRetourn fix-pos-nav">Innovación</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="blog.html"  target="_blank" class="magictime slideUpRetourn fix-pos-nav">Tecnologia</a>
+						<a href="blog.php?c=42" class="magictime slideUpRetourn fix-pos-nav">Tecnología</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="contacto.html" class="magictime slideUpRetourn fix-pos-nav">Smartphones</a>
+						<a href="blog.php?c=43" class="magictime slideUpRetourn fix-pos-nav">Smartphones</a>
 					</li>
 					<li>
 						<a href="http://twitter.com" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
@@ -64,22 +63,22 @@ require('../blog/wp-blog-header.php');
 						<a href="http://facebook.com" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
 					</li>
 				</ul>
-				-->
+
 				<ul class="right hide-on-med-and-down">
 				    
 				</ul>
 			</div>
 		</nav>
-		<!--
+
 		<ul class="side-nav" id="mobile-demo">
 			<li>
-				<a href="listado-comparador.html"><i class="fa fa-search left"></i> Innovación</a>
+				<a href="blog.php?c=41"><i class="fa fa-search left"></i> Innovación</a>
 			</li>
 			<li>
-				<a href="blog.html" target="_blank"><i class="fa fa-newspaper-o left"></i> Reseñas</a>
+				<a href="blog.php?c=42" ><i class="fa fa-newspaper-o left"></i> Tecnología</a>
 			</li>
 			<li>
-				<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Smartphones</a>
+				<a href="blog.php?c=43"><i class="fa fa-envelope-o left"></i> Smartphones</a>
 			</li>
 			<li>
 				<a href="http://twitter.com"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
@@ -88,7 +87,7 @@ require('../blog/wp-blog-header.php');
 				<a href="http://facebook.com"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
 			</li>
 		</ul>
-		-->
+
 		<ul class="right hide-on-med-and-down">
 		    
 		</ul>
@@ -103,26 +102,23 @@ require('../blog/wp-blog-header.php');
 		<div id="slider-txt-bx">
 		<?php
 		$args = array ( 'category__in' => array(40) );
-		query_posts( $args );
+		//query_posts( $args );
+		$query1 = new WP_Query( $args );
+		if ( $query1->have_posts() ):
+		    while ( $query1->have_posts() ) :
+		        $query1->the_post();
 
-		if ( have_posts() ):
-		    while ( have_posts() ) :
-		        the_post();
-
-				$tituloPost=$post->post_title;
-				$contenido=$post->post_content;
-				$PostID=$post->ID;
-				$the_excerpt=$post->post_excerpt;
+				$tituloPost=  get_the_title( $query1->post->ID );
+				$contenido=get_the_content($query1->post->ID);
+				$PostID=$query1->post->ID;
+				$the_excerpt=get_the_excerpt($query1->post->ID);
 		        // Do stuff with the post content.
 		    ?>
 		    <div class="slider-container">
 				<div class="post-dest">
 					<?php
 					echo '<h1>'.$tituloPost.'</h1>
-					<p>';
-					the_excerpt();
-
-					echo '</p>
+					<p>'.$the_excerpt.'</p>
 					<a href="blog-post.php?p='.$PostID.'" class="waves-effect waves btn orange accent-4">Leer nota</a>
 				</div>
 			</div>';
@@ -134,11 +130,9 @@ require('../blog/wp-blog-header.php');
 		    // Insert any content or load a template for no posts found.
 		endif;
 
-		wp_reset_query();
+		wp_reset_postdata();
 
 		?>
-
-			
 			<div id="controlSlide" class="post-dest-selector">
 				<a href="#!" class="active-post-bullet"></a>
 				<a href="#!"></a>
@@ -150,25 +144,48 @@ require('../blog/wp-blog-header.php');
 			<div id="blog-timeline" class="col m12 l8 blog-timeline-bx">
 		<?php
 		//$args = array ( 'category__in' => array(40) );
-		query_posts(  );
-		if ( have_posts() ):
-		    while ( have_posts() ) :
-		        the_post();
+		if(isset($_GET["c"])){
+
+				$args = array (  'cat='.$_GET["c"].'&posts_per_page=-1' );
+				$query2 = new WP_Query( 'cat='.$_GET["c"].'&posts_per_page=-1' );
+				//print_r($args);
+			
+		}else{
+			$args = array ( 'posts_per_page=-1'  );
+			$query2 = new WP_Query( 'posts_per_page=-1' );
+		}
+		$insertarVideo=0;
+		$cargarmas=0;
+		if ( $query2 -> have_posts() ):
+		    while ( $query2 -> have_posts() ) :
+		        $query2 -> the_post();
 		    	$esvideo=false;
-		    	foreach ( get_the_category( $post->ID ) as $category ) {
+		    	$insertarVideo+=1;
+		    	if(isset($_GET["c"])){
+		    		$categoriaMostrar=$_GET["c"];
+					$mostrar=0;
+				}else{
+					$mostrar=1;
+				}
+		    	foreach ( get_the_category( $query2 ->post->ID ) as $category ) {
 					$categoria=$category->term_id;
+					if($mostrar==0){
+						if($categoria==$categoriaMostrar){
+							$mostrar=1;
+						}
+					}
 					if($categoria==4){
 						$esYoutube=false;
 						$esVimeo=false;
 						$esvideo=true;
 						$embed=0;
-						$URLiframe = get_post_meta($post->ID, "youtube", $single = true);
+						$URLiframe = get_post_meta($query2->post->ID, "youtube", $single = true);
 						
 						if (!empty($URLiframe)){
 							$embed="youtube";
 							//echo "<script>alert('".$URLiframe."')</script>";
 						}else{
-							$URLiframe =get_post_meta($post->ID, "vimeo", $single = true);
+							$URLiframe =get_post_meta($query2->post->ID, "vimeo", $single = true);
 							//echo "<script>alert('".$URLiframe."')</script>";
 							if(!empty($URLiframe)){
 								$embed="vimeo";
@@ -176,143 +193,85 @@ require('../blog/wp-blog-header.php');
 						}
 					}
 				}
-				$tituloPost=$post->post_title;
-				$contenido=$post->post_content;
-				$PostID=$post->ID;
-				$the_excerpt=$post->post_excerpt;
-		        // Imagen thumbnail
-		        if (function_exists('has_post_thumbnail')) {
-				    if ( has_post_thumbnail() ) {
-				         $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 5600,1000 ), false, '' );
-				    }
-				}
-		    ?>
-			<div class="col s12 post-box-wrapper">
-				<div class="post-hero" style="background-image: url(<?php echo $src[0];?>);">
-				<?php
-					if($esvideo){
-						//$contenido=$post_->post_content;
-						echo '<h1><a onclick="VerVideo(this,'."'".$URLiframe."'".','."'".$embed."'".')" id="btnVerVideo" data-titulo="'.$tituloPost.'" data-id="'.$PostID.'" href="#modalVB" class="modal-trigger">'.$tituloPost.'</a></h1>
-						<a onclick="VerVideo(this,'.$URLiframe.','.$embed.')" class="enter-post" id="btnVerVideo2" data-titulo="'.$tituloPost.'" data-id="'.$PostID.'" href="#modalVB" class="modal-trigger"><i class="fa fa-angle-right"></i></a>';
-
-					}else{
-						echo '<h1><a href="blog-post.php?p='.$PostID.'">'.$tituloPost.'</a></h1>
-						<a class="enter-post" href="blog-post.php?p='.$PostID.'"><i class="fa fa-angle-right"></i></a>';
+				if($mostrar==1){
+					$tituloPost=  get_the_title( $query2->post->ID );
+					$contenido=get_the_content($query2->post->ID);
+					$PostID=$query2->post->ID;
+					$permalink = get_permalink($query2->post->ID);
+					$the_excerpt=get_the_excerpt($query2->post->ID);
+			        // Imagen thumbnail
+			        if (function_exists('has_post_thumbnail')) {
+					    if ( has_post_thumbnail() ) {
+					         $src = wp_get_attachment_image_src( get_post_thumbnail_id($query2->post->ID), array( 5600,1000 ), false, '' );
+					    }
 					}
+		    ?>
+		    	<?php
+					echo '<div id="cargarmas'.$cargarmas.'"class="col s12 post-box-wrapper cargarmas">'
 				?>
-				</div>
-				<p class="abstractr-post">
-					<?php the_excerpt(); ?>
-				</p>
-				<div class="social-btn-row">
-					<a href="https://twitter.com/share" class="twitter-share-button" data-via="toothmemx">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-					<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
-				</div>
-			</div>
+						<div class="post-hero" style="background-image: url(<?php echo $src[0];?>);">
+						<?php
+							if($esvideo){
+								//$contenido=$post_->post_content;
+								echo '<h1><a id="btnVerVideo" onclick="VerVideo(this,'."'".$URLiframe."','".$embed."'".')" data-titulo="'.$tituloPost.'" data-id="'.$PostID.'" href="#modalVB" class="modal-trigger">'.$tituloPost.'</a></h1>
+								<a onclick="VerVideo(this,'."'".$URLiframe."','".$embed."'".')" class="enter-post modal-trigger" id="btnVerVideo2" data-titulo="'.$tituloPost.'" data-id="'.$PostID.'" href="#modalVB"><i class="fa fa-angle-right"></i></a>';
+
+							}else{
+								echo '<h1><a href="'.$permalink.'">'.$tituloPost.'</a></h1>
+								<a class="enter-post" href="'.$permalink.'"><i class="fa fa-angle-right"></i></a>';
+							}
+						?>
+						</div>
+						<p class="abstractr-post">
+							<?php echo $the_excerpt; ?>
+						</p>
+						<div class="social-btn-row">
+							<a href="https://twitter.com/share" class="twitter-share-button" data-via="toothmemx">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+							<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
+						</div>
+					</div>
 		        
-		    <?php
+		    	<?php
+			    	if($insertarVideo==2){
+			    		echo '<div class="col s12 timeline-banner">
+								<div class="video-container">
+									<iframe id="embed01" width="560" height="315" src="https://www.youtube.com/embed/HGb1zrXkpRA?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+								</div>
+							</div>';
+			    	}
+		    		$cargarmas+=1;
+		    	}
 		    endwhile;
 		else:
 		    // Insert any content or load a template for no posts found.
 		endif;
 
-		wp_reset_query();
+		wp_reset_postdata();
+		//echo '<script>cargarmas()</script>'
 
 		?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				<div class="col s12 post-box-wrapper">
-					<div class="post-hero" style="background-image: url('images/post-hero.jpg');">
-						<h1><a href="#modalVB" class="modal-trigger">El Apple Watch a lo grande: 20 trucos y apps para ser  productivo</a></h1>
-						<a class="enter-post modal-trigger" href="#modalVB"><i class="fa fa-angle-right"></i></a>
-					</div>
-					<p class="abstractr-post">
-						Duis mollis, est non <a href="#!">commodo luctus</a>, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis.
-					</p>
-					<div class="social-btn-row">
-						<a href="https://twitter.com/share" class="twitter-share-button" data-via="toothmemx">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
-					</div>
-				</div>
 				
-				<div class="col s12 timeline-banner">
-					<div class="video-container">
-						<iframe id="embed01" width="560" height="315" src="https://www.youtube.com/embed/HGb1zrXkpRA?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-					</div>
-				</div>
-				
-				<div class="col s12 post-box-wrapper">
-					<div class="post-hero" style="background-image: url('images/post-hero.jpg');">
-						<h1><a href="blog-post.html">El Apple Watch a lo grande: 20 trucos y apps para ser  productivo</a></h1>
-						<a class="enter-post" href="blog-post.html"><i class="fa fa-angle-right"></i></a>
-					</div>
-					<p class="abstractr-post">
-						Duis mollis, est non <a href="#!">commodo luctus</a>, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis.
-					</p>
-					<div class="social-btn-row">
-						<a href="https://twitter.com/share" class="twitter-share-button" data-via="toothmemx">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
-					</div>
-				</div>
-				<div class="col s12 post-box-wrapper">
-					<div class="post-hero" style="background-image: url('images/post-hero.jpg');">
-						<h1><a href="blog-post.html">El Apple Watch a lo grande: 20 trucos y apps para ser  productivo</a></h1>
-						<a class="enter-post" href="blog-post.html"><i class="fa fa-angle-right"></i></a>
-					</div>
-					<p class="abstractr-post">
-						Duis mollis, est non <a href="#!">commodo luctus</a>, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis.
-					</p>
-					<div class="social-btn-row">
-						<a href="https://twitter.com/share" class="twitter-share-button" data-via="toothmemx">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
-					</div>
-				</div>
 				<div class="reload-button-bx">
-					<a href="#!" class="z-depth-1 hoverable"><i class="fa fa-refresh"></i> Cargar Más</a>
+					<a href="#!" id="btnCargarMas" onclick="cargarmas()" class="z-depth-1 hoverable"><i class="fa fa-refresh"></i> Cargar Más</a>
 				</div>
 				
 			</div>
+
+
+
+
 			<div class="col m4 grey lighten-3 side-bar-bx hide-on-med-and-down">
 				<div class="side-bar-separator grey lighten-2"></div>
-				<h5>Más leídos:</h5>
-				<div class="post-promoted-bx">
-					<div class="col s12 z-depth-1 hoverable">
-						<img src="images/recomended.jpg" alt="" />
-						<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-						<a href="#!"></a>
-					</div>
-				</div>
-				<div class="post-promoted-bx">
-					<div class="col s12 z-depth-1 hoverable">
-						<img src="images/recomended.jpg" alt="" />
-						<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-						<a href="#!"></a>
-					</div>
-				</div>
-				<div class="post-promoted-bx">
-					<div class="col s12 z-depth-1 hoverable">
-						<img src="images/recomended.jpg" alt="" />
-						<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-						<a href="#!"></a>
-					</div>
-				</div>
+				<?php 
+					if ( function_exists( 'tptn_show_daily_pop_posts' ) ) {
+						tptn_show_daily_pop_posts(); 
+					}
+				?>		
 				<div class="clearfix"></div>
 				<br />
 				<div class="add-promoted-bx">
-					<div class="col s12">
-						<a href="#!"><img class="responsive-img" src="images/side-add.jpg" alt="" /></a>
+					<div class="col s12 AnuncioHomeDerecho">
+						
 					</div>
 				</div>
 				
@@ -339,8 +298,8 @@ require('../blog/wp-blog-header.php');
 		  
 		  <!--BANNER SLIDE DOWN-->
 		  
-		  <div id="slide-in-banner" class="z-depth-2">
-		  	<a href="#!" target="_blank"><img src="images/banner-base.jpg" alt="" /></a>
+		  <div id="slide-in-banner" class="z-depth-2 AnuncioComparadorCentro">
+
 		  	<div class="close-modal-btn"><i class="material-icons">close</i></div>
 		  </div>
 		  
@@ -390,23 +349,98 @@ require('../blog/wp-blog-header.php');
 		  	});
 		  	jQuery(document).ready(function(){
 		  		jQuery('#slideshow').fadeSlideShow();
+		  		CargarAnuncio();
+		  		cargarmas();
+		  		$(".cargarmas").hide();
+		  		//setTimeout(cargarmas, 3000);
 		  	});
-		  	function VerVideo(element,url,source){
-				alert("revisa videos")
+		</script>
+		<script type="text/javascript">
+			function VerVideo(element,url,source){
+				//alert("revisa videos")
 				//console.log("verVideo: "+$(element).data("url"));
 				//PostId
 				var id=	$(element).data("id");
 				//PostId
 				var titulo=	$(element).data("titulo");
 				if(source=="youtube"){
-					console.log("youtube");
-					$('#contenedorVideo').html('<iframe width="853" height="480" src="'+url+'" frameborder="0" allowfullscreen></iframe>';
+					//console.log("youtube");
+					$('#contenedorVideo').html('<iframe width="853" height="480" src="'+url+'" frameborder="0" allowfullscreen></iframe>');
 				}
 				if(source=="vimeo"){
-					console.log("vimeo");
+					//console.log("vimeo");
+					$('#contenedorVideo').html('<iframe src="'+url+'" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
 				}
-				$('#videoModalFooter').html('<a href="blog-post.php?p='+id+'" class="waves-effect btn-flat">Más</a>');
+				$('#videoModalFooter').html('<a href="http://www.eligefacil.com/blog/?p='+id+'" class="waves-effect btn-flat">Más</a>');
 				$("#tituloVideo").html(titulo);
+			}
+			function cargarmas(){
+				//console.log("cargar mas")
+				//console.log($(".cargarmas").length);
+
+				if($(".cargarmas").length<5){
+					var j=$(".cargarmas").length;
+				}else{
+					var j=5;
+				}
+				var k=$(".planmostrado").length;
+				//console.log(k);
+				for(var i=k; i<k+j;i++){
+					$("#cargarmas"+i).removeClass("cargarmas");
+					$("#cargarmas"+i).addClass("planmostrado");
+				}
+				$(".planmostrado").show();
+				if($(".cargarmas").length<1){
+					$("#btnCargarMas").hide();
+					//$( "#btnCargarMas" ).prop( "disabled", true );
+				}else{
+					$("#btnCargarMas").show();
+				}
+			}
+			function CargarAnuncio(){
+				if($('.AnuncioHomeDerecho').length){
+					var data={
+							CargarAnuncio:true,
+							id_anuncio:3
+						}
+				
+					jQuery.ajax({
+						//dataType:"json",
+						type: "POST",
+						url: "listado.php",
+						data: data
+					})
+				    .done(function(data){
+				    	//$(".AnuncioDerechoHome").html("PruebaCargando")
+						jQuery(".AnuncioHomeDerecho").append(data);
+						jQuery(".AnuncioHomeDerecho").addClass("responsive-img")
+				    })
+				    .fail(function(data){
+				    	console.log(data);
+				    	window.location.href = "indexBE.php";
+				    });
+				}
+				if($('.AnuncioComparadorCentro').length){
+					var data={
+							CargarAnuncio:true,
+							id_anuncio:5
+						}
+				
+					jQuery.ajax({
+						//dataType:"json",
+						type: "POST",
+						url: "listado.php",
+						data: data
+					})
+				    .done(function(data){
+				    	//$(".AnuncioDerechoHome").html("PruebaCargando")
+						jQuery(".AnuncioComparadorCentro").append(data);
+				    })
+				    .fail(function(data){
+				    	console.log(data);
+				    	window.location.href = "indexBE.php";
+				    });
+				}
 			}
 		</script>
 		<div id="fb-root"></div>

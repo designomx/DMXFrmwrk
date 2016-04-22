@@ -33,8 +33,6 @@
 * @param obj post
 * @return string (html)
 */
-define('CONCATENATE_SCRIPTS', false);
-
 function naked_nav($post = 0)
 {
   $output = "";
@@ -120,5 +118,5 @@ function will_paginate()
 }
 
 add_theme_support( 'post-thumbnails' );
-wp_enqueue_script( 'jquery' );
+
 ?>
