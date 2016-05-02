@@ -48,17 +48,17 @@ header("Access-Control-Allow-Origin: *");
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="#blog-module" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
+						<a href="blog.php" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
 						<a href="contacto.html" class="magictime slideUpRetourn fix-pos-nav">Contacto</a>
 					</li>
 					<li>
-						<a href="mobile.html" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
+						<a href="www.twitter.com/EligeFacil" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
 					</li>
 					<li>
-						<a href="mobile.html" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
+						<a href="https://www.facebook.com/EligeFacil" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
 					</li>
 				</ul>
 				<ul class="side-nav" id="mobile-demo">
@@ -66,89 +66,120 @@ header("Access-Control-Allow-Origin: *");
 						<a id="descubreBTN" href="listado-comparador.php"><i class="fa fa-search left"></i> Descubre</a>
 					</li>
 					<li>
-						<a href="#blog-module"><i class="fa fa-newspaper-o left"></i> Entérate</a>
+						<a href="blog.php"><i class="fa fa-newspaper-o left"></i> Entérate</a>
 					</li>
 					<li>
 						<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
 					</li>
 					<li>
-						<a href="mobile.html"><i class="fa fa-twitter left"></i> Twitter</a>
+						<a href="www.twitter.com/EligeFacil"><i class="fa fa-twitter left"></i> Twitter</a>
 					</li>
 					<li>
-						<a href="mobile.html"><i class="fa fa-facebook left"></i> Facebook</a>
+						<a href="https://www.facebook.com/EligeFacil"><i class="fa fa-facebook left"></i> Facebook</a>
 					</li>
 				</ul>
 			</div>
 		</nav>
 		<div class="clearfix"></div>
 		<br />
-		<div id="blog-module" class="row grey lighten-5">
+		<div id="blog-module" class=" blog-module row grey lighten-5">
 			<div class="col m12 l8 blog-timeline-bx">
 			<!--Loop Wordpress para mostrar las noticias-->
 			<?php
 				require('../blog/wp-blog-header.php');
 				$i=0;
-				while (have_posts()): the_post(); ?>
-					<div class="col s12 post-box-wrapper">
-						<?php
-						if (function_exists('has_post_thumbnail')) {
-						    if ( has_post_thumbnail() ) {
-						         $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 5600,1000 ), false, '' );
-						    }
-						}
-						?>
-						<div class="post-hero" style="background-image: url(
-							<?php
-	                      		echo $src[0];
-	                    	?>
-	                    );">
-	                    <?php
-	                    	$esvideo=false;
-							foreach ( get_the_category( $post->ID ) as $category ) {
-								$categoria=$category->term_id;
-								if($categoria==4){
-									$esvideo=true;
+				$query2 = new WP_Query( 'posts_per_page=-1' );
+				$insertarVideo=0;
+				$cargarmas=0;
+				if ( $query2 -> have_posts() ):
+		   			while ( $query2 -> have_posts() ) :
+		   				$query2 -> the_post();
+				    	$esvideo=false;
+				    	$insertarVideo+=1;
+						foreach ( get_the_category( $query2 ->post->ID ) as $category ) {
+							$categoria=$category->term_id;
+							if($mostrar==0){
+								if($categoria==$categoriaMostrar){
+									$mostrar=1;
 								}
 							}
-							$tituloPost=$post->post_title;
-							$contenido=$post->post_content;
-							$PostID=$post->ID;
-							//$tituloPost="TIULO";
-							if($esvideo){
-								//$contenido=$post_->post_content;
-								echo '<h1><a onclick="VerVideo(this)" id="btnVerVideo" data-url="'.$contenido.'" data-id="'.$PostID.'" href="#modalVB" class="modal-trigger">'.$tituloPost.'</a></h1>
-								<a onclick="VerVideo(this)" class="enter-post" id="btnVerVideo2" data-url="'.$contenido.'" data-id="'.$PostID.'" href="#modalVB" class="modal-trigger"><i class="fa fa-angle-right"></i></a>';
-
-							}else{
-								echo '<h1><a href="blog-post.php?p='.$PostID.'">'.$tituloPost.'</a></h1>
-								<a class="enter-post" href="blog-post.php?p='.$PostID.'"><i class="fa fa-angle-right"></i></a>';
+							if($categoria==4){
+								$esYoutube=false;
+								$esVimeo=false;
+								$esvideo=true;
+								$embed=0;
+								$URLiframe = get_post_meta($query2->post->ID, "youtube", $single = true);
+								
+								if (!empty($URLiframe)){
+									$embed="youtube";
+									//echo "<script>alert('".$URLiframe."')</script>";
+								}else{
+									$URLiframe =get_post_meta($query2->post->ID, "vimeo", $single = true);
+									//echo "<script>alert('".$URLiframe."')</script>";
+									if(!empty($URLiframe)){
+										$embed="vimeo";
+									}
+								}
 							}
-	                    ?>
+						}
+						$tituloPost=  get_the_title( $query2->post->ID );
+						$contenido=get_the_content($query2->post->ID);
+						$PostID=$query2->post->ID;
+						$permalink = get_permalink($query2->post->ID);
+						$the_excerpt=get_the_excerpt($query2->post->ID);
+				        // Imagen thumbnail
+				        if (function_exists('has_post_thumbnail')) {
+						    if ( has_post_thumbnail() ) {
+						         $src = wp_get_attachment_image_src( get_post_thumbnail_id($query2->post->ID), array( 5600,1000 ), false, '' );
+						    }
+						}
+						echo '<div id="cargarmas'.$cargarmas.'"class="col s12 post-box-wrapper cargarmas" style=" display: none;">
+								<div class="post-hero" style="background-image: url('.$src[0].');">';
 
-						</div>
-						<p class="abstractr-post">
-				    		<?php the_excerpt(); ?>
-						</p>
-						<div class="social-btn-row">
-							<a href="https://twitter.com/share" class="twitter-share-button" data-via="toothmemx">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-							<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
-						</div>
-					</div>
-				<?php
-					if($i==0){
-						$i+=1; 
-						echo '	<div class="col s12 timeline-banner">
-									<div class="video-container">
-										<iframe id="embed01" width="560" height="315" src="https://www.youtube.com/embed/HGb1zrXkpRA?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-									</div>
-								</div>';
-					}
-				endwhile; ?>
+						if($esvideo){
+							//$contenido=$post_->post_content;
+							echo '<h1><a id="btnVerVideo" onclick="VerVideo(this,'."'".$URLiframe."','".$embed."'".')" data-titulo="'.$tituloPost.'" data-id="'.$PostID.'" href="#modalVB" class="modal-trigger">'.$tituloPost.'</a></h1>
+							<a onclick="VerVideo(this,'."'".$URLiframe."','".$embed."'".')" class="enter-post modal-trigger" id="btnVerVideo2" data-titulo="'.$tituloPost.'" data-id="'.$PostID.'" href="#modalVB"><i class="fa fa-angle-right"></i></a>';
 
-				
+						}else{
+							echo '<h1><a href="'.$permalink.'">'.$tituloPost.'</a></h1>
+							<a class="enter-post" href="'.$permalink.'"><i class="fa fa-angle-right"></i></a>';
+						}
+							?>
+							</div>
+							<p class="abstractr-post">
+								<?php echo $the_excerpt; ?>
+							</p>
+							<div class="social-btn-row">
+								<a href="https://twitter.com/share" data-url="<?php echo $permalink;?>" class="twitter-share-button" data-via="EligeFácil.com" data-hashtags="eligefácil">Tweet</a> 
+								
+								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+								
+								<div class="fb-share-button" data-href="<?php echo $permalink;?>" data-layout="button_count"></div>
+							</div>
+						</div>
+					<?php
+			    	if($insertarVideo==2){
+			    		echo '<div class="col s12 timeline-banner">
+								<div class="video-container">
+									<iframe id="embed01" width="560" height="315" src="https://www.youtube.com/embed/HGb1zrXkpRA?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+								</div>
+							</div>';
+			    	}
+		    		$cargarmas+=1;
+		    endwhile;
+		else:
+		    // Insert any content or load a template for no posts found.
+		endif;
+
+		wp_reset_postdata();
+		//echo '<script>cargarmas()</script>'
+
+		?>
+		
 
 				<div class="reload-button-bx">
-					<a href="#blog-module" class="z-depth-1 hoverable"><i class="fa fa-refresh"></i> Cargar Más</a>
+					<a href="#!" id="btnCargarMas" onclick="cargarmas()" class="z-depth-1 hoverable"><i class="fa fa-refresh"></i> Cargar Más</a>
 				</div>
 				
 			</div>
@@ -158,8 +189,12 @@ header("Access-Control-Allow-Origin: *");
 				<!--Loop Wordpress para mostrar los destacados de la barra lateral -->
 				<?php query_posts( 'category_name=Home&posts_per_page=3' ); ?>
 
-					<?php while ( have_posts() ) : the_post(); ?>
+					<?php while ( have_posts() ) : the_post(); 
+
+						$permalink = get_permalink();
+					?>
 						<!-- Do special_cat stuff... -->
+						
 						<?php
 						if (function_exists('has_post_thumbnail')) {
 						    if ( has_post_thumbnail() ) {
@@ -180,7 +215,7 @@ header("Access-Control-Allow-Origin: *");
 										echo "<p>" . $trunc_ex . "</p>"; //display excerpt
 									?>
 								
-								<a href="<?php echo "blog-post.php?p=".get_the_ID(); ?>"></a>
+								<a href="<?php echo $permalink; ?>"></a>
 							</div>
 						</div>
 					<?php endwhile; ?>
@@ -401,6 +436,8 @@ header("Access-Control-Allow-Origin: *");
 			});
 			jQuery(document).ready(function(){
 				CargarAnuncio();
+				cargarmas();
+		  		$(".cargarmas").hide();
 				var data={
 					SelectDeEstados:"true"
 				}
@@ -529,81 +566,55 @@ header("Access-Control-Allow-Origin: *");
 					jQuery( "#btnBuscarHidden" ).trigger( "click" );
 				}
 			});
-			function VerVideo(element){
-				console.log("verVideo: "+$(element).data("url"));
-				var videoUrl = $(element).data("url");
-				if( videoUrl.indexOf('vimeo') !== -1){
-					// Found vimeo
+			function VerVideo(element,url,source){
+				//alert("revisa videos")
+				//console.log("verVideo: "+$(element).data("url"));
+				//PostId
+				var id=	$(element).data("id");
+				//PostId
+				var titulo=	$(element).data("titulo");
+				if(source=="youtube"){
+					//console.log("youtube");
+					$('#contenedorVideo').html('<iframe width="853" height="480" src="'+url+'" frameborder="0" allowfullscreen></iframe>');
+				}
+				if(source=="vimeo"){
 					//console.log("vimeo");
-				    // This is the oEmbed endpoint for Vimeo (we're using JSON)
-			    	//alert(videoUrl);
-				    // (Vimeo also supports oEmbed discovery. See the PHP example.)
-				    var endpoint = 'http://www.vimeo.com/api/oembed.json';
-
-				    // Put together the URL
-				    var url = endpoint + '?url=' + encodeURIComponent(videoUrl)+ '&width=853 &height=480';
-				    
-				    //PostId
-				    var id=	$(element).data("id");
-
-					$.ajax({
-					    url: url,
-					    // Tell jQuery we're expecting JSONP
-					    dataType: "jsonp",
-					    async:false,					 
-					    // Work with the response
-					    success: function( response ) {
-					        //console.log( response ); // server response
-					        $('#contenedorVideo').html( unescape(response.html));
-					        //document.getElementByClass('videoModalFooter').innerHTML = unescape(response.description);
-					        $('#videoModalFooter').html('<a href="blog-post.php?p='+id+'" class="waves-effect btn-flat">Más</a>');
-					        $("#tituloVideo").html(unescape(response.title));
-
-					    }
-					});
+					$('#contenedorVideo').html('<iframe src="'+url+'" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
 				}
-				if( videoUrl.indexOf('youtube') !== -1){
-				  	// Found youtube
-				  	//console.log("youtube");
-				    // This is the oEmbed endpoint for Vimeo (we're using JSON)
-			    	//alert(videoUrl);
-				    // (Vimeo also supports oEmbed discovery. See the PHP example.)
-				    var endpoint = 'https://www.youtube.com/oembed';
+				$('#videoModalFooter').html('<a href="http://www.eligefacil.com/blog/?p='+id+'" class="waves-effect btn-flat">Más</a>');
+				$("#tituloVideo").html(titulo);
+			}
+			function cargarmas(){
+				//console.log("cargar mas")
+				//console.log($(".cargarmas").length);
 
-				    // Put together the URL
-				    var url = endpoint + '?url=' + encodeURIComponent(videoUrl)+ '&format=json';
-				    //url="https://www.youtube.com/oembed?url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DiwGFalTRHDA&format=json";
-				    //PostId
-				    var id=	$(element).data("id");;
-
-					$.ajax({
-					    url: url,
-					    // Tell jQuery we're expecting JSONP
-					    dataType: "json",
-					    async:false,					 
-					    // Work with the response
-					    success: function( response ) {
-					        //console.log( response ); // server response
-					        $('#contenedorVideo').html( unescape(response.html));
-					        //document.getElementByClass('videoModalFooter').innerHTML = unescape(response.description);
-					        $('#videoModalFooter').html('<a href="blog-post.php?p='+id+'" class="waves-effect btn-flat">Más</a>');
-					        $("#tituloVideo").html(unescape(response.title));
-
-					    }
-					});
-					
+				if($(".cargarmas").length<5){
+					var j=$(".cargarmas").length;
+				}else{
+					var j=5;
 				}
-				if ($(element).id=="btnVerVideo2"){
-					jQuery("#btnVerVideo").trigger("click");
+				var k=$(".planmostrado").length;
+				//console.log(k);
+				for(var i=k; i<k+j;i++){
+					$("#cargarmas"+i).removeClass("cargarmas");
+					$("#cargarmas"+i).addClass("planmostrado");
+				}
+				$(".planmostrado").show();
+				if($(".cargarmas").length<1){
+					$("#btnCargarMas").hide();
+					//$( "#btnCargarMas" ).prop( "disabled", true );
+				}else{
+					$("#btnCargarMas").show();
 				}
 			}
-
+			/*
 			$('#btnVerVideo2').on('click', function() {
 				jQuery( "#btnVerVideo" ).trigger( "click" );
 			});
 			$('#btnVerVideo').on('click', function() {
 	 			
 			});
+			*/
 
 		</script>
 		<script>

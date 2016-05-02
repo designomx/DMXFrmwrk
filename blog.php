@@ -39,14 +39,16 @@ require('../../blog/wp-blog-header.php');
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
 	<body>
+		<script src="js/jquery-2.1.1.min.js"></script>
+
 		<nav id="main-nav-bar">
 			<div class="nav-wrapper" class="fix-ios-shadow">
-				<a href="blog.html" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil_blog.png" width="159" alt="" /></a>
+				<a href="blog.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil_blog.png" width="159" alt="" /></a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 
 				<ul class="right hide-on-med-and-down">
 					<li>
-						<a href="blog.php?c=41" class="magictime slideUpRetourn fix-pos-nav">Innovación</a>
+						<a href="http://www.eligefacil.com" class="magictime slideUpRetourn fix-pos-nav">Comparador</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
@@ -54,13 +56,13 @@ require('../../blog/wp-blog-header.php');
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="blog.php?c=43" class="magictime slideUpRetourn fix-pos-nav">Smartphones</a>
+						<a href="blog.php?c=44" class="magictime slideUpRetourn fix-pos-nav">Entretenimiento</a>
 					</li>
 					<li>
-						<a href="http://twitter.com" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
+						<a href="http://www.twitter.com/EligeFacil" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
 					</li>
 					<li>
-						<a href="http://facebook.com" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
+						<a href="https://www.facebook.com/EligeFacil" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
 					</li>
 				</ul>
 
@@ -72,19 +74,19 @@ require('../../blog/wp-blog-header.php');
 
 		<ul class="side-nav" id="mobile-demo">
 			<li>
-				<a href="blog.php?c=41"><i class="fa fa-search left"></i> Innovación</a>
+				<a href="http://www.eligefacil.com"><i class="fa fa-search left"></i> Comparador</a>
 			</li>
 			<li>
 				<a href="blog.php?c=42" ><i class="fa fa-newspaper-o left"></i> Tecnología</a>
 			</li>
 			<li>
-				<a href="blog.php?c=43"><i class="fa fa-envelope-o left"></i> Smartphones</a>
+				<a href="blog.php?c=44"><i class="fa fa-envelope-o left"></i> Entretenimiento</a>
 			</li>
 			<li>
-				<a href="http://twitter.com"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
+				<a href="http://www.twitter.com/EligeFacil"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
 			</li>
 			<li>
-				<a href="http://facebook.com"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
+				<a href="https://www.facebook.com/EligeFacil"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
 			</li>
 		</ul>
 
@@ -93,50 +95,61 @@ require('../../blog/wp-blog-header.php');
 		</ul>
 		<div id="slideshow" class="home-hero"> 
 				<!-- This is the last image in the slideshow -->
-	          	<div class="hero-image" style="background-image: url('images/herox.jpg');"/></div>
-		        <div class="hero-image" style="background-image: url('images/heroy.jpg');"/></div> <!-- This is the first image in the slideshow -->
+	          	 <!-- This is the first image in the slideshow -->
 		</div>
 		<div class="clearfix"></div>
 		<br />
 		
 		<div id="slider-txt-bx">
-		<?php
-		$args = array ( 'category__in' => array(40) );
-		//query_posts( $args );
-		$query1 = new WP_Query( $args );
-		if ( $query1->have_posts() ):
-		    while ( $query1->have_posts() ) :
-		        $query1->the_post();
+			<?php
+				$args = array ( 'category__in' => array(40),
+							'posts_per_page' => 5);
+				//query_posts( $args );
+				$query1 = new WP_Query( $args );
+				if ( $query1->have_posts() ):
+					$i=0;
+			    	while ( $query1->have_posts() ) :
+			       		$query1->the_post();
 
-				$tituloPost=  get_the_title( $query1->post->ID );
-				$contenido=get_the_content($query1->post->ID);
-				$PostID=$query1->post->ID;
-				$the_excerpt=get_the_excerpt($query1->post->ID);
-		        // Do stuff with the post content.
-		    ?>
-		    <div class="slider-container">
-				<div class="post-dest">
-					<?php
-					echo '<h1>'.$tituloPost.'</h1>
-					<p>'.$the_excerpt.'</p>
-					<a href="blog-post.php?p='.$PostID.'" class="waves-effect waves btn orange accent-4">Leer nota</a>
-				</div>
-			</div>';
-
-		        
-		    
-		    endwhile;
-		else:
-		    // Insert any content or load a template for no posts found.
-		endif;
-
-		wp_reset_postdata();
-
+						$tituloPost=  get_the_title( $query1->post->ID );
+						$contenido=get_the_content($query1->post->ID);
+						$PostID=$query1->post->ID;
+						$the_excerpt=get_the_excerpt($query1->post->ID);
+						$permalink = get_permalink($query1->post->ID);
+						if (function_exists('has_post_thumbnail')) {
+						    if ( has_post_thumbnail() ) {
+						         $src = wp_get_attachment_image_src( get_post_thumbnail_id($query1->post->ID), array( 1280,800 ), false, '' );
+						    }
+						}
+				        // Do stuff with the post content.
+		   
+					    echo '
+					    <div class="slider-container postHeaderALL postHeader'.$i.'">
+							<div class="post-dest">
+			
+								<h1>'.$tituloPost.'</h1>
+								<p>'.$the_excerpt.'</p>
+								<a href="'.$permalink.'" class="waves-effect waves btn orange accent-4">Leer nota</a>
+							</div>
+						</div>
+						<script>';
+						if($i==0){
+							echo 'jQuery("#slideshow").append("<div class=\'hero-image imageSlideShowBlog\' style=\'background-image: url('.$src[0].')\';/></div>")';
+						}else{
+							echo 'jQuery(".imageSlideShowBlog").first().before("<div class=\'hero-image imageSlideShowBlog\' style=\'background-image: url('.$src[0].')\';/></div>")';
+						}
+						?>
+							
+						<?php echo '</script>';
+						$i++;
+	    			endwhile;
+				else:
+		    		// Insert any content or load a template for no posts found.
+				endif;
+			wp_reset_postdata();
 		?>
 			<div id="controlSlide" class="post-dest-selector">
-				<a href="#!" class="active-post-bullet"></a>
-				<a href="#!"></a>
-				<a href="#!"></a>
+
 			</div>
 		</div>
 		
@@ -207,10 +220,10 @@ require('../../blog/wp-blog-header.php');
 					}
 		    ?>
 		    	<?php
-					echo '<div id="cargarmas'.$cargarmas.'"class="col s12 post-box-wrapper cargarmas">'
-				?>
-						<div class="post-hero" style="background-image: url(<?php echo $src[0];?>);">
-						<?php
+					echo '<div id="cargarmas'.$cargarmas.'"class="col s12 post-box-wrapper cargarmas">
+
+						<div class="post-hero" style="background-image: url('.$src[0].');">';
+
 							if($esvideo){
 								//$contenido=$post_->post_content;
 								echo '<h1><a id="btnVerVideo" onclick="VerVideo(this,'."'".$URLiframe."','".$embed."'".')" data-titulo="'.$tituloPost.'" data-id="'.$PostID.'" href="#modalVB" class="modal-trigger">'.$tituloPost.'</a></h1>
@@ -226,8 +239,11 @@ require('../../blog/wp-blog-header.php');
 							<?php echo $the_excerpt; ?>
 						</p>
 						<div class="social-btn-row">
-							<a href="https://twitter.com/share" class="twitter-share-button" data-via="toothmemx">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-							<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
+							<a href="https://twitter.com/share" data-url="<?php echo $permalink;?>" class="twitter-share-button" data-via="EligeFácil.com" data-hashtags="eligefácil">Tweet</a> 
+							
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+							
+							<div class="fb-share-button" data-href="<?php echo $permalink;?>" data-layout="button_count"></div>
 						</div>
 					</div>
 		        
@@ -322,7 +338,6 @@ require('../../blog/wp-blog-header.php');
 			<script type="text/javascript" src="js/respond.js"></script>
 		<![endif]-->
 		<!-- Scripts-->
-		<script src="js/jquery-2.1.1.min.js"></script>
 		<script src="js/jquery.stayInWebApp.min.js"></script>
 		<script src="js/spin.js"></script>
 		<script src="js/iosOverlay.js"></script>
@@ -339,7 +354,7 @@ require('../../blog/wp-blog-header.php');
 		<link rel="stylesheet" href="offline07/themes/offline-language-spanish.css" />
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 		<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
-		<script type="text/javascript" src="js/fadeSlideShow.js"></script>
+		<script type="text/javascript" src="js/fadeSlideShowBlog.js"></script>
 
 		<script>
 			jQuery(function() {

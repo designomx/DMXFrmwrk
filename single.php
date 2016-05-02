@@ -36,26 +36,26 @@
   <body>
     <nav id="main-nav-bar">
       <div class="nav-wrapper" class="fix-ios-shadow">
-        <a href="blog.html" class="logo-header magictime spaceInLeft hvr-grow"><img src="../../../stage/NewSite/images/logo_eligefacil_blog.png" width="159" alt="" /></a>
+        <a href="blog.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="../../../stage/NewSite/images/logo_eligefacil_blog.png" width="159" alt="" /></a>
         <a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 
         <ul class="right hide-on-med-and-down">
           <li>
-            <a href="blog.php?c=41" class="magictime slideUpRetourn fix-pos-nav">Innovación</a>
+            <a href="http://www.eligefacil.com" class="magictime slideUpRetourn fix-pos-nav">Comparador</a>
             <span class="nav-mid-line"></span>
           </li>
           <li>
-            <a href="blog.php?c=42" class="magictime slideUpRetourn fix-pos-nav">Tecnología</a>
+            <a href="http://stage.eligefacil.com/NewSite/blog.php?c=42" class="magictime slideUpRetourn fix-pos-nav">Tecnología</a>
             <span class="nav-mid-line"></span>
           </li>
           <li>
-            <a href="blog.php?c=43" class="magictime slideUpRetourn fix-pos-nav">Smartphones</a>
+            <a href="http://stage.eligefacil.com/NewSite/blog.php?c=44" class="magictime slideUpRetourn fix-pos-nav">Entretenimiento</a>
           </li>
           <li>
-            <a href="http://twitter.com" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
+            <a href="http://www.twitter.com/EligeFacil" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
           </li>
           <li>
-            <a href="http://facebook.com" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.facebook.com/EligeFacil" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
           </li>
         </ul>
 
@@ -66,19 +66,19 @@
     </nav>
     <ul class="side-nav" id="mobile-demo">
       <li>
-        <a href="blog.php?c=41"><i class="fa fa-search left"></i> Innovación</a>
+        <a href="http://www.eligefacil.com"><i class="fa fa-search left"></i> Comparador</a>
       </li>
       <li>
-        <a href="blog.php?c=42" ><i class="fa fa-newspaper-o left"></i> Tecnología</a>
+        <a href="http://stage.eligefacil.com/NewSite/blog.php?c=42" ><i class="fa fa-newspaper-o left"></i> Tecnología</a>
       </li>
       <li>
-        <a href="blog.php?c=43"><i class="fa fa-envelope-o left"></i> Smartphones</a>
+        <a href="http://stage.eligefacil.com/NewSite/blog.php?c=44"><i class="fa fa-envelope-o left"></i> Entretenimiento</a>
       </li>
       <li>
-        <a href="http://twitter.com"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
+        <a href="http://www.twitter.com/EligeFacil"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
       </li>
       <li>
-        <a href="http://facebook.com"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
+        <a href="https://www.facebook.com/EligeFacil"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
       </li>
     </ul>
     <div class="clearfix"></div>
@@ -93,6 +93,8 @@
         // Post Content here
         //
       $PostID = get_the_ID();
+      $permalink = get_permalink();
+
       //$contenido=get_the_content();
         
     ?>
@@ -156,7 +158,7 @@
                 <script>
                   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
                 </script>
-                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
+                <div class="fb-share-button" data-href="<?php echo $permalink; ?>" data-layout="button_count"></div>
               </div>
               <?php
                 //echo "<p class='responsive-img'>";
@@ -236,8 +238,8 @@
         <i class="material-icons">keyboard_arrow_up</i>
       </a>
     <!--BANNER SLIDE DOWN-->
-    <div id="slide-in-banner" class="z-depth-2">
-      <a href="#!" target="_blank"><img src="../../../stage/NewSite/images/banner-base.jpg" alt="" /></a>
+    <div id="slide-in-banner" class="z-depth-2 AnuncioComparadorCentro">
+      
       <div class="close-modal-btn">
         <i class="material-icons">close</i>
       </div>
@@ -374,7 +376,51 @@
         })
         */
       });
-
+      function CargarAnuncio(){
+        if($('.AnuncioHomeDerecho').length){
+          var data={
+              CargarAnuncio:true,
+              id_anuncio:3
+            }
+        
+          jQuery.ajax({
+            //dataType:"json",
+            type: "POST",
+            url: "../../../stage/NewSite/listado.php",
+            data: data
+          })
+            .done(function(data){
+              //$(".AnuncioDerechoHome").html("PruebaCargando")
+            jQuery(".AnuncioHomeDerecho").append(data);
+            jQuery(".AnuncioHomeDerecho").addClass("responsive-img")
+            })
+            .fail(function(data){
+              console.log(data);
+              window.location.href = "indexBE.php";
+            });
+        }
+        if($('.AnuncioComparadorCentro').length){
+          var data={
+              CargarAnuncio:true,
+              id_anuncio:5
+            }
+        
+          jQuery.ajax({
+            //dataType:"json",
+            type: "POST",
+            url: "http://www.eligefacil.com/stage/NewSite/listado.php",
+            data: data
+          })
+            .done(function(data){
+              //$(".AnuncioDerechoHome").html("PruebaCargando")
+            jQuery(".AnuncioComparadorCentro").append(data);
+            })
+            .fail(function(data){
+              console.log(data);
+              window.location.href = "indexBE.php";
+            });
+        }
+      }
     </script>
   </body>
 

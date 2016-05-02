@@ -113,17 +113,17 @@
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="indexBE.php#blog-module" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
+						<a href="blog.php" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
 						<a href="contacto.html" class="magictime slideUpRetourn fix-pos-nav">Contacto</a>
 					</li>
 					<li>
-						<a href="http://twitter.com" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
+						<a href="http://www.twitter.com/EligeFacil" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
 					</li>
 					<li>
-						<a href="http://facebook.com" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
+						<a href="https://www.facebook.com/EligeFacil" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -133,16 +133,16 @@
 				<a href="listado-comparador.php"><i class="fa fa-search left"></i> Descubre</a>
 			</li>
 			<li>
-				<a href="indexBE.php#blog-module"><i class="fa fa-newspaper-o left"></i> Entérate</a>
+				<a href="blog.php"><i class="fa fa-newspaper-o left"></i> Entérate</a>
 			</li>
 			<li>
 				<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
 			</li>
 			<li>
-				<a href="http://twitter.com"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
+				<a href="http://www.twitter.com/EligeFacil"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
 			</li>
 			<li>
-				<a href="http://facebook.com"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
+				<a href="https://www.facebook.com/EligeFacil"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
 			</li>
 		</ul>
 		<!--
@@ -2381,7 +2381,7 @@
 			  //console.log( $( this ).attr("value") );
 			  	url+="&plan[]="+$( this ).attr("value");
 			});
-			var res = encodeURIComponent(url);
+			var res = encodeURI(url);
 			res=urlFacebook+res;
 			window.open(res,'_blank');
 			//window.location=url;

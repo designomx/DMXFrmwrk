@@ -882,7 +882,8 @@ if(isset($_POST['verDetalles'])){
 		P.id_tipoDato_principal_3, 
 		P.dato_principal_4,
 		P.id_tipoDato_principal_4, 
-		P.mas_datos, P.visible, 
+		P.mas_datos, P.visible,
+		P.pdf_canalesTV, 
 		E.nombre as empresa, 
 		E.codigo_color as empresa_color,
 		TDS1.label as dato1,
@@ -984,6 +985,7 @@ if(isset($_POST['verDetalles'])){
 						$respuesta=$respuesta.'						
 						<h5>Opciones y características adicionales</h5>
 						<p>'.$row['mas_datos'].'</p>';
+
 						//Buscar celulares en tabla planes_celulares para la vista de los equipos asociados al plan.
 						$query_equipos=("SELECT PC.id_celular,
 										PC.precio_12m,
@@ -1079,6 +1081,12 @@ if(isset($_POST['verDetalles'])){
 					$respuesta.='
 						<h5>Opciones y características adicionales</h5>
 						'.$row['mas_datos'].'';
+					//Pdf Canales
+					if(!empty($row["pdf_canalesTV"])){
+						$respuesta.='<a href="http://eligefacil.com/uploads/planes/'.$row["id_plan"].'/pdf_canalesTV/'.$row["pdf_canalesTV"].'" class="btn waves-effect orange accent-4" target="_blank">Ver lista de canales</a>
+								<div class="clearfix"></div>
+								<br />';
+					}
 				}
 			$urlShare="http://www.eligefacil.com/stage/NewSite/listado-comparador.php?l=".$_POST["estado"];
 			if($_POST["celular"]==1){
