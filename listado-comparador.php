@@ -1129,7 +1129,8 @@
 		})
 
 		jQuery(document).ready(function(){
-			if((window.location.href.indexOf("plan[]=") > -1) && (window.location.href.indexOf("l=") > -1) && (window.location.href.indexOf("s[]=") > -1) ) {
+			var urlGet=decodeURIComponent(window.location.href);
+			if((urlGet.indexOf("plan") > -1) && (urlGet.indexOf("l=") > -1) && (urlGet.indexOf("s") > -1) ) {
 		       //alert("your url contains plan");
 
 		       	var getUrlParameterPlan = function getUrlParameterPlan(sParam) {
@@ -1142,7 +1143,7 @@
 				    for (i = 0; i < sURLVariables.length; i++) {
 				        sParameterName = sURLVariables[i].split('=');
 
-				        if (sParameterName[0] === sParam) {
+				        if (sParameterName[0].indexOf(sParam) > -1) {
 				            //return sParameterName[1] === undefined ? true : alert(sParameterName[1]);
 				            if (sParameterName[1] !== undefined){
 				            	jQuery( "#plan_"+sParameterName[1] ).trigger( "click" );
@@ -1171,9 +1172,10 @@
 				    for (i = 0; i < sURLVariables.length; i++) {
 				        sParameterName = sURLVariables[i].split('=');
 
-				        if (sParameterName[0] === sParam) {
+
+				        if (sParameterName[0].indexOf(sParam) > -1) {
 				            //return sParameterName[1] === undefined ? true : alert(sParameterName[1]);
-				            //alert(sParameterName[1]);
+
 				            if (sParameterName[1] !== undefined){
 				            	if(sParameterName[1]==1){
 									sessionStorage.setItem("ServicioCelular","1");
@@ -1214,7 +1216,7 @@
 				};
 				//alert(getUrlParameter("plan[]"));
 				getUrlParameterLocation("l");
-				getUrlParameterServicio("s[]");
+				getUrlParameterServicio("s");
 				console.log(sessionStorage.getItem("CargaInicial"))
 				$.when(
 	   			CargarEstados(),
@@ -1225,7 +1227,7 @@
 				   //alert('All AJAX Methods Have Completed!');
 				   sessionStorage.setItem("CargaInicial", "0");
 				   CargarPlanes();
-				   getUrlParameterPlan("plan[]");
+				   getUrlParameterPlan("plan");
 				});
 				CargarAnuncio();
 				document.querySelector('#filter-go').scrollIntoView();
@@ -2360,7 +2362,7 @@
 			var urlFacebook="https://www.facebook.com/sharer/sharer.php?u=";
 			var url="http://www.eligefacil.com/stage/NewSite/listado-comparador.php?";
 			var i=0;
-			url=url+"&l="+$( "#selectEstado" ).val();
+			url=url+"l="+$( "#selectEstado" ).val();
 			if(sessionStorage.getItem("ServicioCelular")==1){
 				url=url+"&s[]=1";
 			}
@@ -2381,7 +2383,7 @@
 			  //console.log( $( this ).attr("value") );
 			  	url+="&plan[]="+$( this ).attr("value");
 			});
-			var res = encodeURI(url);
+			var res = encodeURIComponent(url);
 			res=urlFacebook+res;
 			window.open(res,'_blank');
 			//window.location=url;
@@ -2393,7 +2395,7 @@
 			var url="http://www.eligefacil.com/stage/NewSite/listado-comparador.php?";
 			$( ".span-bx-selected" ).each(function( index ) {
 			  //console.log( $( this ).attr("value") );
-			  url=url+"&l="+$( "#selectEstado" ).val();
+			  url=url+"l="+$( "#selectEstado" ).val();
 			if(sessionStorage.getItem("ServicioCelular")==1){
 				url=url+"&s[]=1";
 			}

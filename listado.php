@@ -1103,6 +1103,7 @@ if(isset($_POST['verDetalles'])){
 			}
 			$urlShare.="&plan[]=".$row["id_plan"];
 			$url=urlencode($urlShare);
+			
 
 			$footer.='<div class="modal-footer">
 							<a href="#!" class="modal-action modal-close waves-effect btn-flat grey white-text" id="plan_'.$row["id_plan"].'" onclick="Comparar(this,'.$row["id_plan"].','."'".$row["empresa_color"]."'".')">Comparar</a>
