@@ -1,3 +1,26 @@
+<?php
+class YourImagick extends Imagick
+{
+    public function colorize($color, $alpha = 1)
+    {
+        $draw = new ImagickDraw();
+
+        $draw->setFillColor($color);
+
+        if (is_float($alpha)) {
+            $draw->setFillAlpha($alpha);
+        }
+
+        $geometry = $this->getImageGeometry();
+        $width = $geometry['width'];
+        $height = $geometry['height'];
+
+        $draw->rectangle(0, 0, $width, $height);
+
+        $this->drawImage($draw);
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -144,7 +167,21 @@
                   // Imagen thumbnail
                       if (function_exists('has_post_thumbnail')) {
                       if ( has_post_thumbnail() ) {
-                           $src = wp_get_attachment_image_src( get_post_thumbnail_id($PostID), array( 5600,1000 ), false, '' );
+                          $src = wp_get_attachment_image_src( get_post_thumbnail_id($PostID), array( 1280,800 ), false, '' );
+                          $image = new YourImagick($src[0]);
+                          $image->setImageFormat ("jpeg");
+                          //$image->setSize(1280,800);
+                          $image->colorize('#000', 0.8);
+                          $image->setImageCompression();
+                          $image->setImageCompressionQuality(80); 
+                          $fileDst="../stage/NewSite/images/header_post_single_".$PostID.".jpg";
+                          if($f=fopen($fileDst, "w")){ 
+                            $image->writeImageFile($f);
+                          }else{
+                            $fileDst="../../../stage/NewSite/images/heroxxx.jpg";
+                          }
+                          $image->destroy();
+
                       }
                       $urlIMG = wp_get_attachment_url( get_post_thumbnail_id($PostID) );
                       echo '<img class="responsive-img" src="'.$urlIMG.'">';
@@ -228,8 +265,8 @@
       </div>
     </div>
     <div class="home-hero">
-      <div class="hero-image active-slide" style="background-image: url('../../../stage/NewSite/images/hero1.jpg');"></div>
-      <div class="hero-image" style="background-image: url('../../../stage/NewSite/images/hero2.jpg');"></div>
+      <div class="hero-image" style="background-image: url('<?php echo $fileDst; ?>');"></div>
+      
     </div>
     <!-- MODALS - ALERTS - DROP DOWNS-->
     <!-- Modal Structure -->

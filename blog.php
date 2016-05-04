@@ -2,6 +2,28 @@
 //header('Content-Type: application/json');
 //header("Access-Control-Allow-Origin: *");
 require('../../blog/wp-blog-header.php');
+
+class YourImagick extends Imagick
+{
+    public function colorize($color, $alpha = 1)
+    {
+        $draw = new ImagickDraw();
+
+        $draw->setFillColor($color);
+
+        if (is_float($alpha)) {
+            $draw->setFillAlpha($alpha);
+        }
+
+        $geometry = $this->getImageGeometry();
+        $width = $geometry['width'];
+        $height = $geometry['height'];
+
+        $draw->rectangle(0, 0, $width, $height);
+
+        $this->drawImage($draw);
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -118,8 +140,20 @@ require('../../blog/wp-blog-header.php');
 						$permalink = get_permalink($query1->post->ID);
 						if (function_exists('has_post_thumbnail')) {
 						    if ( has_post_thumbnail() ) {
-						         $src = wp_get_attachment_image_src( get_post_thumbnail_id($query1->post->ID), array( 1280,800 ), false, '' );
+					         	$src = wp_get_attachment_image_src( get_post_thumbnail_id($query1->post->ID), array( 1280,800 ), false, '' );
+						        $image = new YourImagick($src[0]);
+						        $image->setImageFormat ("jpeg");
+							    $image->colorize('#000000', 0.8);
+							    $image->setCompressionQuality(80); 
+						        $fileDst="images/HeaderPost/header_post_blog_".$PostID.".jpg";
+								if($f=fopen($fileDst, "w")){ 
+								  $image->writeImageFile($f);
+								}else{
+									$fileDst="images/heroxxx.jpg";
+								}
+								$image->destroy();
 						    }
+
 						}
 				        // Do stuff with the post content.
 		   
@@ -133,10 +167,11 @@ require('../../blog/wp-blog-header.php');
 							</div>
 						</div>
 						<script>';
+
 						if($i==0){
-							echo 'jQuery("#slideshow").append("<div class=\'hero-image imageSlideShowBlog\' style=\'background-image: url('.$src[0].')\';/></div>")';
+							echo 'jQuery("#slideshow").append("<div class=\'hero-image imageSlideShowBlog\' style=\'background-image: url('.$fileDst.'); \'/></div></div>")';
 						}else{
-							echo 'jQuery(".imageSlideShowBlog").first().before("<div class=\'hero-image imageSlideShowBlog\' style=\'background-image: url('.$src[0].')\';/></div>")';
+							echo 'jQuery(".imageSlideShowBlog").first().before("<div class=\'hero-image imageSlideShowBlog\' style=\'background-image: url('.$fileDst.')\';/></div>")';
 						}
 						?>
 							

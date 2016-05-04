@@ -1714,7 +1714,7 @@ $i=0;
 				<div class="comparando-icons">
 					<i class="material-icons">live_tv</i>
 				</div>
-				<div class="brand-label" style="background-color: #424242">'.$row["nombre_empresa"].'</div>
+				<div class="brand-label" style="background-color: #ff671b">'.$row["nombre_empresa"].'</div>
 				<div class="paq-bx">
 					<h4 class="truncate">'.$row["nombre"].'</h4>
 					<ul>
@@ -1856,7 +1856,7 @@ if(isset($_POST['Streamingfiltros'])){
 				<div class="comparando-icons">
 					<i class="material-icons">live_tv</i>
 				</div>
-				<div class="brand-label" style="background-color: #424242">'.$row["nombre_empresa"].'</div>
+				<div class="brand-label" style="background-color: #ff671b">'.$row["nombre_empresa"].'</div>
 				<div class="paq-bx">
 					<h4 class="truncate">'.$row["nombre"].'</h4>
 					<ul>

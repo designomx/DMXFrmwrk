@@ -62,7 +62,7 @@ jQuery.fn.fadeSlideShow = function(options) {
 		autoplay = function(){
 			intval = setInterval(function(){
 				jQslide.eq(ActSlide).fadeOut(settings.speed);
-				console.log("ActSlide"+ActSlide);
+				//console.log("ActSlide"+ActSlide);
 				
 				
 
@@ -83,12 +83,12 @@ jQuery.fn.fadeSlideShow = function(options) {
 				}
 
 				if(ActSlidePost >= Slides ){
-					console.log("ActSlidePost"+ActSlidePost);
+					//console.log("ActSlidePost"+ActSlidePost);
 					jQuery('.postHeaderALL').hide();
 					ActSlidePost=0;
 					jQuery('.postHeader'+ActSlidePost).fadeIn(settings.speed);
 				}else{
-					console.log("ActSlidePost"+ActSlidePost);
+					//console.log("ActSlidePost"+ActSlidePost);
 					jQuery('.postHeaderALL').hide();
 					ActSlidePost = ActSlidePost + 1;
 					jQuery('.postHeader'+ActSlidePost).fadeIn(settings.speed);	
