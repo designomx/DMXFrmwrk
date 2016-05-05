@@ -468,7 +468,7 @@ class YourImagick extends Imagick
 				    })
 				    .fail(function(data){
 				    	console.log(data);
-				    	window.location.href = "indexBE.php";
+				    	window.location.href = "index.php";
 				    });
 				}
 				if($('.AnuncioComparadorCentro').length){
@@ -489,7 +489,7 @@ class YourImagick extends Imagick
 				    })
 				    .fail(function(data){
 				    	console.log(data);
-				    	window.location.href = "indexBE.php";
+				    	window.location.href = "index.php";
 				    });
 				}
 			}

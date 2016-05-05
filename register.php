@@ -84,7 +84,7 @@ if (preg_match($regex, $email) && preg_match($regexNombre, $nombre)) {
 	//e988b5526b6a9a91911f83ca1cc737c7 = md5(eligefacil)
 	$message .= '<p><h3>¡Decidir nunca fue tan simple!</h3> </p><p>Hola, '.$nombre.'</p>
 	  <p>Gracias por visitar eligefacil.com, para acceder a la web sigue el siguiente enlace:</p>
-	  <p><a href="http://www.eligefacil.com/indexBE.php?ll=e988b5526b6a9a91911f83ca1cc737c7"> eligefacil.com</a> </p>';
+	  <p><a href="http://www.eligefacil.com/index.php?ll=e988b5526b6a9a91911f83ca1cc737c7"> eligefacil.com</a> </p>';
 	$message.='
 	</body>
 	</html>

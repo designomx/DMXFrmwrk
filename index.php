@@ -58,7 +58,7 @@ require('blog/wp-blog-header.php');
 	<body class="preViewB">
 		<nav id="main-nav-bar">
 			<div class="nav-wrapper" class="fix-ios-shadow">
-				<a href="indexBE.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
+				<a href="index.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 				<ul class="right hide-on-med-and-down">
 					<li>
@@ -415,7 +415,7 @@ require('blog/wp-blog-header.php');
 		              <button type="submit"  class="orange accent-4 waves-effect btn centerput">Registrar</button>
 		            </div>
 		            <div class="input-field col m6 centerput">
-		             <a href="#!" onclick="checkLoginState();" class="light-blue darken-4 waves-effect btn centerput">Facebook LogIn</a>
+		             <a href="#!" onclick="fbLogin();" class="light-blue darken-4 waves-effect btn centerput">Facebook LogIn</a>
 		            </div>
 		          </div>
 		        </form>
@@ -512,7 +512,7 @@ require('blog/wp-blog-header.php');
 			    })
 			    .fail(function(data){
 			    	console.log(data);
-			    	window.location.href = "indexBE.php";
+			    	window.location.href = "index.php";
 			    });
 
 			    jQuery('#slideshow').fadeSlideShow();
@@ -545,7 +545,7 @@ require('blog/wp-blog-header.php');
 				    })
 				    .fail(function(data){
 				    	console.log(data);
-				    	window.location.href = "indexBE.php";
+				    	window.location.href = "index.php";
 				    });
 				}
 				if($('.AnuncioComparadorCentro').length){
@@ -566,7 +566,7 @@ require('blog/wp-blog-header.php');
 				    })
 				    .fail(function(data){
 				    	console.log(data);
-				    	window.location.href = "indexBE.php";
+				    	window.location.href = "index.php";
 				    });
 				}
 			}
@@ -726,12 +726,13 @@ require('blog/wp-blog-header.php');
 			    	if(data==true){
 			    		//console.log(data)
 			    		//alert("true");
+			    		alert("!Hemos envíado a tu correo un enlace para acceder al sitio!");
 			    		$( "#nombreUsuario" ).val("");
 						$( "#emailUsuario" ).val("");
 			    		window.setTimeout(function() {
 							overlay.update({
 								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
-								text: "Listo"
+								text: "Listo revisa tu correo!"
 							});
 						}, 1000);
 						window.setTimeout(function() {
@@ -750,7 +751,7 @@ require('blog/wp-blog-header.php');
 			    		window.setTimeout(function() {
 							overlay.update({
 								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
-								text: "ERROR"
+								text: "Listo"
 							});
 						}, 1000);
 						window.setTimeout(function() {
@@ -818,15 +819,24 @@ require('blog/wp-blog-header.php');
 		    });
 		  }
 		  function fbLogin() {
+		  	console.log("entra a fblogin");
 		    FB.login(function(response) {
-		      if (response.session) {
-		        //user is logged in, reload page
-		        window.location.reload(true);
-		        console.log(response);
-		        FacebookAPI();
-		      } else {
-		        // user is not logged in
-		      }
+		   	  //console.log(response.authResponse);
+		      	if (response.status === 'connected') {
+			        //user is logged in, reload page
+			        //window.location.reload(true);
+			        console.log(response);
+			        FacebookAPI();
+			        return 0;
+		      	}else if (response.status === 'not_authorized') {
+				// the user is logged in to Facebook, 
+				// but has not authenticated your app
+					console.log("not authorized facebook APP");
+				} else {
+				// the user isn't logged in to Facebook.
+					console.log("not Facebook Login");
+					fbLogin();
+				}
 		    }, {scope: 'email'});
 		  }
 

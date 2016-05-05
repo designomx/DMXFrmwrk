@@ -26,7 +26,7 @@ $message = '
 <body>';
 
 $message .= '<p>Hola '.$_POST["nombreTo"].',</p><p>'.$_POST["nombreFrom"].' quiere compartir estos planes que ha visto en <a href="http://www.eligefacil.com">eligefacil.com<a></p>';
-$urlSingle="http://www.eligefacil.com/stage/NewSite/listado-comparador.php?l=".$_POST["estado"];
+$urlSingle="http://www.eligefacil.com/listado-comparador.php?l=".$_POST["estado"];
 if (isset($_POST["celular"]) && $_POST["celular"]==1){
 	$urlSingle.="&s[]=1";
 }

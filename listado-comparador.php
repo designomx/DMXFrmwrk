@@ -105,7 +105,7 @@
 		-->
 		<nav id="main-nav-bar" class="fix-ios-shadow">
 			<div class="nav-wrapper">
-				<a href="indexBE.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
+				<a href="index.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 				<ul class="right hide-on-med-and-down">
 					<li>
@@ -577,7 +577,7 @@
 		<script>
 			function botones(){
 				jQuery( "#planes #verPlan" ).click(function() {
-					console.log("botones");
+					//console.log("botones");
 					var id_plan=$(this).data("value");
 					jQuery("#ContenidoModal").empty();
 					var url = "#deatilsModal";
@@ -665,8 +665,7 @@
 								CompararPlanes:true,
 								id_plan:$(this).attr("value")
 							}
-					    }
-					    
+					    }					    
 						//CargarPlanes();
 						jQuery.ajax({
 							type: "POST",
@@ -681,7 +680,6 @@
 					    })
 					   
 					});
-
 					$('#modal-comparador').show(function(){
 						if($(".item").length>0){
 							if($(".item").length=1){
@@ -767,7 +765,6 @@
 
 		//$.noConflict();
 		jQuery(function() {
-	  	
 	  		FRMWRK.main.init();
 	  		FRMWRK.comparador.init();
 	  		function random(owlSelector){
@@ -983,7 +980,7 @@
 						var orden="ASC";
 					}
 					if($('#checkboxRedes').is(':checked')){
-						console.log("checkboxRedes");
+						//console.log("checkboxRedes");
 						var redesSociales= 1;
 					}else{
 						var redesSociales= 0;
@@ -1012,6 +1009,7 @@
 						jQuery("#planes").html(data);
 						if($(".cargarmas").length<1){
 							jQuery("#planes").html('<h1 class="nocriteria center">No hay resultados que mostrar con los criterios seleccionados.</h1>');
+							//location.reload();
 						}
 						botones();
 						VaciarComparador();
@@ -1045,7 +1043,7 @@
 						}, 2000);
 						document.querySelector('#filter-go').scrollIntoView();
 						setTimeout($.unblockUI, 3000);
-						window.location.href = "indexBE.php";
+						window.location.href = "index.php";
 				    })
 				}
 				checkMobile();
@@ -1179,7 +1177,7 @@
 				            if (sParameterName[1] !== undefined){
 				            	if(sParameterName[1]==1){
 									sessionStorage.setItem("ServicioCelular","1");
-									console.log("Celular URL")			
+									//console.log("Celular URL")			
 								}
 								if(sParameterName[1]==2){
 									sessionStorage.setItem("ServicioTelefono","1");	
@@ -1217,7 +1215,7 @@
 				//alert(getUrlParameter("plan[]"));
 				getUrlParameterLocation("l");
 				getUrlParameterServicio("s");
-				console.log(sessionStorage.getItem("CargaInicial"))
+				//console.log(sessionStorage.getItem("CargaInicial"))
 				$.when(
 	   			CargarEstados(),
 				VerificarServicios(),
@@ -1412,7 +1410,8 @@
 					jQuery("#filtrosCheck").html("");
 					jQuery("#filtrosCheckEmpresas").html("");
 					jQuery("#filtros").html("");
-					jQuery("#filtrosCheckCelulares").html("");		
+					jQuery("#filtrosCheckCelulares").html("");
+					//location.reload();		
 				}
 				if($(".cargarmas").length==1){
 					jQuery("#filtrosCheck").html("");
@@ -1463,7 +1462,7 @@
 				}, 2000);
 				document.querySelector('#filter-go').scrollIntoView();
 				setTimeout($.unblockUI, 3000);
-				window.location.href = "indexBE.php";
+				window.location.href = "index.php";
 		    });
 		    checkMobile();
 		}//function CargarPlanes()
@@ -1515,7 +1514,7 @@
 			    })
 			    .fail(function(data){
 			    	console.log(data);
-			    	console.log("Error llamada en llamada Streaming a CargarFiltrosSliders");
+			    	//console.log("Error llamada en llamada Streaming a CargarFiltrosSliders");
 			    });
 			}else{
 				$( "#selectEstado" ).removeAttr("disabled");
@@ -1567,14 +1566,14 @@
 			 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form .sliders-wrapp").addClass('ismobilescroll');
 			 		}
 			 		//jQuery('.sliders-scroll-bx').css('width', _widthSlides);
-			 		console.log(".sliders-scroll-bx .sliders-wrapp update")
+			 		//console.log(".sliders-scroll-bx .sliders-wrapp update")
 			 		$(".sliders-scroll-bx .sliders-wrapp").mCustomScrollbar("update");
 
 
 			    })
 			    .fail(function(data){
 			    	console.log(data);
-			    	console.log("Error llamada en llamada cargo CargarFiltrosSliders");
+			    	//console.log("Error llamada en llamada cargo CargarFiltrosSliders");
 			    });
 			}
 			//_fixedFiltersBx();
@@ -1776,7 +1775,7 @@
 			//console.log("carga inicial: "+CargaInicial);
 			if (CargaInicial == 1)
 			{
-				console.log("seleccion()");
+				//console.log("seleccion()");
 					if(jQuery("#celular").hasClass( "active-selection" )){
 						celular=1;
 						contador+=1;
@@ -1839,7 +1838,7 @@
 		    })
 		    .fail(function(data){
 		    	console.log(data);
-		    	window.location.href = "indexBE.php";
+		    	window.location.href = "index.php";
 		    });
 		}
 		function VaciarComparador(){
@@ -2058,7 +2057,7 @@
 			    })
 			    .fail(function(data){
 			    	console.log(data);
-			    	window.location.href = "indexBE.php";
+			    	window.location.href = "index.php";
 			    });
 			}
 			if($('.AnuncioComparadorCentro').length){
@@ -2079,7 +2078,7 @@
 			    })
 			    .fail(function(data){
 			    	console.log(data);
-			    	window.location.href = "indexBE.php";
+			    	window.location.href = "index.php";
 			    });
 			}
 		}
@@ -2261,7 +2260,7 @@
 					setTimeout($.unblockUI, 3000);
 
 		    	}
-		    	console.log(data)
+		    	//console.log(data)
 		    })
 		    .fail(function(data){
 		    	console.log(data);
@@ -2278,8 +2277,8 @@
 			  planes.push($( this ).attr("value"));
 			  //JSON.stringify(newFiltro)
 			});
-			console.log(planes[0]);
-			console.log(planes[1]);
+			//console.log(planes[0]);
+			//console.log(planes[1]);
 			$.blockUI({ message: null }); 
 			var target = document.createElement("div");
 			document.body.appendChild(target);
@@ -2340,7 +2339,7 @@
 					setTimeout($.unblockUI, 3000);
 
 		    	}
-		    	console.log(data)
+		    	//console.log(data)
 		    })
 		    .fail(function(data){
 		    	console.log(data);
@@ -2415,9 +2414,9 @@
 			  //console.log( $( this ).attr("value") );
 			  	url+="&plan[]="+$( this ).attr("value");
 			});
-			console.log(url);
+			//console.log(url);
 			var res = encodeURIComponent(url);
-			console.log(res);
+			//console.log(res);
 			res=urlTwitter+res;
 			window.open(res,'_blank');
 			//window.location=url;

@@ -46,20 +46,20 @@ class YourImagick extends Imagick
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
     <!-- CSS -->
-    <link href="../../../stage/NewSite/materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="all" />
-    <link href="../../../stage/NewSite/css/iosOverlay.css" type="text/css" rel="stylesheet" media="all" />
-    <link href="../../../stage/NewSite/css/animate.min.css" type="text/css" rel="stylesheet" media="all" />
-    <link href="../../../stage/NewSite/css/magic.min.css" type="text/css" rel="stylesheet" media="all" />
-    <link href="../../../stage/NewSite/css/jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet" media="all" />
-    <link href="../../../stage/NewSite/css/main.css" type="text/css" rel="stylesheet" media="all" />
+    <link href="../../../materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="all" />
+    <link href="../../../css/iosOverlay.css" type="text/css" rel="stylesheet" media="all" />
+    <link href="../../../css/animate.min.css" type="text/css" rel="stylesheet" media="all" />
+    <link href="../../../css/magic.min.css" type="text/css" rel="stylesheet" media="all" />
+    <link href="../../../css/jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet" media="all" />
+    <link href="../../../css/main.css" type="text/css" rel="stylesheet" media="all" />
     <!-- This is FontsAwesome 4.3.0-->
-    <link href="../../../stage/NewSite/fawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../fawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
     <nav id="main-nav-bar">
       <div class="nav-wrapper" class="fix-ios-shadow">
-        <a href="http://www.eligefacil.com/blog.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="../../../stage/NewSite/images/logo_eligefacil_blog.png" width="159" alt="" /></a>
+        <a href="http://www.eligefacil.com/blog.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="../../../images/logo_eligefacil_blog.png" width="159" alt="" /></a>
         <a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 
         <ul class="right hide-on-med-and-down">
@@ -68,11 +68,11 @@ class YourImagick extends Imagick
             <span class="nav-mid-line"></span>
           </li>
           <li>
-            <a href="http://stage.eligefacil.com/NewSite/blog.php?c=42" class="magictime slideUpRetourn fix-pos-nav">Tecnología</a>
+            <a href="http://www.eligefacil.com/blog.php?c=42" class="magictime slideUpRetourn fix-pos-nav">Tecnología</a>
             <span class="nav-mid-line"></span>
           </li>
           <li>
-            <a href="http://stage.eligefacil.com/NewSite/blog.php?c=44" class="magictime slideUpRetourn fix-pos-nav">Entretenimiento</a>
+            <a href="http://www.eligefacil.com/blog.php?c=44" class="magictime slideUpRetourn fix-pos-nav">Entretenimiento</a>
           </li>
           <li>
             <a href="http://www.twitter.com/EligeFacil" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
@@ -92,10 +92,10 @@ class YourImagick extends Imagick
         <a href="http://www.eligefacil.com"><i class="fa fa-search left"></i> Comparador</a>
       </li>
       <li>
-        <a href="http://stage.eligefacil.com/NewSite/blog.php?c=42" ><i class="fa fa-newspaper-o left"></i> Tecnología</a>
+        <a href="http://www..eligefacil.com/NewSite/blog.php?c=42" ><i class="fa fa-newspaper-o left"></i> Tecnología</a>
       </li>
       <li>
-        <a href="http://stage.eligefacil.com/NewSite/blog.php?c=44"><i class="fa fa-envelope-o left"></i> Entretenimiento</a>
+        <a href="http://www.eligefacil.com/NewSite/blog.php?c=44"><i class="fa fa-envelope-o left"></i> Entretenimiento</a>
       </li>
       <li>
         <a href="http://www.twitter.com/EligeFacil"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
@@ -191,7 +191,7 @@ class YourImagick extends Imagick
               <!--<img class="responsive-img" src="images/post-hero.jpg">-->
 
               <div class="social-btn-row">
-                <a href="https://twitter.com/share" class="twitter-share-button" data-via="toothmemx">Tweet</a>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="EligeFacil">Tweet</a>
                 <script>
                   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
                 </script>
@@ -230,7 +230,7 @@ class YourImagick extends Imagick
 
 
           <div class="backblog-button-bx">
-            <a href="indexBE.php#blog-module" class="z-depth-1 hoverable"><i class="fa fa-angle-double-left"></i> Regresar</a>
+            <a href="http://www.eligefacil.com/blog.php.php#blog-module" class="z-depth-1 hoverable"><i class="fa fa-angle-double-left"></i> Regresar</a>
           </div>
         </div>
         <div class="col m4 grey lighten-3 side-bar-bx hide-on-med-and-down">
@@ -256,8 +256,8 @@ class YourImagick extends Imagick
       <div class="clearfix"></div>
       <div class="footer-bx">
         <ul>
-          <li><a href="../../../stage/NewSite/quienes-somos.html">Quiénes somos</a> / </li>
-          <li><a href="../../../stage/NewSite/pdf/legal1.pdf" target="_blank">Legales</a> / </li>
+          <li><a href="../../../quienes-somos.html">Quiénes somos</a> / </li>
+          <li><a href="../../../pdf/legal1.pdf" target="_blank">Legales</a> / </li>
           <li><a href="#!">Anúnciate con nosotros</a> / </li>
           <li><a href="#!">Ayuda</a></li>
         </ul>
@@ -286,21 +286,21 @@ class YourImagick extends Imagick
       <script type="text/javascript" src="js/respond.js"></script>
     <![endif]-->
     <!-- Scripts-->
-    <script src="../../../stage/NewSite/js/jquery-2.1.1.min.js"></script>
-    <script src="../../../stage/NewSite/js/jquery.stayInWebApp.min.js"></script>
-    <script src="../../../stage/NewSite/js/spin.js"></script>
-    <script src="../../../stage/NewSite/js/iosOverlay.js"></script>
-    <script src="../../../stage/NewSite/js/charCount.js"></script>
-    <script src="../../../stage/NewSite/js/jquery.scrollUp.min.js"></script>
-    <script src="../../../stage/NewSite/js/materialize.min.js"></script>
+    <script src="../../../js/jquery-2.1.1.min.js"></script>
+    <script src="../../../js/jquery.stayInWebApp.min.js"></script>
+    <script src="../../../js/spin.js"></script>
+    <script src="../../../js/iosOverlay.js"></script>
+    <script src="../../../js/charCount.js"></script>
+    <script src="../../../js/jquery.scrollUp.min.js"></script>
+    <script src="../../../js/materialize.min.js"></script>
     <!--<script src="js/parallax.min.js"></script>-->
-    <script src="../../../stage/NewSite/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="../../../stage/NewSite/js/init.config.js"></script>
-    <script src="../../../stage/NewSite/js/init.js"></script>
+    <script src="../../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../../../js/init.config.js"></script>
+    <script src="../../../js/init.js"></script>
     <!--INTERNET CHECK-->
-    <script src="../../../stage/NewSite/offline07/offline.min.js"></script>
-    <link rel="stylesheet" href="../../../stage/NewSite/offline07/themes/offline-theme-dark.css" />
-    <link rel="stylesheet" href="../../../stage/NewSite/offline07/themes/offline-language-spanish.css" />
+    <script src="../../../offline07/offline.min.js"></script>
+    <link rel="stylesheet" href="../../../offline07/themes/offline-theme-dark.css" />
+    <link rel="stylesheet" href="../../../offline07/themes/offline-language-spanish.css" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
     <script>
@@ -412,6 +412,7 @@ class YourImagick extends Imagick
           });
         })
         */
+        CargarAnuncio();
       });
       function CargarAnuncio(){
         if($('.AnuncioHomeDerecho').length){
@@ -423,7 +424,7 @@ class YourImagick extends Imagick
           jQuery.ajax({
             //dataType:"json",
             type: "POST",
-            url: "../../../stage/NewSite/listado.php",
+            url: "http://www.eligefacil.com/listado.php",
             data: data
           })
             .done(function(data){
@@ -433,7 +434,7 @@ class YourImagick extends Imagick
             })
             .fail(function(data){
               console.log(data);
-              window.location.href = "indexBE.php";
+              window.location.href = "index.php";
             });
         }
         if($('.AnuncioComparadorCentro').length){
@@ -445,7 +446,7 @@ class YourImagick extends Imagick
           jQuery.ajax({
             //dataType:"json",
             type: "POST",
-            url: "http://www.eligefacil.com/stage/NewSite/listado.php",
+            url: "http://www.eligefacil.com/listado.php",
             data: data
           })
             .done(function(data){
@@ -454,7 +455,7 @@ class YourImagick extends Imagick
             })
             .fail(function(data){
               console.log(data);
-              window.location.href = "indexBE.php";
+              window.location.href = "index.php";
             });
         }
       }
