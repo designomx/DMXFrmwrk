@@ -1,6 +1,7 @@
 <?php
 //header('Content-Type: application/json');
-header("Access-Control-Allow-Origin: *");
+require('blog/wp-blog-header.php');
+//header("Access-Control-Allow-Origin: *");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,7 +38,24 @@ header("Access-Control-Allow-Origin: *");
 		<link href="fawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
-	<body>
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '1167858986565708',
+	      xfbml      : true,
+	      version    : 'v2.6'
+	    }, {scope: 'email'});
+	  };
+
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
+	<body class="preViewB">
 		<nav id="main-nav-bar">
 			<div class="nav-wrapper" class="fix-ios-shadow">
 				<a href="indexBE.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
@@ -86,7 +104,6 @@ header("Access-Control-Allow-Origin: *");
 			<div class="col m12 l8 blog-timeline-bx">
 			<!--Loop Wordpress para mostrar las noticias-->
 			<?php
-				require('../blog/wp-blog-header.php');
 				$i=0;
 				$query2 = new WP_Query( 'posts_per_page=-1' );
 				$insertarVideo=0;
@@ -374,7 +391,36 @@ header("Access-Control-Allow-Origin: *");
 		        <a href="#!" class="modal-action modal-close waves-effect btn-flat">Cerrar</a>
 		      </div>
 		    </div>
-
+			<!-- Modal Preregistro -->
+			<div id="modalPreview" class="modal">
+			  <div class="modal-content">
+			  	<img class="centerlogo" src="images/logo_eligefacil.png" width="159" alt="" />
+			  	<br />
+			    <p class="center centerlogo" style="max-width: 300px;">Pregistrate y obtén antes que nadie acceso exclusivo a nuestra plataforma.</p>
+			    <div class="clearfix"></div>
+			    <br />
+			    <form class="col s12" id="RegistrarUsuario" onsubmit="RegistrarUsuario()">
+		          <div class="row">
+		            <div class="input-field col s12 m6 centerput">
+		              <i class="material-icons prefix grey-text text-darken-1">account_circle</i>
+		              <input id="nombreUsuario" type="text" class="validate" data-required="true" autofocus = "autofocus" pattern="[a-z A-z A-z A-z]{2,40}$" required = "required">
+		              <label for="icon_prefix">Nombre</label>
+		            </div>
+		            <div class="input-field col s12 m6 centerput">
+		              <i class="material-icons prefix grey-text text-darken-1">email</i>
+		              <input id="emailUsuario" type="email" class="validate" data-required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required = "required">
+		              <label for="icon_telephone">Correo</label>
+		            </div>
+		            <div class="input-field col m6 centerput">
+		              <button type="submit"  class="orange accent-4 waves-effect btn centerput">Registrar</button>
+		            </div>
+		            <div class="input-field col m6 centerput">
+		             <a href="#!" onclick="checkLoginState();" class="light-blue darken-4 waves-effect btn centerput">Facebook LogIn</a>
+		            </div>
+		          </div>
+		        </form>
+			  </div>
+			</div>
 		<!--[if IE]>
 			<script src="js/html5.js"></script>
 			<script type="text/javascript" src="js/respond.js"></script>
@@ -388,10 +434,12 @@ header("Access-Control-Allow-Origin: *");
 		<script src="js/charCount.js"></script>
 		<script src="js/backtotop.js"></script>
 		<script src="js/materialize.min.js"></script>
+		<script src="js/jquery-validate.js"></script>
 		<!--<script src="js/parallax.min.js"></script>-->
 		<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 		<script src="js/init.config.js"></script>
 		<script src="js/init.js"></script>
+		<script src="js/blockUI.js"></script>
 		<!--INTERNET CHECK-->
 		<script src="offline07/offline.min.js"></script>
 		<link rel="stylesheet" href="offline07/themes/offline-theme-dark.css" />
@@ -409,15 +457,27 @@ header("Access-Control-Allow-Origin: *");
 		  		FRMWRK.web.init();
 			
 		  	});
+		  	var opts = {
+				lines: 9,
+				length: 12,
+				width: 8,
+				radius: 18,
+				corners: 1,
+				rotate: 0,
+				direction: 1,
+				color: '#ffffff',
+				speed: 1.2,
+				trail: 60,
+				shadow: false,
+				hwaccel: false,
+				className: 'loadingSpinner',
+				zIndex: 2e9,
+				top: '40%',
+				left: '50%'
+			};
 		</script>
 		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.5&appId=327135760765560";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
+
 				
 
 		<script >
@@ -456,6 +516,13 @@ header("Access-Control-Allow-Origin: *");
 			    });
 
 			    jQuery('#slideshow').fadeSlideShow();
+			    $('#modalPreview').openModal({dismissible: false});
+			    var urlGet=decodeURIComponent(window.location.href);
+			    if((urlGet.indexOf("ll=e988b5526b6a9a91911f83ca1cc737c7") > -1)) {
+			    	$('#modalPreview').closeModal();
+			    	$('body').removeClass("preViewB");
+			    }
+
 
 			});
 
@@ -615,6 +682,89 @@ header("Access-Control-Allow-Origin: *");
 	 			
 			});
 			*/
+			function RegistrarUsuario(){
+				var nombreUsuario=$( "#nombreUsuario" ).val();
+				var emailUsuario=$( "#emailUsuario" ).val();
+				enviarCorreo(nombreUsuario,emailUsuario);
+			};
+			$('#RegistrarUsuario').validate({
+				onKeyup : true,
+				eachValidField : function() {
+
+					$(this).closest('div').removeClass('error').addClass('success');
+				},
+				eachInvalidField : function() {
+
+					$(this).closest('div').removeClass('success').addClass('error');
+				}
+			});
+
+			function enviarCorreo(nombre,email){
+			  	//console.log("function enviarCorreo nombre: "+nombre);
+			  	//console.log("function enviarCorreo email: "+email);
+			  	console.log("Enviando correo..");
+			  	$.blockUI({ message: null }); 
+				var target = document.createElement("div");
+				document.body.appendChild(target);
+				var spinner = new Spinner(opts).spin(target);
+				var overlay = iosOverlay({
+					text: "Cargando",
+					spinner: spinner
+				});
+				var data={
+						nombre:nombre,
+						email:email
+					}
+				jQuery.ajax({
+					//dataType:"json",
+					type: "POST",
+					url: "register.php",
+					data: data
+				})
+			    .done(function(data){
+			    	//console.log(data)
+			    	if(data==true){
+			    		//console.log(data)
+			    		//alert("true");
+			    		$( "#nombreUsuario" ).val("");
+						$( "#emailUsuario" ).val("");
+			    		window.setTimeout(function() {
+							overlay.update({
+								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								text: "Listo"
+							});
+						}, 1000);
+						window.setTimeout(function() {
+							overlay.hide();
+						}, 2000);
+						setTimeout($.unblockUI, 3000);
+
+			    	}else{
+			    		if(data=="duplicado"){
+			    			alert("Correo ya registrado, se reenvío enlace");
+			    			$( "#nombreUsuario" ).val("");
+							$( "#emailUsuario" ).val("");
+			    		}
+			    		//console.log(data);
+			    		//alert("false");
+			    		window.setTimeout(function() {
+							overlay.update({
+								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								text: "ERROR"
+							});
+						}, 1000);
+						window.setTimeout(function() {
+							overlay.hide();
+						}, 2000);
+						setTimeout($.unblockUI, 3000);
+			    	}
+			    	//console.log(data)
+			    })
+			    .fail(function(data){
+			    	console.log(data);
+			    	//window.location.href = "indexBE.php";
+			    });
+		  	}
 
 		</script>
 		<script>
@@ -632,6 +782,54 @@ header("Access-Control-Allow-Origin: *");
 		var b=document.getElementsByTagName("script")[0];
 		a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0048/8086.js?"+Math.floor(new Date().getTime()/3600000);
 		a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+		</script>
+		<script>
+	  	function checkLoginState() {
+			FB.getLoginStatus(function(response) {
+			if (response.status === 'connected') {
+			// the user is logged in and has authenticated your
+			// app, and response.authResponse supplies
+			// the user's ID, a valid access token, a signed
+			// request, and the time the access token 
+			// and signed request each expire
+			var uid = response.authResponse.userID;
+			var accessToken = response.authResponse.accessToken;
+			//console.log(response);
+			FacebookAPI();
+			} else if (response.status === 'not_authorized') {
+			// the user is logged in to Facebook, 
+			// but has not authenticated your app
+				console.log("not authorized facebook APP");
+			} else {
+			// the user isn't logged in to Facebook.
+				console.log("not Facebook Login");
+				fbLogin();
+			}
+			});
+		}
+
+		  // Here we run a very simple test of the Graph API after login is
+		  // successful.  See statusChangeCallback() for when this call is made.
+		  function FacebookAPI() {
+		    console.log('Welcome!  Fetching your information.... ');
+		    FB.api('/me', {fields: 'name, email, last_name' },function(response) {
+		      //console.log('Successful login for: ' + response.name);
+		      enviarCorreo(response.name,response.email);
+		    });
+		  }
+		  function fbLogin() {
+		    FB.login(function(response) {
+		      if (response.session) {
+		        //user is logged in, reload page
+		        window.location.reload(true);
+		        console.log(response);
+		        FacebookAPI();
+		      } else {
+		        // user is not logged in
+		      }
+		    }, {scope: 'email'});
+		  }
+
 		</script>
 	</body>
 

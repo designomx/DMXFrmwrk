@@ -1,7 +1,7 @@
 <?php
 //header('Content-Type: application/json');
 //header("Access-Control-Allow-Origin: *");
-require('../../blog/wp-blog-header.php');
+require('blog/wp-blog-header.php');
 
 class YourImagick extends Imagick
 {
@@ -144,8 +144,9 @@ class YourImagick extends Imagick
 						        $image = new YourImagick($src[0]);
 						        $image->setImageFormat ("jpeg");
 							    $image->colorize('#000000', 0.8);
-							    $image->setCompressionQuality(80); 
+							    $image->setimagecompressionquality(90); 
 						        $fileDst="images/HeaderPost/header_post_blog_".$PostID.".jpg";
+
 								if($f=fopen($fileDst, "w")){ 
 								  $image->writeImageFile($f);
 								}else{

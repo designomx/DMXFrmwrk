@@ -59,7 +59,7 @@ class YourImagick extends Imagick
   <body>
     <nav id="main-nav-bar">
       <div class="nav-wrapper" class="fix-ios-shadow">
-        <a href="blog.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="../../../stage/NewSite/images/logo_eligefacil_blog.png" width="159" alt="" /></a>
+        <a href="http://www.eligefacil.com/blog.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="../../../stage/NewSite/images/logo_eligefacil_blog.png" width="159" alt="" /></a>
         <a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 
         <ul class="right hide-on-med-and-down">
@@ -174,13 +174,13 @@ class YourImagick extends Imagick
                           $image->colorize('#000', 0.8);
                           $image->setImageCompression();
                           $image->setImageCompressionQuality(80); 
-                          $fileDst="../stage/NewSite/images/header_post_single_".$PostID.".jpg";
+                          $fileDst="../images/HeaderPost/header_post_single_".$PostID.".jpg";
                           if($f=fopen($fileDst, "w")){ 
                             $image->writeImageFile($f);
                           }else{
-                            $fileDst="../../../stage/NewSite/images/heroxxx.jpg";
+                            $fileDst="../images/heroxxx.jpg";
                           }
-                          $image->destroy();
+                          //$image->destroy();
 
                       }
                       $urlIMG = wp_get_attachment_url( get_post_thumbnail_id($PostID) );
@@ -316,7 +316,7 @@ class YourImagick extends Imagick
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.5&appId=327135760765560";
+            js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.5&appId=1167858986565708";
             fjs.parentNode.insertBefore(js, fjs);
           }(document, 'script', 'facebook-jssdk'));
     </script>

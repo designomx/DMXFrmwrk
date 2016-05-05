@@ -14,7 +14,7 @@ header('Content-type: image/png');
 $image->setImageFormat ("png");
 $image->setImageOpacity(0.1);
 
-echo $image;
+//echo $image;
 
 //phpinfo();
 $fileDst="images/test_1.png";
@@ -22,6 +22,6 @@ if($f=fopen($fileDst, "w")){
   $image->writeImageFile($f);
 }
 
-echo $image;
+//echo $image;
 
 ?>
