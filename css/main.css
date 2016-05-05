@@ -1448,6 +1448,18 @@ footer.stickFoot {
 .contact-module .post-page-bx .post-info-bx {
   padding: 0 20px;
 }
+@media (max-width: 480px) {
+  #contact-module .post-page-bx .post-info-bx,
+  .contact-module .post-page-bx .post-info-bx {
+    padding: 0px;
+  }
+}
+@media (max-width: 480px) {
+  #contact-module .post-page-bx .card-title,
+  .contact-module .post-page-bx .card-title {
+    font-size: 16px !important;
+  }
+}
 #contact-module .post-page-bx h1,
 .contact-module .post-page-bx h1 {
   font-family: 'Visby CF Medium';
@@ -1520,7 +1532,24 @@ footer.stickFoot {
   #contact-module .post-page-bx table,
   .contact-module .post-page-bx table {
     margin: 30px 0px;
+    padding: 0 10px;
   }
+}
+#contact-module .post-page-bx blockquote,
+.contact-module .post-page-bx blockquote {
+  margin: 0 20px;
+}
+#contact-module .post-page-bx h2,
+.contact-module .post-page-bx h2,
+#contact-module .post-page-bx h3,
+.contact-module .post-page-bx h3,
+#contact-module .post-page-bx h4,
+.contact-module .post-page-bx h4,
+#contact-module .post-page-bx h5,
+.contact-module .post-page-bx h5,
+#contact-module .post-page-bx h6,
+.contact-module .post-page-bx h6 {
+  margin: 0 20px;
 }
 #contact-module .post-page-bx .social-btn-row,
 .contact-module .post-page-bx .social-btn-row {
@@ -2271,7 +2300,7 @@ footer.stickFoot {
   background: #64dd17;
 }
 .side-nav {
-  z-index: 999 !important;
+  z-index: 9999 !important;
 }
 #mobile-demo li {
   width: 100%;
@@ -2624,6 +2653,9 @@ p blockquote {
   margin: 0px auto;
   display: block;
   float: none;
+}
+.preViewB .widebtn {
+  width: 100% !important;
 }
 #nopageoverlay {
   width: 100%;
