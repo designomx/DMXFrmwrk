@@ -11,11 +11,11 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/avisoprivacidad.php": {
+	"\/404.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/avisoprivacidad.php",
+		"inputAbbreviatedPath": "\/404.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -227,6 +227,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/css\/jquery.oembed.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/jquery.oembed.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/css\/magic.min.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -308,6 +317,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/fblogin.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/fblogin.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/footer.php": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -353,6 +371,182 @@
 		"initialSize": 66475,
 		"inputAbbreviatedPath": "\/images\/banner-grid.jpg",
 		"outputAbbreviatedPath": "\/images\/banner-grid.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/header_post_233.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 21424,
+		"inputAbbreviatedPath": "\/images\/header_post_233.jpg",
+		"outputAbbreviatedPath": "\/images\/header_post_233.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/header_post_368.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 29408,
+		"inputAbbreviatedPath": "\/images\/header_post_368.jpg",
+		"outputAbbreviatedPath": "\/images\/header_post_368.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/header_post_blog_168.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 9630,
+		"inputAbbreviatedPath": "\/images\/header_post_blog_168.jpg",
+		"outputAbbreviatedPath": "\/images\/header_post_blog_168.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/header_post_blog_192.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 17209,
+		"inputAbbreviatedPath": "\/images\/header_post_blog_192.jpg",
+		"outputAbbreviatedPath": "\/images\/header_post_blog_192.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/header_post_blog_233.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 33216,
+		"inputAbbreviatedPath": "\/images\/header_post_blog_233.jpg",
+		"outputAbbreviatedPath": "\/images\/header_post_blog_233.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/header_post_blog_368.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 42670,
+		"inputAbbreviatedPath": "\/images\/header_post_blog_368.jpg",
+		"outputAbbreviatedPath": "\/images\/header_post_blog_368.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/header_post_single_124.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 160,
+		"inputAbbreviatedPath": "\/images\/header_post_single_124.jpg",
+		"outputAbbreviatedPath": "\/images\/header_post_single_124.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/header_post_single_215.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 10820,
+		"inputAbbreviatedPath": "\/images\/header_post_single_215.jpg",
+		"outputAbbreviatedPath": "\/images\/header_post_single_215.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/header_post_single_233.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 36429,
+		"inputAbbreviatedPath": "\/images\/header_post_single_233.jpg",
+		"outputAbbreviatedPath": "\/images\/header_post_single_233.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/header_post_single_368.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 56554,
+		"inputAbbreviatedPath": "\/images\/header_post_single_368.jpg",
+		"outputAbbreviatedPath": "\/images\/header_post_single_368.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/header_post_single_388.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 260508,
+		"inputAbbreviatedPath": "\/images\/header_post_single_388.jpg",
+		"outputAbbreviatedPath": "\/images\/header_post_single_388.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/HeaderPost\/header_post_blog_168.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 9630,
+		"inputAbbreviatedPath": "\/images\/HeaderPost\/header_post_blog_168.jpg",
+		"outputAbbreviatedPath": "\/images\/HeaderPost\/header_post_blog_168.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/HeaderPost\/header_post_blog_192.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 17209,
+		"inputAbbreviatedPath": "\/images\/HeaderPost\/header_post_blog_192.jpg",
+		"outputAbbreviatedPath": "\/images\/HeaderPost\/header_post_blog_192.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/HeaderPost\/header_post_blog_233.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 33216,
+		"inputAbbreviatedPath": "\/images\/HeaderPost\/header_post_blog_233.jpg",
+		"outputAbbreviatedPath": "\/images\/HeaderPost\/header_post_blog_233.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/HeaderPost\/header_post_blog_368.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 42670,
+		"inputAbbreviatedPath": "\/images\/HeaderPost\/header_post_blog_368.jpg",
+		"outputAbbreviatedPath": "\/images\/HeaderPost\/header_post_blog_368.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/HeaderPost\/Ok-icon.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 27233,
+		"inputAbbreviatedPath": "\/images\/HeaderPost\/Ok-icon.png",
+		"outputAbbreviatedPath": "\/images\/HeaderPost\/Ok-icon.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -533,6 +727,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/Ok-icon.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 27233,
+		"inputAbbreviatedPath": "\/images\/Ok-icon.png",
+		"outputAbbreviatedPath": "\/images\/Ok-icon.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/post-hero.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -540,6 +745,17 @@
 		"initialSize": 219315,
 		"inputAbbreviatedPath": "\/images\/post-hero.jpg",
 		"outputAbbreviatedPath": "\/images\/post-hero.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/pverlay90.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1521,
+		"inputAbbreviatedPath": "\/images\/pverlay90.png",
+		"outputAbbreviatedPath": "\/images\/pverlay90.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -565,6 +781,37 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
+		},
+	"\/images\/test_1.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 8118,
+		"inputAbbreviatedPath": "\/images\/test_1.jpg",
+		"outputAbbreviatedPath": "\/images\/test_1.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/test_1.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 24226,
+		"inputAbbreviatedPath": "\/images\/test_1.png",
+		"outputAbbreviatedPath": "\/images\/test_1.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/imagick.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/imagick.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/index.html": {
 		"fileType": 8192,
@@ -659,6 +906,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/funcionesComparador.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/funcionesComparador.js",
+		"outputAbbreviatedPath": "\/js\/min\/funcionesComparador-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/html5.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -703,12 +961,12 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/js\/jquery-2.1.1.min.js": {
+	"\/js\/jquery-validate.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/jquery-2.1.1.min.js",
-		"outputAbbreviatedPath": "\/js\/min\/jquery-2.1.1.min-min.js",
+		"inputAbbreviatedPath": "\/js\/jquery-validate.js",
+		"outputAbbreviatedPath": "\/js\/min\/jquery-validate-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -720,6 +978,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/jquery.mCustomScrollbar.concat.min.js",
 		"outputAbbreviatedPath": "\/js\/min\/jquery.mCustomScrollbar.concat.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/jquery.oembed.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/jquery.oembed.js",
+		"outputAbbreviatedPath": "\/js\/min\/jquery.oembed-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -1022,6 +1291,28 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/min\/jquery-2.1.1.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/min\/jquery-2.1.1.min.js",
+		"outputAbbreviatedPath": "\/js\/min\/min\/jquery-2.1.1.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/min\/jquery-validate.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/min\/jquery-validate.min.js",
+		"outputAbbreviatedPath": "\/js\/min\/min\/jquery-validate.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/min\/jquery.stayInWebApp.min-min.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -1200,7 +1491,7 @@
 		},
 	"\/js\/min\/web-min.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/min\/web-min.js",
 		"outputAbbreviatedPath": "\/js\/min\/min\/web-min-min.js",
@@ -1325,6 +1616,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/velocity.min.js",
 		"outputAbbreviatedPath": "\/js\/min\/velocity.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/web.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/web.js",
+		"outputAbbreviatedPath": "\/js\/min\/web-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -4439,6 +4741,15 @@
 		"randomFootnoteNumbers": 0,
 		"useCompatibilityMode": 0
 		},
+	"\/register.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/register.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/sass\/animate.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
@@ -5704,6 +6015,17 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
+		},
+	"\/test_1.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 8118,
+		"inputAbbreviatedPath": "\/test_1.jpg",
+		"outputAbbreviatedPath": "\/test_1.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
 		},
 	"\/wp-blog-header.php": {
 		"fileType": 8192,
