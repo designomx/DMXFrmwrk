@@ -412,7 +412,7 @@ require('blog/wp-blog-header.php');
 		              <label for="icon_telephone">Correo</label>
 		            </div>
 		            <div class="input-field col m6 centerput">
-		              <button type="submit"  class="orange accent-4 waves-effect btn centerput">Registrar</button>
+		              <button type="submit"  class="widebtn orange accent-4 waves-effect btn centerput">Registrar</button>
 		            </div>
 		            <div class="input-field col m6 centerput">
 		             <a href="#!" onclick="fbLogin();" class="light-blue darken-4 waves-effect btn centerput">Facebook LogIn</a>
@@ -683,9 +683,11 @@ require('blog/wp-blog-header.php');
 			});
 			*/
 			function RegistrarUsuario(){
-				var nombreUsuario=$( "#nombreUsuario" ).val();
-				var emailUsuario=$( "#emailUsuario" ).val();
-				enviarCorreo(nombreUsuario,emailUsuario);
+				
+					var nombreUsuario=$( "#nombreUsuario" ).val();
+					var emailUsuario=$( "#emailUsuario" ).val();
+					enviarCorreo(nombreUsuario,emailUsuario);
+					
 			};
 			$('#RegistrarUsuario').validate({
 				onKeyup : true,
@@ -722,7 +724,7 @@ require('blog/wp-blog-header.php');
 					data: data
 				})
 			    .done(function(data){
-			    	//console.log(data)
+			    	console.log(data)
 			    	if(data==true){
 			    		//console.log(data)
 			    		//alert("true");
@@ -731,7 +733,7 @@ require('blog/wp-blog-header.php');
 						$( "#emailUsuario" ).val("");
 			    		window.setTimeout(function() {
 							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								icon: "//cdn.tooth.me/assets/v3/assets/img/check.png",
 								text: "Listo revisa tu correo!"
 							});
 						}, 1000);
@@ -745,19 +747,50 @@ require('blog/wp-blog-header.php');
 			    			alert("Correo ya registrado, se reenvío enlace");
 			    			$( "#nombreUsuario" ).val("");
 							$( "#emailUsuario" ).val("");
-			    		}
-			    		//console.log(data);
-			    		//alert("false");
-			    		window.setTimeout(function() {
-							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
-								text: "Listo"
-							});
-						}, 1000);
-						window.setTimeout(function() {
-							overlay.hide();
-						}, 2000);
-						setTimeout($.unblockUI, 3000);
+							//console.log(data);
+				    		//alert("false");
+				    		window.setTimeout(function() {
+								overlay.update({
+									icon: "//cdn.tooth.me/assets/v3/assets/img/check.png",
+									text: "Listo"
+								});
+							}, 1000);
+							window.setTimeout(function() {
+								overlay.hide();
+							}, 2000);
+							setTimeout($.unblockUI, 3000);
+			    		}else{
+			    			if(data=="error"){
+				    			//alert("Correo ya registrado, se reenvío enlace");
+				    			$( "#nombreUsuario" ).val("");
+								$( "#emailUsuario" ).val("");
+								//console.log(data);
+					    		//alert("false");
+					    		window.setTimeout(function() {
+									overlay.update({
+										icon: "//cdn.tooth.me/assets/v3/assets/img/cross.png",
+										text: "Error en DB"
+									});
+								}, 1000);
+								window.setTimeout(function() {
+									overlay.hide();
+								}, 2000);
+								setTimeout($.unblockUI, 3000);
+							}else{
+								//console.log(data);
+					    		//alert("false");
+					    		window.setTimeout(function() {
+									overlay.update({
+										icon: "//cdn.tooth.me/assets/v3/assets/img/cross.png",
+										text: "Error"
+									});
+								}, 1000);
+								window.setTimeout(function() {
+									overlay.hide();
+								}, 2000);
+								setTimeout($.unblockUI, 3000);
+							}
+						}
 			    	}
 			    	//console.log(data)
 			    })
@@ -825,7 +858,7 @@ require('blog/wp-blog-header.php');
 		      	if (response.status === 'connected') {
 			        //user is logged in, reload page
 			        //window.location.reload(true);
-			        console.log(response);
+			        //console.log(response);
 			        FacebookAPI();
 			        return 0;
 		      	}else if (response.status === 'not_authorized') {

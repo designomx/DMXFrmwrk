@@ -41,17 +41,28 @@ if (preg_match($regex, $email) && preg_match($regexNombre, $nombre)) {
 
 	$nombre = $mysqli->real_escape_string($nombre);
 	$email = $mysqli->real_escape_string($email);
-	$query=("	INSERT INTO Usuarios (nombre, correo)
-				VALUES ('".$nombre."', '".$email."')");
-
-
-	if ($mysqli->query($query) === TRUE) {
-	    //echo "New record created successfully";
-	} else {
-	    //echo "Error: " . $query . "<br>" . $mysqli->error;
-	    //echo "duplicado";
-	    $duplicado=1;
+	$query_verificar=("SELECT correo FROM Usuarios WHERE correo='".$email."'");
+	if($verificar_email=$mysqli->query($query_verificar)){
+		$num_rows=$verificar_email->num_rows;
+		//echo "num_rows=".$num_rows;
 	}
+	if($num_rows>0){
+		$duplicado=1;
+	}else{
+		$query=("	INSERT INTO Usuarios (nombre, correo)
+					VALUES ('".$nombre."', '".$email."')");
+
+
+		if ($mysqli->query($query) === TRUE) {
+		    //echo "New record created successfully";
+		    $duplicado=0;
+		} else {
+		    //echo "Error: " . $query . "<br>" . $mysqli->error;
+		    //echo "duplicado";
+		    $duplicado=-1;
+		}
+	}
+
 	$mysqli->close();
     //echo 'El texto es válido';
 	/*
@@ -108,6 +119,9 @@ if (preg_match($regex, $email) && preg_match($regexNombre, $nombre)) {
 		}
 		if($duplicado==1){
 			echo "duplicado";
+		}
+		if($duplicado==-1){
+			echo "error";
 		}
 	}else{
 		echo false;
