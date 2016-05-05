@@ -1803,9 +1803,9 @@ footer.stickFoot {
   top: 1px;
 }
 .side-bar-bx .post-promoted-bx p {
-  display: table-cell;
-  padding-left: 138px;
-  vertical-align: middle;
+  display: table-cell !important;
+  padding-left: 138px !important;
+  vertical-align: middle !important;
 }
 .side-bar-bx .post-promoted-bx a {
   width: 100%;
