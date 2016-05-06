@@ -151,53 +151,7 @@ if(isset($_POST['listadoSimple'])){
 				}
 			}
 
-			/*$query_sugeridos=("SELECT DISTINCT(P.id_plan), 
-				P.nombre, 
-				P.precio, 
-				P.dato_principal_1, 
-				P.id_tipoDato_principal_1, 
-				P.dato_principal_2, 
-				P.id_tipoDato_principal_2, 
-				P.dato_principal_3, 
-				P.id_tipoDato_principal_3, 
-				P.dato_principal_4, 
-				P.id_tipoDato_principal_4, 
-				P.mas_datos, 
-				P.visible, 
-				E.nombre as empresa, 
-				E.codigo_color as empresa_color, 
-				TDS1.label as dato1, 
-				TDS1.tipo as tipoDato1, 
-				TDS2.label as dato2, 
-				TDS2.tipo as tipoDato2, 
-				TDS3.label as dato3, 
-				TDS3.tipo as tipoDato3, 
-				TDS4.label as dato4, 
-				TDS4.tipo as tipoDato4 
-				FROM planes P 
-				INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA 
-				INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN 
-				INNER JOIN planes_tipoServicios PT ON P.ID_PLAN=PT.ID_PLAN 
-				LEFT JOIN tipoDatosServicios TDS1 ON P.id_tipoDato_principal_1 = TDS1.id_tipoDato 
-				LEFT JOIN tipoDatosServicios TDS2 ON P.id_tipoDato_principal_2 = TDS2.id_tipoDato 
-				LEFT JOIN tipoDatosServicios TDS3 ON P.id_tipoDato_principal_3 = TDS3.id_tipoDato 
-				LEFT JOIN tipoDatosServicios TDS4 ON P.id_tipoDato_principal_4 = TDS4.id_tipoDato 
-				WHERE C.ID_ESTADO='".$_SESSION['estado']."' 
-				AND PT.id_plan IN (SELECT id_plan from planes_tipoServicios where id_tipoServicio IN (".implode(', ', $_SESSION['Servicios']).")  ) 
-				AND visible=1
-				AND P.precio < ".$_SESSION['Preciomax']."+80
-				GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])."+1 LIMIT 0, 5" );
-
-			$result_sugeridos = $mysqli->query($query_sugeridos);
-
-			//$rows=array();
-			while($row = $result_sugeridos->fetch_array())
-			{
-				//Los planes que cumplen las reglas de busqueda, son no sugeridos=0
-				$row["sugerido"]=1;	
-				array_push($rows, $row);
-			}
-			*/
+			
 
 			if($_POST["orden"]=="DESC"){
 				usort($rows,'invenDescSort');
@@ -912,7 +866,20 @@ if(isset($_POST['verDetalles'])){
 		{
 			//array_push($rows, $row);
 			$respuesta='<div id="plan_detalles" data-id="'.$row["id_plan"].'" class="brand-label" style="background-color:'.$row["empresa_color"].'">'.$row["empresa"].'</div>
-				<h4>'.$row["nombre"].' - $'.$row["precio"].'</h4>
+				<h4>'.$row["nombre"].' bla bla bla- ';
+
+			if($row['id_tipoDato_principal_1']==2 || $row['id_tipoDato_principal_2']==2 || $row['id_tipoDato_principal_3']==2 || $row['id_tipoDato_principal_4']==2){
+				if ($row["precio"]==0){
+					$respuesta=$respuesta.'Sin Recarga Mínima';
+				}else{
+					$respuesta=$respuesta.'Recarga de $'.$row["precio"];
+				}
+			}else{
+				$respuesta=$respuesta.'$'.$row["precio"];
+			}
+
+			$respuesta=$respuesta.'
+				</h4>
 				<div class="plan-main-options row">';
 
 				switch ($row['tipoDato1']) {
@@ -1661,9 +1628,18 @@ if(isset($_POST['CompararPlanes'])){
 											} 
 										}
 			$respuesta=$respuesta.'</ul>'.$row["mas_datos"].'
-								</div>
-								<div class="paq-price">$'.$row["precio"].'</div>
-								<div class="more-actions-bx">
+								</div>';
+			if($row['id_tipoDato_principal_1']==2 || $row['id_tipoDato_principal_2']==2 || $row['id_tipoDato_principal_3']==2 || $row['id_tipoDato_principal_4']==2){
+				if ($row["precio"]==0){
+					$respuesta=$respuesta.'<div class="paq-price">Sin Recarga Mínima</div>';
+				}else{
+					$respuesta=$respuesta.'<div class="paq-price">Recarga de $'.$row["precio"].'</div>';
+				}
+			}else{
+				$respuesta=$respuesta.'<div class="paq-price">$'.$row["precio"].'</div>';
+			}
+//<div class="paq-price">$'.$row["precio"].'</div>
+			$respuesta=$respuesta.'	<div class="more-actions-bx">
 									<a href="#!" class="grey"></a>
 									<a href="#!" class="compare-slct grey"></a>
 									<a href="#!" onclick="eliminarDelComparador('.$row["id_plan"].')" class="compare-delete">Eliminar</a>

@@ -65,7 +65,7 @@ class YourImagick extends Imagick
 
 		<nav id="main-nav-bar">
 			<div class="nav-wrapper" class="fix-ios-shadow">
-				<a href="blog.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil_blog.png" width="159" alt="" /></a>
+				<a href="http://www.eligefacil.com/blog.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil_blog.png" width="159" alt="" /></a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 
 				<ul class="right hide-on-med-and-down">
@@ -74,17 +74,17 @@ class YourImagick extends Imagick
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="blog.php?c=42" class="magictime slideUpRetourn fix-pos-nav">Tecnología</a>
+						<a href="blog.php?c=42" class="magictime slideUpRetourn fix-pos-nav">#Tecnología</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="blog.php?c=44" class="magictime slideUpRetourn fix-pos-nav">Entretenimiento</a>
+						<a href="blog.php?c=44" class="magictime slideUpRetourn fix-pos-nav">#Entretenimiento</a>
 					</li>
 					<li>
-						<a href="http://www.twitter.com/EligeFacil" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
+						<a href="http://www.twitter.com/EligeFacil" target="_blank" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
 					</li>
 					<li>
-						<a href="https://www.facebook.com/EligeFacil" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
+						<a href="https://www.facebook.com/EligeFacil" target="_blank" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
 					</li>
 				</ul>
 
@@ -99,16 +99,16 @@ class YourImagick extends Imagick
 				<a href="http://www.eligefacil.com"><i class="fa fa-search left"></i> Comparador</a>
 			</li>
 			<li>
-				<a href="blog.php?c=42" ><i class="fa fa-newspaper-o left"></i> Tecnología</a>
+				<a href="blog.php?c=42" ><i class="fa fa-newspaper-o left"></i> #Tecnología</a>
 			</li>
 			<li>
-				<a href="blog.php?c=44"><i class="fa fa-envelope-o left"></i> Entretenimiento</a>
+				<a href="blog.php?c=44"><i class="fa fa-envelope-o left"></i> #Entretenimiento</a>
 			</li>
 			<li>
-				<a href="http://www.twitter.com/EligeFacil"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
+				<a href="http://www.twitter.com/EligeFacil" target="_blank"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
 			</li>
 			<li>
-				<a href="https://www.facebook.com/EligeFacil"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
+				<a href="https://www.facebook.com/EligeFacil" target="_blank"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
 			</li>
 		</ul>
 
@@ -140,19 +140,24 @@ class YourImagick extends Imagick
 						$permalink = get_permalink($query1->post->ID);
 						if (function_exists('has_post_thumbnail')) {
 						    if ( has_post_thumbnail() ) {
-					         	$src = wp_get_attachment_image_src( get_post_thumbnail_id($query1->post->ID), array( 1280,800 ), false, '' );
-						        $image = new YourImagick($src[0]);
-						        $image->setImageFormat ("jpeg");
-							    $image->colorize('#000000', 0.8);
-							    $image->setimagecompressionquality(90); 
-						        $fileDst="images/HeaderPost/header_post_blog_".$PostID.".jpg";
-
-								if($f=fopen($fileDst, "w")){ 
-								  $image->writeImageFile($f);
-								}else{
-									$fileDst="images/heroxxx.jpg";
+						    	$nombre_fichero = "images/HeaderPost/header_post_blog_".$PostID.".jpg";
+	                          if (file_exists($nombre_fichero)) {
+	                              //echo "El fichero $nombre_fichero existe";
+	                              $fileDst="images/HeaderPost/header_post_blog_".$PostID.".jpg";
+	                          } else {
+						         	$src = wp_get_attachment_image_src( get_post_thumbnail_id($query1->post->ID), array( 1280,800 ), false, '' );
+							        $image = new YourImagick($src[0]);
+							        $image->setImageFormat ("jpeg");
+								    $image->colorize('#000000', 0.8);
+								    $image->setimagecompressionquality(90); 
+							        $fileDst="images/HeaderPost/header_post_blog_".$PostID.".jpg";
+									if($f=fopen($fileDst, "w")){ 
+									  $image->writeImageFile($f);
+									}else{
+										$fileDst="images/heroxxx.jpg";
+									}
+									$image->destroy();
 								}
-								$image->destroy();
 						    }
 
 						}
@@ -251,7 +256,7 @@ class YourImagick extends Imagick
 			        // Imagen thumbnail
 			        if (function_exists('has_post_thumbnail')) {
 					    if ( has_post_thumbnail() ) {
-					         $src = wp_get_attachment_image_src( get_post_thumbnail_id($query2->post->ID), array( 5600,1000 ), false, '' );
+					         $src = wp_get_attachment_image_src( get_post_thumbnail_id($query2->post->ID), array( 1280,800 ), false, '' );
 					    }
 					}
 		    ?>

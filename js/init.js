@@ -446,7 +446,7 @@ FRMWRK.main = (function($) {
 		function _slideInB(){
 		  $('#slide-in-banner').slideDown();
 		}
-		setTimeout(_slideInB, 5000);
+		setTimeout(_slideInB, 10000);
 		
 		function _slideOutB(){
 		  $('#slide-in-banner').slideUp();

@@ -109,7 +109,7 @@
 				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 				<ul class="right hide-on-med-and-down">
 					<li>
-						<a href="listado-comparador.php" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
+						<a href="index.php" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
@@ -120,10 +120,10 @@
 						<a href="contacto.html" class="magictime slideUpRetourn fix-pos-nav">Contacto</a>
 					</li>
 					<li>
-						<a href="http://www.twitter.com/EligeFacil" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
+						<a href="http://www.twitter.com/EligeFacil" target="_blank" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
 					</li>
 					<li>
-						<a href="https://www.facebook.com/EligeFacil" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
+						<a href="https://www.facebook.com/EligeFacil" target="_blank" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -139,50 +139,12 @@
 				<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
 			</li>
 			<li>
-				<a href="http://www.twitter.com/EligeFacil"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
+				<a href="http://www.twitter.com/EligeFacil" target="_blank"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
 			</li>
 			<li>
-				<a href="https://www.facebook.com/EligeFacil"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
+				<a href="https://www.facebook.com/EligeFacil" target="_blank"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
 			</li>
 		</ul>
-		<!--
-		<div class="filter-mid-bar row">
-			<div class="col s6 sliders-scroll-bx">
-				<div class="sliders-wrapp">
-					<div class="slider-bx">
-						<p class="truncate">Menor precio</p>
-						<div class="slide-bar-bx">
-							<div class="switch">
-							    <label>
-							      <input id="ordenAscDesc" checked type="checkbox">
-							      <span class="lever"></span>
-							    </label>
-							</div>
-						</div>
-					</div>
-
-					<div id="filtros">
-						
-					</div>
-					<div class="clearfix"></div>
-				</div>	
-			</div>
-			<div class="col s6 z-depth-1 fix-ios-shadow checks-scroll-bx">
-				<form action="#">
-				<div id="filtrosCheck"></div>
-				<div id="filtrosCheckEmpresas"></div>
-
-				 </form>
-				 <a id="btnComparar" class="search-btn filterBtn z-depth-1 hoverable hide-on-med-and-down" href="#!">Comparar <i class="fa fa-angle-right right"></i></a>
-				 <a class="search-btn filterBtn cBtn z-depth-1 hoverable hide-on-med-and-up" href="#!"><i class="fa fa-angle-right right"></i></a>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-		-->
-
-
-
-
 		<div id="filter-go" class="filter-mid-bar row">
 			<div class="col s6 m8 sliders-scroll-bx">
 				<div class="sliders-wrapp">
@@ -439,7 +401,7 @@
 			   </a>
 				<ul>
 					<li>
-						<a onclick="CompartirComparacionFacebook()" href="#!" target="_blank" class="btn-floating light-blue darken-4"><i class="fa fa-facebook"></i></a>
+						<a onclick="CompartirComparacionFacebook()" href="#!" class="btn-floating light-blue darken-4"><i class="fa fa-facebook"></i></a>
 					</li>
 					<li>
 						<a onclick="CompartirComparacionTwitter()" href="#!" class="btn-floating light-blue lighten-2"><i class="fa fa-twitter"></i></a>
@@ -2358,6 +2320,7 @@
 		}
 
 		function CompartirComparacionFacebook(){
+			//ev.preventDefault();
 			var urlFacebook="https://www.facebook.com/sharer/sharer.php?u=";
 			var url="http://www.eligefacil.com/stage/NewSite/listado-comparador.php?";
 			var i=0;

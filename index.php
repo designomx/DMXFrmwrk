@@ -73,10 +73,10 @@ require('blog/wp-blog-header.php');
 						<a href="contacto.html" class="magictime slideUpRetourn fix-pos-nav">Contacto</a>
 					</li>
 					<li>
-						<a href="www.twitter.com/EligeFacil" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
+						<a href="www.twitter.com/EligeFacil" target="_blank" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
 					</li>
 					<li>
-						<a href="https://www.facebook.com/EligeFacil" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
+						<a href="https://www.facebook.com/EligeFacil" target="_blank" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
 					</li>
 				</ul>
 				<ul class="side-nav" id="mobile-demo">
@@ -90,10 +90,10 @@ require('blog/wp-blog-header.php');
 						<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
 					</li>
 					<li>
-						<a href="www.twitter.com/EligeFacil"><i class="fa fa-twitter left"></i> Twitter</a>
+						<a href="www.twitter.com/EligeFacil" target="_blank"><i class="fa fa-twitter left"></i> Twitter</a>
 					</li>
 					<li>
-						<a href="https://www.facebook.com/EligeFacil"><i class="fa fa-facebook left"></i> Facebook</a>
+						<a href="https://www.facebook.com/EligeFacil" target="_blank"><i class="fa fa-facebook left"></i> Facebook</a>
 					</li>
 				</ul>
 			</div>
@@ -147,7 +147,7 @@ require('blog/wp-blog-header.php');
 				        // Imagen thumbnail
 				        if (function_exists('has_post_thumbnail')) {
 						    if ( has_post_thumbnail() ) {
-						         $src = wp_get_attachment_image_src( get_post_thumbnail_id($query2->post->ID), array( 5600,1000 ), false, '' );
+						         $src = wp_get_attachment_image_src( get_post_thumbnail_id($query2->post->ID), array( 1280,800 ), false, '' );
 						    }
 						}
 						echo '<div id="cargarmas'.$cargarmas.'"class="col s12 post-box-wrapper cargarmas" style=" display: none;">
@@ -215,7 +215,7 @@ require('blog/wp-blog-header.php');
 						<?php
 						if (function_exists('has_post_thumbnail')) {
 						    if ( has_post_thumbnail() ) {
-						         $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 5600,1000 ), false, '' );
+						         $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 1280,800 ), false, '' );
 						    }else{
 						    	$src[0]="images/recomended.jpg";
 						    }
@@ -223,7 +223,7 @@ require('blog/wp-blog-header.php');
 						?>
 						<div class="post-promoted-bx">
 							<div class="col s12 z-depth-1 hoverable">
-								<img src="<?php echo $src[0];?>" alt="" style="display: block;max-width:126px;max-height:126px;width: auto;height: auto;" />
+								<img src="<?php echo $src[0];?>" alt="" height="126" width="126"/>
 								
 									<?php
 										$rem_len=97;
@@ -399,11 +399,11 @@ require('blog/wp-blog-header.php');
 			    <p class="center centerlogo" style="max-width: 300px;">Pregistrate y obtén antes que nadie acceso exclusivo a nuestra plataforma.</p>
 			    <div class="clearfix"></div>
 			    <br />
-			    <form class="col s12" id="RegistrarUsuario" onsubmit="RegistrarUsuario()">
+			    <form class="col s12" id="RegistrarUsuario">
 		          <div class="row">
 		            <div class="input-field col s12 m6 centerput">
 		              <i class="material-icons prefix grey-text text-darken-1">account_circle</i>
-		              <input id="nombreUsuario" type="text" class="validate" data-required="true" autofocus = "autofocus" pattern="[a-z A-z A-z A-z]{2,40}$" required = "required">
+		              <input id="nombreUsuario" type="text" class="validate" data-required="true" autofocus = "autofocus" pattern="[a-z A-z A-z A-z ñáéíóúÑÁÉÍÓÚ]{2,40}$" required = "required">
 		              <label for="icon_prefix">Nombre</label>
 		            </div>
 		            <div class="input-field col s12 m6 centerput">
@@ -518,7 +518,8 @@ require('blog/wp-blog-header.php');
 			    jQuery('#slideshow').fadeSlideShow();
 			    $('#modalPreview').openModal({dismissible: false});
 			    var urlGet=decodeURIComponent(window.location.href);
-			    if((urlGet.indexOf("ll=e988b5526b6a9a91911f83ca1cc737c7") > -1)) {
+			    if((urlGet.indexOf("ll=e988b5526b6a9a91911f83ca1cc737c7") > -1) || (localStorage.getItem("usuarioInvitado") !== null)) {
+			    	localStorage.setItem("usuarioInvitado", true)
 			    	$('#modalPreview').closeModal();
 			    	$('body').removeClass("preViewB");
 			    }
@@ -682,28 +683,23 @@ require('blog/wp-blog-header.php');
 	 			
 			});
 			*/
+			$("#RegistrarUsuario").submit(function(ev){
+				ev.preventDefault();
+				RegistrarUsuario();
+			})
 			function RegistrarUsuario(){
-				
 					var nombreUsuario=$( "#nombreUsuario" ).val();
 					var emailUsuario=$( "#emailUsuario" ).val();
+					console.log(nombreUsuario);
+					console.log(emailUsuario);
 					enviarCorreo(nombreUsuario,emailUsuario);
+
 					
 			};
-			$('#RegistrarUsuario').validate({
-				onKeyup : true,
-				eachValidField : function() {
-
-					$(this).closest('div').removeClass('error').addClass('success');
-				},
-				eachInvalidField : function() {
-
-					$(this).closest('div').removeClass('success').addClass('error');
-				}
-			});
-
+			
 			function enviarCorreo(nombre,email){
-			  	//console.log("function enviarCorreo nombre: "+nombre);
-			  	//console.log("function enviarCorreo email: "+email);
+			  	console.log("function enviarCorreo nombre: "+nombre);
+			  	console.log("function enviarCorreo email: "+email);
 			  	console.log("Enviando correo..");
 			  	$.blockUI({ message: null }); 
 				var target = document.createElement("div");
@@ -713,9 +709,11 @@ require('blog/wp-blog-header.php');
 					text: "Cargando",
 					spinner: spinner
 				});
+				var nombre_enviar=nombre;
+				var email_enviar=email;
 				var data={
-						nombre:nombre,
-						email:email
+						nombre:nombre_enviar,
+						email:email_enviar
 					}
 				jQuery.ajax({
 					//dataType:"json",
@@ -846,7 +844,7 @@ require('blog/wp-blog-header.php');
 		  // successful.  See statusChangeCallback() for when this call is made.
 		  function FacebookAPI() {
 		    console.log('Welcome!  Fetching your information.... ');
-		    FB.api('/me', {fields: 'name, email, last_name' },function(response) {
+		    FB.api('/me', {fields: 'name, email' },function(response) {
 		      //console.log('Successful login for: ' + response.name);
 		      enviarCorreo(response.name,response.email);
 		    });

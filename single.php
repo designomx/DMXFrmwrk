@@ -68,17 +68,17 @@ class YourImagick extends Imagick
             <span class="nav-mid-line"></span>
           </li>
           <li>
-            <a href="http://www.eligefacil.com/blog.php?c=42" class="magictime slideUpRetourn fix-pos-nav">Tecnología</a>
+            <a href="http://www.eligefacil.com/blog.php?c=42" class="magictime slideUpRetourn fix-pos-nav">#Tecnología</a>
             <span class="nav-mid-line"></span>
           </li>
           <li>
-            <a href="http://www.eligefacil.com/blog.php?c=44" class="magictime slideUpRetourn fix-pos-nav">Entretenimiento</a>
+            <a href="http://www.eligefacil.com/blog.php?c=44" class="magictime slideUpRetourn fix-pos-nav">#Entretenimiento</a>
           </li>
           <li>
-            <a href="http://www.twitter.com/EligeFacil" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
+            <a href="http://www.twitter.com/EligeFacil" target="_blank" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
           </li>
           <li>
-            <a href="https://www.facebook.com/EligeFacil" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.facebook.com/EligeFacil" target="_blank" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
           </li>
         </ul>
 
@@ -92,16 +92,16 @@ class YourImagick extends Imagick
         <a href="http://www.eligefacil.com"><i class="fa fa-search left"></i> Comparador</a>
       </li>
       <li>
-        <a href="http://www..eligefacil.com/NewSite/blog.php?c=42" ><i class="fa fa-newspaper-o left"></i> Tecnología</a>
+        <a href="http://www..eligefacil.com/blog.php?c=42" ><i class="fa fa-newspaper-o left"></i> #Tecnología</a>
       </li>
       <li>
-        <a href="http://www.eligefacil.com/NewSite/blog.php?c=44"><i class="fa fa-envelope-o left"></i> Entretenimiento</a>
+        <a href="http://www.eligefacil.com/blog.php?c=44"><i class="fa fa-envelope-o left"></i> #Entretenimiento</a>
       </li>
       <li>
-        <a href="http://www.twitter.com/EligeFacil"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
+        <a href="http://www.twitter.com/EligeFacil" target="_blank"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
       </li>
       <li>
-        <a href="https://www.facebook.com/EligeFacil"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
+        <a href="https://www.facebook.com/EligeFacil" target="_blank"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
       </li>
     </ul>
     <div class="clearfix"></div>
@@ -157,31 +157,42 @@ class YourImagick extends Imagick
 
                   //$contenido=$post_->post_content;
                   if($embed=="1"){
-                    echo '<iframe width="560" height="315" src="'.$URLiframe.'" frameborder="0" allowfullscreen></iframe>';
+                    echo '<div class="video-container">
+                            <iframe width="560" height="315" src="'.$URLiframe.'" frameborder="0" allowfullscreen></iframe>
+                          </div>';
                   }
                   if($embed=="2"){
-                    echo '<iframe src="'.$URLiframe.'" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+                    echo '<div class="video-container">
+                            <iframe src="'.$URLiframe.'" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                          </div>';
                   }
                   //echo "<div class='video-container' id='embedVideo' data-url='".$contenido."'> </div><div class='clearfix'></div> <br> ";
                 }else{
                   // Imagen thumbnail
                       if (function_exists('has_post_thumbnail')) {
                       if ( has_post_thumbnail() ) {
-                          $src = wp_get_attachment_image_src( get_post_thumbnail_id($PostID), array( 1280,800 ), false, '' );
-                          $image = new YourImagick($src[0]);
-                          $image->setImageFormat ("jpeg");
-                          //$image->setSize(1280,800);
-                          $image->colorize('#000', 0.8);
-                          $image->setImageCompression();
-                          $image->setImageCompressionQuality(80); 
-                          $fileDst="../images/HeaderPost/header_post_single_".$PostID.".jpg";
-                          if($f=fopen($fileDst, "w")){ 
-                            $image->writeImageFile($f);
-                          }else{
-                            $fileDst="../images/heroxxx.jpg";
-                          }
-                          //$image->destroy();
+                          $nombre_fichero = "../images/HeaderPost/header_post_single_".$PostID.".jpg";
 
+                          if (file_exists($nombre_fichero)) {
+                              //echo "El fichero $nombre_fichero existe";
+                              $fileDst="../images/HeaderPost/header_post_single_".$PostID.".jpg";
+                          } else {
+                              //echo "El fichero $nombre_fichero no existe";
+                              $src = wp_get_attachment_image_src( get_post_thumbnail_id($PostID), array( 1280,800 ), false, '' );
+                              $image = new YourImagick($src[0]);
+                              $image->setImageFormat ("jpeg");
+                              //$image->setSize(1280,800);
+                              $image->colorize('#000', 0.8);
+                              $image->setImageCompression();
+                              $image->setImageCompressionQuality(80); 
+                              $fileDst="../images/HeaderPost/header_post_single_".$PostID.".jpg";
+                              if($f=fopen($fileDst, "w")){ 
+                                $image->writeImageFile($f);
+                              }else{
+                                $fileDst="../images/heroxxx.jpg";
+                              }
+                              $image->destroy();
+                          }
                       }
                       $urlIMG = wp_get_attachment_url( get_post_thumbnail_id($PostID) );
                       echo '<img class="responsive-img" src="'.$urlIMG.'">';
@@ -230,7 +241,7 @@ class YourImagick extends Imagick
 
 
           <div class="backblog-button-bx">
-            <a href="http://www.eligefacil.com/blog.php.php#blog-module" class="z-depth-1 hoverable"><i class="fa fa-angle-double-left"></i> Regresar</a>
+            <a href="http://www.eligefacil.com/blog.php" class="z-depth-1 hoverable"><i class="fa fa-angle-double-left"></i> Regresar</a>
           </div>
         </div>
         <div class="col m4 grey lighten-3 side-bar-bx hide-on-med-and-down">
