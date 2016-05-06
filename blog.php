@@ -33,21 +33,9 @@ class YourImagick extends Imagick
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<link href="img/profile/apple-touch-icon.png" rel="apple-touch-icon" />
-		<link href="img/profile/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
-		<link href="img/profile/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
-		<link href="img/profile/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
-		<link rel="icon" sizes="192x192" href="img/profile/android-touch-icon-192x192.png">
-		<link rel="icon" sizes="128x128" href="img/profile/android-touch-icon-128x128.png">
-		<link rel="icon" type="image/png" href="img/profile/favicon.png" />
-		<!--WINDOWS PHONE 8.1-->
-		<meta name="application-name" content="EligeFacil" />
-		<meta name="msapplication-TileColor" content=" #00b0ff" />
-		<meta name="msapplication-square70x70logo" content="/img/profile/smalltile.png" />
-		<meta name="msapplication-square150x150logo" content="/img/profile/mediumtile.png" />
-		<meta name="msapplication-wide310x150logo" content="/img/profile/widetile.png" />
-		<meta name="msapplication-square310x310logo" content="/img/profile/largetile.png" />
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="Elige, filtra y compara Planes de Telefonía, Teléfono, Internet, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
+		<meta name="keywords" content="Comparador, Telefonía fija, telefonía móvil, planes celulares, planes internet, planes telcel, planes movistar, planes virgin, planes at&amp;t, planes axtel, planes iizzi, planes total play, telecomunicaciones">
+		<meta name="author" content=“designo.mx”>
 		<title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
 		<!-- CSS -->
 		<link href="materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="all" />
@@ -140,17 +128,17 @@ class YourImagick extends Imagick
 						$permalink = get_permalink($query1->post->ID);
 						if (function_exists('has_post_thumbnail')) {
 						    if ( has_post_thumbnail() ) {
-						    	$nombre_fichero = "images/HeaderPost/header_post_blog_".$PostID.".jpg";
-	                          if (file_exists($nombre_fichero)) {
-	                              //echo "El fichero $nombre_fichero existe";
-	                              $fileDst="images/HeaderPost/header_post_blog_".$PostID.".jpg";
-	                          } else {
-						         	$src = wp_get_attachment_image_src( get_post_thumbnail_id($query1->post->ID), array( 1280,800 ), false, '' );
-							        $image = new YourImagick($src[0]);
-							        $image->setImageFormat ("jpeg");
+					    		$nombre_fichero = "images/HeaderPost/header_post_blog_".$PostID.".jpg";
+								if (file_exists($nombre_fichero)) {
+								  //echo "El fichero $nombre_fichero existe";
+								  $fileDst="images/HeaderPost/header_post_blog_".$PostID.".jpg";
+								} else {
+								 	$src = wp_get_attachment_image_src( get_post_thumbnail_id($query1->post->ID), array( 1280,800 ), false, '' );
+								    $image = new YourImagick($src[0]);
+								    $image->setImageFormat ("jpeg");
 								    $image->colorize('#000000', 0.8);
 								    $image->setimagecompressionquality(90); 
-							        $fileDst="images/HeaderPost/header_post_blog_".$PostID.".jpg";
+								    $fileDst="images/HeaderPost/header_post_blog_".$PostID.".jpg";
 									if($f=fopen($fileDst, "w")){ 
 									  $image->writeImageFile($f);
 									}else{

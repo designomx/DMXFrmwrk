@@ -11,21 +11,9 @@ require('blog/wp-blog-header.php');
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<link href="img/profile/apple-touch-icon.png" rel="apple-touch-icon" />
-		<link href="img/profile/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
-		<link href="img/profile/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
-		<link href="img/profile/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
-		<link rel="icon" sizes="192x192" href="img/profile/android-touch-icon-192x192.png">
-		<link rel="icon" sizes="128x128" href="img/profile/android-touch-icon-128x128.png">
-		<link rel="icon" type="image/png" href="img/profile/favicon.png" />
-		<!--WINDOWS PHONE 8.1-->
-		<meta name="application-name" content="EligeFacil" />
-		<meta name="msapplication-TileColor" content=" #00b0ff" />
-		<meta name="msapplication-square70x70logo" content="/img/profile/smalltile.png" />
-		<meta name="msapplication-square150x150logo" content="/img/profile/mediumtile.png" />
-		<meta name="msapplication-wide310x150logo" content="/img/profile/widetile.png" />
-		<meta name="msapplication-square310x310logo" content="/img/profile/largetile.png" />
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="Elige, filtra y compara Planes de Telefonía, Teléfono, Internet, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
+		<meta name="keywords" content="Comparador, Telefonía fija, telefonía móvil, planes celulares, planes internet, planes telcel, planes movistar, planes virgin, planes at&amp;t, planes axtel, planes iizzi, planes total play, telecomunicaciones">
+		<meta name="author" content=“designo.mx”>
 		<title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
 		<!-- CSS -->
 		<link href="materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="all" />
@@ -79,25 +67,25 @@ require('blog/wp-blog-header.php');
 						<a href="https://www.facebook.com/EligeFacil" target="_blank" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
 					</li>
 				</ul>
-				<ul class="side-nav" id="mobile-demo">
-					<li>
-						<a id="descubreBTN" href="listado-comparador.php"><i class="fa fa-search left"></i> Descubre</a>
-					</li>
-					<li>
-						<a href="blog.php"><i class="fa fa-newspaper-o left"></i> Entérate</a>
-					</li>
-					<li>
-						<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
-					</li>
-					<li>
-						<a href="www.twitter.com/EligeFacil" target="_blank"><i class="fa fa-twitter left"></i> Twitter</a>
-					</li>
-					<li>
-						<a href="https://www.facebook.com/EligeFacil" target="_blank"><i class="fa fa-facebook left"></i> Facebook</a>
-					</li>
-				</ul>
 			</div>
 		</nav>
+		<ul class="side-nav" id="mobile-demo">
+			<li>
+				<a href="index.php"><i class="fa fa-search left"></i> Descubre</a>
+			</li>
+			<li>
+				<a href="blog.php"><i class="fa fa-newspaper-o left"></i> Entérate</a>
+			</li>
+			<li>
+				<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
+			</li>
+			<li>
+				<a href="http://www.twitter.com/EligeFacil" target="_blank"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
+			</li>
+			<li>
+				<a href="https://www.facebook.com/EligeFacil" target="_blank"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
+			</li>
+		</ul>
 		<div class="clearfix"></div>
 		<br />
 		<div id="blog-module" class=" blog-module row grey lighten-5">

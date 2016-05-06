@@ -6,21 +6,9 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<link href="img/profile/apple-touch-icon.png" rel="apple-touch-icon" />
-		<link href="img/profile/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
-		<link href="img/profile/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
-		<link href="img/profile/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
-		<link rel="icon" sizes="192x192" href="img/profile/android-touch-icon-192x192.png">
-		<link rel="icon" sizes="128x128" href="img/profile/android-touch-icon-128x128.png">
-		<link rel="icon" type="image/png" href="img/profile/favicon.png" />
-		<!--WINDOWS PHONE 8.1-->
-		<meta name="application-name" content="Perfil by tooth.me®" />
-		<meta name="msapplication-TileColor" content=" #00b0ff" />
-		<meta name="msapplication-square70x70logo" content="/img/profile/smalltile.png" />
-		<meta name="msapplication-square150x150logo" content="/img/profile/mediumtile.png" />
-		<meta name="msapplication-wide310x150logo" content="/img/profile/widetile.png" />
-		<meta name="msapplication-square310x310logo" content="/img/profile/largetile.png" />
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <meta name="description" content="Elige, filtra y compara Planes de Telefonía, Teléfono, Internet, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
+	    <meta name="keywords" content="Comparador, Telefonía fija, telefonía móvil, planes celulares, planes internet, planes telcel, planes movistar, planes virgin, planes at&amp;t, planes axtel, planes iizzi, planes total play, telecomunicaciones">
+	    <meta name="author" content=“designo.mx”>
 		<title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
 		<!-- CSS -->
 		<link href="materialize/css/materialize.min.css" type="text/css" rel="stylesheet" />
@@ -49,60 +37,7 @@
 		sessionStorage.removeItem("filtrosCheck");
 		sessionStorage.removeItem("filtrosCheckEmpresas");
 		sessionStorage.removeItem("filtrosCheckEmpresasStreaming");
-		//filtros.push("texto");
-		//filtros.push("texto2");
-		//sessionStorage.setItem("filtros", JSON.stringify(filtros));
-		//var getFiltros= JSON.parse(sessionStorage.getItem("filtros"));
-		//getFiltros.push("texto3");
-		//console.log(getFiltros);
-		//$.each(getFiltros, function( index, value ) {
-		//	console.log( value );
-		//});
 	</script>
-		<!--
-		<nav id="main-nav-bar" class="fix-ios-shadow">
-			<div class="nav-wrapper">
-				<a href="index.html" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
-				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
-				<ul class="right hide-on-med-and-down">
-					<li>
-						<a href="sass.html" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
-						<span class="nav-mid-line"></span>
-					</li>
-					<li>
-						<a href="badges.html" class="magictime slideUpRetourn fix-pos-nav">Enterate</a>
-						<span class="nav-mid-line"></span>
-					</li>
-					<li>
-						<a href="collapsible.html" class="magictime slideUpRetourn fix-pos-nav">Contacto</a>
-					</li>
-					<li>
-						<a href="mobile.html" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
-					</li>
-					<li>
-						<a href="mobile.html" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
-					</li>
-				</ul>
-				<ul class="side-nav" id="mobile-demo">
-					<li>
-						<a href="sass.html"><i class="fa fa-search left"></i> Descubre</a>
-					</li>
-					<li>
-						<a href="badges.html"><i class="fa fa-newspaper-o left"></i> Enterate</a>
-					</li>
-					<li>
-						<a href="collapsible.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
-					</li>
-					<li>
-						<a href="mobile.html"><i class="fa fa-twitter left"></i> Twitter</a>
-					</li>
-					<li>
-						<a href="mobile.html"><i class="fa fa-facebook left"></i> Facebook</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-		-->
 		<nav id="main-nav-bar" class="fix-ios-shadow">
 			<div class="nav-wrapper">
 				<a href="index.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
@@ -130,7 +65,7 @@
 		</nav>
 		<ul class="side-nav" id="mobile-demo">
 			<li>
-				<a href="listado-comparador.php"><i class="fa fa-search left"></i> Descubre</a>
+				<a href="index.php"><i class="fa fa-search left"></i> Descubre</a>
 			</li>
 			<li>
 				<a href="blog.php"><i class="fa fa-newspaper-o left"></i> Entérate</a>
@@ -173,31 +108,6 @@
 					</div>
 					
 					<div id="filtrosCheckCelulares"></div>
-
-					<!--
-					<div class="slider-bx clear-pad-marg">
-						<p class="truncate margin-btm-no">Modalidad</p>
-						<div class="slide-bar-bx row">
-							<div class="col s12">
-							  <input class="with-gap" name="group1" type="radio" id="test3" checked />
-							  <label for="test3">Plan</label>
-							  <input class="with-gap" name="group1" type="radio" id="test2"  />
-							  <label for="test2">Prepago</label>
-						    </div>
-						</div>
-					</div>
-					<div class="slider-bx clear-pad-marg">
-						<p class="truncate margin-btm-no">- -</p>
-						<div class="slide-bar-bx row">
-							<div class="col s12">
-							  <input type="checkbox" id="test11" />
-							  <label for="test11">Libre</label>
-							  <input type="checkbox" id="test12" />
-							  <label for="test12">Controlado</label>
-						    </div>
-						</div>
-					</div>
-					-->
 					<div id="filtros">
 						
 					</div>
@@ -212,38 +122,6 @@
 			</div>
 			<div class="clearfix"></div>
 		</div>
-
-
-
-
-
-
-
-		<!--
-		<div id="compare-tools" class="row">
-			<div class="col s12 m4">
-				<div class="input-field col s12">
-				   <div id="SelectDeEstados">
-
-				   </div>
-				 </div>
-			</div>
-			<div class="col s12 m4 elige-six-bx">
-				<span></span>
-				<p>Elige hasta 6 planes para comparar:</p>
-			</div>
-			<div class="col s12 m4 comparando-six-bx">
-				<div id="planes-seleccionados">
-					<span id="span-bx1" class="span-bx"><i class="material-icons">done</i></span>
-					<span id="span-bx2" class="span-bx"><i class="material-icons">done</i></span>
-					<span id="span-bx3" class="span-bx"><i class="material-icons">done</i></span>
-					<span id="span-bx4" class="span-bx"><i class="material-icons">done</i></span>
-					<span id="span-bx5" class="span-bx"><i class="material-icons">done</i></span>
-					<span id="span-bx6" class="span-bx"><i class="material-icons">done</i></span>
-				</div>
-			</div>
-		</div>
-		-->
 		<div id="compare-tools" class="row">
 			<div class="col s12 m4 elige-six-bx">
 				<p>Elige hasta 6 planes para comparar:</p>
@@ -262,10 +140,6 @@
 				<a id="btnComparar" class="search-btn filterBtn z-depth-1 hoverable noCompare" href="#!">Comparar <i class="fa fa-angle-right right"></i></a>
 			</div>
 		</div>
-
-
-
-
 		<div class="clearfix"></div>
 		<br />
 		<div id="blog-module" class="row grey lighten-5">
@@ -609,6 +483,7 @@
 				}else{
 					jQuery("#owl-demo").empty();
 					$("#owl-demo").data('owlCarousel').destroy();
+					var i=0;
 					$(".span-bx-selected").each(function() {
 					    // ...
 					    //.empty()
@@ -619,13 +494,16 @@
 					    	$( "#selectEstado" ).prop('disabled', 'disabled');
 					    	var data=	{
 								CompararPaqueteOTT:true,
-								id_paquete:$(this).attr("value")
+								id_paquete:$(this).attr("value"),
+								num_plan_comp:i
 							}
 					    }else{
 					    	$( "#selectEstado" ).removeAttr("disabled");
 					    	var data=	{
 								CompararPlanes:true,
-								id_plan:$(this).attr("value")
+								id_plan:$(this).attr("value"),
+								num_plan_comp:i
+
 							}
 					    }					    
 						//CargarPlanes();
@@ -639,8 +517,26 @@
 					    	//console.log(data);
 							jQuery("#owl-demo").append(data);
 							//botones();
+							$(".paq-comparado0").scroll(function(){
+		                    	$(".paq-comparado").scrollTop($(".paq-comparado0").scrollTop());
+			                });
+			                $(".paq-comparado1").scroll(function(){
+		                    	$(".paq-comparado").scrollTop($(".paq-comparado1").scrollTop());
+			                });
+			                $(".paq-comparado2").scroll(function(){
+		                    	$(".paq-comparado").scrollTop($(".paq-comparado2").scrollTop());
+			                });
+			                $(".paq-comparado3").scroll(function(){
+		                    	$(".paq-comparado").scrollTop($(".paq-comparado3").scrollTop());
+			                });
+			                $(".paq-comparado4").scroll(function(){
+		                    	$(".paq-comparado").scrollTop($(".paq-comparado4").scrollTop());
+			                });
+			                $(".paq-comparado5").scroll(function(){
+		                    	$(".paq-comparado").scrollTop($(".paq-comparado5").scrollTop());
+			                });
 					    })
-					   
+						i+=1;
 					});
 					$('#modal-comparador').show(function(){
 						if($(".item").length>0){
@@ -1011,40 +907,6 @@
 				checkMobile();
 	  	}//function CargarPlanesConFiltros()
 	  	function habilitar(item,value) {
-			//console.log("value "+value);
-			//console.log("$(item).attr('id') "+$(item).attr('id'));
-			//var value= "true";
-			/*
-	  		if(value==true)
-			{	
-				// habilitamos
-				//document.getElementById("segundo").disabled=false;
-				//window[value.value]["noUiSlider"]["get"]();
-			    var id=$(item).attr("id");
-			    //console.log(window["document"]["getElementsByClassName"](id));
-				if (window["document"]["getElementsByClassName"](id)){
-				//if(document.getElementsByClassName("checkbox1")){
-					if($('#checkbox1').is(':checked')){
-				    	$('input.checkbox1').removeAttr("disabled");
-				    	//window[id]["removeAttr"]("disabled");
-					}
-			    }
-			}else if(value==false){
-				alert("change to false");
-				//deshabilitamos
-				//document.getElementById("segundo").disabled=true;
-				if (window["document"]["getElementsByClassName"](id)){
-				//if(document.getElementsByClassName("checkbox1")){
-			    	//$($(item).attr("id")).attr("disabled", true);
-			    	//window[$(item).attr("id")]["removeAttr"]("disabled" ,true);
-			    	if(!$('#checkbox1').is(':checked')){
-				    	$( "input.checkbox1" ).prop( "checked", false );
-				    	$('input.checkbox1').attr("disabled", true);
-				    }
-			    }
-			}
-			//alert("Actualizar planes");
-			*/
 			CargarFiltrosCheckEmpresasConFiltro();
 			if($('#checkbox1').is(':checked')){
 		    	$('input.checkbox1').removeAttr("disabled");

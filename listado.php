@@ -1566,7 +1566,7 @@ if(isset($_POST['CompararPlanes'])){
 						<div class="col s12 paq-list-bx compare-status">
 							<div class="paq-content-bx">
 								<div class="brand-label" style="background-color:'.$row["empresa_color"].'">'.$row["empresa"].'</div>
-								<div class="paq-bx">
+								<div class="paq-bx paq-comparado paq-comparado'.$_POST["num_plan_comp"].'">
 									<h4 class="truncate">'.$row["nombre"].'</h4>
 									<ul>';
 										switch ($row['tipoDato1']) {
@@ -1690,7 +1690,7 @@ $i=0;
 				<div class="comparando-icons">
 					<i class="material-icons">live_tv</i>
 				</div>
-				<div class="brand-label" style="background-color: #ff671b">'.$row["nombre_empresa"].'</div>
+				<div class="brand-label"  style="background-color: #ff671b">'.$row["nombre_empresa"].'</div>
 				<div class="paq-bx">
 					<h4 class="truncate">'.$row["nombre"].'</h4>
 					<ul>
@@ -1927,7 +1927,7 @@ if(isset($_POST['CompararPaqueteOTT'])){
 			$respuesta='<div class="item" id="'.$row["id_paquete"].'">
 						<div class="col s12 paq-list-bx compare-status">
 							<div class="paq-content-bx">
-								<div class="brand-label style="background-color: #424242"" style="background-color: #424242">'.$row["nombre"].'</div>
+								<div class="brand-label" style="background-color: #ff671b">'.$row["nombre"].'</div>
 								<div class="paq-bx">
 									<h4 class="truncate"></h4>
 									<ul>
@@ -1982,7 +1982,7 @@ if(isset($_POST['verDetallesStreaming'])){
 		while($row = $result->fetch_array())
 		{
 			//array_push($rows, $row);
-			$respuesta='<div class="brand-label" style="background-color: #424242">'.$row["nombre"].'</div>
+			$respuesta='<div class="brand-label" style="background-color: #ff671b">'.$row["nombre"].'</div>
 				<h4>$'.$row["precio"].'</h4>
 				<div class="plan-main-options row">
 					<div class="col s6 m3"><p>'.$row["dato_principal_1"].'</p></div>
