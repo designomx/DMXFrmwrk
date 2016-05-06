@@ -799,7 +799,7 @@ footer.stickFoot {
 }
 #main-nav-bar {
   position: fixed;
-  z-index: 99;
+  z-index: 999;
   background: rgba(255, 255, 255, 0.75);
 }
 #main-nav-bar i,
