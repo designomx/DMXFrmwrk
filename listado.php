@@ -866,7 +866,7 @@ if(isset($_POST['verDetalles'])){
 		{
 			//array_push($rows, $row);
 			$respuesta='<div id="plan_detalles" data-id="'.$row["id_plan"].'" class="brand-label" style="background-color:'.$row["empresa_color"].'">'.$row["empresa"].'</div>
-				<h4>'.$row["nombre"].' bla bla bla- ';
+				<h4>'.$row["nombre"].' - ';
 
 			if($row['id_tipoDato_principal_1']==2 || $row['id_tipoDato_principal_2']==2 || $row['id_tipoDato_principal_3']==2 || $row['id_tipoDato_principal_4']==2){
 				if ($row["precio"]==0){
@@ -1928,7 +1928,7 @@ if(isset($_POST['CompararPaqueteOTT'])){
 						<div class="col s12 paq-list-bx compare-status">
 							<div class="paq-content-bx">
 								<div class="brand-label" style="background-color: #ff671b">'.$row["nombre"].'</div>
-								<div class="paq-bx">
+								<div class="paq-bx paq-comparado paq-comparado'.$_POST["num_plan_comp"].'">
 									<h4 class="truncate"></h4>
 									<ul>
 										<li>'.$row["dato_principal_1"].'</li>

@@ -165,11 +165,13 @@ require('blog/wp-blog-header.php');
 						</div>
 					<?php
 			    	if($insertarVideo==2){
+			    		/*
 			    		echo '<div class="col s12 timeline-banner">
 								<div class="video-container">
 									<iframe id="embed01" width="560" height="315" src="https://www.youtube.com/embed/HGb1zrXkpRA?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 								</div>
 							</div>';
+						*/
 			    	}
 		    		$cargarmas+=1;
 		    endwhile;
@@ -215,8 +217,8 @@ require('blog/wp-blog-header.php');
 								
 									<?php
 										$rem_len=97;
-										$trunc_ex = substr(get_the_excerpt(), 0, $rem_len); //truncate excerpt to fit remaining space
-										if(strlen($trunc_ex) < strlen(get_the_excerpt())) $trunc_ex = $trunc_ex . " [...]";
+										$trunc_ex = substr(get_the_title(), 0, $rem_len); //truncate excerpt to fit remaining space
+										if(strlen($trunc_ex) < strlen( get_the_title())) $trunc_ex = $trunc_ex . " [...]";
 										echo "<p>" . $trunc_ex . "</p>"; //display excerpt
 									?>
 								
@@ -384,7 +386,7 @@ require('blog/wp-blog-header.php');
 			  <div class="modal-content">
 			  	<img class="centerlogo" src="images/logo_eligefacil.png" width="159" alt="" />
 			  	<br />
-			    <p class="center centerlogo" style="max-width: 300px;">Pregistrate y obtén antes que nadie acceso exclusivo a nuestra plataforma.</p>
+			    <p class="center centerlogo" style="max-width: 300px;">Pre-regístrate y obtén antes que nadie acceso exclusivo a nuestra plataforma.</p>
 			    <div class="clearfix"></div>
 			    <br />
 			    <form class="col s12" id="RegistrarUsuario">
@@ -517,6 +519,7 @@ require('blog/wp-blog-header.php');
 
 			function CargarAnuncio(){
 				if($('.AnuncioHomeDerecho').length){
+					/*
 					var data={
 							CargarAnuncio:true,
 							id_anuncio:3
@@ -536,8 +539,10 @@ require('blog/wp-blog-header.php');
 				    	console.log(data);
 				    	window.location.href = "index.php";
 				    });
+				    */
 				}
 				if($('.AnuncioComparadorCentro').length){
+					/*
 					var data={
 							CargarAnuncio:true,
 							id_anuncio:5
@@ -557,6 +562,7 @@ require('blog/wp-blog-header.php');
 				    	console.log(data);
 				    	window.location.href = "index.php";
 				    });
+				    */
 				}
 			}
 

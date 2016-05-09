@@ -414,6 +414,7 @@ class YourImagick extends Imagick
         CargarAnuncio();
       });
       function CargarAnuncio(){
+        /*
         if($('.AnuncioHomeDerecho').length){
           var data={
               CargarAnuncio:true,
@@ -457,6 +458,7 @@ class YourImagick extends Imagick
               window.location.href = "index.php";
             });
         }
+        */
       }
     </script>
   </body>

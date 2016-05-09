@@ -1050,6 +1050,7 @@
 				   sessionStorage.setItem("CargaInicial", "0");
 				   CargarPlanes();
 				   getUrlParameterPlan("plan");
+				   CargarFiltrosSliders();
 				});
 				CargarAnuncio();
 				document.querySelector('#filter-go').scrollIntoView();
@@ -1065,6 +1066,7 @@
 				   //alert('All AJAX Methods Have Completed!');
 				   sessionStorage.setItem("CargaInicial", "0");
 				   CargarPlanes();
+				   CargarFiltrosSliders();
 				});
 				CargarAnuncio();
 				document.querySelector('#filter-go').scrollIntoView();
@@ -1304,37 +1306,30 @@
 					data: data
 				})
 			    .done(function(data){
-					jQuery("#filtros").html(data);
-					var _widthSlides = 0;
-			 		jQuery('.sliders-wrapp .slider-bx').each(function() {
-			 		    _widthSlides += jQuery(this).outerWidth( true );
+					jQuery("#filtros").html(data);	 	
+			 		var _widthSlides = 0;
+			 		$('.sliders-wrapp .slider-bx').each(function() {
+			 		    _widthSlides += $(this).outerWidth( true );
 			 		});
-			 		jQuery('.sliders-wrapp').css('width', _widthSlides);
+			 		$('.sliders-wrapp').css('width', _widthSlides);
 			 	
 			 		if (isMobile.any == false) {
-			 			jQuery(".sliders-scroll-bx").mCustomScrollbar({
+			 			$(".sliders-scroll-bx").mCustomScrollbar({
 							axis: "x",
 							theme: "dark-thin",
 							autoHideScrollbar: true,
 							updateOnContentResize: true
 						});
-						jQuery(".checks-scroll-bx form").mCustomScrollbar({
+						$(".checks-scroll-bx form").mCustomScrollbar({
 							axis: "y",
 							theme: "dark-thin",
 							autoHideScrollbar: true,
 							updateOnContentResize: true
 						});
-						$(".scroll-box").mCustomScrollbar({
-							axis: "x",
-							theme: "minimal",
-							updateOnContentResize: true
-						});
 			 		}else {
-			 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form").addClass('ismobilescroll');
+			 			$(".sliders-scroll-bx, .checks-scroll-bx form").addClass('ismobilescroll');
 			 		}
-			 		$(".sliders-scroll-bx").mCustomScrollbar("update");
-
-
+			 		$('.sliders-scroll-bx').mCustomScrollbar("update");
 			    })
 			    .fail(function(data){
 			    	console.log(data);
@@ -1364,8 +1359,7 @@
 			 		jQuery('.sliders-wrapp .slider-bx').each(function() {
 			 		    _widthSlides += jQuery(this).outerWidth( true );
 			 		});
-			 		jQuery('.sliders-wrapp').css('width', _widthSlides);
-			 	
+			 		jQuery('#filtros').css('width', _widthSlides);
 			 		if (isMobile.any == false) {
 			 			jQuery(".sliders-scroll-bx").mCustomScrollbar({
 							axis: "x",
@@ -1389,11 +1383,7 @@
 			 		}else {
 			 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form .sliders-wrapp").addClass('ismobilescroll');
 			 		}
-			 		//jQuery('.sliders-scroll-bx').css('width', _widthSlides);
-			 		//console.log(".sliders-scroll-bx .sliders-wrapp update")
-			 		$(".sliders-scroll-bx .sliders-wrapp").mCustomScrollbar("update");
-
-
+			 		$('.sliders-scroll-bx').mCustomScrollbar("update");
 			    })
 			    .fail(function(data){
 			    	console.log(data);
@@ -1639,7 +1629,7 @@
 					}
 
 
-					CargarFiltrosSliders();
+					//CargarFiltrosSliders();
 					if(sessionStorage.getItem("ServicioCelular")==1){
 						CargarFiltrosCheck();
 					}

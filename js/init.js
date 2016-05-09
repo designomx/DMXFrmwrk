@@ -529,7 +529,8 @@ FRMWRK.main = (function($) {
 			_positionWidget();
 			_homeSlideFade();
 			_selectDflt();
-			_slideInBanner();
+			//_slideInBanner();
+			$('#slide-in-banner').hide();
 			_timeLineBanner();
 			_fixedFiltersBx();
 			_fixedCompareH();

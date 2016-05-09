@@ -278,11 +278,13 @@ class YourImagick extends Imagick
 		        
 		    	<?php
 			    	if($insertarVideo==2){
+			    		/*
 			    		echo '<div class="col s12 timeline-banner">
 								<div class="video-container">
 									<iframe id="embed01" width="560" height="315" src="https://www.youtube.com/embed/HGb1zrXkpRA?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 								</div>
 							</div>';
+						*/
 			    	}
 		    		$cargarmas+=1;
 		    	}
@@ -443,6 +445,7 @@ class YourImagick extends Imagick
 			}
 			function CargarAnuncio(){
 				if($('.AnuncioHomeDerecho').length){
+					/*
 					var data={
 							CargarAnuncio:true,
 							id_anuncio:3
@@ -463,8 +466,10 @@ class YourImagick extends Imagick
 				    	console.log(data);
 				    	window.location.href = "index.php";
 				    });
+				    */
 				}
 				if($('.AnuncioComparadorCentro').length){
+					/*
 					var data={
 							CargarAnuncio:true,
 							id_anuncio:5
@@ -484,6 +489,7 @@ class YourImagick extends Imagick
 				    	console.log(data);
 				    	window.location.href = "index.php";
 				    });
+				 	*/
 				}
 			}
 		</script>
