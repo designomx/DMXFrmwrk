@@ -32,6 +32,34 @@ class YourImagick extends Imagick
     <meta name="description" content="Elige, filtra y compara Planes de Telefonía, Teléfono, Internet, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
     <meta name="keywords" content="Comparador, Telefonía fija, telefonía móvil, planes celulares, planes internet, planes telcel, planes movistar, planes virgin, planes at&amp;t, planes axtel, planes iizzi, planes total play, telecomunicaciones">
     <meta name="author" content=“designo.mx”>
+    <!-- Facebook meta -->
+<?php
+if ( have_posts() ) {
+      while ( have_posts() ) {
+        the_post(); 
+        $titulo=get_the_title();
+        $src = wp_get_attachment_image_src( get_post_thumbnail_id($PostID), array( 1280,800 ), false, '' );
+        $the_excerpt=get_the_excerpt();
+        $PostID = get_the_ID();
+?>
+
+
+    <meta property="og:url"                content="http://www.eligefacil.com/blog/?p=<?php echo $PostID; ?>" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="<?php echo $titulo;?>" />
+    <meta property="og:description"        content="<?php echo $the_excerpt; ?>" />
+    <meta property="og:image"              content="<?php echo $src[0]?>" />
+    <meta property="fb:app_id"        content= '1167858986565708'/>
+
+    <!--twitter meta -->
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@EligeFacil">
+    <meta name="twitter:title" content="<?php echo $titulo;?>">
+    <meta name="twitter:description" content="<?php echo $the_excerpt; ?>">
+    <meta name="twitter:image:src" content="<?php echo $src[0]?>">
+
+
     <title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
     <!-- CSS -->
     <link href="../../../materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="all" />
@@ -45,6 +73,23 @@ class YourImagick extends Imagick
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
+    <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1167858986565708',
+        xfbml      : true,
+        version    : 'v2.6'
+      }, {scope: 'email'});
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
     <nav id="main-nav-bar">
       <div class="nav-wrapper" class="fix-ios-shadow">
         <a href="http://www.eligefacil.com/blog.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="../../../images/logo_eligefacil_blog.png" width="159" alt="" /></a>
@@ -96,9 +141,7 @@ class YourImagick extends Imagick
     <br />
     <?php
 
-    if ( have_posts() ) {
-      while ( have_posts() ) {
-        the_post(); 
+    
         //the_content();
         //
         // Post Content here
@@ -107,8 +150,12 @@ class YourImagick extends Imagick
       $permalink = get_permalink();
 
       //$contenido=get_the_content();
-        
+      $titulo=get_the_title();
+
+
     ?>
+    <script type="text/javascript">
+    </script>
 
         <div id="contact-module" class="row grey lighten-5 contact-module">
           <div class="post-page-bx row">
@@ -310,15 +357,7 @@ class YourImagick extends Imagick
         });
     </script>
     <div id="fb-root"></div>
-    <script>
-      (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.5&appId=1167858986565708";
-            fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk'));
-    </script>
+
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

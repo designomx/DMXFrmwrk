@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
 
 if(isset($_POST['email'])){
 	$email = $_POST["email"];
@@ -93,7 +94,7 @@ if (preg_match($regex, $email) && preg_match($regexNombre, $nombre)) {
 	</head>
 	<body>';
 	//e988b5526b6a9a91911f83ca1cc737c7 = md5(eligefacil)
-	$message .= '<p><h3>&iexcl;Decidir nunca fue tan simple!</h3> </p><p>Hola, '.$nombre.'</p>
+	$message .= '<p><h3>!Decidir nunca fue tan simple!</h3> </p><p>Hola, '.$nombre.'</p>
 	  <p>Gracias por visitar Elige Fácil, para acceder antes que nadie te generamos el siguiente enlace:</p>
 	  <p><a href="http://www.eligefacil.com/index.php?ll=e988b5526b6a9a91911f83ca1cc737c7"> - Presiona este link para obtener acceso exclusivo -</a> </p>';
 	$message.='
@@ -103,7 +104,7 @@ if (preg_match($regex, $email) && preg_match($regexNombre, $nombre)) {
 
 	// To send HTML mail, the Content-type header must be set
 	$headers  = 'MIME-Version: 1.0' .PHP_EOL;
-	$headers .= 'Content-type: text/html; charset=iso-8859-1' .PHP_EOL;
+	$headers .= 'Content-type: text/html; charset=utf-8' .PHP_EOL;
 
 	// Additional headers
 	//$headers .= 'To: Designo <emilioo@designo.mx>, Gmail <oemilio16@gmail.com>' . "\r\n";

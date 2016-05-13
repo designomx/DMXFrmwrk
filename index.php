@@ -14,6 +14,21 @@ require('blog/wp-blog-header.php');
 		<meta name="description" content="Elige, filtra y compara Planes de Telefonía, Teléfono, Internet, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
 		<meta name="keywords" content="Comparador, Telefonía fija, telefonía móvil, planes celulares, planes internet, planes telcel, planes movistar, planes virgin, planes at&amp;t, planes axtel, planes iizzi, planes total play, telecomunicaciones">
 		<meta name="author" content=“designo.mx”>
+		<!-- Facebook meta -->
+		<meta property="og:title" content="Elige Fácil | ¡Decidir nunca fue tan simple!">
+		<meta property="og:site_name" content="Elige Fácil | ¡Decidir nunca fue tan simple!">
+		<meta property="og:url" content="http://www.eligefacil.com">
+		<meta property="og:description" content="Elige, filtra y compara Planes de telefonía móvil, fija, Internet, televisión, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
+		<meta property="og:image"              content="http://www.eligefacil.com/images/home-card.jpg" />
+		<meta property="fb:app_id" content="1167858986565708">
+		<meta property="og:type" content="website">
+		<!--Twitter meta-->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@EligeFacil">
+		<meta name="twitter:title" content="¡Decidir nunca fue tan simple!">
+		<meta name="twitter:description" content="Elige, filtra y compara Planes de telefonía móvil, fija, Internet, televisión, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
+		<meta name="twitter:image:src" content="http://www.eligefacil.com/images/home-card.jpg">
+
 		<title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
 		<!-- CSS -->
 		<link href="materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="all" />
@@ -25,6 +40,8 @@ require('blog/wp-blog-header.php');
 		<!-- This is FontsAwesome 4.3.0-->
 		<link href="fawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
 	</head>
 	<script>
 	  window.fbAsyncInit = function() {
@@ -54,7 +71,7 @@ require('blog/wp-blog-header.php');
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="blog.php" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
+						<a href="blog" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
@@ -74,7 +91,7 @@ require('blog/wp-blog-header.php');
 				<a href="index.php"><i class="fa fa-search left"></i> Descubre</a>
 			</li>
 			<li>
-				<a href="blog.php"><i class="fa fa-newspaper-o left"></i> Entérate</a>
+				<a href="blog"><i class="fa fa-newspaper-o left"></i> Entérate</a>
 			</li>
 			<li>
 				<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>

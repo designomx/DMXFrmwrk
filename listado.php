@@ -1055,22 +1055,28 @@ if(isset($_POST['verDetalles'])){
 								<br />';
 					}
 				}
-			$urlShare="http://www.eligefacil.com/stage/NewSite/listado-comparador.php?l=".$_POST["estado"];
+			$urlShare="http://www.eligefacil.com/listado-comparador.php?l=".$_POST["estado"];
+			$urlFBShare="http://www.eligefacil.com/fb_compare_share.php?l=".$_POST["estado"];
 			if($_POST["celular"]==1){
 				$urlShare.="&s[]=1";
+				$urlFBShare.="&s[]=1";
 			}
 			if($_POST["telefono"]==1){
 				$urlShare.="&s[]=2";
+				$urlFBShare.="&s[]=2";
 			}
 			if($_POST["internet"]==1){
 				$urlShare.="&s[]=3";
+				$urlFBShare.="&s[]=3";
 			}
 			if($_POST["television"]==1){
 				$urlShare.="&s[]=4";
+				$urlFBShare.="&s[]=4";
 			}
 			$urlShare.="&plan[]=".$row["id_plan"];
+			$urlFBShare.="&plan[]=".$row["id_plan"];
 			$url=urlencode($urlShare);
-			
+			$urlFB=urlencode($urlFBShare);
 
 			$footer.='<div class="modal-footer">
 							<a href="#!" class="modal-action modal-close waves-effect btn-flat grey white-text" id="plan_'.$row["id_plan"].'" onclick="Comparar(this,'.$row["id_plan"].','."'".$row["empresa_color"]."'".')">Comparar</a>
@@ -1082,10 +1088,10 @@ if(isset($_POST['verDetalles'])){
 					   </a>
 						<ul>
 							<li>
-								<a href="https://www.facebook.com/sharer/sharer.php?u='.$url.'" target="_blank" class="btn-floating light-blue darken-4"><i class="fa fa-facebook"></i></a>
+								<a href="https://www.facebook.com/sharer/sharer.php?u='.$urlFB.'" target="_blank" class="btn-floating light-blue darken-4"><i class="fa fa-facebook"></i></a>
 							</li>
 							<li>
-								<a href="https://twitter.com/home?status='.$url.'" target="_blank" class="btn-floating light-blue lighten-2"><i class="fa fa-twitter"></i></a>
+								<a href="https://twitter.com/home?status='.$urlFB.'" target="_blank" class="btn-floating light-blue lighten-2"><i class="fa fa-twitter"></i></a>
 							</li>
 							<li>
 								<a onclick="ShareSingle('.$row["id_plan"].')" data-target="modalMailShare" class="btn-floating grey darken-1 btn modal-trigger" href="#modalMailShare"><i class="fa fa-envelope"></i></a>

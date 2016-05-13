@@ -10,6 +10,22 @@
 		<meta name="description" content="Elige, filtra y compara Planes de Telefonía, Teléfono, Internet, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
 		<meta name="keywords" content="Comparador, Telefonía fija, telefonía móvil, planes celulares, planes internet, planes telcel, planes movistar, planes virgin, planes at&amp;t, planes axtel, planes iizzi, planes total play, telecomunicaciones">
 		<meta name="author" content=“designo.mx”>
+		<!--Facebook meta-->
+		<meta property="og:url"                content="http://www.eligefacil.com/quienes-somos.html" />
+		<meta property="og:type"               content="website" />
+		<meta property="og:title"              content="Elige Fácil" />
+		<meta property="og:description"        content="Elige, filtra y compara Planes de Telefonía, Teléfono, Internet, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos." />
+		<meta property="og:image"              content="http://www.eligefacil.com/images/eligefacil.jpg" />
+		<meta property="fb:app_id"				content= '1167858986565708'/>
+		<!--Twitter meta-->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@EligeFacil">
+		<meta name="twitter:title" content="¡Decidir nunca fue tan simple!">
+		<meta name="twitter:description" content="Elige, filtra y compara Planes de telefonía móvil, fija, Internet, televisión, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
+		<meta name="twitter:image:src" content="http://www.eligefacil.com/images/home-card.jpg">
+
+
+
 		<title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
 		<!-- CSS -->
 		<link href="materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="all" />
@@ -23,6 +39,23 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
 	<body>
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '1167858986565708',
+	      xfbml      : true,
+	      version    : 'v2.6'
+	    }, {scope: 'email'});
+	  };
+
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
 		<nav id="main-nav-bar">
 			<div class="nav-wrapper" class="fix-ios-shadow">
 				<a href="index.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
@@ -169,15 +202,7 @@
 		  	});
 		</script>
 		<div id="fb-root"></div>
-		<script>
-			(function(d, s, id) {
-					  var js, fjs = d.getElementsByTagName(s)[0];
-					  if (d.getElementById(id)) return;
-					  js = d.createElement(s); js.id = id;
-					  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.5&appId=1167858986565708";
-					  fjs.parentNode.insertBefore(js, fjs);
-					}(document, 'script', 'facebook-jssdk'));
-		</script>
+
 		<script type="text/javascript">
 			$( "#descubreBTN" ).click(function() {
 				if (sessionStorage.getItem("estado") === null) {

@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
 /*
 $_POST["nombre"];
 $_POST["email"];
@@ -169,7 +170,7 @@ $message.='<p>Comentario:</p><p>'.$_POST["comentario"].'</p>
 
 // To send HTML mail, the Content-type header must be set
 $headers  = 'MIME-Version: 1.0' .PHP_EOL;
-$headers .= 'Content-type: text/html; charset=iso-8859-1' .PHP_EOL;
+$headers .= 'Content-type: text/html; charset=utf-8' .PHP_EOL;
 
 // Additional headers
 //$headers .= 'To: Designo <emilioo@designo.mx>, Gmail <oemilio16@gmail.com>' . "\r\n";

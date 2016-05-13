@@ -48,7 +48,7 @@
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
-						<a href="blog.php" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
+						<a href="blog" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
@@ -68,7 +68,7 @@
 				<a href="index.php"><i class="fa fa-search left"></i> Descubre</a>
 			</li>
 			<li>
-				<a href="blog.php"><i class="fa fa-newspaper-o left"></i> Entérate</a>
+				<a href="blog"><i class="fa fa-newspaper-o left"></i> Entérate</a>
 			</li>
 			<li>
 				<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
@@ -2174,7 +2174,7 @@
 		function CompartirComparacionFacebook(){
 			//ev.preventDefault();
 			var urlFacebook="https://www.facebook.com/sharer/sharer.php?u=";
-			var url="http://www.eligefacil.com/stage/NewSite/listado-comparador.php?";
+			var url="http://www.eligefacil.com/fb_compare_share.php?";
 			var i=0;
 			url=url+"l="+$( "#selectEstado" ).val();
 			if(sessionStorage.getItem("ServicioCelular")==1){
@@ -2199,6 +2199,8 @@
 			});
 			var res = encodeURIComponent(url);
 			res=urlFacebook+res;
+			//window.open(res,'_blank');
+			console.log(res);
 			window.open(res,'_blank');
 			//window.location=url;
 			return false;
@@ -2206,7 +2208,7 @@
 
 		function CompartirComparacionTwitter(){
 			var urlTwitter="https://twitter.com/home?status=";
-			var url="http://www.eligefacil.com/stage/NewSite/listado-comparador.php?";
+			var url="http://www.eligefacil.com/fb_compare_share.php?";
 			$( ".span-bx-selected" ).each(function( index ) {
 			  //console.log( $( this ).attr("value") );
 			  url=url+"l="+$( "#selectEstado" ).val();
