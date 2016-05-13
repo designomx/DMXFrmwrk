@@ -19,7 +19,7 @@ require('blog/wp-blog-header.php');
 		<meta property="og:site_name" content="Elige Fácil | ¡Decidir nunca fue tan simple!">
 		<meta property="og:url" content="http://www.eligefacil.com">
 		<meta property="og:description" content="Elige, filtra y compara Planes de telefonía móvil, fija, Internet, televisión, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
-		<meta property="og:image"              content="http://www.eligefacil.com/images/home-card.jpg" />
+		<meta property="og:image"              content="http://www.eligefacil.com/images/home-card-fb.jpg" />
 		<meta property="fb:app_id" content="1167858986565708">
 		<meta property="og:type" content="website">
 		<!--Twitter meta-->
@@ -27,7 +27,7 @@ require('blog/wp-blog-header.php');
 		<meta name="twitter:site" content="@EligeFacil">
 		<meta name="twitter:title" content="¡Decidir nunca fue tan simple!">
 		<meta name="twitter:description" content="Elige, filtra y compara Planes de telefonía móvil, fija, Internet, televisión, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
-		<meta name="twitter:image:src" content="http://www.eligefacil.com/images/home-card.jpg">
+		<meta name="twitter:image:src" content="http://www.eligefacil.com/images/home-card-tw.jpg.jpg">
 
 		<title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
 		<!-- CSS -->

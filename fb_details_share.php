@@ -10,7 +10,7 @@
 	<meta property="og:site_name" content="EligeFacil.com">
 	<meta property="og:url" content="http://www.eligefacil.com/fb_details_share.php">
 	<meta property="og:description" content="Elige, filtra y compara Planes de telefonía móvil, fija, Internet, televisión, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
-	<meta property="og:image" content="http://www.eligefacil.com/images/detalles-card.jpg" />
+	<meta property="og:image" content="http://www.eligefacil.com/images/detalles-card-fb.jpg" />
 	<meta property="fb:app_id" content="1167858986565708">
 	<meta property="og:type" content="website">
 
@@ -20,7 +20,7 @@
 	<meta name="twitter:site" content="@EligeFacil">
 	<meta name="twitter:title" content="Encontré esto en EligeFacil.com">
 	<meta name="twitter:description" content="Elige, filtra y compara Planes de telefonía móvil, fija, Internet, televisión, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
-	<meta name="twitter:image:src" content="http://www.eligefacil.com/images/detalles-card.jpg">
+	<meta name="twitter:image:src" content="http://www.eligefacil.com/images/detalles-card-tw.jpg">
 
 
 </head>
