@@ -27,7 +27,7 @@ require('blog/wp-blog-header.php');
 		<meta name="twitter:site" content="@EligeFacil">
 		<meta name="twitter:title" content="¡Decidir nunca fue tan simple!">
 		<meta name="twitter:description" content="Elige, filtra y compara Planes de telefonía móvil, fija, Internet, televisión, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
-		<meta name="twitter:image:src" content="http://www.eligefacil.com/images/home-card-tw.jpg.jpg">
+		<meta name="twitter:image" content="http://www.eligefacil.com/images/home-card-tw.jpg.jpg">
 
 		<title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
 		<!-- CSS -->
@@ -67,7 +67,7 @@ require('blog/wp-blog-header.php');
 				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 				<ul class="right hide-on-med-and-down">
 					<li>
-						<a id="descubreBTN" href="listado-comparador.php" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
+						<a href="index.php" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
 						<span class="nav-mid-line"></span>
 					</li>
 					<li>
@@ -78,7 +78,7 @@ require('blog/wp-blog-header.php');
 						<a href="contacto.html" class="magictime slideUpRetourn fix-pos-nav">Contacto</a>
 					</li>
 					<li>
-						<a href="www.twitter.com/EligeFacil" target="_blank" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
+						<a href="http://www.twitter.com/EligeFacil" target="_blank" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
 					</li>
 					<li>
 						<a href="https://www.facebook.com/EligeFacil" target="_blank" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>

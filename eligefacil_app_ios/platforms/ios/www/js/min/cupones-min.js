@@ -1,0 +1,1 @@
+TOOTH.cupones=function($){var n=function(){toast('<span class="left">&nbsp;&nbsp;Aquí administras tus cupones<span>',5e3,"")},s=function(){};return{init:function(){n()}}}(jQuery);

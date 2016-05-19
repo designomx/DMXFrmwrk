@@ -1,4 +1,6 @@
 <?php
+ header('Access-Control-Allow-Origin: *');  
+
 /*
 Archivo que recibe las peticiones de listar los distintos planes, así como de los filtros si los tuviese la llamada, con las distintas formas de filtrar.
 
@@ -167,9 +169,9 @@ if(isset($_POST['listadoSimple'])){
 				if($random==$publicidad){
 					$respuesta=$respuesta.'	<div id="cargarmas'.$i.'" class="col s12 m6 l4 paq-list-bx cargarmas">
 												<div class="paq-content-bx banner-ovrflw">
-													<a href="http://axtel.mx" target="_blank" class="go-banner"></a>
-													<img src="images/banner-grid.jpg" alt="" class="banner-art" />
-													<img src="images/banner-grid.jpg" alt="" class="banner-art" />
+													<a href="http://www.eligefacil.com" target="_blank" class="go-banner"></a>
+													<img src="images/promo-grid.jpg" alt="" class="banner-art" />
+													<img src="images/promo-grid.jpg" alt="" class="banner-art" />
 												</div>
 											</div>';
 					$i+=1;
@@ -1056,7 +1058,7 @@ if(isset($_POST['verDetalles'])){
 					}
 				}
 			$urlShare="http://www.eligefacil.com/listado-comparador.php?l=".$_POST["estado"];
-			$urlFBShare="http://www.eligefacil.com/fb_compare_share.php?l=".$_POST["estado"];
+			$urlFBShare="http://www.eligefacil.com/fb_details_share.php?l=".$_POST["estado"];
 			if($_POST["celular"]==1){
 				$urlShare.="&s[]=1";
 				$urlFBShare.="&s[]=1";
@@ -1096,7 +1098,7 @@ if(isset($_POST['verDetalles'])){
 							<li>
 								<a onclick="ShareSingle('.$row["id_plan"].')" data-target="modalMailShare" class="btn-floating grey darken-1 btn modal-trigger" href="#modalMailShare"><i class="fa fa-envelope"></i></a>
 							</li>
-							<li>
+							<li id="btnImprimir">
 								<a href="print-paq.php?plan='.$row["id_plan"].'" onclick="ImprimirPlan(this,'.$row["id_plan"].')" class="btn-floating red accent-4" target="_blank"><i class="fa fa-print"></i></a>
 							</li>
 						</ul>
@@ -1339,9 +1341,9 @@ if (isset($_POST['filtros'])) {
 		if($random==$publicidad){
 			$respuesta=$respuesta.'	<div id="cargarmas'.$i.'" class="col s12 m6 l4 paq-list-bx cargarmas">
 										<div class="paq-content-bx banner-ovrflw">
-											<a href="http://axtel.mx" target="_blank" class="go-banner"></a>
-											<img src="images/banner-grid.jpg" alt="" class="banner-art" />
-											<img src="images/banner-grid.jpg" alt="" class="banner-art" />
+											<a href="http://www.eligefacil.com" target="_blank" class="go-banner"></a>
+											<img src="images/promo-grid.jpg" alt="" class="banner-art" />
+											<img src="images/promo-grid.jpg" alt="" class="banner-art" />
 										</div>
 									</div>';
 			$i+=1;

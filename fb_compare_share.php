@@ -20,7 +20,7 @@
 	<meta name="twitter:site" content="@EligeFacil">
 	<meta name="twitter:title" content="Checa esta comparativa en EligeFacil.com">
 	<meta name="twitter:description" content="Elige, filtra y compara Planes de telefonía móvil, fija, Internet, televisión, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
-	<meta name="twitter:image:src" content="http://www.eligefacil.com/images/compara-card-tw.jpg">
+	<meta name="twitter:image" content="http://www.eligefacil.com/images/compara-card-tw.jpg">
 
 </head>
 <body>
