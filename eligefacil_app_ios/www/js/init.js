@@ -184,7 +184,7 @@ FRMWRK.main = (function($) {
 
 			window.setTimeout(function() {
 				overlay.update({
-					icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+					icon: "images/check.png",
 					text: "Listo"
 				});
 			}, 1000);
