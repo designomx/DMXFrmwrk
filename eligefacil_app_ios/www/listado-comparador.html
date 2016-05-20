@@ -755,7 +755,7 @@
 						jQuery('.modal-trigger').leanModal();
 						window.setTimeout(function() {
 							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								icon: "img/check.png",
 								text: "Listo"
 							});
 						}, 1000);
@@ -878,7 +878,7 @@
 						cargarmas();
 						window.setTimeout(function() {
 							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								icon: "img/check.png",
 								text: "Listo"
 							});
 						}, 1000);
@@ -895,7 +895,7 @@
 				    	setTimeout($.unblockUI, 1000);
 				    	window.setTimeout(function() {
 							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								icon: "img/cross.png",
 								text: "ERROR"
 							});
 						}, 1000);
@@ -1148,7 +1148,7 @@
 				cargarmas();
 				window.setTimeout(function() {
 					overlay.update({
-						icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+						icon: "img/check.png",
 						text: "Listo"
 					});
 				}, 1000);
@@ -1172,7 +1172,7 @@
 		    	setTimeout($.unblockUI, 1000);
 				window.setTimeout(function() {
 					overlay.update({
-						icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+						icon: "img/check.png",
 						text: "Listo"
 					});
 				}, 1000);
@@ -1860,7 +1860,7 @@
 				telefono:sessionStorage.getItem("ServicioTelefono"),
 				television:sessionStorage.getItem("ServicioTelevision"),
 				streaming:sessionStorage.getItem("ServicioStreaming"),
-				estado:$( "#selectEstado" ).val(),
+				estado:sessionStorage.getItem("estado"),
 				CelularPlan:plan,
 				CelularPrepago:prepago
 			}
@@ -1947,7 +1947,7 @@
 					$( "#SingleToEmail" ).val("");
 		    		window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "img/check.png",
 							text: "Listo"
 						});
 					}, 1000);
@@ -1960,7 +1960,7 @@
 		    		//alert("false");
 		    		window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "img/cross.png",
 							text: "ERROR"
 						});
 					}, 1000);
@@ -2026,7 +2026,7 @@
 					$( "#CompareToEmail" ).val("");
 		    		window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "img/cross.png",
 							text: "Listo"
 						});
 					}, 1000);
@@ -2039,7 +2039,7 @@
 		    		//alert("false");
 		    		window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "img/cross.png",
 							text: "ERROR"
 						});
 					}, 1000);
@@ -2055,7 +2055,7 @@
 		    	console.log(data);
 		    	window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "img/cross.png",
 							text: "ERROR"
 						});
 					}, 1000);
