@@ -184,7 +184,7 @@ FRMWRK.main = (function($) {
 
 			window.setTimeout(function() {
 				overlay.update({
-					icon: "images/check.png",
+					icon: "/images/check.png",
 					text: "Listo"
 				});
 			}, 1000);
