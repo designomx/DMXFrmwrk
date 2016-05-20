@@ -200,6 +200,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 510;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = A3M9C642NY;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "EligeFacil" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -297,7 +302,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Designoemeequis, S.A de C.V. (A3M9C642NY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -308,6 +314,7 @@
 				INFOPLIST_FILE = "EligeFacil/EligeFacil-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = EligeFacil;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -320,7 +327,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Designoemeequis, S.A de C.V. (A3M9C642NY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EligeFacil/EligeFacil-Prefix.pch";
@@ -328,6 +336,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "EligeFacil/EligeFacil-Info.plist";
 				PRODUCT_NAME = EligeFacil;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
