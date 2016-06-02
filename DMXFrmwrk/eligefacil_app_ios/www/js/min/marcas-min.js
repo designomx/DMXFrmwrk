@@ -1,0 +1,1 @@
+TOOTH.marcas=function($){Dropzone.autoDiscover=!1;var n=function(){toast('<span class="left">&nbsp;&nbsp;Tus Marcas<span>',5e3,"")},s=function(){};return{init:function(){n()}}}(jQuery);
