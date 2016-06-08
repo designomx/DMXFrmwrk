@@ -26,7 +26,7 @@
 	</head>
 	<body>
 	<script src="js/nouislider.min.js"></script>
-	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="js/fadeSlideShow.js"></script>
 
 
