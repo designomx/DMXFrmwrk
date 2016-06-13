@@ -25,7 +25,7 @@
 
 </head>
 <body>
-	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/jquery-2.2.3.min.js"></script>
 	<script src="js/url.js"></script>
 	<script type="text/javascript">
 		window.fbAsyncInit = function() {

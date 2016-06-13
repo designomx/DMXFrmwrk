@@ -222,7 +222,7 @@
 				</span>
 			</div>
 			<div class="col s12 m4">
-				<a class="search-btn filterBtn z-depth-1 hoverable noCompare" href="#!">Comparar <i class="fa fa-angle-right right"></i></a>
+				<a class="search-btn filterBtn z-depth-1 hoverable noCompare modal-trigger" href="#modal-comparador">Comparar <i class="fa fa-angle-right right"></i></a>
 			</div>
 		</div>
 		<div class="clearfix"></div>
@@ -789,10 +789,15 @@
 									<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
 								</div>
 								<div class="paq-price">$275</div>
-								<div class="more-actions-bx">
+								<!--<div class="more-actions-bx">
 									<a href="#!" class="grey"></a>
 									<a href="#!" class="compare-slct grey"></a>
 									<a href="#!" class="compare-delete">Eliminar</a>
+									<div class="clearfix"></div>
+								</div>-->
+								<div class="more-actions-bx comparetratation">
+									<a href="#!" class="grey white-text text-white">Eliminar</a>
+									<a href="#contractModal" class="compare-slct orange accent-4 modal-trigger">Contratar <i class="material-icons">done</i></a>
 									<div class="clearfix"></div>
 								</div>
 							</div>
@@ -1087,6 +1092,54 @@
 				<a href="#!" class="modal-action modal-close waves-effect btn-flat">Enviar</a>
 			</div>
 		</div>
+		
+		<!-- Modal Contratacion -->
+		  <div id="contractModal" class="modal modal-fixed-footer" style="width: 300px;">
+		    <div class="modal-content">
+		      <h4>Contratación</h4>
+		      <p>Contrata este servicio ahora:</p>
+		      <hr />	
+		      <p>Teléfono:
+		      	<a href="tel:018001205000">01 800 120 5000</a>
+		      </p>
+		      <p>CDMX y Area metro.:
+		      	<a href="tel:018001205000">5520 5000</a>
+		      </p>
+		      <p>Chat:
+		      	<a href="http://www.izzi.mx/webApps/chat" target="_blank">Iniciar Chat ahora</a>
+		      </p>
+		      <p>Vía mail:
+		      	<a href="tel:018001205000">ventas@izzi.mx</a>
+		      </p>
+		      <form class="col s12">
+		        <div class="row">
+		        	<hr />
+		          <h5>Quiero que me llamen</h5>
+		          <div class="input-field col s12">
+		            <input id="first_name" type="text" class="validate">
+		            <label for="first_name">Nombre</label>
+		          </div>
+		          <div class="input-field col s12">
+		            <input id="last_name" type="email" class="validate">
+		            <label for="last_name">Correo</label>
+		          </div>
+		          <div class="input-field col s12">
+		            <input id="last_name" type="email" class="validate">
+		            <label for="last_name">Tel. Fijo</label>
+		          </div>
+		          <div class="input-field col s12">
+		            <input id="last_name" type="email" class="validate">
+		            <label for="last_name">Tel. Móvil</label>
+		          </div>
+		        </div>
+		        <a href="#!" class="btn orange accent-4" style="width: 100%;">Enviar</a>
+		      </form>
+		    </div>
+		    <div class="modal-footer">
+		      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+		    </div>
+		  </div>
+		
 		<!--BANNER SLIDE DOWN-->
 		<div id="slide-in-banner" class="z-depth-2">
 			<a href="#!" target="_blank"><img src="images/banner-base.jpg" alt="" /></a>
@@ -1099,7 +1152,7 @@
 			<script type="text/javascript" src="js/respond.js"></script>
 		<![endif]-->
 		<!-- Scripts-->
-		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/jquery-2.2.3.min.js"></script>
 		<script src="js/jquery.stayInWebApp.min.js"></script>
 		<script src="js/spin.js"></script>
 		<script src="js/iosOverlay.js"></script>

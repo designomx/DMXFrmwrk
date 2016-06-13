@@ -434,7 +434,7 @@ require('blog/wp-blog-header.php');
 		<![endif]-->
 
 		<!-- Scripts-->
-		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/jquery-2.2.3.min.js"></script>
 		<script src="js/jquery.stayInWebApp.min.js"></script>
 		<script src="js/spin.js"></script>
 		<script src="js/iosOverlay.js"></script>
