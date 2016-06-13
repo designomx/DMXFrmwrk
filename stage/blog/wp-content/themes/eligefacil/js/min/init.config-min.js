@@ -1,0 +1,1 @@
+var FRMWRK=FRMWRK||{};FRMWRK.global={},FRMWRK.utils=function(){return{}}(),FRMWRK.config={params:{},timers:{},ui:{}};

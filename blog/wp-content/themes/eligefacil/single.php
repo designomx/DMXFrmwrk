@@ -92,7 +92,7 @@ if ( have_posts() ) {
   </script>
     <nav id="main-nav-bar">
       <div class="nav-wrapper" class="fix-ios-shadow">
-        <a href="http://www.eligefacil.com/blog.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="../../../images/logo_eligefacil_blog.png" width="159" alt="" /></a>
+        <a href="http://www.eligefacil.com" class="logo-header magictime spaceInLeft hvr-grow"><img src="../../../images/logo_eligefacil.png" width="159" alt="" /></a>
         <a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
 
         <ul class="right hide-on-med-and-down">
@@ -304,10 +304,10 @@ if ( have_posts() ) {
         <ul>
           <li><a href="../../../quienes-somos.html">Quiénes somos</a> / </li>
           <li><a href="../../../pdf/Terminos_y_Condiciones_de_Uso_y_Privacidad.pdf" target="_blank">Legales</a> / </li>
-          <li><a href="#!">Anúnciate con nosotros</a> / </li>
+          <li><a href="../../../contacto.html">Anúnciate con nosotros</a> / </li>
           <li><a href="#!">Ayuda</a></li>
         </ul>
-        <p class="copy-foot">Todos los derechos reservados 2016®</p>
+        <p class="copy-foot">2016 Todos los derechos reservados © ELIGE FÁCIL</p>
       </div>
     </div>
     <div class="home-hero">

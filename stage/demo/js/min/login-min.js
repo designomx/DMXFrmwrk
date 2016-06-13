@@ -1,0 +1,1 @@
+TOOTH.login=function($){var n=function(){$("#login-bx").addClass("magictime swashIn"),$(".navbar-fixed.aniMagic").addClass("animated bounceInDown")},i=function(){};return{init:function(){n()}}}(jQuery);

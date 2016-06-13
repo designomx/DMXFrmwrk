@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link href="img/profile/apple-touch-icon.png" rel="apple-touch-icon" />
+		<link href="img/profile/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+		<link href="img/profile/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
+		<link href="img/profile/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+		<link rel="icon" sizes="192x192" href="img/profile/android-touch-icon-192x192.png">
+		<link rel="icon" sizes="128x128" href="img/profile/android-touch-icon-128x128.png">
+		<link rel="icon" type="image/png" href="img/profile/favicon.png" />
+		<!--WINDOWS PHONE 8.1-->
+		<meta name="application-name" content="Perfil by tooth.me®" />
+		<meta name="msapplication-TileColor" content=" #00b0ff" />
+		<meta name="msapplication-square70x70logo" content="/img/profile/smalltile.png" />
+		<meta name="msapplication-square150x150logo" content="/img/profile/mediumtile.png" />
+		<meta name="msapplication-wide310x150logo" content="/img/profile/widetile.png" />
+		<meta name="msapplication-square310x310logo" content="/img/profile/largetile.png" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Framework 0.1.b | designo.mx®</title>
+		<!-- CSS -->
+		<link href="materialize/css/materialize.min.css" type="text/css" rel="stylesheet" />
+		<link href="css/iosOverlay.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="css/animate.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="css/magic.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="css/jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet" />
+		<link href="css/nouislider.min.css" type="text/css" rel="stylesheet" />
+		<link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+		<link rel="stylesheet" href="owl-carousel/owl.theme.css">
+		<link href="css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<!-- This is FontsAwesome 4.3.0-->
+		<link href="fawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	</head>
+	<body>
+		<nav id="main-nav-bar" class="fix-ios-shadow">
+			<div class="nav-wrapper">
+				<a href="index.html" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+					<li>
+						<a href="listado-comparador.html" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
+						<span class="nav-mid-line"></span>
+					</li>
+					<li>
+						<a href="index.html#blog-timeline" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
+						<span class="nav-mid-line"></span>
+					</li>
+					<li>
+						<a href="contacto.html" class="magictime slideUpRetourn fix-pos-nav">Contacto</a>
+					</li>
+					<li>
+						<a href="http://twitter.com" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
+					</li>
+					<li>
+						<a href="http://facebook.com" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<ul class="side-nav" id="mobile-demo">
+			<li>
+				<a href="listado-comparador.html"><i class="fa fa-search left"></i> Descubre</a>
+			</li>
+			<li>
+				<a href="index.html#blog-timeline"><i class="fa fa-newspaper-o left"></i> Entérate</a>
+			</li>
+			<li>
+				<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
+			</li>
+			<li>
+				<a href="http://twitter.com"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
+			</li>
+			<li>
+				<a href="http://facebook.com"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
+			</li>
+		</ul>
+		<div id="filter-go" class="filter-mid-bar row">
+			<div class="col s6 m8 sliders-scroll-bx">
+				<div class="sliders-wrapp">
+					<div class="slider-bx clear-pad-marg">
+						<p class="truncate">Estado</p>
+						<div class="slide-bar-bx">
+							<div class="input-field col s12">
+								<select class="browser-default compare-slktr">
+									<option value="0" disabled selected>Ciudad de México</option>
+									<option value="1">Option 1</option>
+									<option value="2">Option 2</option>
+									<option value="3">Option 3</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="slider-bx clear-pad-marg">
+						<p class="truncate">Orden precio</p>
+						<div class="slide-bar-bx">
+							<div class="switch">
+								<label>
+									<em>-</em>
+									<input type="checkbox">
+									<span class="lever"></span>
+									<em>+</em>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="slider-bx clear-pad-marg">
+						<p class="truncate margin-btm-no">Modalidad</p>
+						<div class="slide-bar-bx row">
+							<div class="col s12">
+							  <input class="with-gap" name="group1" type="radio" id="test3" checked />
+							  <label for="test3">Plan</label>
+							  <input class="with-gap" name="group1" type="radio" id="test2"  />
+							  <label for="test2">Prepago</label>
+						    </div>
+						</div>
+					</div>
+					<div class="slider-bx clear-pad-marg">
+						<p class="truncate margin-btm-no">- -</p>
+						<div class="slide-bar-bx row">
+							<div class="col s12">
+							  <input type="checkbox" id="test11" />
+							  <label for="test11">Libre</label>
+							  <input type="checkbox" id="test12" />
+							  <label for="test12">Controlado</label>
+						    </div>
+						</div>
+					</div>
+					<div class="slider-bx">
+						<p class="truncate">Rango de Precio</p>
+						<div class="slide-bar-bx">
+							<div id="slidertest"></div>
+							<div class="slide-value-bx">
+								<span class="left">$0</span>
+								<span class="right">$1,000+</span>
+							</div>
+						</div>
+					</div>
+					<div class="slider-bx">
+						<p class="truncate">Canales en total</p>
+						<div class="slide-bar-bx">
+							<div id="slidertest2"></div>
+							<div class="slide-value-bx">
+								<span class="left">10</span>
+								<span class="right">350+</span>
+							</div>
+						</div>
+					</div>
+					<div class="slider-bx">
+						<p class="truncate">Minutos a celular</p>
+						<div class="slide-bar-bx">
+							<div id="slidertest3"></div>
+							<div class="slide-value-bx">
+								<span class="left">0</span>
+								<span class="right">1000+</span>
+							</div>
+						</div>
+					</div>
+					<div class="slider-bx">
+						<p class="truncate">Min. Larga Distancia</p>
+						<div class="slide-bar-bx">
+							<div id="slidertest4"></div>
+							<div class="slide-value-bx">
+								<span class="left">0</span>
+								<span class="right">1000+</span>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="col s6 m4 z-depth-1 fix-ios-shadow checks-scroll-bx">
+				<form action="#">
+					<p class="truncate">
+						<input type="checkbox" id="test1" />
+						<label for="test1">Redes sociales</label>
+					</p>
+					<p class="truncate">
+						<input type="checkbox" id="test2" />
+						<label for="test2">Subir fotos</label>
+					</p>
+					<p class="truncate">
+						<input type="checkbox" id="test3" />
+						<label for="test3">Ver videos</label>
+					</p>
+					<p class="truncate">
+						<input type="checkbox" id="test3" />
+						<label for="test3">Streaming Video</label>
+					</p>
+				</form>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="compare-tools" class="row">
+			<div class="col s12 m4 elige-six-bx">
+				<p>Elige hasta 6 planes para comparar:</p>
+			</div>
+			<div class="col s12 m4 comparando-six-bx">
+				<span class="span-bx">
+					<span style="background-color: #ae2033;"></span>
+					<i class="material-icons selected-check">done</i>
+				</span>
+				<span class="span-bx">
+					<span style="background-color: #337de1;"></span>
+					<i class="material-icons selected-check">done</i>
+				</span>
+				<span class="span-bx">
+					<i class="material-icons">done</i>
+				</span>
+				<span class="span-bx">
+					<i class="material-icons">done</i>
+				</span>
+				<span class="span-bx">
+					<i class="material-icons">done</i>
+				</span>
+				<span class="span-bx">
+					<i class="material-icons">done</i>
+				</span>
+			</div>
+			<div class="col s12 m4">
+				<a class="search-btn filterBtn z-depth-1 hoverable noCompare" href="#!">Comparar <i class="fa fa-angle-right right"></i></a>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<br />
+		<div id="blog-module" class="row grey lighten-5">
+			<div class="col s12 blog-timeline-bx compare-tools">
+				<div class="col s12 m6 l4 paq-list-bx">
+					<div class="paq-content-bx">
+						<div class="comparando-icons">
+							<i class="material-icons">phone_android</i>
+							<i class="material-icons">wifi</i>
+							<i class="material-icons">phone</i>
+							<i class="material-icons">tv</i>
+							<i class="material-icons">live_tv</i>
+						</div>
+						<div class="brand-label">Axtel</div>
+						<div class="paq-bx">
+							<h4 class="truncate">Paquete 333</h4>
+							<ul>
+								<li>5 Mbps de Velocidad</li>
+								<li>100 llamadas locales</li>
+								<li>No incluye larga distancia</li>
+								<li>0 Minutos a celular</li>
+								<li>5 Mbps de Velocidad</li>
+								<li>100 llamadas locales</li>
+								<li>No incluye larga distancia</li>
+								<li>0 Minutos a celular</li>
+							</ul>
+						</div>
+						<div class="paq-price">$275 <p><span>Sugerido</span></p></div>
+						<div class="more-actions-bx">
+							<a class="modal-trigger waves-effect" href="#deatilsModal">Ver detalles</a>
+							<a href="#!" class="compare-slct slctd-plan">Comparar <i class="material-icons">done</i></a>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m6 l4 paq-list-bx">
+					<div class="paq-content-bx">
+						<div class="brand-label">Axtel</div>
+						<div class="paq-bx">
+							<h4 class="truncate">Paquete 333</h4>
+							<ul>
+								<li>5 Mbps de Velocidad</li>
+								<li>100 llamadas locales</li>
+								<li>No incluye larga distancia</li>
+								<li>0 Minutos a celular</li>
+							</ul>
+						</div>
+						<div class="paq-price">$275</div>
+						<div class="more-actions-bx">
+							<a href="#!">Ver detalles</a>
+							<a href="#!" class="compare-slct">Comparar <i class="material-icons">done</i></a>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m6 l4 paq-list-bx">
+					<div class="paq-content-bx">
+						<div class="brand-label">Axtel</div>
+						<div class="paq-bx">
+							<h4 class="truncate">Paquete 333</h4>
+							<ul>
+								<li>5 Mbps de Velocidad</li>
+								<li>100 llamadas locales</li>
+								<li>No incluye larga distancia</li>
+								<li>0 Minutos a celular</li>
+							</ul>
+						</div>
+						<div class="paq-price">$275</div>
+						<div class="more-actions-bx">
+							<a href="#!">Ver detalles</a>
+							<a href="#!" class="compare-slct">Comparar <i class="material-icons">done</i></a>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m6 l4 paq-list-bx">
+					<div class="paq-content-bx banner-ovrflw">
+						<a href="http://axtel.mx" target="_blank" class="go-banner"></a>
+						<img src="images/banner-grid.jpg" alt="" class="banner-art" />
+						<img src="images/banner-grid.jpg" alt="" class="banner-art" />
+					</div>
+				</div>
+				<div class="col s12 m6 l4 paq-list-bx">
+					<div class="paq-content-bx">
+						<div class="brand-label">Axtel</div>
+						<div class="paq-bx">
+							<h4 class="truncate">Paquete 333</h4>
+							<ul>
+								<li>5 Mbps de Velocidad</li>
+								<li>100 llamadas locales</li>
+								<li>No incluye larga distancia</li>
+								<li>0 Minutos a celular</li>
+							</ul>
+						</div>
+						<div class="paq-price">$275</div>
+						<div class="more-actions-bx">
+							<a href="#!">Ver detalles</a>
+							<a href="#!" class="compare-slct">Comparar <i class="material-icons">done</i></a>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m6 l4 paq-list-bx">
+					<div class="paq-content-bx">
+						<div class="brand-label">Axtel</div>
+						<div class="paq-bx">
+							<h4 class="truncate">Paquete 333</h4>
+							<ul>
+								<li>5 Mbps de Velocidad</li>
+								<li>100 llamadas locales</li>
+								<li>No incluye larga distancia</li>
+								<li>0 Minutos a celular</li>
+							</ul>
+						</div>
+						<div class="paq-price">$275</div>
+						<div class="more-actions-bx">
+							<a href="#!">Ver detalles</a>
+							<a href="#!" class="compare-slct">Comparar <i class="material-icons">done</i></a>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<div class="reload-button-bx">
+					<a href="#!" class="z-depth-1 hoverable"><i class="fa fa-refresh"></i> Cargar Más</a>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="footer-bx">
+				<ul>
+					<li>
+						<a href="#!">Quiénes somos</a>/</li>
+					<li>
+						<a href="#!">Legales</a>/</li>
+					<li>
+						<a href="#!">Anúnciate con nosotros</a>/</li>
+					<li>
+						<a href="#!">Ayuda</a>
+					</li>
+				</ul>
+				<p class="copy-foot">Todos los derechos reservados 2016®</p>
+			</div>
+		</div>
+		<div class="home-hero">
+			<div class="hero-image active-slide" style="background-image: url('images/hero1.jpg');"></div>
+			<div class="hero-image" style="background-image: url('images/hero2.jpg');"></div>
+		</div>
+		<div class="slide-widget animated slideInUp">
+			<div class="widget-wrapper">
+				<div class="discover-title">¡Decidir nunca fue tan simple!</div>
+				<div class="scroll-box">
+					<div class="alignr-box">
+						<div class="products-box">
+							<div class="plan-box cellplan">
+								<div class="content-bx hvr-grow">
+									<div class="valigny">
+										<i class="material-icons">phone_android</i>
+										<p>celular</p>
+									</div>
+								</div>
+								<div class="check-plan">
+									<i class="fa fa-check"></i>
+								</div>
+								<div class="cancel-plan">
+									<i class="fa fa-times-circle"></i>
+								</div>
+							</div>
+							<div class="plan-box nocell nostreaming tripleplay3">
+								<div class="content-bx hvr-grow">
+									<div class="valigny">
+										<i class="material-icons">wifi</i>
+										<p>internet</p>
+									</div>
+								</div>
+								<div class="check-plan">
+									<i class="fa fa-check"></i>
+								</div>
+								<div class="cancel-plan">
+									<i class="fa fa-times-circle"></i>
+								</div>
+							</div>
+							<div class="plan-box nocell nostreaming tripleplay1">
+								<div class="content-bx hvr-grow">
+									<div class="valigny">
+										<i class="material-icons">phone</i>
+										<p>tel. fijo</p>
+									</div>
+								</div>
+								<div class="check-plan">
+									<i class="fa fa-check"></i>
+								</div>
+								<div class="cancel-plan">
+									<i class="fa fa-times-circle"></i>
+								</div>
+							</div>
+							<div class="plan-box nocell nostreaming tripleplay2">
+								<div class="content-bx hvr-grow">
+									<div class="valigny">
+										<i class="material-icons">tv</i>
+										<p>tv</p>
+									</div>
+								</div>
+								<div class="check-plan">
+									<i class="fa fa-check"></i>
+								</div>
+								<div class="cancel-plan">
+									<i class="fa fa-times-circle"></i>
+								</div>
+							</div>
+							<div class="plan-box nocell streaming">
+								<div class="content-bx hvr-grow">
+									<div class="valigny">
+										<i class="material-icons">live_tv</i>
+										<p>streaming</p>
+									</div>
+								</div>
+								<div class="check-plan">
+									<i class="fa fa-check"></i>
+								</div>
+								<div class="cancel-plan">
+									<i class="fa fa-times-circle"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- MODALS - ALERTS - DROP DOWNS-->
+		<!-- Modal Structure -->
+		<div id="deatilsModal" class="modal modal-fixed-footer">
+			<div class="modal-content">
+				<div class="brand-label">Axtel</div>
+				<h4>Acceso Universal 0.5 Mbps</h4>
+				<div class="plan-main-options row">
+					<div class="col s6 m3">
+						<p>.512 Mbps de Velocidad</p>
+						<div class="circle-bx"></div>
+					</div>
+					<div class="col s6 m3">
+						<p>Llamadas ilimitadas loc./nal.</p>
+					</div>
+					<div class="col s6 m3">
+						<p>LD EU/CAN</p>
+					</div>
+					<div class="col s6 m3">
+						<p>1000 Minutos a celular</p>
+					</div>
+				</div>
+				<h5>Opciones y características adicionales</h5>
+				<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus. Donec id elit non mi porta gravida at eget metus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+				<table class="responsive-table striped">
+					<thead>
+						<tr>
+							<th data-field="id">Name</th>
+							<th data-field="name">Item Name</th>
+							<th data-field="price">Item Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Alvin</td>
+							<td>Eclair</td>
+							<td>$0.87</td>
+						</tr>
+						<tr>
+							<td>Alan</td>
+							<td>Jellybean</td>
+							<td>$3.76</td>
+						</tr>
+						<tr>
+							<td>Jonathan</td>
+							<td>Lollipop</td>
+							<td>$7.00</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+				<ul>
+					<li>Tristique Inceptos Vehicula</li>
+					<li>Tristique Inceptos</li>
+					<li>Tristique Inceptos Vehicula Ligula</li>
+					<li>Tristique Inceptos Vehicula</li>
+					<li>Tristique Inceptos:
+						<ul>
+							<li>Tristique Vehicula Ligula Tortor</li>
+							<li>Tristique Vehicula Tortor</li>
+							<li>Tristique Vehicula Ligula</li>
+							<li>Tristique Vehicula Tortor</li>
+						</ul>
+					</li>
+				</ul>
+				<ol>
+					<li>Tristique Inceptos Vehicula</li>
+					<li>Tristique Inceptos</li>
+					<li>Tristique Inceptos Vehicula Ligula</li>
+					<li>Tristique Inceptos Vehicula</li>
+					<li>Tristique Inceptos:
+						<ol>
+							<li>Tristique Vehicula Ligula Tortor</li>
+							<li>Tristique Vehicula Tortor</li>
+							<li>Tristique Vehicula Ligula</li>
+							<li>Tristique Vehicula Tortor
+								<ul>
+									<li>Tristique Vehicula Ligula Tortor</li>
+									<li>Tristique Vehicula Tortor</li>
+									<li>Tristique Vehicula Ligula</li>
+									<li>Tristique Vehicula Tortor</li>
+								</ul>
+							</li>
+						</ol>
+					</li>
+				</ol>
+				<h5>Letras chiquitas:</h5>
+				<ul>
+					<li>Tristique Vehicula Ligula Tortor</li>
+					<li>Tristique Vehicula Tortor</li>
+					<li>Tristique Vehicula Ligula</li>
+					<li>Tristique Vehicula Tortor</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect btn-flat grey white-text">Comparar</a>
+				<a href="#!" class="modal-action modal-close waves-effect btn-flat ">Cerrar</a>
+			</div>
+			<div class="fixed-action-btn" style="bottom: 10px; right: 10px;">
+				<a class="btn-floating btn-large orange accent-4">
+				 <i class="fa fa-share-alt"></i>
+			   </a>
+				<ul>
+					<li>
+						<a href="https://www.facebook.com/sharer/sharer.php?u=stage.eligefacil.com" target="_blank" class="btn-floating light-blue darken-4"><i class="fa fa-facebook"></i></a>
+					</li>
+					<li>
+						<a href="https://twitter.com/home?status=stage.eligefacil.com" target="_blank" class="btn-floating light-blue lighten-2"><i class="fa fa-twitter"></i></a>
+					</li>
+					<li>
+						<a class="btn-floating grey darken-1 modal-trigger" href="#modalMailShare"><i class="fa fa-envelope"></i></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<a class="cd-top btn-floating btn-large blue-grey darken-1">
+		  	<i class="material-icons">keyboard_arrow_up</i>
+		  </a>
+		<!--COMPARADOR MODAL-->
+		<div id="modal-comparador">
+			<div class="close-modal-btn">
+				<i class="material-icons">close</i>
+			</div>
+			<div class="fixed-action-btn" style="bottom: 10px; right: 10px;">
+				<a class="btn-floating btn-large orange accent-4">
+				 <i class="fa fa-share-alt"></i>
+			   </a>
+				<ul>
+					<li>
+						<a href="https://www.facebook.com/sharer/sharer.php?u=stage.eligefacil.com" target="_blank" class="btn-floating light-blue darken-4"><i class="fa fa-facebook"></i></a>
+					</li>
+					<li>
+						<a href="https://twitter.com/home?status=stage.eligefacil.com" target="_blank" class="btn-floating light-blue lighten-2"><i class="fa fa-twitter"></i></a>
+					</li>
+					<li>
+						<a class="btn-floating grey darken-1 modal-trigger" href="#modalMailShare"><i class="fa fa-envelope"></i></a>
+					</li>
+				</ul>
+			</div>
+			<div class="slider-container">
+				<div id="owl-demo" class="owl-carousel owl-theme">
+					<div class="item">
+						<div class="col s12 paq-list-bx compare-status">
+							<div class="paq-content-bx">
+								<div class="brand-label">Axtel</div>
+								<div class="paq-bx">
+									<h4 class="truncate">Paquete 333</h4>
+									<ul>
+										<li>5 Mbps de Velocidad</li>
+										<li>100 llamadas locales</li>
+										<li>No incluye larga distancia</li>
+										<li>0 Minutos a celular</li>
+									</ul>
+									<table class="striped bordered responsive-table">
+										<thead>
+											<tr>
+												<th data-field="id">Name</th>
+												<th data-field="name">Item Name</th>
+												<th data-field="price">Item Price</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Alvin</td>
+												<td>Eclair</td>
+												<td>$0.87</td>
+											</tr>
+											<tr>
+												<td>Alan</td>
+												<td>Jellybean</td>
+												<td>$3.76</td>
+											</tr>
+											<tr>
+												<td>Jonathan</td>
+												<td>Lollipop</td>
+												<td>$7.00</td>
+											</tr>
+										</tbody>
+									</table>
+									<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+								</div>
+								<div class="paq-price">$275</div>
+								<div class="more-actions-bx">
+									<a href="#!" class="grey"></a>
+									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" class="compare-delete">Eliminar</a>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="col s12 paq-list-bx compare-status">
+							<div class="paq-content-bx">
+								<div class="brand-label">Axtel</div>
+								<div class="paq-bx">
+									<h4 class="truncate">Paquete 333</h4>
+									<ul>
+										<li>5 Mbps de Velocidad</li>
+										<li>100 llamadas locales</li>
+										<li>No incluye larga distancia</li>
+										<li>0 Minutos a celular</li>
+									</ul>
+									<table class="striped bordered responsive-table">
+										<thead>
+											<tr>
+												<th data-field="id">Name</th>
+												<th data-field="name">Item Name</th>
+												<th data-field="price">Item Price</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Alvin</td>
+												<td>Eclair</td>
+												<td>$0.87</td>
+											</tr>
+											<tr>
+												<td>Alan</td>
+												<td>Jellybean</td>
+												<td>$3.76</td>
+											</tr>
+											<tr>
+												<td>Jonathan</td>
+												<td>Lollipop</td>
+												<td>$7.00</td>
+											</tr>
+										</tbody>
+									</table>
+									<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+								</div>
+								<div class="paq-price">$275</div>
+								<div class="more-actions-bx">
+									<a href="#!" class="grey"></a>
+									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" class="compare-delete">Eliminar</a>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="col s12 paq-list-bx compare-status">
+							<div class="paq-content-bx">
+								<div class="brand-label">Axtel</div>
+								<div class="paq-bx">
+									<h4 class="truncate">Paquete 333</h4>
+									<ul>
+										<li>5 Mbps de Velocidad</li>
+										<li>100 llamadas locales</li>
+										<li>No incluye larga distancia</li>
+										<li>0 Minutos a celular</li>
+									</ul>
+									<table class="striped bordered responsive-table">
+										<thead>
+											<tr>
+												<th data-field="id">Name</th>
+												<th data-field="name">Item Name</th>
+												<th data-field="price">Item Price</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Alvin</td>
+												<td>Eclair</td>
+												<td>$0.87</td>
+											</tr>
+											<tr>
+												<td>Alan</td>
+												<td>Jellybean</td>
+												<td>$3.76</td>
+											</tr>
+											<tr>
+												<td>Jonathan</td>
+												<td>Lollipop</td>
+												<td>$7.00</td>
+											</tr>
+										</tbody>
+									</table>
+									<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+								</div>
+								<div class="paq-price">$275</div>
+								<div class="more-actions-bx">
+									<a href="#!" class="grey"></a>
+									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" class="compare-delete">Eliminar</a>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="col s12 paq-list-bx compare-status">
+							<div class="paq-content-bx">
+								<div class="brand-label">Axtel</div>
+								<div class="paq-bx">
+									<h4 class="truncate">Paquete 333</h4>
+									<ul>
+										<li>5 Mbps de Velocidad</li>
+										<li>100 llamadas locales</li>
+										<li>No incluye larga distancia</li>
+										<li>0 Minutos a celular</li>
+									</ul>
+									<table class="striped bordered responsive-table">
+										<thead>
+											<tr>
+												<th data-field="id">Name</th>
+												<th data-field="name">Item Name</th>
+												<th data-field="price">Item Price</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Alvin</td>
+												<td>Eclair</td>
+												<td>$0.87</td>
+											</tr>
+											<tr>
+												<td>Alan</td>
+												<td>Jellybean</td>
+												<td>$3.76</td>
+											</tr>
+											<tr>
+												<td>Jonathan</td>
+												<td>Lollipop</td>
+												<td>$7.00</td>
+											</tr>
+										</tbody>
+									</table>
+									<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+								</div>
+								<div class="paq-price">$275</div>
+								<div class="more-actions-bx">
+									<a href="#!" class="grey"></a>
+									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" class="compare-delete">Eliminar</a>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="col s12 paq-list-bx compare-status">
+							<div class="paq-content-bx">
+								<div class="brand-label">Axtel</div>
+								<div class="paq-bx">
+									<h4 class="truncate">Paquete 333</h4>
+									<ul>
+										<li>5 Mbps de Velocidad</li>
+										<li>100 llamadas locales</li>
+										<li>No incluye larga distancia</li>
+										<li>0 Minutos a celular</li>
+									</ul>
+									<table class="striped bordered responsive-table">
+										<thead>
+											<tr>
+												<th data-field="id">Name</th>
+												<th data-field="name">Item Name</th>
+												<th data-field="price">Item Price</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Alvin</td>
+												<td>Eclair</td>
+												<td>$0.87</td>
+											</tr>
+											<tr>
+												<td>Alan</td>
+												<td>Jellybean</td>
+												<td>$3.76</td>
+											</tr>
+											<tr>
+												<td>Jonathan</td>
+												<td>Lollipop</td>
+												<td>$7.00</td>
+											</tr>
+										</tbody>
+									</table>
+									<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+								</div>
+								<div class="paq-price">$275</div>
+								<div class="more-actions-bx">
+									<a href="#!" class="grey"></a>
+									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" class="compare-delete">Eliminar</a>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="col s12 paq-list-bx compare-status">
+							<div class="paq-content-bx">
+								<div class="brand-label">Axtel</div>
+								<div class="paq-bx">
+									<h4 class="truncate">Paquete 333</h4>
+									<ul>
+										<li>5 Mbps de Velocidad</li>
+										<li>100 llamadas locales</li>
+										<li>No incluye larga distancia</li>
+										<li>0 Minutos a celular</li>
+									</ul>
+									<table class="striped bordered responsive-table">
+										<thead>
+											<tr>
+												<th data-field="id">Name</th>
+												<th data-field="name">Item Name</th>
+												<th data-field="price">Item Price</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Alvin</td>
+												<td>Eclair</td>
+												<td>$0.87</td>
+											</tr>
+											<tr>
+												<td>Alan</td>
+												<td>Jellybean</td>
+												<td>$3.76</td>
+											</tr>
+											<tr>
+												<td>Jonathan</td>
+												<td>Lollipop</td>
+												<td>$7.00</td>
+											</tr>
+										</tbody>
+									</table>
+									<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+								</div>
+								<div class="paq-price">$275</div>
+								<div class="more-actions-bx">
+									<a href="#!" class="grey"></a>
+									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" class="compare-delete">Eliminar</a>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal Mail Share -->
+		  <div id="modalMailShare" class="modal modal-fixed-footer">
+		    <div class="modal-content">
+		      <h4>Enviar a Mail</h4>
+		      
+		      <div class="row">
+		          <form class="col s12">
+		          	<p>Escribe tu nombre y correo:</p>
+		            <div class="row">
+		              <div class="input-field col s12 m6">
+		                <input id="first_name" type="text" class="validate">
+		                <label for="first_name">Tu Nombre</label>
+		              </div>
+		              <div class="input-field col s12 m6">
+		                <input id="email" type="email" class="validate">
+		                <label for="email">Tu Email</label>
+		              </div>
+		            </div>
+		            <p>Escribe el nombre y correo para compartir:</p>
+		            <div class="row">
+		              <div class="input-field col s12 m6">
+		                <input id="first_name" type="text" class="validate">
+		                <label for="first_name">Nombre</label>
+		              </div>
+		              <div class="input-field col s12 m6">
+		                <input id="email" type="email" class="validate">
+		                <label for="email">Email</label>
+		              </div>
+		            </div>
+		          </form>
+		        </div>
+		    </div>
+		    <div class="modal-footer">
+		      <a href="#!" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
+		      <a href="#!" class="modal-action modal-close waves-effect btn-flat">Enviar</a>
+		    </div>
+		  </div>
+		<!--BANNER SLIDE DOWN-->
+		<div id="slide-in-banner" class="z-depth-2">
+			<a href="#!" target="_blank"><img src="images/banner-base.jpg" alt="" /></a>
+			<div class="close-modal-btn">
+				<i class="material-icons">close</i>
+			</div>
+		</div>
+		<!--[if IE]>
+			<script src="js/html5.js"></script>
+			<script type="text/javascript" src="js/respond.js"></script>
+		<![endif]-->
+		<!-- Scripts-->
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/jquery.stayInWebApp.min.js"></script>
+		<script src="js/spin.js"></script>
+		<script src="js/iosOverlay.js"></script>
+		<script src="js/charCount.js"></script>
+		<script src="js/backtotop.js"></script>
+		<script src="js/nouislider.min.js"></script>
+		<script src="js/materialize.min.js"></script>
+		<!--<script src="js/parallax.min.js"></script>-->
+		<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="owl-carousel/owl.carousel.min.js"></script>
+		<script src="js/init.config.js"></script>
+		<script src="js/init.js"></script>
+		<!--INTERNET CHECK-->
+		<script src="offline07/offline.min.js"></script>
+		<link rel="stylesheet" href="offline07/themes/offline-theme-dark.css" />
+		<link rel="stylesheet" href="offline07/themes/offline-language-spanish.css" />
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+		<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+		<!--PERFIL-->
+		<script src="js/comparador.js"></script>
+		<script>
+			jQuery(function() {
+		  	
+		  		FRMWRK.main.init();
+		  		FRMWRK.comparador.init();
+		  		
+		  		//Sort random function
+		  		 
+		  		  $("#owl-demo").owlCarousel({
+		  		  	items : 3,
+		  		  	itemsDesktop : [980,3],
+		  		  	itemsDesktopSmall : [980,2],
+		  		  	itemsTablet: [768,1],
+		  			navigation: true,
+		  			mouseDrag: false,
+		  			touchDrag: false,
+		  			navigationText: [
+		  			  "<i class='material-icons'>navigate_before</i>",
+		  			  "<i class='material-icons'>navigate_next</i>"
+		  			  ],
+		  			beforeInit : function(elem){
+		  			  //Parameter elem pointing to $("#owl-demo")
+		  			}
+		  		 
+		  		  });
+		  		
+		  	});
+		</script>
+		<div id="fb-root"></div>
+		<script>
+			(function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id;
+					  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.5&appId=327135760765560";
+					  fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));
+		</script>
+	</body>
+
+</html>

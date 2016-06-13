@@ -160,7 +160,7 @@
 					<li><a href="#!">Anúnciate con nosotros</a> / </li>
 					<li><a href="#!">Ayuda</a></li>
 				</ul>
-				<p class="copy-foot">Todos los derechos reservados 2016®</p>
+				<p class="copy-foot">2016 Todos los derechos reservados © ELIGE FÁCIL</p>
 			</div>
 		</div>
 		<div id="slideshow" class="home-hero"> 
@@ -1945,6 +1945,7 @@
 			}
 		}
 		function CargarFiltrosCheckEmpresasConFiltro(){
+			sessionStorage.removeItem("filtrosCheckEmpresas");
 			if($('#checkbox1').is(':checked')){
 				//console.log("plan: 1");
 				//console.log("prepago: 0");
@@ -1981,6 +1982,7 @@
 		    .fail(function(data){
 		    	console.log(data);
 		    });
+		    
 		}
 		function ImprimirPlan(plan,id){
 			//alert(id);
@@ -2258,5 +2260,4 @@
 			a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 		</script>
 	</body>
-
 </html>

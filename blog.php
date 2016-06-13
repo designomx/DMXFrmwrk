@@ -331,7 +331,7 @@ class YourImagick extends Imagick
 					<li><a href="#!">Anúnciate con nosotros</a> / </li>
 					<li><a href="#!">Ayuda</a></li>
 				</ul>
-				<p class="copy-foot">Todos los derechos reservados 2016®</p>
+				<p class="copy-foot">2016 Todos los derechos reservados © ELIGE FÁCIL</p>
 			</div>
 		</div>
 		

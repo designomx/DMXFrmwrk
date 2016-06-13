@@ -1,0 +1,3 @@
+2016-02-02 13:18:51 u79499537 012JyL-1a2SYs1iPp-012HKW |< REMOTE=198.251.72.253 SCRIPT=/blog/wp-cron.php -- /usr/sbin/sendmail -t -i
+2016-02-02 13:18:51 u79499537 012JyL-1a2SYs1iPp-012HKW <= S=wordpress@eligefacil.com SZ=1544 D=0 SID=557920727
+2016-02-02 13:18:53 u79499537 012JyL-1a2SYs1iPp-012HKW => jluisalmazo@gmail.com msmtp.kundenserver.de[172.19.35.7] 250 Message 0MXSVN-1aW25B0vEj-00WBa3 accepted by mreue006.kundenserver.de

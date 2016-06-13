@@ -46,6 +46,9 @@ switch ($_POST["tema"]) {
 		$message.='<h1>Reportar Plan</h1>';
 		break;	
 	case '7':
+		$message.='<h1>Contacto Anuncios</h1>';
+		break;
+	case '8':
 		$message.='<h1>Otro</h1>';
 		break;
 

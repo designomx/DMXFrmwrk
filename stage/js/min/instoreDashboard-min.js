@@ -1,0 +1,1 @@
+TOOTH.instoreDashboard=function($){var n=function(){toast('<span class="left">&nbsp;&nbsp;Instore: Sucursal<span>',5e3,"")},s=function(){};return{init:function(){n()}}}(jQuery);

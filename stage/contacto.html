@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	    <meta name="description" content="Elige, filtra y compara Planes de Telefonía, Teléfono, Internet, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
+	    <meta name="keywords" content="Comparador, Telefonía fija, telefonía móvil, planes celulares, planes internet, planes telcel, planes movistar, planes virgin, planes att, planes axtel, planes iizzi, planes total play, telecomunicaciones">
+	    <meta name="author" content=“designo.mx”>
+		<title>Elige Fácil | ¡Decidir nunca fue tan simple!</title>
+		<!-- CSS -->
+		<link href="materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="all" />
+		<link href="css/iosOverlay.css" type="text/css" rel="stylesheet" media="all" />
+		<link href="css/animate.min.css" type="text/css" rel="stylesheet" media="all" />
+		<link href="css/magic.min.css" type="text/css" rel="stylesheet" media="all" />
+		<link href="css/jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet" media="all" />
+		<link href="css/main.css" type="text/css" rel="stylesheet" media="all" />
+		<!-- This is FontsAwesome 4.3.0-->
+		<link href="fawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	</head>
+	<body>
+		<nav id="main-nav-bar">
+			<div class="nav-wrapper" class="fix-ios-shadow">
+				<a href="index.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse right hvr-grow"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+					<li>
+						<a  href="index.php" class="magictime slideUpRetourn fix-pos-nav">Descubre</a>
+						<span class="nav-mid-line"></span>
+					</li>
+					<li>
+						<a href="blog.php" class="magictime slideUpRetourn fix-pos-nav">Entérate</a>
+						<span class="nav-mid-line"></span>
+					</li>
+					<li>
+						<a href="contacto.html" class="magictime slideUpRetourn fix-pos-nav">Contacto</a>
+					</li>
+					<li>
+						<a href="http://www.twitter.com/EligeFacil" target="_blank" class="magictime swashIn twitternav"><i class="fa fa-twitter"></i></a>
+					</li>
+					<li>
+						<a href="https://www.facebook.com/EligeFacil" target="_blank" class="magictime swashIn facebooknav"><i class="fa fa-facebook"></i></a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<ul class="side-nav" id="mobile-demo">
+			<li>
+				<a  href="index.php"><i class="fa fa-search left"></i> Descubre</a>
+			</li>
+			<li>
+				<a href="blog.php"><i class="fa fa-newspaper-o left"></i> Entérate</a>
+			</li>
+			<li>
+				<a href="contacto.html"><i class="fa fa-envelope-o left"></i> Contacto</a>
+			</li>
+			<li>
+				<a href="http://www.twitter.com/EligeFacil" target="_blank"><i class="fa fa-twitter left blue-text text-lighten-1"></i> Twitter</a>
+			</li>
+			<li>
+				<a href="https://www.facebook.com/EligeFacil" target="_blank"><i class="fa fa-facebook left blue-text text-darken-4"></i> Facebook</a>
+			</li>
+		</ul>
+		<div class="clearfix"></div>
+		<br />
+		<div id="contact-module" class="row grey lighten-5">
+			<div class="contacto-form-bx row">
+				<div class="col s12 form-head-bx">
+					<h4>Contacto:</h4>
+					<p>Escríbenos si tienes cualquier duda o comentario:</p>
+					<hr />
+				</div>
+				<div class="row clear-pad-marg">
+					<div class="col s12 m6">
+						<!--
+						<p class="center">Teléfono:
+							<a href="tel:+1525510156533">+1 (52) 55.10.15.65.33</a>
+						</p>
+						-->
+					</div>
+					<div class="col s12">
+						<p class="center">Email:
+							<a href="mailto:contacto@eligefacil.com">contacto@eligefacil.com</a>
+						</p>
+					</div>
+					<div class="clearfix"></div>
+					<p class="down-arrw"><i class="material-icons">keyboard_arrow_down</i></p>
+				</div>
+				<div class="col s12 form-head-bx">
+					<p>
+						<i>Llena el siguiente formulario para ponerte en contacto con nosotros:</i>
+					</p>
+					<hr />
+				</div>
+				<form class="col s12">
+					<div class="row">
+						<div class="input-field col s12 m6 fix-input-mt">
+							<input id="nombre" type="text" class="validate">
+							<label for="first_name">Nombre</label>
+						</div>
+						<div class="input-field col s12 m6 fix-input-mt">
+							<input id="email" type="email" class="validate">
+							<label for="email">Email</label>
+						</div>
+						<div id="SelectDeEstados" class="input-field col s12 m6">
+							
+						</div>
+						<div class="input-field col s12 m6">
+							<select id="tema" class="browser-default">
+								<option value="1">Tema:</option>
+								<option value="2">Sugerencia</option>
+								<option value="3">Queja</option>
+								<option value="4">Comentario</option>
+								<option value="5">Agregar Plan</option>
+								<option value="6">Reportar Plan</option>
+								<option value="7">Otro</option>
+							</select>
+						</div>
+						<div class="input-field col s12 fix-input-mt">
+							<textarea id="comentario" class="materialize-textarea"></textarea>
+							<label for="textarea1">Comentario:</label>
+						</div>
+					</div>
+					<div class="row">
+						<a id="BtnEnviar" class="col s6 m4 waves-effect btn orange accent-4 right send-form-btn">Enviar</a>
+					</div>
+				</form>
+			</div>
+			<div class="clearfix"></div>
+			<div class="footer-bx">
+				<ul>
+					<li><a href="quienes-somos.html">Quiénes somos</a> / </li>
+					<li><a href="pdf/Terminos_y_Condiciones_de_Uso_y_Privacidad.pdf" target="_blank">Legales</a> / </li>
+					<li><a href="#!">Anúnciate con nosotros</a> / </li>
+					<li><a href="#!">Ayuda</a></li>
+				</ul>
+				<p class="copy-foot">Todos los derechos reservados 2016®</p>
+			</div>
+		</div>
+		<div class="home-hero">
+			<div class="hero-image active-slide" style="background-image: url('images/hero1.jpg');"></div>
+			<div class="hero-image" style="background-image: url('images/hero2.jpg');"></div>
+		</div>
+		<!-- MODALS - ALERTS - DROP DOWNS-->
+		<!-- Modal Structure -->
+		<div id="modalLocation" class="modal">
+			<div class="modal-content">
+				<div class="input-field col s12">
+					<div id="SelectDeEstados">
+					</div>
+					<div class="clearfix"></div>
+					<br />
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="listado-comparador.html" class=" modal-action waves-effect waves-grey btn-flat">Continuar</a>
+				<a href="#!" class=" modal-action modal-close waves-effect waves-grey btn-flat">Cancelar</a>
+			</div>
+		</div>
+		<a class="cd-top btn-floating btn-large blue-grey darken-1">
+				<i class="material-icons">keyboard_arrow_up</i>
+			</a>
+		<!--BANNER SLIDE DOWN-->
+		<div id="slide-in-banner" class="z-depth-2">
+			<a href="#!" target="_blank"><img src="images/banner-base.jpg" alt="" /></a>
+			<div class="close-modal-btn">
+				<i class="material-icons">close</i>
+			</div>
+		</div>
+		<!--[if IE]>
+			<script src="js/html5.js"></script>
+			<script type="text/javascript" src="js/respond.js"></script>
+		<![endif]-->
+		<!-- Scripts-->
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/jquery.stayInWebApp.min.js"></script>
+		<script src="js/spin.js"></script>
+		<script src="js/iosOverlay.js"></script>
+		<script src="js/charCount.js"></script>
+		<script src="js/jquery.scrollUp.min.js"></script>
+		<script src="js/materialize.min.js"></script>
+		<!--<script src="js/parallax.min.js"></script>-->
+		<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="js/init.config.js"></script>
+		<script src="js/init.js"></script>
+		<script src="js/blockUI.js"></script>
+
+		<!--INTERNET CHECK-->
+		<script src="offline07/offline.min.js"></script>
+		<link rel="stylesheet" href="offline07/themes/offline-theme-dark.css" />
+		<link rel="stylesheet" href="offline07/themes/offline-language-spanish.css" />
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+		<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+		<script>
+			jQuery(function() {
+		  	
+		  		FRMWRK.main.init();
+		  					
+		  	});
+		</script>
+		<div id="fb-root"></div>
+		<script>
+			(function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id;
+					  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.5&appId=327135760765560";
+					  fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));
+		</script>
+		<script>
+		var opts = {
+				lines: 9,
+				length: 12,
+				width: 8,
+				radius: 18,
+				corners: 1,
+				rotate: 0,
+				direction: 1,
+				color: '#ffffff',
+				speed: 1.2,
+				trail: 60,
+				shadow: false,
+				hwaccel: false,
+				className: 'loadingSpinner',
+				zIndex: 2e9,
+				top: '40%',
+				left: '50%'
+			};
+		jQuery(document).ready(function(){
+			CargarEstados();
+		});
+		function CargarEstados(){
+			var data={
+				SelectDeEstados:"true"
+				//estado:localStorage.getItem("estado")
+			}
+			jQuery.ajax({
+				//dataType:"json",
+				type: "POST",
+				url: "listado.php",
+				data: data
+			})
+		    .done(function(data){
+				jQuery("#SelectDeEstados").html(data);
+				jQuery("#SelectEstadosPHP").removeClass("input-field col s12");
+		    })
+		    .fail(function(data){
+		    	console.log(data);
+		    	window.location.href = "indexBE.php";
+		    });
+		}
+
+		jQuery( "#BtnEnviar" ).click(function() {
+			//alert("Nombre: "+$( "#nombre" ).val());
+			//alert("Email: "+$( "#email" ).val());
+			//alert("Estado: "+$( "#selectEstado" ).val());
+			//alert("Tema: "+$( "#tema" ).val());
+			//alert("Comentario: "+$( "#comentario" ).val());
+			$.blockUI({ message: null }); 
+			var target = document.createElement("div");
+			document.body.appendChild(target);
+			var spinner = new Spinner(opts).spin(target);
+			var overlay = iosOverlay({
+				text: "Cargando",
+				spinner: spinner
+			});
+			var data={
+					nombre:$( "#nombre" ).val(),
+					email:$( "#email" ).val(),
+					estado:$( "#selectEstado" ).val(),
+					tema:$( "#tema" ).val(),
+					comentario:$( "#comentario" ).val()
+				}
+			jQuery.ajax({
+				//dataType:"json",
+				type: "POST",
+				url: "mailto.php",
+				data: data
+			})
+		    .done(function(data){
+
+		    	if(data==true){
+		    		//alert("true");
+		    		$( "#nombre" ).val("");
+					$( "#email" ).val("");
+					$( "#selectEstado" ).val("");
+					$( "#tema" ).val("1");
+					$( "#comentario" ).val("");
+		    		window.setTimeout(function() {
+						overlay.update({
+							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							text: "Listo"
+						});
+					}, 1000);
+					window.setTimeout(function() {
+						overlay.hide();
+					}, 2000);
+					setTimeout($.unblockUI, 3000);
+
+		    	}else{
+		    		//alert("false");
+		    		window.setTimeout(function() {
+						overlay.update({
+							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							text: "ERROR"
+						});
+					}, 1000);
+					window.setTimeout(function() {
+						overlay.hide();
+					}, 2000);
+					setTimeout($.unblockUI, 3000);
+
+		    	}
+		    	console.log(data)
+		    })
+		    .fail(function(data){
+		    	console.log(data);
+		    	//window.location.href = "indexBE.php";
+		    });
+		});
+		$( "#descubreBTN" ).click(function() {
+				if (sessionStorage.getItem("estado") === null) {
+					return false;
+				}else{
+					if((sessionStorage.getItem("ServicioCelular") === null || sessionStorage.getItem("ServicioCelular")==0) && (sessionStorage.getItem("ServicioInternet") === null || sessionStorage.getItem("ServicioInternet")==0) && (sessionStorage.getItem("ServicioTelefono") === null || sessionStorage.getItem("ServicioTelefono")==0) && (sessionStorage.getItem("ServicioTelevision") === null || sessionStorage.getItem("ServicioTelevision")==0) && (sessionStorage.getItem("ServicioStreaming") === null || sessionStorage.getItem("ServicioStreaming")==0)   ){
+								return false;
+					}else{
+						
+					}
+				}
+
+			});
+		</script>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+		  ga('create', 'UA-70371933-1', 'auto');
+		  ga('send', 'pageview');
+		
+		</script>
+		<script type="text/javascript">
+		setTimeout(function(){var a=document.createElement("script");
+		var b=document.getElementsByTagName("script")[0];
+		a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0048/8086.js?"+Math.floor(new Date().getTime()/3600000);
+		a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+		</script>
+	</body>
+
+</html>

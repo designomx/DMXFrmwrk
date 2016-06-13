@@ -64,9 +64,6 @@ jQuery.fn.fadeSlideShow = function(options) {
 				jQslide.eq(ActSlide).fadeOut(settings.speed);
 				//console.log("ActSlide"+ActSlide);
 				
-				
-
-				
 				// if list is on change the active class
 				if(settings.ListElement){
 					setActLi = (Slides - ActSlide) + 1;
