@@ -258,11 +258,11 @@ require('blog/wp-blog-header.php');
 			<div class="footer-bx">
 				<ul>
 					<li><a href="quienes-somos.html">Quiénes somos</a> / </li>
-					<li><a href="pdf/legal1.pdf" target="_blank">Legales</a> / </li>
-					<li><a href="#!">Anúnciate con nosotros</a> / </li>
+					<li><a href="pdf/Terminos_y_Condiciones_de_Uso_y_Privacidad.pdf" target="_blank">Legales</a> / </li>
+					<li><a href="contacto.html">Anúnciate con nosotros</a> / </li>
 					<li><a href="#!">Ayuda</a></li>
 				</ul>
-				<p class="copy-foot">Todos los derechos reservados 2016®</p>
+				<p class="copy-foot">2016 Todos los derechos reservados © ELIGE FÁCIL</p>
 			</div>
 		</div>
 		<div id="slideshow" class="home-hero"> 
@@ -270,7 +270,7 @@ require('blog/wp-blog-header.php');
 	          	<div class="hero-image" style="background-image: url('images/hero4.jpg');"/></div>
 	            <div class="hero-image" style="background-image: url('images/hero2.jpg');"/></div>
 		        <div class="hero-image" style="background-image: url('images/hero1.jpg');"/></div> <!-- This is the first image in the slideshow -->
-		        <div class="frases">¡Otra Frase!</div>
+		        <div class="frases">¡Elige los servicios a contratar!</div>
 		        <div class="frases">¡Sin filas, sin rollos!</div>
 		        <div class="frases">¡Decidir nunca fue tan simple!</div>
 		</div>

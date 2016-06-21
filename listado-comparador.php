@@ -26,7 +26,7 @@
 	</head>
 	<body>
 	<script src="js/nouislider.min.js"></script>
-	<script src="js/jquery-2.2.3.min.js"></script>
+	<script src="js/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="js/fadeSlideShow.js"></script>
 
 
@@ -156,8 +156,8 @@
 			<div class="footer-bx">
 				<ul>
 					<li><a href="quienes-somos.html">Quiénes somos</a> / </li>
-					<li><a href="pdf/legal1.pdf" target="_blank">Legales</a> / </li>
-					<li><a href="#!">Anúnciate con nosotros</a> / </li>
+					<li><a href="pdf/Terminos_y_Condiciones_de_Uso_y_Privacidad.pdf" target="_blank">Legales</a> / </li>
+					<li><a href="contacto.html">Anúnciate con nosotros</a> / </li>
 					<li><a href="#!">Ayuda</a></li>
 				</ul>
 				<p class="copy-foot">2016 Todos los derechos reservados © ELIGE FÁCIL</p>
@@ -168,6 +168,9 @@
 	          	<div class="hero-image" style="background-image: url('images/hero4.jpg');"/></div>
 	            <div class="hero-image" style="background-image: url('images/hero2.jpg');"/></div>
 		        <div class="hero-image" style="background-image: url('images/hero1.jpg');"/></div> <!-- This is the first image in the slideshow -->
+		        <div class="frases">¡Elige los servicios a contratar!</div>
+		        <div class="frases">¡Sin filas, sin rollos!</div>
+		        <div class="frases">¡Decidir nunca fue tan simple!</div>
 		</div>
 		<div class="slide-widget animated slideInUp">
 			<div class="widget-wrapper">
@@ -1218,7 +1221,7 @@
 					telefono:sessionStorage.getItem("ServicioTelefono"),
 					television:sessionStorage.getItem("ServicioTelevision"),
 					streaming:sessionStorage.getItem("ServicioStreaming"),
-					estado:$( "#selectEstado" ).val(),
+					estado:sessionStorage.getItem("estado"),
 					orden:orden
 				}
 			}
@@ -1345,7 +1348,7 @@
 					telefono:sessionStorage.getItem("ServicioTelefono"),
 					television:sessionStorage.getItem("ServicioTelevision"),
 					streaming:sessionStorage.getItem("ServicioStreaming"),
-					estado:$( "#selectEstado" ).val()
+					estado:sessionStorage.getItem("estado")
 				}
 				jQuery.ajax({
 					type: "POST",
@@ -1404,7 +1407,7 @@
 						telefono:sessionStorage.getItem("ServicioTelefono"),
 						television:sessionStorage.getItem("ServicioTelevision"),
 						streaming:sessionStorage.getItem("ServicioStreaming"),
-						estado:$( "#selectEstado" ).val()
+						estado:sessionStorage.getItem("estado")
 					}
 					jQuery.ajax({
 						type: "POST",
@@ -2260,4 +2263,5 @@
 			a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 		</script>
 	</body>
+
 </html>

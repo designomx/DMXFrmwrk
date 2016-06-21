@@ -156,11 +156,11 @@
 			<div class="footer-bx">
 				<ul>
 					<li><a href="quienes-somos.html">Quiénes somos</a> / </li>
-					<li><a href="pdf/legal1.pdf" target="_blank">Legales</a> / </li>
-					<li><a href="#!">Anúnciate con nosotros</a> / </li>
+					<li><a href="pdf/Terminos_y_Condiciones_de_Uso_y_Privacidad.pdf" target="_blank">Legales</a> / </li>
+					<li><a href="contacto.html">Anúnciate con nosotros</a> / </li>
 					<li><a href="#!">Ayuda</a></li>
 				</ul>
-				<p class="copy-foot">Todos los derechos reservados 2016®</p>
+				<p class="copy-foot">2016 Todos los derechos reservados © ELIGE FÁCIL</p>
 			</div>
 		</div>
 		<div id="slideshow" class="home-hero"> 
@@ -168,6 +168,9 @@
 	          	<div class="hero-image" style="background-image: url('images/hero4.jpg');"/></div>
 	            <div class="hero-image" style="background-image: url('images/hero2.jpg');"/></div>
 		        <div class="hero-image" style="background-image: url('images/hero1.jpg');"/></div> <!-- This is the first image in the slideshow -->
+		        <div class="frases">¡Elige los servicios a contratar!</div>
+		        <div class="frases">¡Sin filas, sin rollos!</div>
+		        <div class="frases">¡Decidir nunca fue tan simple!</div>
 		</div>
 		<div class="slide-widget animated slideInUp">
 			<div class="widget-wrapper">
@@ -367,6 +370,62 @@
 				<a onclick="SendMailSingle()" href="#!" class="modal-action modal-close waves-effect btn-flat">Enviar</a>
 			</div>
 		</div>
+		<!-- Modal Contratacion -->
+		<div id="contractModal" class="modal modal-fixed-footer" style="width: 300px;">
+			<div class="modal-content">
+				<h4>Contratación</h4>
+				<p>Contrata este servicio ahora:</p>
+				<hr />
+				<div class="contenedorContactos">
+					<div id="contenedor_telefonos_contratacion">	
+						<p>Teléfono:
+							<a href="tel:018001205000">01 800 120 5000</a>
+						</p>
+						<p>CDMX y Area metro.:
+							<a href="tel:018001205000">5520 5000</a>
+						</p>
+					</div>
+					<div id="contenedor_enlaces_contratacion">
+						<p>Chat:
+							<a href="http://www.izzi.mx/webApps/chat" target="_blank">Iniciar Chat ahora</a>
+						</p>	
+					</div>
+					<div id="contenedor_correos_contratacion">
+						<p>Vía mail:
+							<a href="mailto:ventas@izzi.mx">ventas@izzi.mx</a>
+						</p>
+					</div>
+				</div>
+				<form class="col s12">
+					<div class="row">
+						<hr />
+						<h5>Quiero que me llamen</h5>
+						<div class="input-field col s12">
+							<input id="EnviarNombreContratacion" type="text" class="validate">
+							<label for="EnviarNombreContratacion">Nombre</label>
+						</div>
+						<div class="input-field col s12">
+							<input id="EnviarCorreoContratacion" type="email" class="validate">
+							<label for="EnviarCorreoContratacion">Correo</label>
+						</div>
+						<div class="input-field col s12">
+							<input id="EnviarTelefonoContratacion" type="tel" class="validate">
+							<label for="EnviarTelefonoContratacion">Tel. Fijo</label>
+						</div>
+						<div class="input-field col s12">
+							<input id="EnviarMovilContratacion" type="tel" class="validate">
+							<label for="EnviarMovilContratacion">Tel. Móvil</label>
+						</div>
+					</div>
+					<a href="#!" id="BtnEnviarContratacion" class="btn orange accent-4" style="width: 100%;">Enviar</a>
+				</form>
+			</div>
+			<div class="modal-footer">
+			  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+			</div>
+		</div>
+
+
 		<!--BANNER SLIDE DOWN-->
 		<div id="slide-in-banner" class="z-depth-2 AnuncioComparadorCentro">
 			<div class="close-modal-btn">
@@ -464,7 +523,7 @@
                         //$('#results').html('Plugin name: ' + json.name + '<br />Author: ' + json.author.name);
 						jQuery("#ContenidoModal").html(json.contenido);
 						jQuery("#footerBotonesModal").html(json.footer);
-
+						$('.modal-trigger').leanModal();
 						if($('#ContenidoModal table').length) {
 					        $('#ContenidoModal table').addClass('responsive-table striped');
 					    }
@@ -476,6 +535,7 @@
 				    	console.log(data);
 				    });
 				})
+
 			}
 			jQuery( "#btnComparar" ).click(function() {
 				if($(".span-bx-selected").length<2 || $(".span-bx-selected").length==null){
@@ -502,7 +562,8 @@
 					    	var data=	{
 								CompararPlanes:true,
 								id_plan:$(this).attr("value"),
-								num_plan_comp:i
+								num_plan_comp:i,
+								estado:$( "#selectEstado" ).val()
 
 							}
 					    }					    
@@ -576,6 +637,7 @@
 					    top: 0
 					},1000);
 				}
+			$('.modal-trigger').leanModal();
 			})
 
 			function eliminarDelComparador(id_plan){
@@ -2242,6 +2304,122 @@
 			return false;
 			});
 		}
+
+		function contratar(id_plan,nombre_plan,empresa,estado){
+			console.log("contratar()");
+			console.log(id_plan);
+			console.log(nombre_plan);
+			console.log(empresa);
+			console.log(estado);
+			$('#BtnEnviarContratacion').attr('data-id-plan',id_plan);
+			$('#BtnEnviarContratacion').attr('data-nombre-plan',nombre_plan);
+			$('#BtnEnviarContratacion').attr('data-empresa-plan',empresa);
+			$('#BtnEnviarContratacion').attr('data-estado-plan',estado);
+			var data={
+					contratar:true,
+					id_empresa:empresa,
+					estado:estado
+				}
+			jQuery.ajax({
+				//dataType:"json",
+				type: "POST",
+				url: "listado.php",
+				data: data
+			})
+		    .done(function(data){
+		    	$(".contenedorContactos").html(data)
+		    	console.log(data);
+		    })
+		    .fail(function(data){
+		    	console.log(data);
+		    	window.setTimeout(function() {
+						overlay.update({
+							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							text: "ERROR"
+						});
+					}, 1000);
+		    	//window.location.href = "indexBE.php";
+		    });
+
+		}
+
+		jQuery( "#BtnEnviarContratacion" ).click(function() {
+			//alert("Nombre: "+$( "#nombre" ).val());
+			//alert("Email: "+$( "#email" ).val());
+			//alert("Estado: "+$( "#selectEstado" ).val());
+			//alert("Tema: "+$( "#tema" ).val());
+			//alert("Comentario: "+$( "#comentario" ).val());
+			if(($( "#EnviarNombreContratacion" ).val() !="") && ($( "#EnviarCorreoContratacion" ).val() !="") && (($( "#EnviarTelefonoContratacion" ).val()!="") || ($( "#EnviarMovilContratacion").val()!=""))) 
+			{
+
+			
+				$.blockUI({ message: null }); 
+				var target = document.createElement("div");
+				document.body.appendChild(target);
+				var spinner = new Spinner(opts).spin(target);
+				var overlay = iosOverlay({
+					text: "Cargando",
+					spinner: spinner
+				});
+				var data={
+						nombre:$( "#EnviarNombreContratacion" ).val(),
+						email:$( "#EnviarCorreoContratacion" ).val(),
+						telefono:$( "#EnviarTelefonoContratacion" ).val(),
+						movil:$( "#EnviarMovilContratacion" ).val(),
+						estado:$('#BtnEnviarContratacion').attr('data-estado-plan'),
+						id_plan:$('#BtnEnviarContratacion').attr('data-id-plan'),
+						nombre_plan:$('#BtnEnviarContratacion').attr('data-nombre-plan'),
+						empresa_plan:$('#BtnEnviarContratacion').attr('data-empresa-plan')
+					}
+				jQuery.ajax({
+					//dataType:"json",
+					type: "POST",
+					url: "mailtoContrataciones.php",
+					data: data
+				})
+			    .done(function(data){
+
+			    	if(data==true){
+			    		//alert("true");
+			    		$( "#EnviarNombreContratacion" ).val("");
+						$( "#EnviarCorreoContratacion" ).val("");
+						$( "#EnviarMovilContratacion" ).val("");
+						$( "#EnviarTelefonoContratacion" ).val("");
+			    		window.setTimeout(function() {
+							overlay.update({
+								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								text: "Listo"
+							});
+						}, 1000);
+						window.setTimeout(function() {
+							overlay.hide();
+						}, 2000);
+						setTimeout($.unblockUI, 3000);
+
+			    	}else{
+			    		//alert("false");
+			    		window.setTimeout(function() {
+							overlay.update({
+								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								text: "ERROR"
+							});
+						}, 1000);
+						window.setTimeout(function() {
+							overlay.hide();
+						}, 2000);
+						setTimeout($.unblockUI, 3000);
+
+			    	}
+			    	console.log(data)
+			    })
+			    .fail(function(data){
+			    	console.log(data);
+			    	//window.location.href = "indexBE.php";
+			    });
+			}else{
+				alert("Debe completar el nombre, el correo y alguno de los dos números telefónicos");
+			}
+		});
 		</script>
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

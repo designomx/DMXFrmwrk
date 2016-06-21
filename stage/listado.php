@@ -430,8 +430,8 @@ if(isset($_POST['listadoSimple'])){
 						<div class="slide-bar-bx">
 							<div id="slidertest"></div>
 							<div class="slide-value-bx">
-								<span class="left">$'.(empty($_SESSION["Preciomin"])? 0:$_SESSION["Preciomin"]).'</span>
-								<span class="right">$'.(empty($_SESSION["Preciomax"])? 3999:$_SESSION["Preciomax"]).'+</span>
+								<span class="left">$'.(empty($_SESSION["Preciomin"])? 0:number_format($_SESSION["Preciomin"])).'</span>
+								<span class="right">$'.(empty($_SESSION["Preciomax"])? 3999:number_format($_SESSION["Preciomax"])).'+</span>
 							</div>
 						</div>
 					</div>
@@ -842,6 +842,7 @@ if(isset($_POST['verDetalles'])){
 		P.mas_datos, P.visible,
 		P.pdf_canalesTV, 
 		P.fecha_actualizacion,
+		P.id_empresa,
 		E.nombre as empresa, 
 		E.codigo_color as empresa_color,
 		TDS1.label as dato1,
@@ -1051,13 +1052,27 @@ if(isset($_POST['verDetalles'])){
 									</div>
 								</li>';
 							}
-							$respuesta.='</ul>';
+							$respuesta.='</ul>
+							<div>
+								<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal()" class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
+								</a>
+							</div>';
+						}else{
+							$respuesta.='
+								<div>
+									<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal()" class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
+									</a>
+								</div>';
 						}
 					}
 				}else{
 					$respuesta.='
 						<h5>Opciones y características adicionales</h5>
 						'.$row['mas_datos'].'
+						<div>
+							<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal()" class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
+							</a>
+						</div>
 						';
 					//Pdf Canales
 					if(!empty($row["pdf_canalesTV"])){
@@ -1089,7 +1104,8 @@ if(isset($_POST['verDetalles'])){
 			$url=urlencode($urlShare);
 			$urlFB=urlencode($urlFBShare);
 
-			$footer.='<div class="modal-footer">
+			$footer.='
+			<div class="modal-footer">
 							<a href="#!" class="modal-action modal-close waves-effect btn-flat grey white-text" id="plan_'.$row["id_plan"].'" onclick="Comparar(this,'.$row["id_plan"].','."'".$row["empresa_color"]."'".')">Comparar</a>
 							<a href="#!" class="modal-action modal-close waves-effect btn-flat ">Cerrar</a>
 						</div>
@@ -1111,8 +1127,11 @@ if(isset($_POST['verDetalles'])){
 								<a href="print-paq.php?plan='.$row["id_plan"].'" onclick="ImprimirPlan(this,'.$row["id_plan"].')" class="btn-floating red accent-4" target="_blank"><i class="fa fa-print"></i></a>
 							</li>
 						</ul>
-					</div>';
-			$respuesta.='<br><br><div>Fecha de atualización: '.date('F/j/Y',strtotime($row['fecha_actualizacion'])).'</div>';
+					</div>
+					<br><br>
+
+					';
+			$respuesta.='<br><br><div>Fecha de actualización: '.date('F/j/Y',strtotime($row['fecha_actualizacion'])).'</div><br><br>';
 		}
 		$miArray = array("contenido"=>$respuesta, "footer"=>$footer);
 		echo json_encode($miArray);
@@ -1562,7 +1581,8 @@ if(isset($_POST['CompararPlanes'])){
 		TDS3.label as dato3,
 		TDS3.tipo as tipoDato3,
 		TDS4.label as dato4,
-		TDS4.tipo as tipoDato4
+		TDS4.tipo as tipoDato4,
+		P.id_empresa
 	  	FROM planes P
 	  	INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
 	  	INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
@@ -1657,10 +1677,9 @@ if(isset($_POST['CompararPlanes'])){
 				$respuesta=$respuesta.'<div class="paq-price">$'.number_format($row["precio"]).'</div>';
 			}
 //<div class="paq-price">$'.$row["precio"].'</div>
-			$respuesta=$respuesta.'	<div class="more-actions-bx">
-									<a href="#!" class="grey"></a>
-									<a href="#!" class="compare-slct grey"></a>
-									<a href="#!" onclick="eliminarDelComparador('.$row["id_plan"].')" class="compare-delete">Eliminar</a>
+			$respuesta=$respuesta.'	<div class="more-actions-bx comparetratation">
+									<a href="#!" onclick="eliminarDelComparador('.$row["id_plan"].')" class="grey white-text text-white">Eliminar</a>
+									<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\')" class="compare-slct orange accent-4 modal-trigger">Contratar <i class="material-icons">done</i></a>
 									<div class="clearfix"></div>
 								</div>
 							</div>
@@ -2052,6 +2071,69 @@ if(isset($_POST['CargarAnuncio'])){
 		/* liberar la serie de resultados */
 		$result->free();
 
+}
+
+//Función que carga los datos de Contratacion.
+if(isset($_POST['contratar'])){
+	$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "stage-db600436593UTF8");
+	$mysqli->set_charset("utf8");
+	$id_empresa=$_POST['id_empresa'];
+	$estado=$_POST['estado'];
+	$query="SELECT C.id_contacto
+			FROM Contacto_empresas C
+			INNER JOIN relacion_contacto_empresas RCE ON C.id_contacto = RCE.id_contacto
+			WHERE RCE.id_empresa=".$id_empresa." AND (C.estado=".$estado." OR C.estado=-1)";
+
+	
+	if (!$mysqli->query($query)) {
+    	printf("Errormessage: %s\n", $mysqli->error);
+	}else{
+		$resultadoContactoEmpresa = $mysqli->query($query);
+	}
+	$respuesta='';
+	while($row = $resultadoContactoEmpresa->fetch_array())
+	{
+		//array_push($rows, $row);
+		$queryCorreos="SELECT correo, nombre_correo FROM correo_contacto_empresa WHERE id_contacto=".$row["id_contacto"];
+		//echo $queryCorreos;
+
+		$resultCorreos = $mysqli->query($queryCorreos);
+		while ($filaCorreos = $resultCorreos->fetch_array()) {
+			# code...
+			$respuesta .= "	<p>Vía mail:
+	      						<a href='mailto:".$filaCorreosla['correo']."'>".$filaCorreos['correo']."</a>
+	      					</p>";
+		}
+		$resultCorreos->free();
+
+		$queryTelefonos="SELECT telefono, nombre_telefono FROM telefono_contacto_empresa WHERE id_contacto=".$row["id_contacto"];
+		//echo $queryCorreos;
+
+		$resultTelefonos = $mysqli->query($queryTelefonos);
+		while ($filaTelefonos = $resultTelefonos->fetch_array()) {
+			# code...
+			$respuesta .= "	<p>".$filaTelefonos['nombre_telefono'].":
+	      						<a href='tel:".$filaTelefonos['telefono']."'>".$filaTelefonos['telefono']."</a>
+	      					</p>";
+		}
+		$resultTelefonos->free();
+
+		$queryEnlaces="SELECT enlace, nombre_enlace, descripcion_enlace FROM enlace_contacto_empresa WHERE id_contacto=".$row["id_contacto"];
+		$resultEnlaces = $mysqli->query($queryEnlaces);
+		while ($filaEnlaces = $resultEnlaces->fetch_array()) {
+			# code...
+			$respuesta .= "	<p>".$filaEnlaces['descripcion_enlace'].":
+	      						<a href='".$filaEnlaces['enlace']."'>".$filaEnlaces['nombre_enlace']."</a>
+	      					</p>";
+		}
+		$resultEnlaces->free();
+
+		
+	}
+	echo $respuesta;
+
+	/* liberar la serie de resultados */
+	$resultadoContactoEmpresa->free();
 }
 
 /* cerrar la conexión */

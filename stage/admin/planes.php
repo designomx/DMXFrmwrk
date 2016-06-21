@@ -72,6 +72,10 @@ function createMultipleSelect($recordset, $title, $id_name, $assignedName, $unas
 		echo "</tr>";  
 }
 
+
+//createMultipleSelect($servicios, "Servicios", "id_tipoServicio", "services", "unassignedServices");
+
+
 function createMainDataInput($tipoDatosServicios, $selectName, $inputName, $label){
 
 		mysql_data_seek($tipoDatosServicios, 0);
@@ -139,6 +143,13 @@ if(!isset($_POST['servicios'])){
 }
 if(!isset($_POST['FiltroEstado'])){
 	$_POST['FiltroEstado'] = 0;
+}else{
+	//$('#ListaEstados').val($_POST['FiltroEstado'])
+}
+if(!isset($_POST['FiltroEmpresas'])){
+	$_POST['FiltroEmpresas'] = 0;
+}else{
+	//$('#ListaEmpresas').val($_POST['FiltroEmpresas'])
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
@@ -146,48 +157,95 @@ if(!isset($_POST['FiltroEstado'])){
 if($_POST['servicios'] == "todos"){
 	if($_POST['FiltroEstado'] ==0){
 	/* Obtiene todos los planes existentes en la base de datos */
-		$query_planes = sprintf("SELECT 
-DISTINCT(P.id_plan),
-	P.nombre, 
-	P.precio, 
-	P.dato_principal_1,
-	P.id_tipoDato_principal_1, 
-	P.dato_principal_2, 
-	P.id_tipoDato_principal_2, 
-P.dato_principal_3, 
-P.id_tipoDato_principal_3, 
-P.dato_principal_4,
-P.id_tipoDato_principal_4, 
-P.mas_datos, P.visible, 
-E.nombre as empresa, 
-E.codigo_color as empresa_color,
-(select count(*) from planes_tipoServicios where planes_tipoServicios.id_plan=P.id_plan and planes_tipoServicios.id_tipoServicio=1) as telMovil  
-	FROM planes P
-	INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
-	 ORDER BY empresa ASC, precio DESC");
+		if($_POST['FiltroEmpresas']==0){
+			$query_planes = sprintf("SELECT 
+			DISTINCT(P.id_plan),
+				P.nombre, 
+				P.precio, 
+				P.dato_principal_1,
+				P.id_tipoDato_principal_1, 
+				P.dato_principal_2, 
+				P.id_tipoDato_principal_2, 
+			P.dato_principal_3, 
+			P.id_tipoDato_principal_3, 
+			P.dato_principal_4,
+			P.id_tipoDato_principal_4, 
+			P.mas_datos, P.visible, 
+			E.nombre as empresa, 
+			E.codigo_color as empresa_color,
+			(select count(*) from planes_tipoServicios where planes_tipoServicios.id_plan=P.id_plan and planes_tipoServicios.id_tipoServicio=1) as telMovil  
+				FROM planes P
+				INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
+				 ORDER BY empresa ASC, precio DESC");
+		}else{
+			$query_planes = "SELECT 
+			DISTINCT(P.id_plan),
+				P.nombre, 
+				P.precio, 
+				P.dato_principal_1,
+				P.id_tipoDato_principal_1, 
+				P.dato_principal_2, 
+				P.id_tipoDato_principal_2, 
+				P.dato_principal_3, 
+				P.id_tipoDato_principal_3, 
+				P.dato_principal_4,
+				P.id_tipoDato_principal_4, 
+				P.mas_datos, P.visible, 
+				E.nombre as empresa, 
+				E.codigo_color as empresa_color,
+				(select count(*) from planes_tipoServicios where planes_tipoServicios.id_plan=P.id_plan and planes_tipoServicios.id_tipoServicio=1) as telMovil  
+				FROM planes P
+				INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
+				WHERE P.id_empresa=".$_POST['FiltroEmpresas']." 
+			 	ORDER BY empresa ASC, precio DESC";
+		}
 
 	}else{
-		$query_planes = sprintf("SELECT 
-DISTINCT(P.id_plan),
-	P.nombre, 
-	P.precio, 
-	P.dato_principal_1,
-	P.id_tipoDato_principal_1, 
-	P.dato_principal_2, 
-	P.id_tipoDato_principal_2, 
-P.dato_principal_3, 
-P.id_tipoDato_principal_3, 
-P.dato_principal_4,
-P.id_tipoDato_principal_4, 
-P.mas_datos, P.visible, 
-E.nombre as empresa, 
-E.codigo_color as empresa_color,
-(select count(*) from planes_tipoServicios where planes_tipoServicios.id_plan=P.id_plan and planes_tipoServicios.id_tipoServicio=1) as telMovil  
-	FROM planes P
-	INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
-	INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
-	WHERE C.ID_ESTADO='".$_POST['FiltroEstado']."' 
-	 ORDER BY empresa ASC, precio DESC");
+		if($_POST['FiltroEmpresas']==0){
+			$query_planes = sprintf("SELECT 
+			DISTINCT(P.id_plan),
+				P.nombre, 
+				P.precio, 
+				P.dato_principal_1,
+				P.id_tipoDato_principal_1, 
+				P.dato_principal_2, 
+				P.id_tipoDato_principal_2, 
+				P.dato_principal_3, 
+				P.id_tipoDato_principal_3, 
+				P.dato_principal_4,
+				P.id_tipoDato_principal_4, 
+				P.mas_datos, P.visible, 
+				E.nombre as empresa, 
+				E.codigo_color as empresa_color,
+				(select count(*) from planes_tipoServicios where planes_tipoServicios.id_plan=P.id_plan and planes_tipoServicios.id_tipoServicio=1) as telMovil  
+					FROM planes P
+					INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
+					INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
+					WHERE C.ID_ESTADO='".$_POST['FiltroEstado']."' 
+					 ORDER BY empresa ASC, precio DESC");
+		}else{
+			$query_planes = sprintf("SELECT 
+			DISTINCT(P.id_plan),
+				P.nombre, 
+				P.precio, 
+				P.dato_principal_1,
+				P.id_tipoDato_principal_1, 
+				P.dato_principal_2, 
+				P.id_tipoDato_principal_2, 
+				P.dato_principal_3, 
+				P.id_tipoDato_principal_3, 
+				P.dato_principal_4,
+				P.id_tipoDato_principal_4, 
+				P.mas_datos, P.visible, 
+				E.nombre as empresa, 
+				E.codigo_color as empresa_color,
+				(select count(*) from planes_tipoServicios where planes_tipoServicios.id_plan=P.id_plan and planes_tipoServicios.id_tipoServicio=1) as telMovil  
+					FROM planes P
+					INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
+					INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
+					WHERE C.ID_ESTADO='".$_POST['FiltroEstado']."' AND P.id_empresa=".$_POST['FiltroEmpresas']."  
+					 ORDER BY empresa ASC, precio DESC");
+		}
 	}
 	$planes = mysql_query($query_planes, $dbConn) or die(mysql_error());
 	$totalRows_planes = mysql_num_rows($planes);
@@ -197,51 +255,102 @@ E.codigo_color as empresa_color,
 //exit();
 	if($_POST['FiltroEstado']==0){
 		/* Obtiene todos los planes que corresponden con los parámetros de filtrado */
-		$query_planes = sprintf("SELECT 
-DISTINCT(P.id_plan),
-	P.nombre, 
-	P.precio, 
-	P.dato_principal_1,
-	P.id_tipoDato_principal_1, 
-	P.dato_principal_2, 
-	P.id_tipoDato_principal_2, 
-P.dato_principal_3, 
-P.id_tipoDato_principal_3, 
-P.dato_principal_4,
-P.id_tipoDato_principal_4, 
-P.mas_datos, P.visible, 
-E.nombre as empresa, 
-E.codigo_color as empresa_color,
-(select count(*) from planes_tipoServicios where planes_tipoServicios.id_plan=P.id_plan and planes_tipoServicios.id_tipoServicio=1) as telMovil  
-	FROM planes P
-	INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
-	WHERE P.id_plan NOT IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (SELECT id_tipoServicio from tipoServicios where id_tipoServicio NOT IN (".implode(', ', $_POST['servicios']).") ) )
-	 ORDER BY empresa ASC, precio DESC
-				  	 ");
+		if($_POST['FiltroEmpresas']==0){
+			$query_planes = sprintf("SELECT 
+			DISTINCT(P.id_plan),
+				P.nombre, 
+				P.precio, 
+				P.dato_principal_1,
+				P.id_tipoDato_principal_1, 
+				P.dato_principal_2, 
+				P.id_tipoDato_principal_2, 
+				P.dato_principal_3, 
+				P.id_tipoDato_principal_3, 
+				P.dato_principal_4,
+				P.id_tipoDato_principal_4, 
+				P.mas_datos, P.visible, 
+				E.nombre as empresa, 
+				E.codigo_color as empresa_color,
+				(select count(*) from planes_tipoServicios where planes_tipoServicios.id_plan=P.id_plan and planes_tipoServicios.id_tipoServicio=1) as telMovil  
+					FROM planes P
+					INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
+					WHERE P.id_plan NOT IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (SELECT id_tipoServicio from tipoServicios where id_tipoServicio NOT IN (".implode(', ', $_POST['servicios']).") ) )
+					 ORDER BY empresa ASC, precio DESC
+					  	 ");
+		}else{
+			$query_planes = "SELECT 
+			DISTINCT(P.id_plan),
+				P.nombre, 
+				P.precio, 
+				P.dato_principal_1,
+				P.id_tipoDato_principal_1, 
+				P.dato_principal_2, 
+				P.id_tipoDato_principal_2, 
+				P.dato_principal_3, 
+				P.id_tipoDato_principal_3, 
+				P.dato_principal_4,
+				P.id_tipoDato_principal_4, 
+				P.mas_datos, P.visible, 
+				E.nombre as empresa, 
+				E.codigo_color as empresa_color,
+				(select count(*) from planes_tipoServicios where planes_tipoServicios.id_plan=P.id_plan and planes_tipoServicios.id_tipoServicio=1) as telMovil  
+				FROM planes P
+				INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
+				WHERE P.id_plan NOT IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (SELECT id_tipoServicio from tipoServicios where id_tipoServicio NOT IN (".implode(', ', $_POST['servicios']).") ) )
+				 AND P.id_empresa=".$_POST["FiltroEmpresas"]." 
+				 ORDER BY empresa ASC, precio DESC
+					  	 ";
+		}
 		//echo $query_planes;
 	}else{
-		$query_planes = sprintf("SELECT 
-DISTINCT(P.id_plan),
-	P.nombre, 
-	P.precio, 
-	P.dato_principal_1,
-	P.id_tipoDato_principal_1, 
-	P.dato_principal_2, 
-	P.id_tipoDato_principal_2, 
-P.dato_principal_3, 
-P.id_tipoDato_principal_3, 
-P.dato_principal_4,
-P.id_tipoDato_principal_4, 
-P.mas_datos, P.visible, 
-E.nombre as empresa, 
-E.codigo_color as empresa_color,
-(select count(*) from planes_tipoServicios where planes_tipoServicios.id_plan=P.id_plan and planes_tipoServicios.id_tipoServicio=1) as telMovil  
-	FROM planes P
-	INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
-	INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
-	WHERE C.ID_ESTADO='".$_POST['FiltroEstado']."' 
-	AND P.id_plan NOT IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (SELECT id_tipoServicio from tipoServicios where id_tipoServicio NOT IN (".implode(', ', $_POST['servicios']).") ) )
-				  	  ORDER BY empresa ASC, precio DESC");
+		if($_POST["FiltroEmpresas"]==0){
+			$query_planes = sprintf("SELECT 
+			DISTINCT(P.id_plan),
+				P.nombre, 
+				P.precio, 
+				P.dato_principal_1,
+				P.id_tipoDato_principal_1, 
+				P.dato_principal_2, 
+				P.id_tipoDato_principal_2, 
+				P.dato_principal_3, 
+				P.id_tipoDato_principal_3, 
+				P.dato_principal_4,
+				P.id_tipoDato_principal_4, 
+				P.mas_datos, P.visible, 
+				E.nombre as empresa, 
+				E.codigo_color as empresa_color,
+				(select count(*) from planes_tipoServicios where planes_tipoServicios.id_plan=P.id_plan and planes_tipoServicios.id_tipoServicio=1) as telMovil  
+				FROM planes P
+				INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
+				INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
+				WHERE C.ID_ESTADO='".$_POST['FiltroEstado']."' 
+				AND P.id_plan NOT IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (SELECT id_tipoServicio from tipoServicios where id_tipoServicio NOT IN (".implode(', ', $_POST['servicios']).") ) )
+		  	  	ORDER BY empresa ASC, precio DESC");
+		}else{
+			$query_planes = sprintf("SELECT 
+			DISTINCT(P.id_plan),
+				P.nombre, 
+				P.precio, 
+				P.dato_principal_1,
+				P.id_tipoDato_principal_1, 
+				P.dato_principal_2, 
+				P.id_tipoDato_principal_2, 
+				P.dato_principal_3, 
+				P.id_tipoDato_principal_3, 
+				P.dato_principal_4,
+				P.id_tipoDato_principal_4, 
+				P.mas_datos, P.visible, 
+				E.nombre as empresa, 
+				E.codigo_color as empresa_color,
+				(select count(*) from planes_tipoServicios where planes_tipoServicios.id_plan=P.id_plan and planes_tipoServicios.id_tipoServicio=1) as telMovil  
+				FROM planes P
+				INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
+				INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
+				WHERE C.ID_ESTADO='".$_POST['FiltroEstado']."' 
+				AND P.id_plan NOT IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (SELECT id_tipoServicio from tipoServicios where id_tipoServicio NOT IN (".implode(', ', $_POST['servicios']).") ) ) 
+				AND P.id_empresa=".$_POST['FiltroEmpresas']." 
+		  	  	ORDER BY empresa ASC, precio DESC");
+		}
 	}
 	$planes = mysql_query($query_planes, $dbConn) or die(mysql_error());
 	$totalRows_planes = mysql_num_rows($planes);
@@ -261,6 +370,7 @@ $tipoDatosServicios = mysql_query($query_tipoDatosServicios, $dbConn) or die(mys
 /* Obtiene el catálogo de empresas */
 $query_empresas = "SELECT * FROM empresas ORDER BY id_empresa ASC";
 $empresas = mysql_query($query_empresas, $dbConn) or die(mysql_error());
+$ListaFiltroEmpresas= mysql_query($query_empresas, $dbConn) or die(mysql_error());
 
 /* Obtiene el catálogo de estados */
 $query_estados = "SELECT * FROM estados ORDER BY id_estado ASC";
@@ -299,6 +409,218 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 
 
 <script type="text/javascript">
+
+	function bulletsDatosPrincipales(){
+		//Activar y desactivar bullets cuando se cambian servicios
+		//$('select#services option[value="1"]').prop('selected')==false;
+		var celular=$('select#services option[value="1"]').prop('selected');
+		var telefono=$('select#services option[value="2"]').prop('selected');
+		var internet=$('select#services option[value="3"]').prop('selected');
+		var tv = $('select#services option[value="4"]').prop('selected');
+		console.log("celular "+celular);
+		console.log("telefono "+telefono);
+		console.log("internet "+internet);
+		console.log("tv "+tv);
+
+		if(!celular && !telefono && !internet && !tv){
+			$('select#id_tipoDato_principal_1').val('');
+			$('select#id_tipoDato_principal_2').val('');
+			$('select#id_tipoDato_principal_3').val('');
+			$('select#id_tipoDato_principal_4').val('');
+		}
+
+		if(celular && (telefono || internet || tv)){
+			alert("No puede seleccionar Teléfono móvil junto con ningun otro servicio");
+			//Desactivar los bullets que no corresponden al servicio
+			$('select#id_tipoDato_principal_1 option[value="0"],option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"],option[value="14"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_2 option[value="0"],option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"],option[value="14"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_3 option[value="0"],option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"],option[value="14"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_4 option[value="0"],option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"],option[value="14"]').attr('disabled','disabled');
+
+			//Seleccionar Bullets Principales
+			$('select#id_tipoDato_principal_1').val('');
+			$('select#id_tipoDato_principal_2').val('');
+			$('select#id_tipoDato_principal_3').val('');
+			$('select#id_tipoDato_principal_4').val('');
+		}
+
+		if(celular && !telefono && !internet && !tv){
+			//Activar los bullets correspondientes al servicio
+			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled',false);
+
+			//Desactivar los bullets que no corresponden al servicio
+			$('select#id_tipoDato_principal_1 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_2 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_3 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_4 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+
+			//Seleccionar Bullets Principales
+			$('select#id_tipoDato_principal_1').val('1');
+			$('select#id_tipoDato_principal_2').val('2');
+			$('select#id_tipoDato_principal_3').val('5');
+			$('select#id_tipoDato_principal_4').val('');
+
+		}
+
+		//Single play telefono
+		if(!celular && telefono && !internet && !tv){
+
+			//Activar los bullets correspondientes al servicio
+			$('select#id_tipoDato_principal_1 option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_2 option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_3 option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_4 option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
+
+			//Desactivar los bullets que no corresponden al servicio
+			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+
+			//Seleccionar Bullets Principales
+			$('select#id_tipoDato_principal_1').val('7');
+			$('select#id_tipoDato_principal_2').val('8');
+			$('select#id_tipoDato_principal_3').val('9');
+			$('select#id_tipoDato_principal_4').val('10');
+		}
+
+		//Single Play Internet
+		if(!celular && !telefono && internet && !tv){
+
+			//Activar los bullets correspondientes al servicio
+			$('select#id_tipoDato_principal_1 option[value="11"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_2 option[value="11"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_3 option[value="11"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_4 option[value="11"]').attr('disabled',false);
+
+			//Desactivar los bullets que no corresponden al servicio
+			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+
+			//Seleccionar Bullets Principales
+			$('select#id_tipoDato_principal_1').val('11');
+			$('select#id_tipoDato_principal_2').val('');
+			$('select#id_tipoDato_principal_3').val('');
+			$('select#id_tipoDato_principal_4').val('');
+		}
+
+		//Single Play TV
+		if(!celular && !telefono && !internet && tv){
+
+			//Activar los bullets correspondientes al servicio
+			$('select#id_tipoDato_principal_1 option[value="12"],option[value="13"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_2 option[value="12"],option[value="13"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_3 option[value="12"],option[value="13"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_4 option[value="12"],option[value="13"]').attr('disabled',false);
+
+			//Desactivar los bullets que no corresponden al servicio
+			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"]').attr('disabled','disabled');
+
+			//Seleccionar Bullets Principales
+			$('select#id_tipoDato_principal_1').val('13');
+			$('select#id_tipoDato_principal_2').val('12');
+			$('select#id_tipoDato_principal_3').val('');
+			$('select#id_tipoDato_principal_4').val('');
+		}
+
+		//DoblePlay TV+Internet
+		if(!celular && !telefono && internet && tv){
+
+			//Activar los bullets correspondientes al servicio
+			$('select#id_tipoDato_principal_1 option[value="12"],option[value="13"],option[value="11"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_2 option[value="12"],option[value="13"],option[value="11"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_3 option[value="12"],option[value="13"],option[value="11"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_4 option[value="12"],option[value="13"],option[value="11"]').attr('disabled',false);
+
+			//Desactivar los bullets que no corresponden al servicio
+			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled','disabled');
+
+			//Seleccionar Bullets Principales
+			$('select#id_tipoDato_principal_1').val('13');
+			$('select#id_tipoDato_principal_2').val('12');
+			$('select#id_tipoDato_principal_3').val('11');
+			$('select#id_tipoDato_principal_4').val('');
+		}
+
+		//DoblePlay TV+Internet
+		if(!celular && telefono && !internet && tv){
+
+			//Activar los bullets correspondientes al servicio
+			$('select#id_tipoDato_principal_1 option[value="12"],option[value="13"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_2 option[value="12"],option[value="13"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_3 option[value="12"],option[value="13"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_4 option[value="12"],option[value="13"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
+
+			//Desactivar los bullets que no corresponden al servicio
+			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"]').attr('disabled','disabled');
+
+			//Seleccionar Bullets Principales
+			$('select#id_tipoDato_principal_1').val('13');
+			$('select#id_tipoDato_principal_2').val('12');
+			$('select#id_tipoDato_principal_3').val('7');
+			$('select#id_tipoDato_principal_4').val('8');
+		}
+
+		//DoblePlay Telefono+Internet
+		if(!celular && telefono && internet && !tv){
+
+			//Activar los bullets correspondientes al servicio
+			$('select#id_tipoDato_principal_1 option[value="11"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_2 option[value="11"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_3 option[value="11"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_4 option[value="11"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
+
+			//Desactivar los bullets que no corresponden al servicio
+			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="12"],option[value="13"]').attr('disabled','disabled');
+
+			//Seleccionar Bullets Principales
+			$('select#id_tipoDato_principal_1').val('11');
+			$('select#id_tipoDato_principal_2').val('7');
+			$('select#id_tipoDato_principal_3').val('8');
+			$('select#id_tipoDato_principal_4').val('9');
+		}
+
+		//TriplePlay Telefono+TV+Internet
+		if(!celular && telefono && !internet && tv){
+
+			//Activar los bullets correspondientes al servicio
+			$('select#id_tipoDato_principal_1 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_2 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_3 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled',false);
+			$('select#id_tipoDato_principal_4 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled',false);
+
+			//Desactivar los bullets que no corresponden al servicio
+			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled','disabled');
+			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled','disabled');
+
+			//Seleccionar Bullets Principales
+			$('select#id_tipoDato_principal_1').val('13');
+			$('select#id_tipoDato_principal_2').val('11');
+			$('select#id_tipoDato_principal_3').val('7');
+			$('select#id_tipoDato_principal_4').val('8');
+		}
+
+
+	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	// Global Variables
@@ -391,7 +713,97 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 				$btn_guardarDatos.val("Guardar");
 
 				$('select#services').multiSelect("destroy");
-				$('select#services').multiSelect();
+				$('select#services').multiSelect({
+					afterSelect: function(values){
+						/*
+				    	console.log("Select value: "+values);
+				    	if(values==1){
+				    		//Opciones de Tel.Movil
+				    		$('select#services option[value="1"]').prop('selected', true);
+
+				    		$('select#services option[value="2"]').attr('disabled', 'disabled');
+				    		$('select#services option[value="3"]').attr('disabled', 'disabled');
+				    		$('select#services option[value="4"]').attr('disabled', 'disabled');
+				    		//$('select#services').multiSelect('refresh');
+				    		//bulletsDatosPrincipales();
+				    	}
+				    	if(values==2){
+				    		//Opciones de Tel.fijo
+				    		$('select#services option[value="2"]').prop('selected', true);
+
+				    		$('select#services option[value="1"]').attr('disabled', 'disabled');
+				    		//$('select#services').multiSelect('refresh');
+
+				    	}
+				    	if(values==3){
+				    		//Opciones de Internet
+				    		$('select#services option[value="3"]').prop('selected', true);
+
+				    		$('select#services option[value="1"]').attr('disabled', 'disabled');
+				    		//$('select#services').multiSelect('refresh');
+				    	}
+				    	if(values==4){
+				    		//Opciones de T.V.
+				    		$('select#services option[value="4"]').prop('selected', true);
+
+				    		$('select#services option[value="1"]').attr('disabled', 'disabled');
+				    		//$('select#services').multiSelect('refresh');
+				    	}
+				    	$('select#services').multiSelect('refresh');
+				    	*/
+				    	bulletsDatosPrincipales();
+					},
+					afterDeselect: function(values){
+						/*
+				    	console.log("Deselect value: "+values);
+				    	if(values==1){
+				    		//Opciones de Tel.Movil
+				    		$('select#services option[value="1"]').prop('selected', false);
+
+				    		$('select#services option[value="2"]').attr('disabled', false);
+				    		$('select#services option[value="3"]').attr('disabled', false);
+				    		$('select#services option[value="4"]').attr('disabled', false);
+				    		//$('select#services').multiSelect('refresh');
+				    	}
+				    	if(values==2){
+				    		//Opciones de Tel.fijo
+
+				    		$('select#services option[value="2"]').prop('selected', false);
+				    		if($('select#services option[value="3"]').prop('selected')==false && $('select#services option[value="4"]').prop('selected')==false){
+				    			$('select#services option[value="1"]').attr('disabled', false);
+				    			$('select#services option[value="2"]').attr('disabled', false);
+				    			$('select#services option[value="3"]').attr('disabled', false);
+				    			$('select#services option[value="4"]').attr('disabled', false);
+				    		}
+				    		//$('select#services').multiSelect('refresh');
+				    	}
+				    	if(values==3){
+				    		//Opciones de Internet
+				    		$('select#services option[value="3"]').prop('selected', false);
+				    		if($('select#services option[value="2"]').prop('selected')==false && $('select#services option[value="4"]').prop('selected')==false){
+				    			$('select#services option[value="1"]').attr('disabled', false);
+				    			$('select#services option[value="2"]').attr('disabled', false);
+				    			$('select#services option[value="3"]').attr('disabled', false);
+				    			$('select#services option[value="4"]').attr('disabled', false);
+				    		}
+				    		//$('select#services').multiSelect('refresh');
+				    	}
+				    	if(values==4){
+				    		//Opciones de T.V.
+				    		$('select#services option[value="4"]').prop('selected', false);
+				    		if($('select#services option[value="2"]').prop('selected')==false && $('select#services option[value="3"]').prop('selected')==false){
+				    			$('select#services option[value="1"]').attr('disabled', false);
+				    			$('select#services option[value="2"]').attr('disabled', false);
+				    			$('select#services option[value="3"]').attr('disabled', false);
+				    			$('select#services option[value="4"]').attr('disabled', false);
+				    		}
+				    		//$('select#services').multiSelect('refresh');
+				    	}
+				    	$('select#services').multiSelect('refresh');
+				    	*/
+				    	bulletsDatosPrincipales();
+					}
+				  });
 
 				$('select#states').multiSelect("destroy");
 				$('select#states').multiSelect();
@@ -912,12 +1324,13 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 						});
 
 						var FiltroEstado = $('#ListaEstados').val();
-						$.redirect("planes.php", {"servicios" : servicios, "FiltroEstado": FiltroEstado});  
+						var FiltroEmpresas = $('#ListaEmpresas').val();
+						$.redirect("planes.php", {"servicios" : servicios, "FiltroEstado": FiltroEstado, "FiltroEmpresas": FiltroEmpresas});  
 					
 					} else {
 						var FiltroEstado = $('#ListaEstados').val();
-
-						$.redirect("planes.php", {"servicios" : "todos", "FiltroEstado": FiltroEstado}); 
+						var FiltroEmpresas = $('#ListaEmpresas').val();
+						$.redirect("planes.php", {"servicios" : "todos", "FiltroEstado": FiltroEstado, "FiltroEmpresas": FiltroEmpresas}); 
 					
 					}
 				}		
@@ -1057,6 +1470,29 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
       	}
       ?>
       </select>
+      <?php 
+      	if($_POST['FiltroEmpresas']>0){
+	  		echo "<script>$('#ListaEstados').val(".$_POST['FiltroEstado'].") </script>";
+	  	}
+      ?>
+      <label for="sel1">Lista de Empresas (seleccione una):</label>
+      <select class="" id="ListaEmpresas">
+      <?php 
+        echo "<option value='0'>Todas las empresas</option>";
+      	while($row_empresas = mysql_fetch_assoc($ListaFiltroEmpresas)){
+      		echo "<option value=".$row_empresas['id_empresa'].">".$row_empresas['nombre']."</option>";
+      	}
+      ?>
+      </select>
+      <?php 
+      	if($_POST['FiltroEmpresas']>0){
+	  		echo "<script>$('#ListaEmpresas').val(".$_POST['FiltroEmpresas'].") </script>";
+	  	}
+      ?>
+  </div>
+<br>
+  <div id="FiltroEmpresas" class="FiltroEmpresas">
+  	
   </div>
 
   <div id="btn_filtrar">MOSTRAR PLANES</div>

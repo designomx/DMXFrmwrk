@@ -12,123 +12,163 @@ function verificar_contacto($id_empresa,$estado)
 	$database = "stage-db600436593UTF8";
 	$username = "dbo600436593";
 	$password = "20eligefacil15#";
-	$dbConn = mysql_pconnect($hostname, $username, $password) or trigger_error(mysql_error(),E_USER_ERROR);
-	mysql_query("SET NAMES 'utf8'");
+	$dbConn = mysqli_connect($hostname, $username, $password) or trigger_error(mysqli_error(),E_USER_ERROR);
+	mysqli_query("SET NAMES 'utf8'");
 	$sqlVerificar=sprintf("SELECT C.id_contacto FROM Contacto_empresas C INNER JOIN relacion_contacto_empresas R ON R.id_contacto=C.id_contacto WHERE R.id_empresa=%s AND C.estado=%s", $id_empresa, $estado);
 	//echo $sqlVerificar;
-	$resultVerificarContacto = mysql_query($sqlVerificar, $dbConn) or die(mysql_error());
-	if (mysql_num_rows($resultVerificarContacto) == 0)  
+	$resultVerificarContacto = mysqli_query($sqlVerificar, $dbConn) or die(mysqli_error());
+	if (mysqli_num_rows($resultVerificarContacto) > 0)  
 	{  
-		//"No existen registros en la base de datos." Insertar nuevo contacto
-		$sqlInsertarContacto=sprintf("INSERT INTO Contacto_empresas (estado) VALUES (%s)",$estado);
-		//echo $sqlInsertarContacto;
-		$resultInsertContacto = mysql_query($sqlInsertarContacto, $dbConn) or die(mysql_error());
-		mysql_free_result($resultInsertContacto);
-		$sqlIDContactoInsert=sprintf("SELECT max(id_contacto) as id FROM Contacto_empresas WHERE estado=%s", $estado);
-		$resultIDContactoInsert=mysql_query($sqlIDContactoInsert, $dbConn) or die(mysql_error());
-		if (mysql_num_rows($resultIDContactoInsert) == 0)  
-		{
-			return "error";
-		}else{
-			$id_contacto=mysql_fetch_assoc($resultIDContactoInsert);
-			$sqlRelacionContacto=sprintf("INSERT INTO relacion_contacto_empresas (id_empresa,id_contacto) VALUES (%s,%s)",$id_empresa,$id_contacto['id']);
-			echo $sqlRelacionContacto;
-			$resultRelacionContacto = mysql_query($sqlRelacionContacto, $dbConn) or die(mysql_error());
-			mysql_free_result($resultRelacionContacto);
-			return $id_contacto['id'];
-		}
-		mysql_free_result($resultIDContactoInsert);
-	}else{
 		//Existe, devolver id_contacto
-		while ( $fila = mysql_fetch_assoc($resultVerificarContacto)) {
+		while ( $fila = mysqli_fetch_assoc($resultVerificarContacto)) {
 			# code...
 			return $fila['id_contacto'];
 			break;
 		}	
+	}else{
+		//"No existen registros en la base de datos." Insertar nuevo contacto
+		$sqlInsertarContacto=sprintf("INSERT INTO Contacto_empresas (estado) VALUES (%s)",$estado);
+		//echo $sqlInsertarContacto;
+		$resultInsertContacto = mysqli_query($sqlInsertarContacto, $dbConn) or die(mysqli_error());
+		mysqli_free_result($resultInsertContacto);
+		$sqlIDContactoInsert=sprintf("SELECT max(id_contacto) as id FROM Contacto_empresas WHERE estado=%s", $estado);
+		$resultIDContactoInsert=mysqli_query($sqlIDContactoInsert, $dbConn) or die(mysqli_error());
+		if (mysqli_num_rows($resultIDContactoInsert) == 0)  
+		{
+			return "error";
+		}else{
+			$id_contacto=mysqli_fetch_assoc($resultIDContactoInsert);
+			$sqlRelacionContacto=sprintf("INSERT INTO relacion_contacto_empresas (id_empresa,id_contacto) VALUES (%s,%s)",$id_empresa,$id_contacto['id']);
+			echo $sqlRelacionContacto;
+			$resultRelacionContacto = mysqli_query($sqlRelacionContacto, $dbConn) or die(mysqli_error());
+			mysqli_free_result($resultRelacionContacto);
+			return $id_contacto['id'];
+		}
+		mysqli_free_result($resultIDContactoInsert);
 	}
-	mysql_free_result($resultVerificarContacto);
+	mysqli_free_result($resultVerificarContacto);
 }
-
+$delete=false;
 $transaccion = $_POST['transaccion'];
-
 switch($transaccion){
 
 	case 'INSERT':
 	
-				$tipoContacto=$_POST['tipoContacto'];
-				switch ($tipoContacto) {
-					case 'contacto':
+		$tipoContacto=$_POST['tipoContacto'];
+		switch ($tipoContacto) {
+			case 'contacto':
 
-						break;
-
-					case 'correo':
-						# code...
-						//echo "respuesta: ".$_POST['value'].",".$_POST['nombre'];
-						$id_contacto=verificar_contacto($_POST['id_empresa'],$_POST['estado']);
-						$sql=sprintf("INSERT INTO correo_contacto_empresa (id_contacto, correo, nombre_correo) VALUES (%s,%s,%s)",
-								$id_contacto,
-								GetSQLValueString($_POST['value'], "text"),
-								GetSQLValueString($_POST['nombre'], "text"));
-						//echo $sql;
-						break;
-
-					case 'telefono':
-						# code...
-						break;
-
-					case 'enlace':
-						# code...
-						break;
-					
-					default:
-						# code...
-						break;
-				}
-				/*
-				$sql = sprintf("INSERT INTO empresas(nombre, codigo_color) VALUES(%s, %s)",																																																																																
-								 GetSQLValueString($_POST['nombre'], "text"),
-								 GetSQLValueString($_POST['codigo_color'], "text"));
-				
-				$sql2 = sprintf("INSERT INTO Contacto_empresas( direccion_web, correo, telefono, calle, numero_exterior, numero_interior, colonia, delegacion, codigo_postal) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)",																																																																																
-								 GetSQLValueString($_POST['direccion_web_empresa'], "text"),
-								 GetSQLValueString($_POST['correo_electronico_empresa'], "text"),
-								 GetSQLValueString($_POST['telefono_empresa'], "text"),
-								 GetSQLValueString($_POST['calle_empresa'], "text"),
-								 GetSQLValueString($_POST['numero_ext_empresa'], "text"),
-								 GetSQLValueString($_POST['numero_int_empresa'], "text"),
-								 GetSQLValueString($_POST['colonia_empresa'], "text"),
-								 GetSQLValueString($_POST['delegacion_empresa'], "text"),
-								
-								 GetSQLValueString($_POST['codigo_postal_empresa'], "text"));
-				
-				$sqlID = "SELECT max(id_empresa) as id FROM empresas WHERE nombre='".$_POST['nombre']."'";
-				$insert=true;
 				break;
-				*/
-				
+
+			case 'correo':
+				# code...
+				//echo "respuesta: ".$_POST['value'].",".$_POST['nombre'];
+				$id_contacto=verificar_contacto($_POST['id_empresa'],$_POST['estado']);
+				$sql="INSERT INTO correo_contacto_empresa (id_contacto, correo, nombre_correo) VALUES ('".$id_contacto."','".$_POST['value']."','".$_POST['nombre']."')";
+				//echo $sql;
+				break;
+
+			case 'telefono':
+				# code...
+				$id_contacto=verificar_contacto($_POST['id_empresa'],$_POST['estado']);
+				$sql="INSERT INTO telefono_contacto_empresa (id_contacto, telefono, nombre_telefono) VALUES ('".$id_contacto."','".$_POST['value']."','".$_POST['nombre']."')";
+				echo $sql;
+				break;
+
+			case 'enlace':
+				# code...
+				$id_contacto=verificar_contacto($_POST['id_empresa'],$_POST['estado']);
+				$sql="INSERT INTO enlace_contacto_empresa (id_contacto, enlace, nombre_enlace, descripcion_enlace) VALUES ('".$id_contacto."','".$_POST['value']."','".$_POST['nombre']."','".$_POST['descripcion']."')";
+				//echo $sql;
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+	break;
 	case 'UPDATE':
+		$tipoContacto=$_POST['tipoContacto'];
+		switch ($tipoContacto) {
+			
+			case 'contacto':
 
-				$sql = sprintf("UPDATE empresas SET nombre=%s, codigo_color=%s WHERE id_empresa=%s",																																																																																	
-								 GetSQLValueString($_POST['nombre'], "text"),
-								 GetSQLValueString($_POST['codigo_color'], "text"),
-								 GetSQLValueString($_POST['id_empresa'], "int"));
-				
 				break;
+
+			case 'correo':
+				# code...
+				//echo "respuesta: ".$_POST['value'].",".$_POST['nombre'];
+				//$id_contacto=verificar_contacto($_POST['id_empresa'],$_POST['estado']);
+				$sql="UPDATE correo_contacto_empresa SET correo='".$_POST['value']."', nombre_correo='".$_POST['nombre']."' WHERE id_correo_contacto='".$_POST['id']."'";
+				break;
+
+			case 'telefono':
+				# code...
+				$sql="UPDATE telefono_contacto_empresa SET telefono='".$_POST['value']."', nombre_telefono='".$_POST['nombre']."' WHERE id_telefono_contacto='".$_POST['id']."'";
+				break;
+
+			case 'enlace':
+				# code...
+				$sql="UPDATE enlace_contacto_empresa SET enlace='".$_POST['value']."', nombre_enlace='".$_POST['nombre']."', descripcion_enlace='".$_POST['descripcion']."'  WHERE id_enlace_contacto='".$_POST['id']."'";
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+	break;
+	case 'DELETE':
+		$tipoContacto=$_POST['tipoContacto'];
+		switch ($tipoContacto) {
+			
+			case 'contacto':
+				$sql=sprintf("DELETE FROM Contacto_empresas WHERE id_contacto=%s",
+						GetSQLValueString($_POST['id'], "text"));
+				$sql2=sprintf("DELETE FROM correo_contacto_empresa WHERE id_contacto=%s",
+						GetSQLValueString($_POST['id'], "text"));
+				$sql3=sprintf("DELETE FROM telefono_contacto_empresa WHERE id_contacto=%s",
+						GetSQLValueString($_POST['id'], "text"));
+				$sql4=sprintf("DELETE FROM enlace_contacto_empresa WHERE id_contacto=%s",
+						GetSQLValueString($_POST['id'], "text"));
+				$delete=true;
+			break;
+
+			case 'correo':
+				# code...
+				$sql=sprintf("DELETE FROM correo_contacto_empresa WHERE id_correo_contacto=%s",
+						GetSQLValueString($_POST['id'], "text"));
+				break;
+
+			case 'telefono':
+				# code...
+				$sql=sprintf("DELETE telefono_contacto_empresa WHERE id_telefono_contacto=%s",
+						GetSQLValueString($_POST['id'], "text"));
+				break;
+
+			case 'enlace':
+				# code...
+				$sql=sprintf("DELETE enlace_contacto_empresa WHERE id_enlace_contacto=%s",
+						GetSQLValueString($_POST['id'], "text"));
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+	break;
 }// switch
-$hostname = "localhost";
-$database = "stage-db600436593UTF8";
-$username = "dbo600436593";
-$password = "20eligefacil15#";
-$dbConn = mysql_pconnect($hostname, $username, $password) or trigger_error(mysql_error(),E_USER_ERROR);
-mysql_query("SET NAMES 'utf8'");
+
 $result = mysql_query($sql, $dbConn) or die(mysql_error());
 //$result2 = mysql_query($sql2, $dbConn) or die(mysql_error());
 //Return id de la empresa recien creada
 //$resultID = mysql_query($sqlID, $dbConn) or die(mysql_error());
-//if($insert){
+if($delete){
+	$result2 = mysql_query($sql2, $dbConn) or die(mysql_error());
+	$result3 = mysql_query($sql3, $dbConn) or die(mysql_error());
+	$result4 = mysql_query($sql4, $dbConn) or die(mysql_error());
 	//$id_guardado=mysql_fetch_assoc($resultID);
 	//echo $id_guardado['id'];
-//}
+}
 mysql_free_result($result);
 
 ?>

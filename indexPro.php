@@ -270,6 +270,9 @@ require('blog/wp-blog-header.php');
 	          	<div class="hero-image" style="background-image: url('images/hero4.jpg');"/></div>
 	            <div class="hero-image" style="background-image: url('images/hero2.jpg');"/></div>
 		        <div class="hero-image" style="background-image: url('images/hero1.jpg');"/></div> <!-- This is the first image in the slideshow -->
+		        <div class="frases">¡Elige los servicios a contratar!</div>
+		        <div class="frases">¡Sin filas, sin rollos!</div>
+		        <div class="frases">¡Decidir nunca fue tan simple!</div>
 		</div>
 		<div class="slide-widget animated slideInUp">
 			<div id="controlSlide" class="home-slide-bar">
