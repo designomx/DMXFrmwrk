@@ -9,8 +9,16 @@
             
     }
     // output headers so that the file is downloaded rather than displayed
+    date_timezone_set($fecha, timezone_open('America/Mexico_City'));
+    $current = date_format($fecha, 'Y-m-d H:i:sP') . "\n";
+
+
+    //date_timezone_set(new DateTimeZone('America/Mexico_City'));
+    //$current = $fecha->format('d-m-Y_hia');
+    $name='data_'.$current.'.csv';
+
     header('Content-Type: text/csv; charset=utf-8');
-    header('Content-Disposition: attachment; filename=data.csv');
+    header('Content-Disposition: attachment; filename='.$name);
     function array_2_csv($array) {
         $csv = array();
         foreach ($array as $item) {
@@ -28,7 +36,7 @@
     $host = "localhost";
     $username = "dbo600436593";
     $password = "20eligefacil15#";
-    $dbname = "stage-db600436593UTF8";
+    $dbname = "db600436593UTF8";
 
     // open connection to mysql database
     $connection = mysqli_connect($host, $username, $password, $dbname) or die("Connection Error " . mysqli_error($connection));

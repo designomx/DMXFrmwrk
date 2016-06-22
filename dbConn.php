@@ -1,15 +1,24 @@
 <?php
-# FileName="Connection_php_mysql.htm"
-# Type="MYSQL"
-# HTTP="true"
-header('Content-Type: text/html; charset=UTF-8'); 
+// Datos para la conexion
+$host = 'localhost';
+//$host = 'localhost:8889';
+$database = 'db600436593UTF8';
+$username= 'dbo600436593';
+//$username = 'root';
+$password = '20eligefacil15#';
+//$password = 'root';
 
-$hostname = "localhost";
-$database = "db600436593UTF8";
-$username = "dbo600436593";
-$password = "20eligefacil15#";
-$dbConn = mysql_pconnect($hostname, $username, $password) or trigger_error(mysql_error(),E_USER_ERROR);
-mysql_query("SET NAMES 'utf8'");
+// Conectarse a MySQL
+$mysqli = new mysqli($host, $username, $password, $database);
 
+//Indicamos codificación UTF8
+$mysqli->set_charset("utf8");	
 
+/* verificar la conexión */
+if (mysqli_connect_errno()) {
+    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
+    exit();
+}else{
+	//echo "conectado";
+}
 ?>
