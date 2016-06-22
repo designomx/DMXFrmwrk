@@ -1498,7 +1498,7 @@ footer{
 				-moz-border-radius: 0px 0px 0px 5px;
 				border-radius: 0px 0px 0px 5px;
 				&:hover{
-					background: #f5f5f5;
+					background: #dddddd;
 				}
 				i{
 					.size(21px);
@@ -1841,6 +1841,15 @@ footer{
 					list-style: none !important;
 					padding-left: 0;
 				}
+
+				.responsive-table{
+					th{
+						@media (max-width: 400px) {
+							//color: #ff671b;
+							font-size: 12px;
+						}
+					}
+				}
 			}
 			.phone-th{
 				.size(60px);
@@ -1893,7 +1902,7 @@ footer{
 	padding-right: 5px;
 	text-align: center;
 	i{
-		background: #bdbdbd;
+		background: #ff671b;
 		color: white;
 		font-size: 16px;
 		margin: 0px 2px;
@@ -2079,6 +2088,12 @@ p {
 		width: 100%;
 		text-align: center;
 		margin-top: 0px;
+	}
+}
+
+.truncate{
+	label{
+		color: #757575;
 	}
 }
 

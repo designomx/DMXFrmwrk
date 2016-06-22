@@ -534,7 +534,7 @@ require('blog/wp-blog-header.php');
 			    	$('body').removeClass("preViewB");
 			    }
 			    */
-
+			    checkMobile();
 
 			});
 
@@ -711,6 +711,12 @@ require('blog/wp-blog-header.php');
 
 					
 			};
+			function checkMobile(){
+				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		 			// .mCustomScrollbar("scrollTo",'8%');
+				 	$('.sliders-scroll-wrapp').mCustomScrollbar("scrollTo",'90');
+				}
+			}
 			
 			function enviarCorreo(nombre,email){
 			  	console.log("function enviarCorreo nombre: "+nombre);

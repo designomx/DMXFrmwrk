@@ -1999,7 +1999,7 @@ footer.stickFoot {
   border-radius: 0px 0px 0px 5px;
 }
 .paq-list-bx .paq-content-bx .more-actions-bx a:hover {
-  background: #f5f5f5;
+  background: #dddddd;
 }
 .paq-list-bx .paq-content-bx .more-actions-bx a i {
   width: 21px;
@@ -2416,6 +2416,12 @@ footer.stickFoot {
   list-style: none !important;
   padding-left: 0;
 }
+@media (max-width: 400px) {
+  #deatilsModal .modal-content ul.info-collapsible .responsive-table th,
+  .deatilsModal .modal-content ul.info-collapsible .responsive-table th {
+    font-size: 12px;
+  }
+}
 #deatilsModal .modal-content ul .phone-th,
 .deatilsModal .modal-content ul .phone-th {
   width: 60px;
@@ -2466,7 +2472,7 @@ footer.stickFoot {
   text-align: center;
 }
 .comparando-icons i {
-  background: #bdbdbd;
+  background: #ff671b;
   color: white;
   font-size: 16px;
   margin: 0px 2px;
@@ -2678,4 +2684,7 @@ p blockquote {
   width: 100%;
   text-align: center;
   margin-top: 0px;
+}
+.truncate label {
+  color: #757575;
 }

@@ -987,10 +987,10 @@ if(isset($_POST['verDetalles'])){
 									</div>
 									<div class="collapsible-body">
 										<div class="row">
-											<div class="col s3">
+											<div class="col s3 hide-on-med-and-down">
 												<img class="responsive-img" src="../../uploads/celulares_mas_populares/'.$rowEquipos["id_celular"].'/'.$rowEquipos["foto"].'" alt="" /> 
 											</div>
-											<div class="col s9">
+											<div class="col s12 m9">
 												<table class="responsive-table striped centered">
 													<thead>
 														<tr>
@@ -1106,8 +1106,8 @@ if(isset($_POST['verDetalles'])){
 
 			$footer.='
 			<div class="modal-footer">
-							<a href="#!" class="modal-action modal-close waves-effect btn-flat grey white-text" id="plan_'.$row["id_plan"].'" onclick="Comparar(this,'.$row["id_plan"].','."'".$row["empresa_color"]."'".')">Comparar</a>
-							<a href="#!" class="modal-action modal-close waves-effect btn-flat ">Cerrar</a>
+							<a href="#!" class="modal-action modal-close waves-effect btn-flat grey white-text" id="plan_'.$row["id_plan"].'" onclick="Comparar(this,'.$row["id_plan"].','."'".$row["empresa_color"]."'".'); $(\'.lean-overlay\').remove()">Comparar</a>
+							<a href="#!" class="modal-action modal-close waves-effect btn-flat " onclick="$(\'.lean-overlay\').remove()">Cerrar</a>
 						</div>
 						<div class="fixed-action-btn" style="bottom: 10px; right: 10px;">
 						<a class="btn-floating btn-large orange accent-4">
@@ -1131,7 +1131,7 @@ if(isset($_POST['verDetalles'])){
 					<br><br>
 
 					';
-			$respuesta.='<br><br><div>Fecha de actualización: '.date('F/j/Y',strtotime($row['fecha_actualizacion'])).'</div><br><br>';
+			$respuesta.='<br><br><div>Fecha de actualización: '.date('d/j/Y',strtotime($row['fecha_actualizacion'])).'</div><br><br>';
 		}
 		$miArray = array("contenido"=>$respuesta, "footer"=>$footer);
 		echo json_encode($miArray);

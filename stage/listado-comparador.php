@@ -1390,8 +1390,15 @@
 						});
 			 		}else {
 			 			$(".sliders-scroll-bx, .checks-scroll-bx form").addClass('ismobilescroll');
+			 			$(".sliders-scroll-bx").mCustomScrollbar({
+							axis: "x",
+							theme: "dark-thin",
+							autoHideScrollbar: true,
+							updateOnContentResize: true
+						});
+						$('.sliders-scroll-bx').mCustomScrollbar("scrollTo",'95');
 			 		}
-			 		$('.sliders-scroll-bx').mCustomScrollbar("update");
+			 		$('').mCustomScrollbar("update");
 			    })
 			    .fail(function(data){
 			    	console.log(data);
@@ -1444,8 +1451,15 @@
 
 			 		}else {
 			 			jQuery(".sliders-scroll-bx, .checks-scroll-bx form .sliders-wrapp").addClass('ismobilescroll');
+			 			$(".sliders-scroll-bx").mCustomScrollbar({
+							axis: "x",
+							theme: "dark-thin",
+							autoHideScrollbar: true,
+							updateOnContentResize: true
+						});
+						$('.sliders-scroll-bx').mCustomScrollbar("scrollTo",'95');
 			 		}
-			 		$('.sliders-scroll-bx').mCustomScrollbar("update");
+			 		$().mCustomScrollbar("update");
 			    })
 			    .fail(function(data){
 			    	console.log(data);
