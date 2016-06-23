@@ -972,12 +972,20 @@
 			CargarFiltrosCheckEmpresasConFiltro();
 			if($('#checkbox1').is(':checked')){
 		    	$('input.checkbox1').removeAttr("disabled");
-
 			}
 			if(!$('#checkbox1').is(':checked')){
 		    	$( "input.checkbox1" ).prop( "checked", false );
 		    	$('input.checkbox1').attr("disabled", true);
 		    }
+		    if($('#checkbox15').is(':checked')){
+		    	if($( "input#checkbox3" ).prop( "checked")==true){
+		    		$( "input#checkbox3" ).prop( "checked",false);
+		    	}
+		    	$('input#checkbox3').attr("disabled",true);
+		    	if($( "input#checkbox4" ).prop( "checked")==false){
+		    		$( "input#checkbox4" ).prop( "checked",true);
+		    	}		    	
+			}
 			CargarPlanesConFiltros();
 		}
 		

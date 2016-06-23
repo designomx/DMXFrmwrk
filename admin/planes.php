@@ -423,10 +423,10 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 		console.log("tv "+tv);
 
 		if(!celular && !telefono && !internet && !tv){
-			$('select#id_tipoDato_principal_1').val('');
-			$('select#id_tipoDato_principal_2').val('');
-			$('select#id_tipoDato_principal_3').val('');
-			$('select#id_tipoDato_principal_4').val('');
+			$('select#id_tipoDato_principal_1').val('').trigger("change");
+			$('select#id_tipoDato_principal_2').val('').trigger("change");
+			$('select#id_tipoDato_principal_3').val('').trigger("change");
+			$('select#id_tipoDato_principal_4').val('').trigger("change");
 		}
 
 		if(celular && (telefono || internet || tv)){
@@ -438,9 +438,9 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 			$('select#id_tipoDato_principal_4 option[value="0"],option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"],option[value="14"]').attr('disabled','disabled');
 
 			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('');
-			$('select#id_tipoDato_principal_2').val('');
-			$('select#id_tipoDato_principal_3').val('');
+			$('select#id_tipoDato_principal_1').val('').trigger("change");
+			$('select#id_tipoDato_principal_2').val('').trigger("change");
+			$('select#id_tipoDato_principal_3').val('').trigger("change");
 			$('select#id_tipoDato_principal_4').val('');
 		}
 
@@ -458,10 +458,10 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 			$('select#id_tipoDato_principal_4 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
 
 			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('1');
-			$('select#id_tipoDato_principal_2').val('2');
-			$('select#id_tipoDato_principal_3').val('5');
-			$('select#id_tipoDato_principal_4').val('');
+			$('select#id_tipoDato_principal_1').val('1').trigger("change");
+			$('select#id_tipoDato_principal_2').val('3').trigger("change");
+			$('select#id_tipoDato_principal_3').val('6').trigger("change");
+			$('select#id_tipoDato_principal_4').val('5');
 
 		}
 
@@ -481,10 +481,10 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
 
 			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('7');
-			$('select#id_tipoDato_principal_2').val('8');
-			$('select#id_tipoDato_principal_3').val('9');
-			$('select#id_tipoDato_principal_4').val('10');
+			$('select#id_tipoDato_principal_1').val('7').trigger("change");
+			$('select#id_tipoDato_principal_2').val('8').trigger("change");
+			$('select#id_tipoDato_principal_3').val('9').trigger("change");
+			$('select#id_tipoDato_principal_4').val('10').trigger("change");
 		}
 
 		//Single Play Internet
@@ -503,10 +503,10 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"]').attr('disabled','disabled');
 
 			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('11');
-			$('select#id_tipoDato_principal_2').val('');
-			$('select#id_tipoDato_principal_3').val('');
-			$('select#id_tipoDato_principal_4').val('');
+			$('select#id_tipoDato_principal_1').val('11').trigger("change");
+			$('select#id_tipoDato_principal_2').val('').trigger("change");
+			$('select#id_tipoDato_principal_3').val('').trigger("change");
+			$('select#id_tipoDato_principal_4').val('').trigger("change");
 		}
 
 		//Single Play TV
@@ -525,10 +525,10 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"]').attr('disabled','disabled');
 
 			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('13');
-			$('select#id_tipoDato_principal_2').val('12');
-			$('select#id_tipoDato_principal_3').val('');
-			$('select#id_tipoDato_principal_4').val('');
+			$('select#id_tipoDato_principal_1').val('13').trigger("change");
+			$('select#id_tipoDato_principal_2').val('12').trigger("change");
+			$('select#id_tipoDato_principal_3').val('').trigger("change");
+			$('select#id_tipoDato_principal_4').val('').trigger("change");
 		}
 
 		//DoblePlay TV+Internet
@@ -547,10 +547,10 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled','disabled');
 
 			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('13');
-			$('select#id_tipoDato_principal_2').val('12');
-			$('select#id_tipoDato_principal_3').val('11');
-			$('select#id_tipoDato_principal_4').val('');
+			$('select#id_tipoDato_principal_1').val('13').trigger("change");
+			$('select#id_tipoDato_principal_2').val('12').trigger("change");
+			$('select#id_tipoDato_principal_3').val('11').trigger("change");
+			$('select#id_tipoDato_principal_4').val('').trigger("change");
 		}
 
 		//DoblePlay TV+Internet
@@ -569,10 +569,10 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"]').attr('disabled','disabled');
 
 			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('13');
-			$('select#id_tipoDato_principal_2').val('12');
-			$('select#id_tipoDato_principal_3').val('7');
-			$('select#id_tipoDato_principal_4').val('8');
+			$('select#id_tipoDato_principal_1').val('13').trigger("change");
+			$('select#id_tipoDato_principal_2').val('12').trigger("change");
+			$('select#id_tipoDato_principal_3').val('7').trigger("change");
+			$('select#id_tipoDato_principal_4').val('8').trigger("change");
 		}
 
 		//DoblePlay Telefono+Internet
@@ -591,10 +591,10 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="12"],option[value="13"]').attr('disabled','disabled');
 
 			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('11');
-			$('select#id_tipoDato_principal_2').val('7');
-			$('select#id_tipoDato_principal_3').val('8');
-			$('select#id_tipoDato_principal_4').val('9');
+			$('select#id_tipoDato_principal_1').val('11').trigger("change");
+			$('select#id_tipoDato_principal_2').val('7').trigger("change");
+			$('select#id_tipoDato_principal_3').val('8').trigger("change");
+			$('select#id_tipoDato_principal_4').val('9').trigger("change");
 		}
 
 		//TriplePlay Telefono+TV+Internet
@@ -613,10 +613,10 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled','disabled');
 
 			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('13');
-			$('select#id_tipoDato_principal_2').val('11');
-			$('select#id_tipoDato_principal_3').val('7');
-			$('select#id_tipoDato_principal_4').val('8');
+			$('select#id_tipoDato_principal_1').val('13').trigger("change");
+			$('select#id_tipoDato_principal_2').val('11').trigger("change");
+			$('select#id_tipoDato_principal_3').val('7').trigger("change");
+			$('select#id_tipoDato_principal_4').val('8').trigger("change");
 		}
 
 
@@ -1465,44 +1465,42 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
   <?php }?>
   <!--Filtro de estado-->
   <div id="todos" class="todos <?php if($_POST['servicios'] == "todos"){ echo "selected"; } ?>">Todos</div>
-
-
-  <button type="button" id="exportCSV" class="exportCSV" onclick="exportDB()">Exportar Base de datos</button>
+	<div>
+	  <div id="FiltroEstado" class="FiltroEstado">
+	  	<label for="sel1">Lista de estados (seleccione uno):</label>
+	      <select class="" id="ListaEstados">
+	      <?php 
+	        echo "<option value='0'>Todos los estados</option>";
+	      	while($row_estados = mysql_fetch_assoc($ListaFiltroEstados)){
+	      		echo "<option value=".$row_estados['id_estado'].">".$row_estados['nombre']."</option>";
+	      	}
+	      ?>
+	      </select>
+	      <?php 
+	      	if($_POST['FiltroEstado']>0){
+		  		echo "<script>$('#ListaEstados').val(".$_POST['FiltroEstado'].") </script>";
+		  	}
+	      ?>
+	  </div>
+	  <div id="FiltroEmpresas" class="FiltroEmpresas">
+	  	<label for="sel1">Lista de Empresas (seleccione una):</label>
+	      <select class="" id="ListaEmpresas">
+	      <?php 
+	        echo "<option value='0'>Todas las empresas</option>";
+	      	while($row_empresas = mysql_fetch_assoc($ListaFiltroEmpresas)){
+	      		echo "<option value=".$row_empresas['id_empresa'].">".$row_empresas['nombre']."</option>";
+	      	}
+	      ?>
+	      </select>
+	      <?php 
+	      	if($_POST['FiltroEmpresas']>0){
+		  		echo "<script>$('#ListaEmpresas').val(".$_POST['FiltroEmpresas'].") </script>";
+		  	}
+	      ?>
+	  </div>
+	  <div><button type="button" id="exportCSV" class="exportCSV" onclick="exportDB()">Exportar Base de datos</button></div>
+	</div>
 <br>
-  <div id="FiltroEstado" class="FiltroEstado">
-  	<label for="sel1">Lista de estados (seleccione uno):</label>
-      <select class="" id="ListaEstados">
-      <?php 
-        echo "<option value='0'>Todos los estados</option>";
-      	while($row_estados = mysql_fetch_assoc($ListaFiltroEstados)){
-      		echo "<option value=".$row_estados['id_estado'].">".$row_estados['nombre']."</option>";
-      	}
-      ?>
-      </select>
-      <?php 
-      	if($_POST['FiltroEmpresas']>0){
-	  		echo "<script>$('#ListaEstados').val(".$_POST['FiltroEstado'].") </script>";
-	  	}
-      ?>
-      <label for="sel1">Lista de Empresas (seleccione una):</label>
-      <select class="" id="ListaEmpresas">
-      <?php 
-        echo "<option value='0'>Todas las empresas</option>";
-      	while($row_empresas = mysql_fetch_assoc($ListaFiltroEmpresas)){
-      		echo "<option value=".$row_empresas['id_empresa'].">".$row_empresas['nombre']."</option>";
-      	}
-      ?>
-      </select>
-      <?php 
-      	if($_POST['FiltroEmpresas']>0){
-	  		echo "<script>$('#ListaEmpresas').val(".$_POST['FiltroEmpresas'].") </script>";
-	  	}
-      ?>
-  </div>
-<br>
-  <div id="FiltroEmpresas" class="FiltroEmpresas">
-  	
-  </div>
 
   <div id="btn_filtrar">MOSTRAR PLANES</div>
   <div class="clearfix"></div>

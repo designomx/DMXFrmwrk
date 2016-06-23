@@ -645,6 +645,11 @@ if(isset($_POST['listadoSimple'])){
 							<p class="truncate margin-btm-no">Tipo de Plan</p>
 								<div class="slide-bar-bx row">
 									<div class="col s12">';
+			$grupo3='	<div class="slider-bx clear-pad-marg">
+							<p class="truncate margin-btm-no"> &nbsp</p>
+								<div class="slide-bar-bx row">
+									<div class="col s12">';
+			$hayGrupo3=false;
 			foreach($rows as $row)
 			{
 				//print_r($row);
@@ -702,12 +707,37 @@ if(isset($_POST['listadoSimple'])){
 								sessionStorage.setItem("filtrosCheck", JSON.stringify(getFiltrosCheck));
 								</script>';
 						}
+						if ($row['grupo']==3){
+							$hayGrupo3=true;
+							$grupo3=$grupo3.'
+											<input class="checkbox'.$row["hijoDe"].'" type="checkbox" id="checkbox'.$row["id_tipoDato"].'" onchange="CargarPlanesConFiltros();habilitar(this,this.checked)"/>
+											<label for="checkbox'.$row["id_tipoDato"].'">'.$row["label"].'</label>
+								<script type="text/javascript">
+								if(sessionStorage.filtrosCheck){
+									var getFiltrosCheck= JSON.parse(sessionStorage.getItem("filtrosCheck"));
+								}else{
+									var getFiltrosCheck = new Array();
+								}
+								getFiltrosCheck.push({id_tipoDato:"'.$row["id_tipoDato"].'",value:"checkbox'.$row["id_tipoDato"].'"});
+								//console.log(getFiltros);
+								$.each(getFiltrosCheck, function( index, value ) {
+									//console.log( value.id_tipoDato+":"+value.value );
+								});
+								sessionStorage.setItem("filtrosCheck", JSON.stringify(getFiltrosCheck));</script>
+							';
+						}
 						$i+=1;
 				}
 			}//END FOREACH
 			$grupo1=$grupo1.'</div></div></div>';
 			$grupo2=$grupo2.'</div></div></div>';
-			$respuesta2=$grupo1.$grupo2;
+			$grupo3=$grupo3.'</div></div>';
+			if($hayGrupo3){
+				$respuesta2=$grupo1.$grupo2.$grupo3;
+			}else{
+				$respuesta2=$grupo1.$grupo2;
+			}
+			
 			echo $respuesta2;
 		}//END if(isset($_POST['CargarFiltrosCheckCelulares']))
 
@@ -2075,7 +2105,7 @@ if(isset($_POST['CargarAnuncio'])){
 
 //Función que carga los datos de Contratacion.
 if(isset($_POST['contratar'])){
-	$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "stage-db600436593UTF8");
+	$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
 	$mysqli->set_charset("utf8");
 	$id_empresa=$_POST['id_empresa'];
 	$estado=$_POST['estado'];

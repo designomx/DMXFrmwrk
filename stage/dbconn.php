@@ -2,7 +2,7 @@
 // Datos para la conexion
 $host = 'localhost';
 //$host = 'localhost:8889';
-$database = 'db600436593UTF8';
+$database = 'stage-db600436593UTF8';
 $username= 'dbo600436593';
 //$username = 'root';
 $password = '20eligefacil15#';

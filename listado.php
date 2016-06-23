@@ -18,6 +18,7 @@ require('dbconn.php');
 
 
 session_start();
+setlocale(LC_MONETARY, 'en_US');
 $_SESSION['Servicios'] = array();
 if(isset($_POST['estado'])){
 	$_SESSION['estado']=$_POST['estado'];
@@ -293,7 +294,7 @@ if(isset($_POST['listadoSimple'])){
 								}else{
 									$respuesta.='<div class="paq-price lngtxt">';
 								}
-								$respuesta=$respuesta.'Recarga de $'.$row["precio"];
+								$respuesta=$respuesta.'Recarga de $'.number_format($row["precio"]);
 							}
 						}else{
 							if($row["sugerido"]==1){
@@ -301,7 +302,7 @@ if(isset($_POST['listadoSimple'])){
 							}else{
 								$respuesta.='<div class="paq-price">';
 							}
-							$respuesta=$respuesta.'$'.$row["precio"];
+							$respuesta=$respuesta.'$'.number_format($row["precio"]);
 						}
 						if($row["sugerido"]==1){
 							$respuesta=$respuesta."<p><span style='color: #FFF'>Sugerencia Elige Fácil</span></p>";
@@ -429,8 +430,8 @@ if(isset($_POST['listadoSimple'])){
 						<div class="slide-bar-bx">
 							<div id="slidertest"></div>
 							<div class="slide-value-bx">
-								<span class="left">$'.(empty($_SESSION["Preciomin"])? 0:$_SESSION["Preciomin"]).'</span>
-								<span class="right">$'.(empty($_SESSION["Preciomax"])? 3999:$_SESSION["Preciomax"]).'+</span>
+								<span class="left">$'.(empty($_SESSION["Preciomin"])? 0:number_format($_SESSION["Preciomin"])).'</span>
+								<span class="right">$'.(empty($_SESSION["Preciomax"])? 3999:number_format($_SESSION["Preciomax"])).'+</span>
 							</div>
 						</div>
 					</div>
@@ -644,6 +645,11 @@ if(isset($_POST['listadoSimple'])){
 							<p class="truncate margin-btm-no">Tipo de Plan</p>
 								<div class="slide-bar-bx row">
 									<div class="col s12">';
+			$grupo3='	<div class="slider-bx clear-pad-marg">
+							<p class="truncate margin-btm-no"> &nbsp</p>
+								<div class="slide-bar-bx row">
+									<div class="col s12">';
+			$hayGrupo3=false;
 			foreach($rows as $row)
 			{
 				//print_r($row);
@@ -701,12 +707,37 @@ if(isset($_POST['listadoSimple'])){
 								sessionStorage.setItem("filtrosCheck", JSON.stringify(getFiltrosCheck));
 								</script>';
 						}
+						if ($row['grupo']==3){
+							$hayGrupo3=true;
+							$grupo3=$grupo3.'
+											<input class="checkbox'.$row["hijoDe"].'" type="checkbox" id="checkbox'.$row["id_tipoDato"].'" onchange="CargarPlanesConFiltros();habilitar(this,this.checked)"/>
+											<label for="checkbox'.$row["id_tipoDato"].'">'.$row["label"].'</label>
+								<script type="text/javascript">
+								if(sessionStorage.filtrosCheck){
+									var getFiltrosCheck= JSON.parse(sessionStorage.getItem("filtrosCheck"));
+								}else{
+									var getFiltrosCheck = new Array();
+								}
+								getFiltrosCheck.push({id_tipoDato:"'.$row["id_tipoDato"].'",value:"checkbox'.$row["id_tipoDato"].'"});
+								//console.log(getFiltros);
+								$.each(getFiltrosCheck, function( index, value ) {
+									//console.log( value.id_tipoDato+":"+value.value );
+								});
+								sessionStorage.setItem("filtrosCheck", JSON.stringify(getFiltrosCheck));</script>
+							';
+						}
 						$i+=1;
 				}
 			}//END FOREACH
 			$grupo1=$grupo1.'</div></div></div>';
 			$grupo2=$grupo2.'</div></div></div>';
-			$respuesta2=$grupo1.$grupo2;
+			$grupo3=$grupo3.'</div></div>';
+			if($hayGrupo3){
+				$respuesta2=$grupo1.$grupo2.$grupo3;
+			}else{
+				$respuesta2=$grupo1.$grupo2;
+			}
+			
 			echo $respuesta2;
 		}//END if(isset($_POST['CargarFiltrosCheckCelulares']))
 
@@ -721,7 +752,7 @@ if(isset($_POST['listadoSimple'])){
 				  	WHERE C.ID_ESTADO='".$_SESSION['estado']."' 
 				  	AND PT.id_plan NOT IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (SELECT id_tipoServicio from tipoServicios where id_tipoServicio NOT IN (".implode(', ', $_SESSION['Servicios']).") ) )
 				  	AND visible=1
-				  	GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])."
+				  	GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])." ORDER BY E.ID_EMPRESA
 				  	");
 			//echo $query;
 
@@ -786,7 +817,7 @@ if(isset($_POST['CargarFiltrosCheckEmpresasConFiltro'])){
 		  	AND ((P.id_tipoDato_principal_1=".$dato." AND P.dato_principal_1=1) OR (P.id_tipoDato_principal_2=".$dato." AND P.dato_principal_2=1) OR (P.id_tipoDato_principal_3=".$dato." AND P.dato_principal_3=1) OR (P.id_tipoDato_principal_4=".$dato." AND P.dato_principal_4=1))
 		  	AND PT.id_plan NOT IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (SELECT id_tipoServicio from tipoServicios where id_tipoServicio NOT IN (".implode(', ', $_SESSION['Servicios']).") ) )
 		  	AND visible=1
-		  	GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])."
+		  	GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])." ORDER BY E.ID_EMPRESA
 		  	");
 	//echo $query;
 	//exit();
@@ -840,6 +871,8 @@ if(isset($_POST['verDetalles'])){
 		P.id_tipoDato_principal_4, 
 		P.mas_datos, P.visible,
 		P.pdf_canalesTV, 
+		P.fecha_actualizacion,
+		P.id_empresa,
 		E.nombre as empresa, 
 		E.codigo_color as empresa_color,
 		TDS1.label as dato1,
@@ -874,10 +907,10 @@ if(isset($_POST['verDetalles'])){
 				if ($row["precio"]==0){
 					$respuesta=$respuesta.'Sin Recarga Mínima';
 				}else{
-					$respuesta=$respuesta.'Recarga de $'.$row["precio"];
+					$respuesta=$respuesta.'Recarga de $'.number_format($row["precio"]);
 				}
 			}else{
-				$respuesta=$respuesta.'$'.$row["precio"];
+				$respuesta=$respuesta.'$'.number_format($row["precio"]);
 			}
 
 			$respuesta=$respuesta.'
@@ -984,10 +1017,10 @@ if(isset($_POST['verDetalles'])){
 									</div>
 									<div class="collapsible-body">
 										<div class="row">
-											<div class="col s3">
+											<div class="col s3 hide-on-med-and-down">
 												<img class="responsive-img" src="../../uploads/celulares_mas_populares/'.$rowEquipos["id_celular"].'/'.$rowEquipos["foto"].'" alt="" /> 
 											</div>
-											<div class="col s9">
+											<div class="col s12 m9">
 												<table class="responsive-table striped centered">
 													<thead>
 														<tr>
@@ -996,41 +1029,47 @@ if(isset($_POST['verDetalles'])){
 															<th data-field="price"><b>Total Acumulado</b></th>
 														</tr>
 													</thead>
-													<tbody>
-														<tr>
+													<tbody>';
+													if($rowEquipos["precio_12m"]!=-1){
+														$respuesta.='<tr>
 															<td>12</td>';
 															if($rowEquipos["precio_12m"]>0){
-																$respuesta.='<td>$'.$rowEquipos["precio_12m"].'</td>';
+																$respuesta.='<td>$'.number_format($rowEquipos["precio_12m"]).'</td>';
 															}else{
 																$respuesta.='<td>GRATIS</td>';
 															}
 															$Acumulado_celular=($row["precio"]*12)+$rowEquipos["precio_12m"];
-															$respuesta.='<td class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Costo del equipo + 12 Rentas">$'.$Acumulado_celular.'</td>
-														</tr>
-														<tr>
+															$respuesta.='<td class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Costo del equipo + 12 Rentas">$'.number_format($Acumulado_celular).'</td>
+														</tr>';
+													}
+													if($rowEquipos["precio_18m"]!=-1){
+														$respuesta.='<tr>
 															<td>18</td>';
 															if($rowEquipos["precio_18m"]>0){
-																$respuesta.='<td>$'.$rowEquipos["precio_18m"].'</td>';
+																$respuesta.='<td>$'.number_format($rowEquipos["precio_18m"]).'</td>';
 															}else{
 																$respuesta.='<td>GRATIS</td>';
 															}
 															$Acumulado_celular=($row["precio"]*18)+$rowEquipos["precio_18m"];
-															$respuesta.='<td class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Costo del equipo + 18 Rentas">$'.$Acumulado_celular.'</td>
-														</tr>
-														<tr>
+															$respuesta.='<td class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Costo del equipo + 18 Rentas">$'.number_format($Acumulado_celular).'</td>
+														</tr>';
+													}
+													if($rowEquipos["precio_24m"]!=-1){
+														$respuesta.='<tr>
 															<td>24</td>';
 															if($rowEquipos["precio_24m"]>0){
-																$respuesta.='<td>$'.$rowEquipos["precio_24m"].'</td>';
+																$respuesta.='<td>$'.number_format($rowEquipos["precio_24m"]).'</td>';
 															}else{
 																$respuesta.='<td>GRATIS</td>';
 															}
 															$Acumulado_celular=($row["precio"]*24)+$rowEquipos["precio_24m"];
-															$respuesta.='<td class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Costo del equipo + 24 Rentas">$'.$Acumulado_celular.'</td>
-														</tr>
-														<tr>
+															$respuesta.='<td class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Costo del equipo + 24 Rentas">$'.number_format($Acumulado_celular).'</td>
+														</tr>';
+													}
+														$respuesta.='<tr>
 															<td>Prepago</td>';
 															if($rowEquipos["precio_prepago"]>0){
-																$respuesta.='<td class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Costo del equipo">$'.$rowEquipos["precio_prepago"].'</td>';
+																$respuesta.='<td class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Costo del equipo">$'.number_format($rowEquipos["precio_prepago"]).'</td>';
 															}else{
 																$respuesta.='<td class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Costo del equipo">GRATIS</td>';
 															}
@@ -1043,13 +1082,28 @@ if(isset($_POST['verDetalles'])){
 									</div>
 								</li>';
 							}
-							$respuesta.='</ul>';
+							$respuesta.='</ul>
+							<div>
+								<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal()" class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
+								</a>
+							</div>';
+						}else{
+							$respuesta.='
+								<div>
+									<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal()" class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
+									</a>
+								</div>';
 						}
 					}
 				}else{
 					$respuesta.='
 						<h5>Opciones y características adicionales</h5>
-						'.$row['mas_datos'].'';
+						'.$row['mas_datos'].'
+						<div>
+							<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal()" class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
+							</a>
+						</div>
+						';
 					//Pdf Canales
 					if(!empty($row["pdf_canalesTV"])){
 						$respuesta.='<a href="http://eligefacil.com/uploads/planes/'.$row["id_plan"].'/pdf_canalesTV/'.$row["pdf_canalesTV"].'" class="btn waves-effect orange accent-4" target="_blank">Ver lista de canales</a>
@@ -1080,9 +1134,10 @@ if(isset($_POST['verDetalles'])){
 			$url=urlencode($urlShare);
 			$urlFB=urlencode($urlFBShare);
 
-			$footer.='<div class="modal-footer">
-							<a href="#!" class="modal-action modal-close waves-effect btn-flat grey white-text" id="plan_'.$row["id_plan"].'" onclick="Comparar(this,'.$row["id_plan"].','."'".$row["empresa_color"]."'".')">Comparar</a>
-							<a href="#!" class="modal-action modal-close waves-effect btn-flat ">Cerrar</a>
+			$footer.='
+			<div class="modal-footer">
+							<a href="#!" class="modal-action modal-close waves-effect btn-flat grey white-text" id="plan_'.$row["id_plan"].'" onclick="Comparar(this,'.$row["id_plan"].','."'".$row["empresa_color"]."'".'); $(\'.lean-overlay\').remove()">Comparar</a>
+							<a href="#!" class="modal-action modal-close waves-effect btn-flat " onclick="$(\'.lean-overlay\').remove()">Cerrar</a>
 						</div>
 						<div class="fixed-action-btn" style="bottom: 10px; right: 10px;">
 						<a class="btn-floating btn-large orange accent-4">
@@ -1102,7 +1157,11 @@ if(isset($_POST['verDetalles'])){
 								<a href="print-paq.php?plan='.$row["id_plan"].'" onclick="ImprimirPlan(this,'.$row["id_plan"].')" class="btn-floating red accent-4" target="_blank"><i class="fa fa-print"></i></a>
 							</li>
 						</ul>
-					</div>';
+					</div>
+					<br><br>
+
+					';
+			$respuesta.='<br><br><div>Fecha de actualización: '.date('d/j/Y',strtotime($row['fecha_actualizacion'])).'</div><br><br>';
 		}
 		$miArray = array("contenido"=>$respuesta, "footer"=>$footer);
 		echo json_encode($miArray);
@@ -1466,7 +1525,7 @@ if (isset($_POST['filtros'])) {
 								}else{
 									$respuesta.='<div class="paq-price lngtxt">';
 								}
-								$respuesta=$respuesta.'Recarga de $'.$row["precio"];
+								$respuesta=$respuesta.'Recarga de $'.number_format($row["precio"]);
 							}
 						}else{
 							if($row["sugerido"]==1){
@@ -1474,7 +1533,7 @@ if (isset($_POST['filtros'])) {
 							}else{
 								$respuesta.='<div class="paq-price">';
 							}
-							$respuesta=$respuesta.'$'.$row["precio"];
+							$respuesta=$respuesta.'$'.number_format($row["precio"]);
 						}
 						if($row["sugerido"]==1){
 							$respuesta=$respuesta."<p><span style='color: #FFF'>Sugerencia Elige Fácil</span></p>";
@@ -1552,7 +1611,8 @@ if(isset($_POST['CompararPlanes'])){
 		TDS3.label as dato3,
 		TDS3.tipo as tipoDato3,
 		TDS4.label as dato4,
-		TDS4.tipo as tipoDato4
+		TDS4.tipo as tipoDato4,
+		P.id_empresa
 	  	FROM planes P
 	  	INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
 	  	INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
@@ -1641,16 +1701,15 @@ if(isset($_POST['CompararPlanes'])){
 				if ($row["precio"]==0){
 					$respuesta=$respuesta.'<div class="paq-price">Sin Recarga Mínima</div>';
 				}else{
-					$respuesta=$respuesta.'<div class="paq-price">Recarga de $'.$row["precio"].'</div>';
+					$respuesta=$respuesta.'<div class="paq-price">Recarga de $'.number_format($row["precio"]).'</div>';
 				}
 			}else{
-				$respuesta=$respuesta.'<div class="paq-price">$'.$row["precio"].'</div>';
+				$respuesta=$respuesta.'<div class="paq-price">$'.number_format($row["precio"]).'</div>';
 			}
 //<div class="paq-price">$'.$row["precio"].'</div>
-			$respuesta=$respuesta.'	<div class="more-actions-bx">
-									<a href="#!" class="grey"></a>
-									<a href="#!" class="compare-slct grey"></a>
-									<a href="#!" onclick="eliminarDelComparador('.$row["id_plan"].')" class="compare-delete">Eliminar</a>
+			$respuesta=$respuesta.'	<div class="more-actions-bx comparetratation">
+									<a href="#!" onclick="eliminarDelComparador('.$row["id_plan"].')" class="grey white-text text-white">Eliminar</a>
+									<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\')" class="compare-slct orange accent-4 modal-trigger">Contratar <i class="material-icons">done</i></a>
 									<div class="clearfix"></div>
 								</div>
 							</div>
@@ -1708,7 +1767,7 @@ $i=0;
 						<li>'.$row["dato_principal_4"].'</li>
 					</ul>
 				</div>
-				<div class="paq-price">$'.$row["precio"].'</div>
+				<div class="paq-price">$'.number_format($row["precio"]).'</div>
 						<div id="botonesPlan" class="more-actions-bx">
 							<a id="verPlan" href="#deatilsModal" class="modal-trigger waves-effect verpla_'.$row["id_paquete"].'" data-value="'.$row["id_paquete"].'">Ver detalles</a>
 							<a href="#!" class="compare-slct" id="plan_'.$row["id_paquete"].'" onclick="CompararPaqueteOTT(this,'.$row["id_paquete"].')">Comparar <i class="material-icons">done</i></a>
@@ -1850,7 +1909,7 @@ if(isset($_POST['Streamingfiltros'])){
 						<li>'.$row["dato_principal_4"].'</li>
 					</ul>
 				</div>
-				<div class="paq-price">$'.$row["precio"].'</div>
+				<div class="paq-price">$'.number_format($row["precio"]).'</div>
 						<div id="botonesPlan" class="more-actions-bx">
 							<a id="verPlan" href="#deatilsModal" class="modal-trigger waves-effect verpla_'.$row["id_paquete"].'" data-value="'.$row["id_paquete"].'">Ver detalles</a>
 							<a href="#!" class="compare-slct" id="plan_'.$row["id_paquete"].'" onclick="CompararPaqueteOTT(this,'.$row["id_paquete"].')">Comparar <i class="material-icons">done</i></a>
@@ -1945,7 +2004,7 @@ if(isset($_POST['CompararPaqueteOTT'])){
 										<li>'.$row["dato_principal_4"].'</li>
 									</ul>'.$row["mas_datos"].'
 								</div>
-								<div class="paq-price">$'.$row["precio"].'</div>
+								<div class="paq-price">$'.number_format($row["precio"]).'</div>
 								<div class="more-actions-bx">
 									<a href="#!" class="grey"></a>
 									<a href="#!" class="compare-slct grey"></a>
@@ -1991,7 +2050,7 @@ if(isset($_POST['verDetallesStreaming'])){
 		{
 			//array_push($rows, $row);
 			$respuesta='<div class="brand-label" style="background-color: #ff671b">'.$row["nombre"].'</div>
-				<h4>$'.$row["precio"].'</h4>
+				<h4>$'.number_format($row["precio"]).'</h4>
 				<div class="plan-main-options row">
 					<div class="col s6 m3"><p>'.$row["dato_principal_1"].'</p></div>
 					<div class="col s6 m3"><p>'.$row["dato_principal_2"].'</p></div>
@@ -2042,6 +2101,69 @@ if(isset($_POST['CargarAnuncio'])){
 		/* liberar la serie de resultados */
 		$result->free();
 
+}
+
+//Función que carga los datos de Contratacion.
+if(isset($_POST['contratar'])){
+	$mysqli = new mysqli("localhost", "dbo600436593", "20eligefacil15#", "db600436593UTF8");
+	$mysqli->set_charset("utf8");
+	$id_empresa=$_POST['id_empresa'];
+	$estado=$_POST['estado'];
+	$query="SELECT C.id_contacto
+			FROM Contacto_empresas C
+			INNER JOIN relacion_contacto_empresas RCE ON C.id_contacto = RCE.id_contacto
+			WHERE RCE.id_empresa=".$id_empresa." AND (C.estado=".$estado." OR C.estado=-1)";
+
+	
+	if (!$mysqli->query($query)) {
+    	printf("Errormessage: %s\n", $mysqli->error);
+	}else{
+		$resultadoContactoEmpresa = $mysqli->query($query);
+	}
+	$respuesta='';
+	while($row = $resultadoContactoEmpresa->fetch_array())
+	{
+		//array_push($rows, $row);
+		$queryCorreos="SELECT correo, nombre_correo FROM correo_contacto_empresa WHERE id_contacto=".$row["id_contacto"];
+		//echo $queryCorreos;
+
+		$resultCorreos = $mysqli->query($queryCorreos);
+		while ($filaCorreos = $resultCorreos->fetch_array()) {
+			# code...
+			$respuesta .= "	<p>Vía mail:
+	      						<a href='mailto:".$filaCorreosla['correo']."'>".$filaCorreos['correo']."</a>
+	      					</p>";
+		}
+		$resultCorreos->free();
+
+		$queryTelefonos="SELECT telefono, nombre_telefono FROM telefono_contacto_empresa WHERE id_contacto=".$row["id_contacto"];
+		//echo $queryCorreos;
+
+		$resultTelefonos = $mysqli->query($queryTelefonos);
+		while ($filaTelefonos = $resultTelefonos->fetch_array()) {
+			# code...
+			$respuesta .= "	<p>".$filaTelefonos['nombre_telefono'].":
+	      						<a href='tel:".$filaTelefonos['telefono']."'>".$filaTelefonos['telefono']."</a>
+	      					</p>";
+		}
+		$resultTelefonos->free();
+
+		$queryEnlaces="SELECT enlace, nombre_enlace, descripcion_enlace FROM enlace_contacto_empresa WHERE id_contacto=".$row["id_contacto"];
+		$resultEnlaces = $mysqli->query($queryEnlaces);
+		while ($filaEnlaces = $resultEnlaces->fetch_array()) {
+			# code...
+			$respuesta .= "	<p>".$filaEnlaces['descripcion_enlace'].":
+	      						<a href='".$filaEnlaces['enlace']."'>".$filaEnlaces['nombre_enlace']."</a>
+	      					</p>";
+		}
+		$resultEnlaces->free();
+
+		
+	}
+	echo $respuesta;
+
+	/* liberar la serie de resultados */
+	$resultadoContactoEmpresa->free();
 }
 
 /* cerrar la conexión */
