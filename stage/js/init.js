@@ -184,7 +184,7 @@ FRMWRK.main = (function($) {
 
 			window.setTimeout(function() {
 				overlay.update({
-					icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+					icon: "images/assets/check.png",
 					text: "Listo"
 				});
 			}, 1000);
@@ -467,7 +467,7 @@ FRMWRK.main = (function($) {
 
 		  if (_getScrollPos <= -225 && _getScrollPos >= -300 && _doitOnce == 0) {
 		  	$('.timeline-banner').slideDown();
-//		  	$("#embed01")[0].src += "&autoplay=1";
+		  	$("#embed01")[0].src += "&autoplay=1";
 		  	_doitOnce = 1;
 		  }
 		});
@@ -529,7 +529,7 @@ FRMWRK.main = (function($) {
 			_positionWidget();
 			_homeSlideFade();
 			_selectDflt();
-			//_slideInBanner();
+			_slideInBanner();
 			$('#slide-in-banner').hide();
 			_timeLineBanner();
 			_fixedFiltersBx();

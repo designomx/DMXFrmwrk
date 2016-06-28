@@ -396,6 +396,7 @@
 						</p>
 					</div>
 				</div>
+				<!--
 				<form class="col s12">
 					<div class="row">
 						<hr />
@@ -419,6 +420,7 @@
 					</div>
 					<a href="#!" id="BtnEnviarContratacion" class="btn orange accent-4" style="width: 100%;">Enviar</a>
 				</form>
+				-->
 			</div>
 			<div class="modal-footer">
 			  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
@@ -470,6 +472,14 @@
 					}(document, 'script', 'facebook-jssdk'));
 		</script>
 		<script>
+		$('.modal-trigger').leanModal({
+			//dismissible: false, // Modal can be dismissed by clicking outside of the modal
+			//opacity: .5, // Opacity of modal background
+			//in_duration: 300, // Transition in duration
+			//out_duration: 200, // Transition out duration
+			//ready: function() { alert('Ready'); }, // Callback for Modal open
+			complete: function() { $('.lean-overlay').remove(); } // Callback for Modal close			
+		});
 			function botones(){
 				jQuery( "#planes #verPlan" ).click(function() {
 					//console.log("botones");
@@ -523,7 +533,14 @@
                         //$('#results').html('Plugin name: ' + json.name + '<br />Author: ' + json.author.name);
 						jQuery("#ContenidoModal").html(json.contenido);
 						jQuery("#footerBotonesModal").html(json.footer);
-						$('.modal-trigger').leanModal();
+						$('.modal-trigger').leanModal({
+							//dismissible: false, // Modal can be dismissed by clicking outside of the modal
+							//opacity: .5, // Opacity of modal background
+							//in_duration: 300, // Transition in duration
+							//out_duration: 200, // Transition out duration
+							//ready: function() { alert('Ready'); }, // Callback for Modal open
+							complete: function() { $('.lean-overlay').remove(); } // Callback for Modal close			
+						});
 						if($('#ContenidoModal table').length) {
 					        $('#ContenidoModal table').addClass('responsive-table striped');
 					    }
@@ -637,7 +654,14 @@
 					    top: 0
 					},1000);
 				}
-			$('.modal-trigger').leanModal();
+			$('.modal-trigger').leanModal({
+				//dismissible: false, // Modal can be dismissed by clicking outside of the modal
+				//opacity: .5, // Opacity of modal background
+				//in_duration: 300, // Transition in duration
+				//out_duration: 200, // Transition out duration
+				//ready: function() { alert('Ready'); }, // Callback for Modal open
+				complete: function() { $('.lean-overlay').remove(); } // Callback for Modal close			
+			});
 			})
 
 			function eliminarDelComparador(id_plan){
@@ -812,10 +836,17 @@
 						jQuery("#planes").html(data);
 						botones();
 						VaciarComparador()
-						jQuery('.modal-trigger').leanModal();
+						$('.modal-trigger').leanModal({
+							//dismissible: false, // Modal can be dismissed by clicking outside of the modal
+							//opacity: .5, // Opacity of modal background
+							//in_duration: 300, // Transition in duration
+							//out_duration: 200, // Transition out duration
+							//ready: function() { alert('Ready'); }, // Callback for Modal open
+							complete: function() { $('.lean-overlay').remove(); } // Callback for Modal close			
+						});
 						window.setTimeout(function() {
 							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								icon: "images/assets/check.png",
 								text: "Listo"
 							});
 						}, 1000);
@@ -933,12 +964,19 @@
 						}
 						botones();
 						VaciarComparador();
-						jQuery('.modal-trigger').leanModal();
+						$('.modal-trigger').leanModal({
+							//dismissible: false, // Modal can be dismissed by clicking outside of the modal
+							//opacity: .5, // Opacity of modal background
+							//in_duration: 300, // Transition in duration
+							//out_duration: 200, // Transition out duration
+							//ready: function() { alert('Ready'); }, // Callback for Modal open
+							complete: function() { $('.lean-overlay').remove(); } // Callback for Modal close			
+						});
 						$(".cargarmas").hide();
 						cargarmas();
 						window.setTimeout(function() {
 							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								icon: "images/assets/check.png",
 								text: "Listo"
 							});
 						}, 1000);
@@ -954,7 +992,7 @@
 				    	setTimeout($.unblockUI, 1000);
 				    	window.setTimeout(function() {
 							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								icon: "images/assets/check.png",
 								text: "ERROR"
 							});
 						}, 1000);
@@ -1317,12 +1355,19 @@
 				}
 				botones();
 				VaciarComparador();
-				jQuery('.modal-trigger').leanModal();
+				$('.modal-trigger').leanModal({
+					//dismissible: false, // Modal can be dismissed by clicking outside of the modal
+					//opacity: .5, // Opacity of modal background
+					//in_duration: 300, // Transition in duration
+					//out_duration: 200, // Transition out duration
+					//ready: function() { alert('Ready'); }, // Callback for Modal open
+					complete: function() { $('.lean-overlay').remove(); } // Callback for Modal close			
+				});
 				$(".cargarmas").hide();
 				cargarmas();
 				window.setTimeout(function() {
 					overlay.update({
-						icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+						icon: "images/assets/check.png",
 						text: "Listo"
 					});
 				}, 1000);
@@ -1346,7 +1391,7 @@
 		    	setTimeout($.unblockUI, 1000);
 				window.setTimeout(function() {
 					overlay.update({
-						icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+						icon: "images/assets/check.png",
 						text: "Listo"
 					});
 				}, 1000);
@@ -2137,7 +2182,7 @@
 					$( "#SingleToEmail" ).val("");
 		    		window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "images/assets/check.png",
 							text: "Listo"
 						});
 					}, 1000);
@@ -2150,7 +2195,7 @@
 		    		//alert("false");
 		    		window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "images/assets/check.png",
 							text: "ERROR"
 						});
 					}, 1000);
@@ -2216,7 +2261,7 @@
 					$( "#CompareToEmail" ).val("");
 		    		window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "images/assets/check.png",
 							text: "Listo"
 						});
 					}, 1000);
@@ -2229,7 +2274,7 @@
 		    		//alert("false");
 		    		window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "images/assets/check.png",
 							text: "ERROR"
 						});
 					}, 1000);
@@ -2245,7 +2290,7 @@
 		    	console.log(data);
 		    	window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "images/assets/check.png",
 							text: "ERROR"
 						});
 					}, 1000);
@@ -2356,7 +2401,7 @@
 		    	console.log(data);
 		    	window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "images/assets/check.png",
 							text: "ERROR"
 						});
 					}, 1000);
@@ -2409,7 +2454,7 @@
 						$( "#EnviarTelefonoContratacion" ).val("");
 			    		window.setTimeout(function() {
 							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								icon: "images/assets/check.png",
 								text: "Listo"
 							});
 						}, 1000);
@@ -2422,7 +2467,7 @@
 			    		//alert("false");
 			    		window.setTimeout(function() {
 							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								icon: "images/assets/check.png",
 								text: "ERROR"
 							});
 						}, 1000);

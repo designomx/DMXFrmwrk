@@ -467,7 +467,7 @@ FRMWRK.main = (function($) {
 
 		  if (_getScrollPos <= -225 && _getScrollPos >= -300 && _doitOnce == 0) {
 		  	$('.timeline-banner').slideDown();
-//		  	$("#embed01")[0].src += "&autoplay=1";
+		  	$("#embed01")[0].src += "&autoplay=1";
 		  	_doitOnce = 1;
 		  }
 		});
