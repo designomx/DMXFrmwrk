@@ -1082,20 +1082,33 @@ if(isset($_POST['verDetalles'])){
 									</div>
 								</li>';
 							}
+							/*
 							$respuesta.='</ul>
 							<div>
 								<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal()" class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
 								</a>
 							</div>';
+							*/
+							$respuesta.='</ul>
+							<form action="#">
+								 <input id="MeGustariaContratar" type="checkbox" name="contratar" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar">Me gustaría contratar aquí</label>
+							</form>';
 						}else{
+							/*
 							$respuesta.='
 								<div>
 									<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal()" class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
 									</a>
 								</div>';
+							*/
+							$respuesta.='
+							<form action="#">
+								 <input id="MeGustariaContratar" type="checkbox" name="contratar" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar">Me gustaría contratar aquí</label>
+							</form>';
 						}
 					}
 				}else{
+					/*
 					$respuesta.='
 						<h5>Opciones y características adicionales</h5>
 						'.$row['mas_datos'].'
@@ -1103,6 +1116,14 @@ if(isset($_POST['verDetalles'])){
 							<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal()" class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
 							</a>
 						</div>
+						';
+					*/
+					$respuesta.='
+						<h5>Opciones y características adicionales</h5>
+						'.$row['mas_datos'].'
+						<form action="#">
+							<input id="MeGustariaContratar" type="checkbox" name="contratar" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar">Me gustaría contratar aquí</label>
+						</form>
 						';
 					//Pdf Canales
 					if(!empty($row["pdf_canalesTV"])){
@@ -1707,7 +1728,7 @@ if(isset($_POST['CompararPlanes'])){
 				$respuesta=$respuesta.'<div class="paq-price">$'.number_format($row["precio"]).'</div>';
 			}
 //<div class="paq-price">$'.$row["precio"].'</div>
-			$respuesta=$respuesta.'	<div class="more-actions-bx comparetratation">
+			/*$respuesta=$respuesta.'	<div class="more-actions-bx comparetratation">
 									<a href="#!" onclick="eliminarDelComparador('.$row["id_plan"].')" class="grey white-text text-white">Eliminar</a>
 									<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\')" class="compare-slct orange accent-4 modal-trigger">Contratar <i class="material-icons">done</i></a>
 									<div class="clearfix"></div>
@@ -1715,6 +1736,17 @@ if(isset($_POST['CompararPlanes'])){
 							</div>
 						</div>
 					</div>';
+			*/
+			$respuesta=$respuesta.'	<div class="more-actions-bx comparetratation">
+									<a href="#!" onclick="eliminarDelComparador('.$row["id_plan"].')" class="grey white-text text-white">Eliminar</a>
+									<form action="#">
+										 <input id="MeGustariaContratar" type="checkbox" name="contratar" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar">Me gustaría contratar aquí</label>
+									</form>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+					</div>';	
 		}
 		echo $respuesta;
 
