@@ -1161,7 +1161,7 @@ if(isset($_POST['verDetalles'])){
 					<br><br>
 
 					';
-			$respuesta.='<br><br><div>Fecha de actualización: '.date('d/j/Y',strtotime($row['fecha_actualizacion'])).'</div><br><br>';
+			$respuesta.='<br><br><div>Fecha de actualización: '.date('d/m/Y',strtotime($row['fecha_actualizacion'])).'</div><br><br>';
 		}
 		$miArray = array("contenido"=>$respuesta, "footer"=>$footer);
 		echo json_encode($miArray);
