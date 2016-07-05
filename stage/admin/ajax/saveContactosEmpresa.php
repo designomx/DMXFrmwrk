@@ -12,41 +12,67 @@ function verificar_contacto($id_empresa,$estado)
 	$database = "stage-db600436593UTF8";
 	$username = "dbo600436593";
 	$password = "20eligefacil15#";
-	$dbConn = mysqli_connect($hostname, $username, $password) or trigger_error(mysqli_error(),E_USER_ERROR);
+	$dbConn = mysqli_connect($hostname, $username, $password,$database) or trigger_error(mysqli_error(),E_USER_ERROR);
 	mysqli_query("SET NAMES 'utf8'");
-	$sqlVerificar=sprintf("SELECT C.id_contacto FROM Contacto_empresas C INNER JOIN relacion_contacto_empresas R ON R.id_contacto=C.id_contacto WHERE R.id_empresa=%s AND C.estado=%s", $id_empresa, $estado);
-	//echo $sqlVerificar;
-	$resultVerificarContacto = mysqli_query($sqlVerificar, $dbConn) or die(mysqli_error());
-	if (mysqli_num_rows($resultVerificarContacto) > 0)  
-	{  
-		//Existe, devolver id_contacto
-		while ( $fila = mysqli_fetch_assoc($resultVerificarContacto)) {
-			# code...
-			return $fila['id_contacto'];
-			break;
-		}	
-	}else{
-		//"No existen registros en la base de datos." Insertar nuevo contacto
-		$sqlInsertarContacto=sprintf("INSERT INTO Contacto_empresas (estado) VALUES (%s)",$estado);
-		//echo $sqlInsertarContacto;
-		$resultInsertContacto = mysqli_query($sqlInsertarContacto, $dbConn) or die(mysqli_error());
-		mysqli_free_result($resultInsertContacto);
-		$sqlIDContactoInsert=sprintf("SELECT max(id_contacto) as id FROM Contacto_empresas WHERE estado=%s", $estado);
-		$resultIDContactoInsert=mysqli_query($sqlIDContactoInsert, $dbConn) or die(mysqli_error());
-		if (mysqli_num_rows($resultIDContactoInsert) == 0)  
-		{
-			return "error";
-		}else{
-			$id_contacto=mysqli_fetch_assoc($resultIDContactoInsert);
-			$sqlRelacionContacto=sprintf("INSERT INTO relacion_contacto_empresas (id_empresa,id_contacto) VALUES (%s,%s)",$id_empresa,$id_contacto['id']);
-			echo $sqlRelacionContacto;
-			$resultRelacionContacto = mysqli_query($sqlRelacionContacto, $dbConn) or die(mysqli_error());
-			mysqli_free_result($resultRelacionContacto);
-			return $id_contacto['id'];
-		}
-		mysqli_free_result($resultIDContactoInsert);
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
-	mysqli_free_result($resultVerificarContacto);
+	$sqlVerificar="SELECT C.id_contacto FROM Contacto_empresas C INNER JOIN relacion_contacto_empresas R ON R.id_contacto=C.id_contacto WHERE R.id_empresa=".$id_empresa." AND C.estado=".$estado;
+	
+	if ($result=mysqli_query($dbConn,$sqlVerificar))
+	{
+		// Return the number of rows in result set
+		//$rowcount=mysqli_num_rows($result);
+		//$fila = mysqli_fetch_assoc($result);
+		//$row = mysqli_fetch_assoc($result);
+		//printf ("%s\n",$row["id_contacto"]);
+
+
+		while ($row = $result->fetch_assoc() ){
+		    echo " id = " . $row[0] . "\n";
+		    $id_contactoN=$row["id_contacto"];
+		}
+		//$id_contactoN=$row["id_contacto"];
+		echo "id_contacto: ".$id_contactoN;
+		if ($id_contactoN > 0)  
+		{  
+			//Existe, devolver id_contacto
+			echo "existe, devuelve id_contacto";
+			
+			# code...
+			echo "'id_contacto: ".$id_contactoN;
+			return $id_contactoN;
+				
+		}else{
+			//"No existen registros en la base de datos." Insertar nuevo contacto
+			$sqlInsertarContacto=sprintf("INSERT INTO Contacto_empresas (estado) VALUES (%s)",$estado);
+			mysqli_query($dbConn,$sqlInsertarContacto);
+			mysqli_free_result($resultInsertContacto);
+			$sqlIDContactoInsert=sprintf("SELECT max(id_contacto) as id FROM Contacto_empresas WHERE estado=%s", $estado);
+			if ($resultIDContactoInsert=mysqli_query($dbConn,$sqlIDContactoInsert))
+			{
+				$rowcount2=mysqli_num_rows($resultIDContactoInsert);
+				if (mysqli_num_rows($resultIDContactoInsert) == 0)  
+				{
+					return "error";
+				}else{
+					$id_contacto=mysqli_fetch_assoc($resultIDContactoInsert);
+					$sqlRelacionContacto=sprintf("INSERT INTO relacion_contacto_empresas (id_empresa,id_contacto) VALUES (%s,%s)",$id_empresa,$id_contacto['id']);
+					if ($resultRelacionContacto=mysqli_query($dbConn,$sqlRelacionContacto))
+					{
+						mysqli_free_result($resultRelacionContacto);
+						return $id_contacto['id'];
+					}
+				}
+			}
+			mysqli_free_result($resultIDContactoInsert);
+		}
+		mysqli_free_result($result);
+	}else{
+		return "error";
+	}
 }
 $delete=false;
 $transaccion = $_POST['transaccion'];
@@ -62,7 +88,8 @@ switch($transaccion){
 
 			case 'correo':
 				# code...
-				//echo "respuesta: ".$_POST['value'].",".$_POST['nombre'];
+				echo "empresa: ".$_POST['id_empresa'];
+				echo " estado: ".$_POST['estado'];
 				$id_contacto=verificar_contacto($_POST['id_empresa'],$_POST['estado']);
 				$sql="INSERT INTO correo_contacto_empresa (id_contacto, correo, nombre_correo) VALUES ('".$id_contacto."','".$_POST['value']."','".$_POST['nombre']."')";
 				//echo $sql;
@@ -70,13 +97,17 @@ switch($transaccion){
 
 			case 'telefono':
 				# code...
+				echo "empresa: ".$_POST['id_empresa'];
+				echo " estado: ".$_POST['estado'];
 				$id_contacto=verificar_contacto($_POST['id_empresa'],$_POST['estado']);
 				$sql="INSERT INTO telefono_contacto_empresa (id_contacto, telefono, nombre_telefono) VALUES ('".$id_contacto."','".$_POST['value']."','".$_POST['nombre']."')";
-				echo $sql;
+				//echo $sql;
 				break;
 
 			case 'enlace':
 				# code...
+				echo "empresa: ".$_POST['id_empresa'];
+				echo " estado: ".$_POST['estado'];
 				$id_contacto=verificar_contacto($_POST['id_empresa'],$_POST['estado']);
 				$sql="INSERT INTO enlace_contacto_empresa (id_contacto, enlace, nombre_enlace, descripcion_enlace) VALUES ('".$id_contacto."','".$_POST['value']."','".$_POST['nombre']."','".$_POST['descripcion']."')";
 				//echo $sql;

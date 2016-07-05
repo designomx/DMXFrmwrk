@@ -396,6 +396,7 @@
 						</p>
 					</div>
 				</div>
+				<!--
 				<form class="col s12">
 					<div class="row">
 						<hr />
@@ -419,6 +420,7 @@
 					</div>
 					<a href="#!" id="BtnEnviarContratacion" class="btn orange accent-4" style="width: 100%;">Enviar</a>
 				</form>
+				-->
 			</div>
 			<div class="modal-footer">
 			  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
@@ -470,6 +472,26 @@
 					}(document, 'script', 'facebook-jssdk'));
 		</script>
 		<script>
+		$('.modal-trigger').leanModal({
+			//dismissible: false, // Modal can be dismissed by clicking outside of the modal
+			//opacity: .5, // Opacity of modal background
+			//in_duration: 300, // Transition in duration
+			//out_duration: 200, // Transition out duration
+			//ready: function() { alert('Ready'); }, // Callback for Modal open
+			ready: function() {
+		        if($(".lean-overlay").length > 1) {
+		            $(".lean-overlay:not(:first)").each(function() {
+		                $(this).remove();
+		                $('body').removeAttr("style");
+		            });
+		        }
+		    },
+		    complete: function() {
+		        $(".lean-overlay").each(function() {
+		            $(this).remove();
+		        });
+		    }		
+		});
 			function botones(){
 				jQuery( "#planes #verPlan" ).click(function() {
 					//console.log("botones");
@@ -523,7 +545,28 @@
                         //$('#results').html('Plugin name: ' + json.name + '<br />Author: ' + json.author.name);
 						jQuery("#ContenidoModal").html(json.contenido);
 						jQuery("#footerBotonesModal").html(json.footer);
-						$('.modal-trigger').leanModal();
+						$('#deatilsModal').openModal({
+							//dismissible: false, // Modal can be dismissed by clicking outside of the modal
+							//opacity: .5, // Opacity of modal background
+							//in_duration: 300, // Transition in duration
+							//out_duration: 200, // Transition out duration
+							//ready: function() { alert('Ready'); }, // Callback for Modal open
+							ready: function() {
+						        if($(".lean-overlay").length > 1) {
+						            $(".lean-overlay:not(:first)").each(function() {
+						                $(this).remove();
+						            });
+						        }
+						    },
+						    complete: function() {
+						        $(".lean-overlay").each(function() {
+						            $(this).remove();
+						        });
+						        if($('#MeGustariaContratar').prop('checked')){
+						        	MeGustariaContratar($('#MeGustariaContratar').attr("data-idPlan"));
+						        }
+						    }		
+						});
 						if($('#ContenidoModal table').length) {
 					        $('#ContenidoModal table').addClass('responsive-table striped');
 					    }
@@ -637,7 +680,25 @@
 					    top: 0
 					},1000);
 				}
-			$('.modal-trigger').leanModal();
+				$('.modal-trigger').leanModal({
+					//dismissible: false, // Modal can be dismissed by clicking outside of the modal
+					//opacity: .5, // Opacity of modal background
+					//in_duration: 300, // Transition in duration
+					//out_duration: 200, // Transition out duration
+					//ready: function() { alert('Ready'); }, // Callback for Modal open
+					ready: function() {
+				        if($(".lean-overlay").length > 1) {
+				            $(".lean-overlay:not(:first)").each(function() {
+				                $(this).remove();
+				            });
+				        }
+				    },
+				    complete: function() {
+				        $(".lean-overlay").each(function() {
+				            $(this).remove();
+				        });
+				    }			
+				});
 			})
 
 			function eliminarDelComparador(id_plan){
@@ -812,10 +873,28 @@
 						jQuery("#planes").html(data);
 						botones();
 						VaciarComparador()
-						jQuery('.modal-trigger').leanModal();
+						$('.modal-trigger').leanModal({
+							//dismissible: false, // Modal can be dismissed by clicking outside of the modal
+							//opacity: .5, // Opacity of modal background
+							//in_duration: 300, // Transition in duration
+							//out_duration: 200, // Transition out duration
+							//ready: function() { alert('Ready'); }, // Callback for Modal open
+							ready: function() {
+						        if($(".lean-overlay").length > 1) {
+						            $(".lean-overlay:not(:first)").each(function() {
+						                $(this).remove();
+						            });
+						        }
+						    },
+						    complete: function() {
+						        $(".lean-overlay").each(function() {
+						            $(this).remove();
+						        });
+						    }			
+						});
 						window.setTimeout(function() {
 							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								icon: "images/assets/check.png",
 								text: "Listo"
 							});
 						}, 1000);
@@ -933,12 +1012,30 @@
 						}
 						botones();
 						VaciarComparador();
-						jQuery('.modal-trigger').leanModal();
+						$('.modal-trigger').leanModal({
+							//dismissible: false, // Modal can be dismissed by clicking outside of the modal
+							//opacity: .5, // Opacity of modal background
+							//in_duration: 300, // Transition in duration
+							//out_duration: 200, // Transition out duration
+							//ready: function() { alert('Ready'); }, // Callback for Modal open
+							ready: function() {
+						        if($(".lean-overlay").length > 1) {
+						            $(".lean-overlay:not(:first)").each(function() {
+						                $(this).remove();
+						            });
+						        }
+						    },
+						    complete: function() {
+						        $(".lean-overlay").each(function() {
+						            $(this).remove();
+						        });
+						    }			
+						});
 						$(".cargarmas").hide();
 						cargarmas();
 						window.setTimeout(function() {
 							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								icon: "images/assets/check.png",
 								text: "Listo"
 							});
 						}, 1000);
@@ -954,7 +1051,7 @@
 				    	setTimeout($.unblockUI, 1000);
 				    	window.setTimeout(function() {
 							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								icon: "images/assets/check.png",
 								text: "ERROR"
 							});
 						}, 1000);
@@ -1317,12 +1414,30 @@
 				}
 				botones();
 				VaciarComparador();
-				jQuery('.modal-trigger').leanModal();
+				$('.modal-trigger').leanModal({
+					//dismissible: false, // Modal can be dismissed by clicking outside of the modal
+					//opacity: .5, // Opacity of modal background
+					//in_duration: 300, // Transition in duration
+					//out_duration: 200, // Transition out duration
+					//ready: function() { alert('Ready'); }, // Callback for Modal open
+					ready: function() {
+				        if($(".lean-overlay").length > 1) {
+				            $(".lean-overlay:not(:first)").each(function() {
+				                $(this).remove();
+				            });
+				        }
+				    },
+				    complete: function() {
+				        $(".lean-overlay").each(function() {
+				            $(this).remove();
+				        });
+				    }		
+				});
 				$(".cargarmas").hide();
 				cargarmas();
 				window.setTimeout(function() {
 					overlay.update({
-						icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+						icon: "images/assets/check.png",
 						text: "Listo"
 					});
 				}, 1000);
@@ -1346,7 +1461,7 @@
 		    	setTimeout($.unblockUI, 1000);
 				window.setTimeout(function() {
 					overlay.update({
-						icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+						icon: "images/assets/check.png",
 						text: "Listo"
 					});
 				}, 1000);
@@ -2137,7 +2252,7 @@
 					$( "#SingleToEmail" ).val("");
 		    		window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "images/assets/check.png",
 							text: "Listo"
 						});
 					}, 1000);
@@ -2150,7 +2265,7 @@
 		    		//alert("false");
 		    		window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "images/assets/check.png",
 							text: "ERROR"
 						});
 					}, 1000);
@@ -2216,7 +2331,7 @@
 					$( "#CompareToEmail" ).val("");
 		    		window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "images/assets/check.png",
 							text: "Listo"
 						});
 					}, 1000);
@@ -2229,7 +2344,7 @@
 		    		//alert("false");
 		    		window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "images/assets/check.png",
 							text: "ERROR"
 						});
 					}, 1000);
@@ -2245,7 +2360,7 @@
 		    	console.log(data);
 		    	window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "images/assets/check.png",
 							text: "ERROR"
 						});
 					}, 1000);
@@ -2356,7 +2471,7 @@
 		    	console.log(data);
 		    	window.setTimeout(function() {
 						overlay.update({
-							icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+							icon: "images/assets/check.png",
 							text: "ERROR"
 						});
 					}, 1000);
@@ -2409,7 +2524,7 @@
 						$( "#EnviarTelefonoContratacion" ).val("");
 			    		window.setTimeout(function() {
 							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								icon: "images/assets/check.png",
 								text: "Listo"
 							});
 						}, 1000);
@@ -2422,7 +2537,7 @@
 			    		//alert("false");
 			    		window.setTimeout(function() {
 							overlay.update({
-								icon: "//cdn.tooth.me//assets/v3/assets/img/check.png",
+								icon: "images/assets/check.png",
 								text: "ERROR"
 							});
 						}, 1000);
@@ -2442,6 +2557,36 @@
 				alert("Debe completar el nombre, el correo y alguno de los dos números telefónicos");
 			}
 		});
+		$(document.body).on('change', "#MeGustariaContratar", function () {
+		//$("#MeGustariaContratar").change(function(){
+			//alert("change checkbox");
+		})
+		function MeGustariaContratar(id_plan){
+			//alert(id_plan);
+			var data={
+						id_plan:id_plan
+					}
+				jQuery.ajax({
+					//dataType:"json",
+					type: "POST",
+					url: "CountContratar.php",
+					data: data
+				})
+			    .done(function(data){
+
+			    	if(data==true){
+			    		//alert("true");
+			    		//alert("Gracias por querer contratar desde eligefacil.com")
+			    	}else{
+			    		//alert("false");
+			    	}
+			    	console.log(data)
+			    })
+			    .fail(function(data){
+			    	console.log(data);
+			    	//window.location.href = "indexBE.php";
+			    });
+		}
 		</script>
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
