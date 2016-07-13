@@ -60,7 +60,7 @@ require('blog/wp-blog-header.php');
 	     fjs.parentNode.insertBefore(js, fjs);
 	   }(document, 'script', 'facebook-jssdk'));
 	</script>
-	<body >
+	<body class="preViewB">
 		<nav id="main-nav-bar">
 			<div class="nav-wrapper" class="fix-ios-shadow">
 				<a href="index.php" class="logo-header magictime spaceInLeft hvr-grow"><img src="images/logo_eligefacil.png" width="159" alt="" /></a>
@@ -182,13 +182,13 @@ require('blog/wp-blog-header.php');
 						</div>
 					<?php
 			    	if($insertarVideo==2){
-			    		
-			    		echo '<div class="col s12 timeline-banner videoYoutubeSponsor">
+			    		/*
+			    		echo '<div class="col s12 timeline-banner">
 								<div class="video-container">
-									<iframe id="embed01" width="560" height="315" src="https://www.youtube.com/embed/KCcJwNz11Lw?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+									<iframe id="embed01" width="560" height="315" src="https://www.youtube.com/embed/HGb1zrXkpRA?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 								</div>
 							</div>';
-						
+						*/
 			    	}
 		    		$cargarmas+=1;
 		    endwhile;
@@ -258,11 +258,11 @@ require('blog/wp-blog-header.php');
 			<div class="footer-bx">
 				<ul>
 					<li><a href="quienes-somos.html">Quiénes somos</a> / </li>
-					<li><a href="pdf/Terminos_y_Condiciones_de_Uso_y_Privacidad.pdf" target="_blank">Legales</a> / </li>
-					<li><a href="contacto.html">Anúnciate con nosotros</a> / </li>
+					<li><a href="pdf/legal1.pdf" target="_blank">Legales</a> / </li>
+					<li><a href="#!">Anúnciate con nosotros</a> / </li>
 					<li><a href="#!">Ayuda</a></li>
 				</ul>
-				<p class="copy-foot">2016 Todos los derechos reservados © ELIGE FÁCIL</p>
+				<p class="copy-foot">Todos los derechos reservados 2016®</p>
 			</div>
 		</div>
 		<div id="slideshow" class="home-hero"> 
@@ -270,9 +270,6 @@ require('blog/wp-blog-header.php');
 	          	<div class="hero-image" style="background-image: url('images/hero4.jpg');"/></div>
 	            <div class="hero-image" style="background-image: url('images/hero2.jpg');"/></div>
 		        <div class="hero-image" style="background-image: url('images/hero1.jpg');"/></div> <!-- This is the first image in the slideshow -->
-		        <div class="frases">¡Elige los servicios a contratar!</div>
-		        <div class="frases">¡Sin filas y sin rollos!</div>
-		        <div class="frases">¡Decidir nunca fue tan simple!</div>
 		</div>
 		<div class="slide-widget animated slideInUp">
 			<div id="controlSlide" class="home-slide-bar">
@@ -401,18 +398,6 @@ require('blog/wp-blog-header.php');
 		        <a href="#!" class="modal-action modal-close waves-effect btn-flat">Cerrar</a>
 		      </div>
 		    </div>
-		     <!-- Modal Video Bienvenida -->
-		    <div id="modalVideoBienvenida" class="modal">
-		      <div class="modal-content">
-		        <!--<h5>Bienvendido a Eligefácil</h5>-->
-		        <div id="contenedorVideoSponsor" class="video-container">
-                	<iframe id="embed02" width="853" height="480" src="https://www.youtube.com/embed/KCcJwNz11Lw?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-                </div>
-		      </div>
-		      <div class="modal-footer">
-		        <a href="#!" onclick="$('#embed02').remove()" class="modal-action modal-close waves-effect btn-flat">Cerrar</a>
-		      </div>
-		    </div>
 			<!-- Modal Preregistro -->
 			<div id="modalPreview" class="modal">
 			  <div class="modal-content">
@@ -449,7 +434,7 @@ require('blog/wp-blog-header.php');
 		<![endif]-->
 
 		<!-- Scripts-->
-		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/jquery-2.2.3.min.js"></script>
 		<script src="js/jquery.stayInWebApp.min.js"></script>
 		<script src="js/spin.js"></script>
 		<script src="js/iosOverlay.js"></script>
@@ -516,16 +501,6 @@ require('blog/wp-blog-header.php');
 					return false;
 				}
 			});
-			/*
-			$('.modal-trigger').leanModal({
-				dismissible: false, // Modal can be dismissed by clicking outside of the modal
-				opacity: .5, // Opacity of modal background
-				in_duration: 300, // Transition in duration
-				out_duration: 200, // Transition out duration
-				ready: function() { alert('Ready'); }, // Callback for Modal open
-				complete: function() { alert('Closed'); } // Callback for Modal close			
-			});
-		 	*/
 			jQuery(document).ready(function(){
 				CargarAnuncio();
 				cargarmas();
@@ -548,34 +523,20 @@ require('blog/wp-blog-header.php');
 			    });
 
 			    jQuery('#slideshow').fadeSlideShow();
-			    /*$('#modalPreview').openModal({dismissible: false});
+			    $('#modalPreview').openModal({dismissible: false});
 			    var urlGet=decodeURIComponent(window.location.href);
 			    if((urlGet.indexOf("ll=e988b5526b6a9a91911f83ca1cc737c7") > -1) || (localStorage.getItem("usuarioInvitado") !== null)) {
 			    	localStorage.setItem("usuarioInvitado", true)
 			    	$('#modalPreview').closeModal();
 			    	$('body').removeClass("preViewB");
 			    }
-			    */
-			    checkMobile();
-			    if(localStorage.getItem("primeraVisitaEligeFacil") != "false"){
-			    	localStorage.setItem("primeraVisitaEligeFacil",false);
-			    	$("#embed02")[0].src += "&autoplay=1";
-			    	$('.videoYoutubeSponsor').remove();
-					$( "#modalVideoBienvenida" ).openModal({
-						//dismissible: false, // Modal can be dismissed by clicking outside of the modal
-						//opacity: .5, // Opacity of modal background
-						//in_duration: 300, // Transition in duration
-						//out_duration: 200, // Transition out duration
-						//ready: function() { alert('Ready'); }, // Callback for Modal open
-						complete: function() { $('.lean-overlay').remove();$("#embed02").remove() } // Callback for Modal close
-					});
-			    }
-			    
+
+
 			});
 
 			function CargarAnuncio(){
 				if($('.AnuncioHomeDerecho').length){
-					
+					/*
 					var data={
 							CargarAnuncio:true,
 							id_anuncio:3
@@ -595,10 +556,10 @@ require('blog/wp-blog-header.php');
 				    	console.log(data);
 				    	window.location.href = "index.php";
 				    });
-				    
+				    */
 				}
 				if($('.AnuncioComparadorCentro').length){
-					
+					/*
 					var data={
 							CargarAnuncio:true,
 							id_anuncio:5
@@ -618,7 +579,7 @@ require('blog/wp-blog-header.php');
 				    	console.log(data);
 				    	window.location.href = "index.php";
 				    });
-				    
+				    */
 				}
 			}
 
@@ -693,7 +654,7 @@ require('blog/wp-blog-header.php');
 				var titulo=	$(element).data("titulo");
 				if(source=="youtube"){
 					//console.log("youtube");
-					$('#contenedorVideo').html('<iframe width="853" height="480" src="'+url+'?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
+					$('#contenedorVideo').html('<iframe width="853" height="480" src="'+url+'" frameborder="0" allowfullscreen></iframe>');
 				}
 				if(source=="vimeo"){
 					//console.log("vimeo");
@@ -746,12 +707,6 @@ require('blog/wp-blog-header.php');
 
 					
 			};
-			function checkMobile(){
-				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		 			// .mCustomScrollbar("scrollTo",'8%');
-				 	$('.sliders-scroll-wrapp').mCustomScrollbar("scrollTo",'90');
-				}
-			}
 			
 			function enviarCorreo(nombre,email){
 			  	console.log("function enviarCorreo nombre: "+nombre);
@@ -787,7 +742,7 @@ require('blog/wp-blog-header.php');
 						$( "#emailUsuario" ).val("");
 			    		window.setTimeout(function() {
 							overlay.update({
-								icon: "images/assets/check.png",
+								icon: "//cdn.tooth.me/assets/v3/assets/img/check.png",
 								text: "Listo revisa tu correo!"
 							});
 						}, 1000);
@@ -805,7 +760,7 @@ require('blog/wp-blog-header.php');
 				    		//alert("false");
 				    		window.setTimeout(function() {
 								overlay.update({
-									icon: "images/assets/check.png",
+									icon: "//cdn.tooth.me/assets/v3/assets/img/check.png",
 									text: "Listo"
 								});
 							}, 1000);
@@ -822,7 +777,7 @@ require('blog/wp-blog-header.php');
 					    		//alert("false");
 					    		window.setTimeout(function() {
 									overlay.update({
-										icon: "images/assets/cross.png",
+										icon: "//cdn.tooth.me/assets/v3/assets/img/cross.png",
 										text: "Error en DB"
 									});
 								}, 1000);
@@ -835,7 +790,7 @@ require('blog/wp-blog-header.php');
 					    		//alert("false");
 					    		window.setTimeout(function() {
 									overlay.update({
-										icon: "images/assets/cross.png",
+										icon: "//cdn.tooth.me/assets/v3/assets/img/cross.png",
 										text: "Error"
 									});
 								}, 1000);
