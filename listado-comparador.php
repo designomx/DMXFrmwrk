@@ -540,9 +540,14 @@
 						        $(".lean-overlay").each(function() {
 						            $(this).remove();
 						        });
-						        if($('#MeGustariaContratar').prop('checked')){
-						        	MeGustariaContratar($('#MeGustariaContratar').attr("data-idPlan"));
-						        }
+						        /*
+						        $('.MeGustariaContratarClass').each(function(){
+							        if($(this).prop('checked')){
+						        		MeGustariaContratar($(this).attr("data-idPlan"));
+						        		$(this).remove();
+						        	}
+						        });
+						        */
 						    }		
 						});
 						if($('#ContenidoModal table').length) {
@@ -2489,6 +2494,13 @@
 			    	//window.location.href = "indexBE.php";
 			    });
 		}
+		
+$(document.body).on('change', ".MeGustariaContratarClass", function () {
+	if($(this).prop('checked')){
+		MeGustariaContratar($(this).attr("data-idPlan"));
+	}
+});
+
 		</script>
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

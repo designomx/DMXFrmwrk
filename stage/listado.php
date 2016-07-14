@@ -1091,7 +1091,7 @@ if(isset($_POST['verDetalles'])){
 							*/
 							$respuesta.='</ul>
 							<form action="#">
-								 <input id="MeGustariaContratar" type="checkbox" name="contratar" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar">Me gustaría contratar aquí</label>
+								 <input id="MeGustariaContratar" type="checkbox" name="contratar" class="MeGustariaContratarClass" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar">Me gustaría contratar aquí</label>
 							</form>';
 						}else{
 							/*
@@ -1103,7 +1103,7 @@ if(isset($_POST['verDetalles'])){
 							*/
 							$respuesta.='
 							<form action="#">
-								 <input id="MeGustariaContratar" type="checkbox" name="contratar" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar">Me gustaría contratar aquí</label>
+								 <input id="MeGustariaContratar" type="checkbox" class="MeGustariaContratarClass" name="contratar" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar">Me gustaría contratar aquí</label>
 							</form>';
 						}
 					}
@@ -1122,7 +1122,7 @@ if(isset($_POST['verDetalles'])){
 						<h5>Opciones y características adicionales</h5>
 						'.$row['mas_datos'].'
 						<form action="#">
-							<input id="MeGustariaContratar" type="checkbox" name="contratar" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar">Me gustaría contratar aquí</label>
+							<input id="MeGustariaContratar" type="checkbox" class="MeGustariaContratarClass" name="contratar" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar">Me gustaría contratar aquí</label>
 						</form>
 						';
 					//Pdf Canales
@@ -1721,7 +1721,7 @@ if(isset($_POST['CompararPlanes'])){
 								</div>
 								<div style="padding-left:15px;padding-bottom:15px;">
 									<form action="#">
-										 <input id="MeGustariaContratar'.$row['id_plan'].'" type="checkbox" name="contratar" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar'.$row['id_plan'].'" style="font-size: ;">Me gustaría contratar</label>
+										 <input id="MeGustariaContratar'.$row['id_plan'].'" type="checkbox" class="MeGustariaContratarClass" name="contratar" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar'.$row['id_plan'].'" style="font-size: ;">Me gustaría contratar</label>
 									</form>
 								</div>';
 			if($row['id_tipoDato_principal_1']==2 || $row['id_tipoDato_principal_2']==2 || $row['id_tipoDato_principal_3']==2 || $row['id_tipoDato_principal_4']==2){
@@ -1744,9 +1744,10 @@ if(isset($_POST['CompararPlanes'])){
 					</div>';
 			*/
 			$respuesta=$respuesta.'	
-
 									<div class="more-actions-bx comparetratation">
-									<a href="#!" onclick="eliminarDelComparador('.$row["id_plan"].')" class="grey white-text text-white">Eliminar</a>
+									<a href="#!" class="grey"></a>
+									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" onclick="eliminarDelComparador('.$row["id_plan"].')" class="compare-delete">Eliminar</a>
 									<div class="clearfix"></div>
 								</div>
 							</div>
@@ -2040,6 +2041,11 @@ if(isset($_POST['CompararPaqueteOTT'])){
 										<li>'.$row["dato_principal_3"].'</li>
 										<li>'.$row["dato_principal_4"].'</li>
 									</ul>'.$row["mas_datos"].'
+								</div>
+								<div style="padding-left:15px;padding-bottom:15px;">
+									<form action="#">
+										 <input id="MeGustariaContratar'.$row['id_paquete'].'" type="checkbox" class="MeGustariaContratarClass" name="contratar" value="true" data-idPlan="'.$row['id_paquete'].'"> <label for="MeGustariaContratar'.$row['id_paquete'].'" style="font-size: ;">Me gustaría contratar</label>
+									</form>
 								</div>
 								<div class="paq-price">$'.number_format($row["precio"]).'</div>
 								<div class="more-actions-bx">

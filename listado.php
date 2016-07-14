@@ -1744,9 +1744,10 @@ if(isset($_POST['CompararPlanes'])){
 					</div>';
 			*/
 			$respuesta=$respuesta.'	
-
 									<div class="more-actions-bx comparetratation">
-									<a href="#!" onclick="eliminarDelComparador('.$row["id_plan"].')" class="grey white-text text-white">Eliminar</a>
+									<a href="#!" class="grey"></a>
+									<a href="#!" class="compare-slct grey"></a>
+									<a href="#!" onclick="eliminarDelComparador('.$row["id_plan"].')" class="compare-delete">Eliminar</a>
 									<div class="clearfix"></div>
 								</div>
 							</div>
