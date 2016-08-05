@@ -2097,7 +2097,33 @@ p {
 	}
 }
 
+/*Cambios 25 de Julio*/
 
+.scroll-box1{
+	width: 100%;
+	height: 345px;
+	position: absolute;
+	z-index: 0;
+	overflow-y: hidden;
+	overflow-x: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
+	.products-box{
+		min-width: 860px;
+		@media @tablet {	
+			top: 43%;
+		}
+	}
+	.alignr-box{
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: 20%;
+		padding: 0 20px;
+		@media @mobile {		
+			padding: 0 10px;
+		}
+	}
+}
 
 
 

@@ -175,7 +175,7 @@
 		<div class="slide-widget animated slideInUp">
 			<div class="widget-wrapper">
 				<div class="discover-title">¡Decidir nunca fue tan simple!</div>
-				<div class="scroll-box">
+				<div class="scroll-box1">
 					<div class="alignr-box">
 						<div class="products-box">
 								<div id="celular" class="plan-box cellplan">
@@ -1003,6 +1003,7 @@
 		    	$( "input.checkbox1" ).prop( "checked", false );
 		    	$('input.checkbox1').attr("disabled", true);
 		    }
+		    /* Cambio para no sea obligatorio el checkbox 'controlado'
 		    if($('#checkbox15').is(':checked')){
 		    	if($( "input#checkbox3" ).prop( "checked")==true){
 		    		$( "input#checkbox3" ).prop( "checked",false);
@@ -1011,7 +1012,7 @@
 		    	if($( "input#checkbox4" ).prop( "checked")==false){
 		    		$( "input#checkbox4" ).prop( "checked",true);
 		    	}		    	
-			}
+			}*/
 			CargarPlanesConFiltros();
 		}
 		
@@ -2052,6 +2053,13 @@
 			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 	 			// some code..
 			 	$(".iconosPlanes").hide();
+			 	$('.scroll-box1').scrollLeft(90);
+			}else{
+				$(".scroll-box1").mCustomScrollbar({
+					axis: "x",
+					theme: "minimal",
+					updateOnContentResize: true
+				});
 			}
 		}
 		function CargarFiltrosCheckEmpresasConFiltro(){

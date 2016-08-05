@@ -37,38 +37,42 @@
 @font-face {
   font-family: 'MOAM91';
   src: url('fonts/fonts/MOAM91_light.eot');
-  /* IE9 Compat Modes */
   src: url('fonts/MOAM91_light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('fonts/MOAM91_light.woff') format('woff'), /* Modern Browsers */ url('fonts/MOAM91_light.ttf') format('truetype'), /* Safari, Android, iOS */ url('fonts/MOAM91_light.svg#1def069febbf5fc41694b18523b67a7e') format('svg');
-  /* Legacy iOS */
   font-style: normal;
   font-weight: 200;
+  
+  /* IE9 Compat Modes */
+  /* Legacy iOS */
 }
 @font-face {
   font-family: 'Museo Sans 300';
   src: url('fonts/MuseoSans-300.eot');
-  /* IE9 Compat Modes */
   src: url('fonts/MuseoSans-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('fonts/MuseoSans-300.woff') format('woff'), /* Modern Browsers */ url('fonts/MuseoSans-300.ttf') format('truetype'), /* Safari, Android, iOS */ url('fonts/MuseoSans-300.svg#83308de0ca4237e6cd44fbae61d13495') format('svg');
-  /* Legacy iOS */
   font-style: normal;
   font-weight: 400;
+  
+  /* IE9 Compat Modes */
+  /* Legacy iOS */
 }
 @font-face {
   font-family: 'Visby CF';
   src: url('fonts/VisbyCF-Light.eot');
-  /* IE9 Compat Modes */
   src: url('fonts/VisbyCF-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('fonts/VisbyCF-Light.woff') format('woff'), /* Modern Browsers */ url('fonts/VisbyCF-Light.ttf') format('truetype'), /* Safari, Android, iOS */ url('fonts/VisbyCF-Light.svg#be1dfcf09435eecaffe5d1ba5ecf9eb0') format('svg');
-  /* Legacy iOS */
   font-style: normal;
   font-weight: 200;
+  
+  /* IE9 Compat Modes */
+  /* Legacy iOS */
 }
 @font-face {
   font-family: 'Visby CF Medium';
   src: url('fonts/VisbyCF-Medium.eot');
-  /* IE9 Compat Modes */
   src: url('fonts/VisbyCF-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('fonts/VisbyCF-Medium.woff') format('woff'), /* Modern Browsers */ url('fonts/VisbyCF-Medium.ttf') format('truetype'), /* Safari, Android, iOS */ url('fonts/VisbyCF-Medium.svg#3ae62bd5b7268d651203b3a1af56ccb4') format('svg');
-  /* Legacy iOS */
   font-style: normal;
   font-weight: 400;
+  
+  /* IE9 Compat Modes */
+  /* Legacy iOS */
 }
 /* 2D TRANSITIONS */
 /* Grow */
@@ -680,16 +684,16 @@ hr {
   color: #d50000;
 }
 ::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 :-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 ::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 :-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 .cd-top {
   position: fixed;
@@ -1343,7 +1347,7 @@ footer.stickFoot {
 }
 #blog-module .blog-timeline-bx .post-box-wrapper p,
 .blog-module .blog-timeline-bx .post-box-wrapper p {
-  text-shadow: -0.9px 0.5px 1px white;
+  text-shadow: -0.9px 0.5px 1px #ffffff;
   font-family: 'Visby CF Medium';
   font-size: 16px;
   font-weight: 500;
@@ -1490,7 +1494,7 @@ footer.stickFoot {
 }
 #contact-module .post-page-bx p,
 .contact-module .post-page-bx p {
-  text-shadow: -0.9px 0.5px 1px white;
+  text-shadow: -0.9px 0.5px 1px #ffffff;
   font-family: 'Visby CF Medium';
   font-size: 16px;
   font-weight: 500;

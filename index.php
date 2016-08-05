@@ -280,7 +280,7 @@ require('blog/wp-blog-header.php');
 			</div>
 			<div class="widget-wrapper">
 				<div class="discover-title">¡Decidir nunca fue tan simple!</div>
-				<div class="scroll-box">
+				<div class="scroll-box1">
 					<div class="alignr-box">
 						<div class="products-box">
 							<div id="celular" class="plan-box cellplan">
@@ -556,18 +556,14 @@ require('blog/wp-blog-header.php');
 			    	$('body').removeClass("preViewB");
 			    }
 			    checkMobile();
+
+			    $('.videoYoutubeSponsor').remove();
+			    $( "#modalVideoBienvenida" ).openModal({
+					complete: function() { $('.lean-overlay').remove();$("#embed02").remove() } // Callback for Modal close
+				});
 			    if(localStorage.getItem("primeraVisitaEligeFacil") != "false"){
 			    	localStorage.setItem("primeraVisitaEligeFacil",false);
-			    	$('.videoYoutubeSponsor').remove();
 			    	$("#embed02")[0].src += "&autoplay=1";
-					$( "#modalVideoBienvenida" ).openModal({
-						//dismissible: false, // Modal can be dismissed by clicking outside of the modal
-						//opacity: .5, // Opacity of modal background
-						//in_duration: 300, // Transition in duration
-						//out_duration: 200, // Transition out duration
-						//ready: function() { alert('Ready'); }, // Callback for Modal open
-						complete: function() { $('.lean-overlay').remove();$("#embed02").remove() } // Callback for Modal close
-					});
 			    }
 			});
 
@@ -748,7 +744,14 @@ require('blog/wp-blog-header.php');
 			function checkMobile(){
 				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		 			// .mCustomScrollbar("scrollTo",'8%');
-				 	$('.sliders-scroll-wrapp').mCustomScrollbar("scrollTo",'90');
+				 	//$('.sliders-scroll-wrapp').mCustomScrollbar("scrollTo",'90');
+				 	$('.scroll-box1').scrollLeft(90);
+				}else{
+					$(".scroll-box1").mCustomScrollbar({
+						axis: "x",
+						theme: "minimal",
+						updateOnContentResize: true
+					});
 				}
 			}
 			

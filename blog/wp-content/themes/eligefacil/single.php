@@ -28,7 +28,7 @@ class YourImagick extends Imagick
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes" />
     <meta name="description" content="Elige, filtra y compara Planes de Telefonía, Teléfono, Internet, etc. Informate antes de tomar una decisión, con nuestra plataforma lo haces fácil y en segundos.">
     <meta name="keywords" content="Comparador, Telefonía fija, telefonía móvil, planes celulares, planes internet, planes telcel, planes movistar, planes virgin, planes at&amp;t, planes axtel, planes iizzi, planes total play, telecomunicaciones">
     <meta name="author" content=“designo.mx”>

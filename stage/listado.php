@@ -92,40 +92,20 @@ if(isset($_POST['listadoSimple'])){
 		if(isset($_POST['CargarPlanes'])){
 
 			$query=("SELECT 
-					DISTINCT(P.id_plan),
-				 	P.nombre, 
-				 	P.precio, 
-				 	P.dato_principal_1,
-				 	P.id_tipoDato_principal_1, 
-				 	P.dato_principal_2, 
-				 	P.id_tipoDato_principal_2, 
-					P.dato_principal_3, 
-					P.id_tipoDato_principal_3, 
-					P.dato_principal_4,
-					P.id_tipoDato_principal_4, 
-					P.mas_datos, P.visible, 
-					E.nombre as empresa, 
-					E.codigo_color as empresa_color,
-					TDS1.label as dato1,
-					TDS1.tipo as tipoDato1,
-					TDS2.label as dato2,
-					TDS2.tipo as tipoDato2,
-					TDS3.label as dato3,
-					TDS3.tipo as tipoDato3,
-					TDS4.label as dato4,
-					TDS4.tipo as tipoDato4
-				  	FROM planes P
-				  	INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
-				  	INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
-				  	INNER JOIN planes_tipoServicios PT ON P.ID_PLAN=PT.ID_PLAN
-				  	LEFT JOIN tipoDatosServicios TDS1 ON P.id_tipoDato_principal_1 = TDS1.id_tipoDato 
-				  	LEFT JOIN tipoDatosServicios TDS2 ON P.id_tipoDato_principal_2 = TDS2.id_tipoDato 
-				  	LEFT JOIN tipoDatosServicios TDS3 ON P.id_tipoDato_principal_3 = TDS3.id_tipoDato 
-				  	LEFT JOIN tipoDatosServicios TDS4 ON P.id_tipoDato_principal_4 = TDS4.id_tipoDato 
-				  	WHERE C.ID_ESTADO='".$_SESSION['estado']."' 
-				  	AND PT.id_plan NOT IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (SELECT id_tipoServicio from tipoServicios where id_tipoServicio NOT IN (".implode(', ', $_SESSION['Servicios']).") ) )
-				  	AND visible=1
-				  	GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])."
+						DISTINCT(P.id_plan),
+							P.nombre, 
+							P.precio, 
+							P.mas_datos, P.visible, 
+							E.nombre as empresa, 
+							E.codigo_color as empresa_color
+							FROM planes P
+							INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
+							INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
+							INNER JOIN planes_tipoServicios PT ON P.ID_PLAN=PT.ID_PLAN
+							WHERE C.ID_ESTADO='".$_SESSION['estado']."' 
+							AND PT.id_plan NOT IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (SELECT id_tipoServicio from tipoServicios where id_tipoServicio NOT IN (".implode(', ', $_SESSION['Servicios']).") ) )
+							AND visible=1
+							GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])."
 				  	 ");
 			//echo $query;
 
@@ -214,6 +194,48 @@ if(isset($_POST['listadoSimple'])){
 							<h4 class="truncate">'.$row["nombre"].'</h4>
 							<ul>';
 
+				$query_atributos = 'SELECT 	PTDS.valor,
+											PTDS.id_tipoDato,
+											TDS.label as dato,
+											TDS.tipo as tipoDato
+									FROM planes_tipoDatosServicios PTDS
+									LEFT JOIN tipoDatosServicios TDS ON PTDS.id_tipoDato = TDS.id_tipoDato 
+									WHERE PTDS.id_plan='.$row["id_plan"].'
+									ORDER BY TDS.orden';
+				$result_atributos = $mysqli->query($query_atributos);
+				$atributo=array();
+				//Variable para saber si un plan es prepago o no, así mostrar los textos de 'sin recarga minima' o 'con recarga minima'
+				$prepago=false;
+				while($atributo = $result_atributos->fetch_array()){
+					switch ($atributo['tipoDato']) {
+					    case "texto":
+					    	if($atributo['valor'] != NULL){
+					    		$respuesta=$respuesta.'<li>'.$atributo["valor"].'</li>';
+					    	}
+					        break;
+					    case "integer":
+					    	if($atributo['valor'] != NULL && $atributo['valor'] != 0){
+					    		$respuesta=$respuesta.'<li>'.$atributo["valor"].' '.$atributo["dato"].'</li>';	
+					    	}else{
+					    		$respuesta=$respuesta.'<li><del>'.$atributo["dato"].'</del></li>';
+					    	}
+					        break;
+					    case "boolean":
+					    	if($atributo['valor'] == 1){
+					    		$respuesta=$respuesta.'<li>'.$atributo["dato"].'</li>';
+					    		if($atributo['id_tipoDato']==2){
+					    			$prepago=true;
+					    		}
+					    	}else{
+					    		$respuesta=$respuesta.'<li><del>'.$atributo["dato"].'</del></li>';
+					    		if($atributo['id_tipoDato']==2){
+					    			$prepago=false;
+					    		}
+					    	}
+					        break;
+					}
+				}
+				/*
 
 									switch ($row['tipoDato1']) {
 									    case "texto":
@@ -259,6 +281,7 @@ if(isset($_POST['listadoSimple'])){
 											$respuesta=$respuesta.'<li>'.$row["dato4"].'</li>';
 									        break;
 									}
+									*/
 									if(isset($_POST["celular"])){
 										if($_POST["celular"]==1){
 											$query_redesSociales="SELECT PRS.id_redSocial,
@@ -280,7 +303,7 @@ if(isset($_POST['listadoSimple'])){
 							$respuesta=$respuesta.'</ul>
 						</div>'
 						;
-						if($row['id_tipoDato_principal_1']==2 || $row['id_tipoDato_principal_2']==2 || $row['id_tipoDato_principal_3']==2 || $row['id_tipoDato_principal_4']==2){
+						if($prepago){
 							if ($row["precio"]==0){
 								if($row["sugerido"]==1){
 									$respuesta.='<div class="paq-price sgrdo lngtxt">';
@@ -321,21 +344,21 @@ if(isset($_POST['listadoSimple'])){
 		}//$_POST['CargarPlanes']
 
 		if(isset($_POST['CargarFiltrosSliders'])){
-			$query= ("SELECT TDS.id_tipoDato, 
-							TDS.id_tipoServicio, 
-							TS.icono as icono_servicio, 
-							TDS.label, 
-							TDS.tipo 
-							FROM tipoDatosServicios TDS 
-							INNER JOIN  tipoServicios TS ON TDS.id_tipoServicio=TS.id_tipoServicio
-							WHERE TDS.id_tipoServicio IN( 
-								SELECT id_tipoServicio
-								FROM planes_tipoServicios PTS
-								INNER JOIN cobertura C ON PTS.id_plan=C.id_plan 
-								WHERE PTS.id_tipoServicio IN (".implode(', ', $_SESSION['Servicios']).") 
-								AND PTS.id_plan NOT IN(SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio NOT IN (".implode(', ', $_SESSION['Servicios']).")) 
-								AND C.id_estado=".$_SESSION['estado'].") 
-							AND tipo='integer'");
+			$query= ("SELECT 	TDS.id_tipoDato, 
+								TDS.id_tipoServicio, 
+								TS.icono as icono_servicio, 
+								TDS.label, 
+								TDS.tipo 
+								FROM tipoDatosServicios TDS 
+								INNER JOIN  tipoServicios TS ON TDS.id_tipoServicio=TS.id_tipoServicio
+								WHERE TDS.id_tipoServicio IN( 
+									SELECT id_tipoServicio
+									FROM planes_tipoServicios PTS
+									INNER JOIN cobertura C ON PTS.id_plan=C.id_plan 
+									WHERE PTS.id_tipoServicio IN (".implode(', ', $_SESSION['Servicios']).") 
+									AND PTS.id_plan NOT IN(SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio NOT IN (".implode(', ', $_SESSION['Servicios']).")) 
+									AND C.id_estado=".$_SESSION['estado'].") 
+								AND tipo='integer'");
 //echo $query;
 
 

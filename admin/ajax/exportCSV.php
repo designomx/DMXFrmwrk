@@ -18,7 +18,7 @@
     $name='data_'.$current.'.csv';
 
     header('Content-Type: text/csv; charset=utf-8');
-    header('Content-Disposition: attachment; filename='.$name);
+    header('Content-Disposition: attachment; filename=exportCSV.csv');
     function array_2_csv($array) {
         $csv = array();
         foreach ($array as $item) {

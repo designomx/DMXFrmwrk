@@ -280,7 +280,7 @@ require('blog/wp-blog-header.php');
 			</div>
 			<div class="widget-wrapper">
 				<div class="discover-title">¡Decidir nunca fue tan simple!</div>
-				<div class="scroll-box">
+				<div class="scroll-box1">
 					<div class="alignr-box">
 						<div class="products-box">
 							<div id="celular" class="plan-box cellplan">
@@ -508,24 +508,12 @@ require('blog/wp-blog-header.php');
 				if($( "#selectEstado" ).val()!=-1){
 					//Funcion para revisar los SELECT del selector principal
 					sessionStorage.setItem("estado",$( "#selectEstado" ).val());
-					//console.log(sessionStorage.getItem("estado"));
-					//window.location.href = "listado-comparador.php#filter-go";
-					//Llamada ajax para servicio en listar.php
 				}else{
 					alert("Debe seleccionar un estado");
 					return false;
 				}
 			});
-			/*
-			$('.modal-trigger').leanModal({
-				dismissible: false, // Modal can be dismissed by clicking outside of the modal
-				opacity: .5, // Opacity of modal background
-				in_duration: 300, // Transition in duration
-				out_duration: 200, // Transition out duration
-				ready: function() { alert('Ready'); }, // Callback for Modal open
-				complete: function() { alert('Closed'); } // Callback for Modal close			
-			});
-		 	*/
+
 			jQuery(document).ready(function(){
 				CargarAnuncio();
 				cargarmas();
@@ -548,28 +536,21 @@ require('blog/wp-blog-header.php');
 			    });
 
 			    jQuery('#slideshow').fadeSlideShow();
-			    /*$('#modalPreview').openModal({dismissible: false});
-			    var urlGet=decodeURIComponent(window.location.href);
-			    if((urlGet.indexOf("ll=e988b5526b6a9a91911f83ca1cc737c7") > -1) || (localStorage.getItem("usuarioInvitado") !== null)) {
-			    	localStorage.setItem("usuarioInvitado", true)
-			    	$('#modalPreview').closeModal();
-			    	$('body').removeClass("preViewB");
-			    }
-			    */
+
 			    checkMobile();
+			    //Por ahora no se muestra nunca el video de youtube en el scrollbar.
+			    $('.videoYoutubeSponsor').remove();
+
+			    //Siempre se abre el modal del video.
+				$( "#modalVideoBienvenida" ).openModal({
+					complete: function() { $('.lean-overlay').remove();$("#embed02").remove() } // Callback for Modal close
+				});
 			    if(localStorage.getItem("primeraVisitaEligeFacil") != "false"){
 			    	localStorage.setItem("primeraVisitaEligeFacil",false);
 			    	$("#embed02")[0].src += "&autoplay=1";
-			    	$('.videoYoutubeSponsor').remove();
-					$( "#modalVideoBienvenida" ).openModal({
-						//dismissible: false, // Modal can be dismissed by clicking outside of the modal
-						//opacity: .5, // Opacity of modal background
-						//in_duration: 300, // Transition in duration
-						//out_duration: 200, // Transition out duration
-						//ready: function() { alert('Ready'); }, // Callback for Modal open
-						complete: function() { $('.lean-overlay').remove();$("#embed02").remove() } // Callback for Modal close
-					});
 			    }
+
+
 			    
 			});
 
@@ -749,7 +730,40 @@ require('blog/wp-blog-header.php');
 			function checkMobile(){
 				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		 			// .mCustomScrollbar("scrollTo",'8%');
-				 	$('.sliders-scroll-wrapp').mCustomScrollbar("scrollTo",'90');
+		 			/*
+		 			$(".scroll-box1").mCustomScrollbar({
+						axis: "x",
+						theme: "minimal",
+						updateOnContentResize: true,
+						documentTouchScroll: true,
+						mouseWheel:{ enable: false },
+						callbacks:{
+							onScrollStart:function(){
+								if(this.mcs.direction !='x'){
+									console.log('y')
+								}
+								console.log("onScrollStart");
+							},
+						    onOverflowYNone:function(){
+						      console.log("Vertical scrolling is not required");
+						    },
+						    onOverflow:function(){
+						      console.log("Horizontal scrolling required");
+						    },
+						    whileScrolling:function(){ 
+						    	console.log(this.mcs.direction)
+						    }
+						}
+					});
+					*/
+				 	//$('.sliders-scroll-wrapp').mCustomScrollbar("scrollTo",'90');
+				 	$('.scroll-box1').scrollLeft(90);
+				}else{
+					$(".scroll-box1").mCustomScrollbar({
+						axis: "x",
+						theme: "minimal",
+						updateOnContentResize: true
+					});
 				}
 			}
 			
