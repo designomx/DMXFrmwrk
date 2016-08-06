@@ -1234,123 +1234,125 @@
 				   sessionStorage.setItem("CargaInicial", "0");
 				   CargarPlanes();
 				   CargarFiltrosSliders();
+				   //Iniciar el click después de la primera carga
+			   		jQuery('.products-box').click(function() {
+						var celular=0,internet=0,telefono=0,television=0,streaming=0,CambioEnServicio=0;
+						var contador=0;
+						sessionStorage.removeItem("filtros");
+						sessionStorage.removeItem("filtrosCheck");
+						sessionStorage.removeItem("filtrosCheckEmpresas");
+						if(jQuery("#celular").hasClass( "active-selection" )){
+							celular=1;
+							contador+=1;
+							if(sessionStorage.getItem("ServicioCelular")!=1){
+								CambioEnServicio=1;
+								sessionStorage.setItem("ServicioCelular","1");
+								//console.log("CELULAR");			
+							}
+						}else{
+							if(sessionStorage.getItem("ServicioCelular")!=0){
+								CambioEnServicio=1;
+								sessionStorage.setItem("ServicioCelular","0");
+							}
+						}
+						if(jQuery("#internet").hasClass( "active-selection" )){
+							internet=1;
+							contador+=1;
+							if(sessionStorage.getItem("ServicioInternet")!=1){
+								CambioEnServicio=1;
+								sessionStorage.setItem("ServicioInternet","1");	
+								//console.log("INTERNET");		
+							}	
+						}else{
+							if(sessionStorage.getItem("ServicioInternet")!=0){
+								CambioEnServicio=1;
+								sessionStorage.setItem("ServicioInternet","0");	
+								//console.log("INTERNET");		
+							}	
+						}
+						if(jQuery("#telefono").hasClass( "active-selection" )){
+							telefono=1;
+							contador+=1;
+							if(sessionStorage.getItem("ServicioTelefono")!=1){
+								CambioEnServicio=1;
+								sessionStorage.setItem("ServicioTelefono","1");	
+								//console.log("INTERNET");		
+							}	
+							//console.log("TELEFONO");	
+						}else{
+							if(sessionStorage.getItem("ServicioTelefono")!=0){
+								CambioEnServicio=1;
+								sessionStorage.setItem("ServicioTelefono","0");	
+								//console.log("INTERNET");		
+							}	
+						}
+						if(jQuery("#television").hasClass( "active-selection" )){
+							television=1;
+							contador+=1;
+							if(sessionStorage.getItem("ServicioTelevision")!=1){
+								CambioEnServicio=1;
+								sessionStorage.setItem("ServicioTelevision","1");	
+								//console.log("INTERNET");		
+							}	
+						}else{
+							if(sessionStorage.getItem("ServicioTelevision")!=0){
+								CambioEnServicio=1;
+								sessionStorage.setItem("ServicioTelevision","0");	
+								//console.log("INTERNET");		
+							}	
+						}
+						if(jQuery("#streaming").hasClass( "active-selection" )){
+							contador+=1;
+							if(sessionStorage.getItem("ServicioStreaming")!=1){
+								CambioEnServicio=1;
+								sessionStorage.setItem("ServicioStreaming","1");	
+								//console.log("INTERNET");		
+							}	
+						}else{
+							if(sessionStorage.getItem("ServicioStreaming")!=0){
+								CambioEnServicio=1;
+								sessionStorage.setItem("ServicioStreaming","0");	
+								//console.log("INTERNET");		
+							}	
+						}
+
+						var celular=sessionStorage.getItem("ServicioCelular");
+					    var telefono=sessionStorage.getItem("ServicioTelefono");
+					    var internet=sessionStorage.getItem("ServicioInternet");
+					    var television=sessionStorage.getItem("ServicioTelevision");
+					    var streaming=sessionStorage.getItem("ServicioStreaming");
+					    //console.log("contador: "+contador);
+						if(sessionStorage.getItem("ServicioStreaming")==1){
+							$( "#selectEstado" ).prop('disabled', 'disabled');
+						}else{
+							$( "#selectEstado" ).removeAttr("disabled");
+						}
+						if(contador>0 && CambioEnServicio==1){
+						    CargarPlanes();
+						    if($(".cargarmas").length>1 || $(".planmostrado").length>1){
+								CargarFiltrosCheckEmpresas();
+								if(sessionStorage.getItem("ServicioCelular")==1){
+									CargarFiltrosCheck();
+								}else{
+									jQuery("#filtrosCheckCelulares").html("");		
+								}
+								CargarFiltrosSliders();
+							}else{
+								jQuery("#filtrosCheck").html("");
+								jQuery("#filtrosCheckEmpresas").html("");
+								jQuery("#filtros").html("");
+								jQuery("#filtrosCheckCelulares").html("");		
+
+							}
+						}
+					});
 				});
 				CargarAnuncio();
 				document.querySelector('#filter-go').scrollIntoView();
 				jQuery('#slideshow').fadeSlideShow();
 		    }
 		});//document ready
-		jQuery('.products-box').click(function() {
-			var celular=0,internet=0,telefono=0,television=0,streaming=0,CambioEnServicio=0;
-			var contador=0;
-			sessionStorage.removeItem("filtros");
-			sessionStorage.removeItem("filtrosCheck");
-			sessionStorage.removeItem("filtrosCheckEmpresas");
-			if(jQuery("#celular").hasClass( "active-selection" )){
-				celular=1;
-				contador+=1;
-				if(sessionStorage.getItem("ServicioCelular")!=1){
-					CambioEnServicio=1;
-					sessionStorage.setItem("ServicioCelular","1");
-					//console.log("CELULAR");			
-				}
-			}else{
-				if(sessionStorage.getItem("ServicioCelular")!=0){
-					CambioEnServicio=1;
-					sessionStorage.setItem("ServicioCelular","0");
-				}
-			}
-			if(jQuery("#internet").hasClass( "active-selection" )){
-				internet=1;
-				contador+=1;
-				if(sessionStorage.getItem("ServicioInternet")!=1){
-					CambioEnServicio=1;
-					sessionStorage.setItem("ServicioInternet","1");	
-					//console.log("INTERNET");		
-				}	
-			}else{
-				if(sessionStorage.getItem("ServicioInternet")!=0){
-					CambioEnServicio=1;
-					sessionStorage.setItem("ServicioInternet","0");	
-					//console.log("INTERNET");		
-				}	
-			}
-			if(jQuery("#telefono").hasClass( "active-selection" )){
-				telefono=1;
-				contador+=1;
-				if(sessionStorage.getItem("ServicioTelefono")!=1){
-					CambioEnServicio=1;
-					sessionStorage.setItem("ServicioTelefono","1");	
-					//console.log("INTERNET");		
-				}	
-				//console.log("TELEFONO");	
-			}else{
-				if(sessionStorage.getItem("ServicioTelefono")!=0){
-					CambioEnServicio=1;
-					sessionStorage.setItem("ServicioTelefono","0");	
-					//console.log("INTERNET");		
-				}	
-			}
-			if(jQuery("#television").hasClass( "active-selection" )){
-				television=1;
-				contador+=1;
-				if(sessionStorage.getItem("ServicioTelevision")!=1){
-					CambioEnServicio=1;
-					sessionStorage.setItem("ServicioTelevision","1");	
-					//console.log("INTERNET");		
-				}	
-			}else{
-				if(sessionStorage.getItem("ServicioTelevision")!=0){
-					CambioEnServicio=1;
-					sessionStorage.setItem("ServicioTelevision","0");	
-					//console.log("INTERNET");		
-				}	
-			}
-			if(jQuery("#streaming").hasClass( "active-selection" )){
-				contador+=1;
-				if(sessionStorage.getItem("ServicioStreaming")!=1){
-					CambioEnServicio=1;
-					sessionStorage.setItem("ServicioStreaming","1");	
-					//console.log("INTERNET");		
-				}	
-			}else{
-				if(sessionStorage.getItem("ServicioStreaming")!=0){
-					CambioEnServicio=1;
-					sessionStorage.setItem("ServicioStreaming","0");	
-					//console.log("INTERNET");		
-				}	
-			}
 
-			var celular=sessionStorage.getItem("ServicioCelular");
-		    var telefono=sessionStorage.getItem("ServicioTelefono");
-		    var internet=sessionStorage.getItem("ServicioInternet");
-		    var television=sessionStorage.getItem("ServicioTelevision");
-		    var streaming=sessionStorage.getItem("ServicioStreaming");
-		    //console.log("contador: "+contador);
-			if(sessionStorage.getItem("ServicioStreaming")==1){
-				$( "#selectEstado" ).prop('disabled', 'disabled');
-			}else{
-				$( "#selectEstado" ).removeAttr("disabled");
-			}
-			if(contador>0 && CambioEnServicio==1){
-			    CargarPlanes();
-			    if($(".cargarmas").length>1 || $(".planmostrado").length>1){
-					CargarFiltrosCheckEmpresas();
-					if(sessionStorage.getItem("ServicioCelular")==1){
-						CargarFiltrosCheck();
-					}else{
-						jQuery("#filtrosCheckCelulares").html("");		
-					}
-					CargarFiltrosSliders();
-				}else{
-					jQuery("#filtrosCheck").html("");
-					jQuery("#filtrosCheckEmpresas").html("");
-					jQuery("#filtros").html("");
-					jQuery("#filtrosCheckCelulares").html("");		
-
-				}
-			}
-		});
 
 		function CargarPlanes(){
 			if($('#ordenAscDesc').is(':checked')){

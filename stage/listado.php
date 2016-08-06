@@ -91,8 +91,46 @@ if(isset($_POST['listadoSimple'])){
 		//$respuesta = array();
 		if(isset($_POST['CargarPlanes'])){
 
+			/*
 			$query=("SELECT 
-						DISTINCT(P.id_plan),
+					DISTINCT(P.id_plan),
+				 	P.nombre, 
+				 	P.precio, 
+				 	P.dato_principal_1,
+				 	P.id_tipoDato_principal_1, 
+				 	P.dato_principal_2, 
+				 	P.id_tipoDato_principal_2, 
+					P.dato_principal_3, 
+					P.id_tipoDato_principal_3, 
+					P.dato_principal_4,
+					P.id_tipoDato_principal_4, 
+					P.mas_datos, P.visible, 
+					E.nombre as empresa, 
+					E.codigo_color as empresa_color,
+					TDS1.label as dato1,
+					TDS1.tipo as tipoDato1,
+					TDS2.label as dato2,
+					TDS2.tipo as tipoDato2,
+					TDS3.label as dato3,
+					TDS3.tipo as tipoDato3,
+					TDS4.label as dato4,
+					TDS4.tipo as tipoDato4
+				  	FROM planes P
+				  	INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
+				  	INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
+				  	INNER JOIN planes_tipoServicios PT ON P.ID_PLAN=PT.ID_PLAN
+				  	LEFT JOIN tipoDatosServicios TDS1 ON P.id_tipoDato_principal_1 = TDS1.id_tipoDato 
+				  	LEFT JOIN tipoDatosServicios TDS2 ON P.id_tipoDato_principal_2 = TDS2.id_tipoDato 
+				  	LEFT JOIN tipoDatosServicios TDS3 ON P.id_tipoDato_principal_3 = TDS3.id_tipoDato 
+				  	LEFT JOIN tipoDatosServicios TDS4 ON P.id_tipoDato_principal_4 = TDS4.id_tipoDato 
+				  	WHERE C.ID_ESTADO='".$_SESSION['estado']."' 
+				  	AND PT.id_plan NOT IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (SELECT id_tipoServicio from tipoServicios where id_tipoServicio NOT IN (".implode(', ', $_SESSION['Servicios']).") ) )
+				  	AND visible=1
+				  	GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])."
+				  	 ");*/
+			//echo $query;
+			$query=("SELECT   	 
+			DISTINCT(P.id_plan),
 							P.nombre, 
 							P.precio, 
 							P.mas_datos, P.visible, 
@@ -108,7 +146,6 @@ if(isset($_POST['listadoSimple'])){
 							GROUP BY P.id_plan HAVING count(*) >= ".count($_SESSION['Servicios'])."
 				  	 ");
 			//echo $query;
-
 
 			$result = $mysqli->query($query);
 			$_SESSION['numero_planes']=mysqli_num_rows($result);	
@@ -193,51 +230,50 @@ if(isset($_POST['listadoSimple'])){
 						<div class="paq-bx">
 							<h4 class="truncate">'.$row["nombre"].'</h4>
 							<ul>';
+							$query_atributos = 'SELECT 	PTDS.valor,
+														PTDS.id_tipoDato,
+														TDS.label as dato,
+														TDS.tipo as tipoDato
+												FROM planes_tipoDatosServicios PTDS
+												LEFT JOIN tipoDatosServicios TDS ON PTDS.id_tipoDato = TDS.id_tipoDato 
+												WHERE PTDS.id_plan='.$row["id_plan"].'
+												ORDER BY TDS.orden';
+							$result_atributos = $mysqli->query($query_atributos);
+							$atributo=array();
+							//Variable para saber si un plan es prepago o no, así mostrar los textos de 'sin recarga minima' o 'con recarga minima'
+							$prepago=false;
+							while($atributo = $result_atributos->fetch_array()){
+								switch ($atributo['tipoDato']) {
+								    case "texto":
+								    	if($atributo['valor'] != NULL){
+								    		$respuesta=$respuesta.'<li>'.$atributo["valor"].'</li>';
+								    	}
+								        break;
+								    case "integer":
+								    	if($atributo['valor'] != NULL && $atributo['valor'] != 0){
+								    		$respuesta=$respuesta.'<li>'.$atributo["valor"].' '.$atributo["dato"].'</li>';	
+								    	}else{
+								    		$respuesta=$respuesta.'<li><del>'.$atributo["dato"].'</del></li>';
+								    	}
+								        break;
+								    case "boolean":
+								    	if($atributo['valor'] == 1){
+								    		$respuesta=$respuesta.'<li>'.$atributo["dato"].'</li>';
+								    		if($atributo['id_tipoDato']==2){
+								    			$prepago=true;
+								    		}
+								    	}else{
+								    		$respuesta=$respuesta.'<li><del>'.$atributo["dato"].'</del></li>';
+								    		if($atributo['id_tipoDato']==2){
+								    			$prepago=false;
+								    		}
+								    	}
+								        break;
+								}
+							}
+							$result_atributos->free();
 
-				$query_atributos = 'SELECT 	PTDS.valor,
-											PTDS.id_tipoDato,
-											TDS.label as dato,
-											TDS.tipo as tipoDato
-									FROM planes_tipoDatosServicios PTDS
-									LEFT JOIN tipoDatosServicios TDS ON PTDS.id_tipoDato = TDS.id_tipoDato 
-									WHERE PTDS.id_plan='.$row["id_plan"].'
-									ORDER BY TDS.orden';
-				$result_atributos = $mysqli->query($query_atributos);
-				$atributo=array();
-				//Variable para saber si un plan es prepago o no, así mostrar los textos de 'sin recarga minima' o 'con recarga minima'
-				$prepago=false;
-				while($atributo = $result_atributos->fetch_array()){
-					switch ($atributo['tipoDato']) {
-					    case "texto":
-					    	if($atributo['valor'] != NULL){
-					    		$respuesta=$respuesta.'<li>'.$atributo["valor"].'</li>';
-					    	}
-					        break;
-					    case "integer":
-					    	if($atributo['valor'] != NULL && $atributo['valor'] != 0){
-					    		$respuesta=$respuesta.'<li>'.$atributo["valor"].' '.$atributo["dato"].'</li>';	
-					    	}else{
-					    		$respuesta=$respuesta.'<li><del>'.$atributo["dato"].'</del></li>';
-					    	}
-					        break;
-					    case "boolean":
-					    	if($atributo['valor'] == 1){
-					    		$respuesta=$respuesta.'<li>'.$atributo["dato"].'</li>';
-					    		if($atributo['id_tipoDato']==2){
-					    			$prepago=true;
-					    		}
-					    	}else{
-					    		$respuesta=$respuesta.'<li><del>'.$atributo["dato"].'</del></li>';
-					    		if($atributo['id_tipoDato']==2){
-					    			$prepago=false;
-					    		}
-					    	}
-					        break;
-					}
-				}
-				/*
-
-									switch ($row['tipoDato1']) {
+									/*switch ($row['tipoDato1']) {
 									    case "texto":
 											$respuesta=$respuesta.'<li>'.$row["dato_principal_1"].'</li>';
 									        break;
@@ -282,6 +318,8 @@ if(isset($_POST['listadoSimple'])){
 									        break;
 									}
 									*/
+
+
 									if(isset($_POST["celular"])){
 										if($_POST["celular"]==1){
 											$query_redesSociales="SELECT PRS.id_redSocial,
@@ -344,110 +382,6 @@ if(isset($_POST['listadoSimple'])){
 		}//$_POST['CargarPlanes']
 
 		if(isset($_POST['CargarFiltrosSliders'])){
-			$query= ("SELECT 	TDS.id_tipoDato, 
-								TDS.id_tipoServicio, 
-								TS.icono as icono_servicio, 
-								TDS.label, 
-								TDS.tipo 
-								FROM tipoDatosServicios TDS 
-								INNER JOIN  tipoServicios TS ON TDS.id_tipoServicio=TS.id_tipoServicio
-								WHERE TDS.id_tipoServicio IN( 
-									SELECT id_tipoServicio
-									FROM planes_tipoServicios PTS
-									INNER JOIN cobertura C ON PTS.id_plan=C.id_plan 
-									WHERE PTS.id_tipoServicio IN (".implode(', ', $_SESSION['Servicios']).") 
-									AND PTS.id_plan NOT IN(SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio NOT IN (".implode(', ', $_SESSION['Servicios']).")) 
-									AND C.id_estado=".$_SESSION['estado'].") 
-								AND tipo='integer'");
-//echo $query;
-
-
-			$result = $mysqli->query($query);
-
-			$rows=array();
-			while($row = $result->fetch_array())
-			{
-				array_push($rows, $row);
-			} 
-			$Max= array();
-			$Min= array();
-			foreach($rows as $row)
-			{
-				$query_MaxMin=("SELECT MAX(CAST(dato_principal_1 as unsigned)) as maximo, MIN(CAST(dato_principal_1 as unsigned)) as minimo from planes where id_tipoDato_principal_1=".$row['id_tipoDato']);
-				$result_MaxMin=$mysqli->query($query_MaxMin);
-				$MaxMin=array();
-				while($rowss = $result_MaxMin->fetch_array())
-				{
-					array_push($MaxMin, $rowss);
-				}
-				foreach($MaxMin as $rowMM)
-				{
-					if($rowMM['maximo']==NULL || empty($rowMM['maximo']) || $rowMM['maximo']=='' || !isset($rowMM['maximo']) ){
-						$Max[$row['id_tipoDato']]=0;
-					}else{
-						$Max[$row['id_tipoDato']]=$rowMM['maximo'];
-					}
-					if($rowMM['minimo']==NULL || empty($rowMM['minimo']) || $rowMM['minimo']=='' || !isset($rowMM['minimo']) ){
-						$Min[$row['id_tipoDato']]=0;
-					}else{
-						$Min[$row['id_tipoDato']]=$rowMM['minimo'];					
-					}
-				}
-				$result_MaxMin->free();
-				//echo "<br>".$query_MaxMin;
-				$query_MaxMin=("SELECT MAX(CAST(dato_principal_2 as unsigned)) as maximo, MIN(CAST(dato_principal_2 as unsigned)) as minimo from planes where id_tipoDato_principal_2=".$row['id_tipoDato']);
-				$result_MaxMin=$mysqli->query($query_MaxMin);
-				$MaxMin=array();
-				while($rowss = $result_MaxMin->fetch_array())
-				{
-					array_push($MaxMin, $rowss);
-				}
-				foreach($MaxMin as $rowMM)
-				{
-					if($Max[$row['id_tipoDato']]<$rowMM['maximo'] &&  $rowMM['maximo'] != NULL && !empty($rowMM['maximo']) &&  $rowMM['maximo'] != ''){
-						$Max[$row['id_tipoDato']]=$rowMM['maximo'];
-					}
-					if($Min[$row['id_tipoDato']]>$rowMM['minimo'] &&  $rowMM['minimo'] != NULL && !empty($rowMM['minimo']) &&  $rowMM['minimo'] != ''){
-						$Min[$row['id_tipoDato']]=$rowMM['minimo'];
-					}
-				}
-				$result_MaxMin->free();
-				$query_MaxMin=("SELECT MAX(CAST(dato_principal_3 as unsigned)) as maximo, MIN(CAST(dato_principal_3 as unsigned)) as minimo from planes where id_tipoDato_principal_3=".$row['id_tipoDato']);
-				$result_MaxMin=$mysqli->query($query_MaxMin);
-				$MaxMin=array();
-				while($rowss = $result_MaxMin->fetch_array())
-				{
-					array_push($MaxMin, $rowss);
-				}
-				foreach($MaxMin as $rowMM)
-				{
-					if($Max[$row['id_tipoDato']]<$rowMM['maximo'] &&  $rowMM['maximo'] != NULL && !empty($rowMM['maximo']) &&  $rowMM['maximo'] != ''){
-						$Max[$row['id_tipoDato']]=$rowMM['maximo'];
-					}
-					if($Min[$row['id_tipoDato']]>$rowMM['minimo'] &&  $rowMM['minimo'] != NULL && !empty($rowMM['minimo']) &&  $rowMM['minimo'] != ''){
-						$Min[$row['id_tipoDato']]=$rowMM['minimo'];
-					}
-				}
-				$result_MaxMin->free();
-				$query_MaxMin=("SELECT MAX(CAST(dato_principal_4 as unsigned)) as maximo, MIN(CAST(dato_principal_4 as unsigned)) as minimo from planes where id_tipoDato_principal_4=".$row['id_tipoDato']);
-				$result_MaxMin=$mysqli->query($query_MaxMin);
-				$MaxMin=array();
-				while($rowss = $result_MaxMin->fetch_array())
-				{
-					array_push($MaxMin, $rowss);
-				}
-				foreach($MaxMin as $rowMM)
-				{
-					if($Max[$row['id_tipoDato']]<$rowMM['maximo'] &&  $rowMM['maximo'] != NULL && !empty($rowMM['maximo']) &&  $rowMM['maximo'] != ''){
-						$Max[$row['id_tipoDato']]=$rowMM['maximo'];
-					}
-					if($Min[$row['id_tipoDato']]>$rowMM['minimo'] &&  $rowMM['minimo'] != NULL && !empty($rowMM['minimo']) &&  $rowMM['minimo'] != ''){
-						$Min[$row['id_tipoDato']]=$rowMM['minimo'];
-					}
-				}
-				$result_MaxMin->free();
-
-			}
 			echo '	<div class="slider-bx">
 						<p class="truncate">Rango de Precio</p>
 						<div class="slide-bar-bx">
@@ -458,61 +392,53 @@ if(isset($_POST['listadoSimple'])){
 							</div>
 						</div>
 					</div>
-				<script>
-					var slider = document.getElementById("slidertest");
+					<script>
+						var slider = document.getElementById("slidertest");
 
-			 		noUiSlider.create(slidertest, {
-			 		start: ['.(empty($_SESSION["Preciomin"])? 0:$_SESSION["Preciomin"]).', '.(empty($_SESSION["Preciomax"])? 3999:$_SESSION["Preciomax"]).'],
-			 		connect: true,
-			 		step: 10,
-			 		range: {
-			 		 "min": '.(empty($_SESSION["Preciomin"])? 0:$_SESSION["Preciomin"]).',
-			 		 "max": '.(empty($_SESSION["Preciomax"])? 3999:$_SESSION["Preciomax"]).'
-			 		},
-			 		  format: wNumb({
-			 			decimals: 0
-			 		  })
-			 		});
-			 		slidertest.noUiSlider.on("change", function(){
-						console.log("cambia precio");
-						CargarPlanesConFiltros();
-					})
-				</script>
+				 		noUiSlider.create(slidertest, {
+				 		start: ['.(empty($_SESSION["Preciomin"])? 0:$_SESSION["Preciomin"]).', '.(empty($_SESSION["Preciomax"])? 3999:$_SESSION["Preciomax"]).'],
+				 		connect: true,
+				 		step: 10,
+				 		range: {
+				 		 "min": '.(empty($_SESSION["Preciomin"])? 0:$_SESSION["Preciomin"]).',
+				 		 "max": '.(empty($_SESSION["Preciomax"])? 3999:$_SESSION["Preciomax"]).'
+				 		},
+				 		  format: wNumb({
+				 			decimals: 0
+				 		  })
+				 		});
+				 		slidertest.noUiSlider.on("change", function(){
+							console.log("cambia precio");
+							CargarPlanesConFiltros();
+						})
+					</script>
 				';
 
 			$i=0;
-			foreach($rows as $row)
-			{
-				//print_r($row);
-				$query_verificar_filtros=("SELECT 
-								DISTINCT(P.id_plan) 
-								FROM planes P 
-								INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN 
-								INNER JOIN planes_tipoServicios PT ON P.ID_PLAN=PT.ID_PLAN 
-								WHERE C.ID_ESTADO=".$_SESSION['estado']." 
-								AND PT.id_plan NOT IN (SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio IN (SELECT id_tipoServicio from tipoServicios where id_tipoServicio NOT IN (".implode(', ', $_SESSION['Servicios']).") ) ) 
-								AND P.visible=1
-								AND(
-									(P.id_tipoDato_principal_1=".$row['id_tipoDato'].") 
-									OR (P.id_tipoDato_principal_2=".$row['id_tipoDato']." ) 
-									OR (P.id_tipoDato_principal_3=".$row['id_tipoDato'].") 
-									OR (P.id_tipoDato_principal_4=".$row['id_tipoDato']." ) 
-									)
-								GROUP BY id_plan HAVING count(*) >=".count($_SESSION['Servicios'])." ORDER BY P.precio ASC");
-				$Verificar_filtros = $mysqli->query($query_verificar_filtros);
-				$numero_filas = mysqli_num_rows($Verificar_filtros);
-				//echo "Numero planes con el filtro= ".$numero_filas;
-				//echo "Numero planes mostrados= ".$_SESSION['numero_planes'];
-				//exit();
-				if($numero_filas==$_SESSION['numero_planes'] || isset($_POST['CargaRapida'])){				
-				//if(true){
-					echo '	<div class="slider-bx">
-								<p class="truncate">'.$row["label"].'</p>
+			$query="SELECT 	DISTINCT(PTDS.id_tipoDato),
+							TDS.label,
+							MAX(CAST(PTDS.valor AS unsigned)) AS maximo,
+							MIN(CAST(PTDS.valor AS unsigned)) AS minimo
+							FROM planes_tipoDatosServicios PTDS 
+							INNER JOIN tipoDatosServicios TDS ON TDS.id_tipoDato = PTDS.id_tipoDato 
+							INNER JOIN cobertura C ON PTDS.id_plan = C.id_plan 
+							WHERE TDS.id_tipoServicio IN (".implode(', ', $_SESSION['Servicios']).") 
+							AND TDS.tipo = 'integer' 
+							AND C.id_estado = ".$_SESSION['estado']." 
+							AND PTDS.id_plan NOT IN(SELECT id_plan FROM planes_tipoServicios WHERE id_tipoServicio NOT IN (".implode(', ', $_SESSION['Servicios'])."))
+							AND PTDS.valor <> 'Ilimitados'
+							GROUP BY PTDS.id_tipoDato";
+			$result = $mysqli->query($query);
+			$sliders=array();
+			$i=1;
+			while($sliders = $result->fetch_array()){
+				echo '	<div class="slider-bx">
+								<p class="truncate">'.$sliders["label"].'</p>
 								<div class="slide-bar-bx">
 									<div id="slidertest'.$i.'"></div>
 									<div class="slide-value-bx">
 										<span class="left">0</span>
-										<span class="right">'.$Max[$row['id_tipoDato']].'</span>
+										<span class="right">'.$sliders['maximo'].'</span>
 									</div>
 								</div>
 							</div>
@@ -522,7 +448,7 @@ if(isset($_POST['listadoSimple'])){
 						}else{
 							var getFiltros = new Array();
 						}
-						getFiltros.push({id_tipoDato:"'.$row["id_tipoDato"].'",value:"slidertest'.$i.'"});
+						getFiltros.push({id_tipoDato:"'.$sliders["id_tipoDato"].'",value:"slidertest'.$i.'"});
 						//console.log(getFiltros);
 						//$.each(getFiltros, function( index, value ) {
 							//console.log( value.id_tipoDato+":"+value.value );
@@ -532,12 +458,12 @@ if(isset($_POST['listadoSimple'])){
 						var slider = document.getElementById("slidertest'.$i.'");
 
 						noUiSlider.create(slidertest'.$i.', {
-						 		start: [0, '.$Max[$row['id_tipoDato']].'],
+						 		start: [0, '.$sliders['maximo'].'],
 						 		connect: true,
 						 		step: 10,
 						 		range: {
 						 		 "min": 0,
-						 		 "max": '.$Max[$row['id_tipoDato']].'
+						 		 "max": '.$sliders['maximo'].'
 						 		},
 						 		  format: wNumb({
 						 			decimals: 0
@@ -548,10 +474,8 @@ if(isset($_POST['listadoSimple'])){
 							CargarPlanesConFiltros();
 						})
 					</script>';
-					$i+=1;
-				}
-			}//foreach
-		echo '';
+				$i+=1;
+			}
 		}//$_POST['CargarFiltros'] Sliders
 		if(isset($_POST['CargarFiltrosCheck'])){
 			$query= ("SELECT TDS.id_tipoDato,
@@ -922,11 +846,55 @@ if(isset($_POST['verDetalles'])){
 		$rows=array();
 		while($row = $result->fetch_array())
 		{
+			$query_atributos = 'SELECT 	PTDS.valor,
+										PTDS.id_tipoDato,
+										TDS.label as dato,
+										TDS.tipo as tipoDato
+								FROM planes_tipoDatosServicios PTDS
+								LEFT JOIN tipoDatosServicios TDS ON PTDS.id_tipoDato = TDS.id_tipoDato 
+								WHERE PTDS.id_plan='.$_POST['id_plan'].'
+								ORDER BY TDS.orden';
+			$result_atributos = $mysqli->query($query_atributos);
+			$atributo=array();
+			//Variable para saber si un plan es prepago o no, así mostrar los textos de 'sin recarga minima' o 'con recarga minima'
+			$prepago=false;
+			$respuestaAtributos="";
+			$respuestaTextoAtributos="";
+			while($atributo = $result_atributos->fetch_array()){
+				switch ($atributo['tipoDato']) {
+				    case "texto":
+				    	if($atributo['valor'] != NULL){
+				    		$respuestaTextoAtributos=$respuestaTextoAtributos.'<li>'.$atributo["valor"].'</li>';
+				    	}
+				        break;
+				    case "integer":
+				    	if($atributo['valor'] != NULL && $atributo['valor'] != 0){
+				    		$respuestaAtributos=$respuestaAtributos.'<div class="col s6 m3"><p>'.$atributo["valor"].' '.$atributo["dato"].'</p></div>';	
+				    	}else{
+				    		$respuestaAtributos=$respuestaAtributos.'<div class="col s6 m3"><p><del>'.$atributo["dato"].'</del></p></div>';
+				    	}
+				        break;
+				    case "boolean":
+				    	if($atributo['valor'] == 1){
+				    		$respuestaAtributos=$respuestaAtributos.'<div class="col s6 m3"><p>'.$atributo["dato"].'</p></div>';
+				    		if($atributo['id_tipoDato']==2){
+				    			$prepago=true;
+				    		}
+				    	}else{
+				    		$respuestaAtributos=$respuestaAtributos.'<div class="col s6 m3"><p><del>'.$atributo["dato"].'</del></p></div>';
+				    		if($atributo['id_tipoDato']==2){
+				    			$prepago=false;
+				    		}
+				    	}
+				        break;
+				}
+			}
+			$result_atributos->free();
 			//array_push($rows, $row);
 			$respuesta='<div id="plan_detalles" data-id="'.$row["id_plan"].'" class="brand-label" style="background-color:'.$row["empresa_color"].'">'.$row["empresa"].'</div>
 				<h4>'.$row["nombre"].' - ';
 
-			if($row['id_tipoDato_principal_1']==2 || $row['id_tipoDato_principal_2']==2 || $row['id_tipoDato_principal_3']==2 || $row['id_tipoDato_principal_4']==2){
+			if($prepago){
 				if ($row["precio"]==0){
 					$respuesta=$respuesta.'Sin Recarga Mínima';
 				}else{
@@ -939,7 +907,7 @@ if(isset($_POST['verDetalles'])){
 			$respuesta=$respuesta.'
 				</h4>
 				<div class="plan-main-options row">';
-
+				/*	
 				switch ($row['tipoDato1']) {
 					//$respuesta=$respuesta.'<div class="col s6 m3">';
 				    case "texto":
@@ -989,7 +957,8 @@ if(isset($_POST['verDetalles'])){
 						$respuesta=$respuesta.'<div class="col s6 m3"><p>'.$row["dato4"].'</p></div>';
 				        break;
 				}
-				$respuesta=$respuesta.'
+				*/
+				$respuesta=$respuesta.$respuestaAtributos.'
 				</div>';
 				if(isset($_POST["celular"])){
 					if($_POST["celular"]==1){
@@ -1009,6 +978,7 @@ if(isset($_POST['verDetalles'])){
 						}
 						$respuesta=$respuesta.'						
 						<h5>Opciones y características adicionales</h5>
+						<p>'.$respuestaTextoAtributos.'</p>
 						<p>'.$row['mas_datos'].'</p>';
 
 						//Buscar celulares en tabla planes_celulares para la vista de los equipos asociados al plan.
@@ -1143,7 +1113,8 @@ if(isset($_POST['verDetalles'])){
 					*/
 					$respuesta.='
 						<h5>Opciones y características adicionales</h5>
-						'.$row['mas_datos'].'
+						<p>'.$respuestaTextoAtributos.'</p>
+						<p>'.$row['mas_datos'].'</p>
 						<form action="#">
 							<input id="MeGustariaContratar" type="checkbox" class="MeGustariaContratarClass" name="contratar" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar">Me gustaría contratar aquí</label>
 						</form>
