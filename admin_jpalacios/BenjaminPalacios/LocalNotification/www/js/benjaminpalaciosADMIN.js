@@ -9,7 +9,7 @@ $(document).on("click", "#pagination ul li a",function() {
     //alert(dataString);
     $.ajax({
             type: "GET",
-            url: "http://designo.mx/DMXFrmwrk/admin_jpalacios/php/BenjaminPalaciosAdminAPP.php",
+            url: "http://benjaminpalacios.net/app/php/BenjaminPalaciosAdminAPP.php",
             data: dataString,
             success: function(data) {
                 $('#contenido_tablas').fadeIn(1000).html(data);
@@ -45,7 +45,7 @@ $( "#FormularioRegistroADMIN" ).submit(function( event ) {
 	        }
 		$.ajax({
 			type: "POST",
-			url: "http://designo.mx/DMXFrmwrk/admin_jpalacios/php/BenjaminPalacios.php",
+			url: "http://benjaminpalacios.net/app/php/BenjaminPalacios.php",
 			data: formData
 			
 		})
@@ -106,7 +106,7 @@ $( "#EditarRegistro" ).submit(function( event ) {
 	    //alert(autorizado);
 		$.ajax({
 			type: "POST",
-			url: "http://designo.mx/DMXFrmwrk/admin_jpalacios/php/BenjaminPalacios.php",
+			url: "http://benjaminpalacios.net/app/php/BenjaminPalacios.php",
 			data: formData
 			
 		})
@@ -147,7 +147,7 @@ $(document).on("click", "#BotonEliminar",function() {
 	if (r == true) {
 	    $.ajax({
 	            type: "GET",
-	            url: "http://designo.mx/DMXFrmwrk/admin_jpalacios/php/eliminar.php",
+	            url: "http://benjaminpalacios.net/app/php/eliminar.php",
 	            data: formData,
 	            success: function(data) {
 	            		alert("Registro eliminado exitosamente");

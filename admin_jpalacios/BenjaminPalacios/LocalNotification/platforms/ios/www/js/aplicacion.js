@@ -11,10 +11,11 @@ document.addEventListener("deviceready", function(){
     window.localStorage.setItem("repetidor2","5");
     window.localStorage.setItem("time-repetidor1",$("#time-repetidor1").val());
     window.localStorage.setItem("time-repetidor2",$("#time-repetidor2").val());
+    //Comprobamos si tiene permiso y registramos permisos para poder notificar en el equipo.
     cordova.plugins.notification.local.registerPermission(function(granted) {
       if(granted == true)
       {
-        showToast("Gracias por aceptar");
+        showToast("Bienvenido");
       }
       else
       {
@@ -181,7 +182,7 @@ document.addEventListener("deviceready", function(){
       navigator.notification.confirm(
         '¿Está seguro que desea cerrar la sesion?',  // message
         onConfirm,                                   // callback to invoke with index of button pressed
-        'BenjaminPalacios',                                 // title
+        'BenjaminPalacios',                          // title
         'Salir, Cancelar'                            // buttonLabels
       );
   });

@@ -24,7 +24,7 @@ $( "#BotonRegistrar" ).click(function( event ) {
 	        }
 		$.ajax({
 			type: "POST",
-			url: "http://designo.mx/DMXFrmwrk/admin_jpalacios/php/BenjaminPalacios.php",
+			url: "http://benjaminpalacios.net/app/php/BenjaminPalacios.php",
 			data: formData
 			
 		})
@@ -73,7 +73,7 @@ $( "#BotonLogin" ).click(function( event ) {
 	        //alert($('#email').val())
 		$.ajax({
 			type: "POST",
-			url: "http://designo.mx/DMXFrmwrk/admin_jpalacios/php/BenjaminPalaciosPG.php",
+			url: "http://benjaminpalacios.net/app/php/BenjaminPalaciosPG.php",
 			data: formData,
 			dataType: "json"
 		})
