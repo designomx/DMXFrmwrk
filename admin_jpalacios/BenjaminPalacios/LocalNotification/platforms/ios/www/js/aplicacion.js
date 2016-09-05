@@ -384,7 +384,8 @@ function onConfirm(buttonIndex) {
         title: titulo,
         message: mensaje,
         firstAt: schedule_time,
-        sound:"file://beep.caf",
+        //sound:"file://beep.caf", //iOs
+        sound:"file://beep.caf", //android
         badge: true,
         every:every
     });

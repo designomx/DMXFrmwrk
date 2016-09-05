@@ -1,0 +1,1 @@
+String.prototype.repeat=function(t){return new Array(Math.round(t)+1).join(this)},function($){$('[data-toggle="switch"]').length&&$('[data-toggle="switch"]').bootstrapSwitch()}(jQuery);
