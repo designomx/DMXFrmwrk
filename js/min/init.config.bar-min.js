@@ -1,1 +1,0 @@
-var BARCRTSA=BARCRTSA||{};BARCRTSA.global={},BARCRTSA.utils=function(){return{}}(),BARCRTSA.config={params:{},timers:{},ui:{}};
