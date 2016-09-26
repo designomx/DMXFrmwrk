@@ -119,4 +119,10 @@ function will_paginate()
 
 add_theme_support( 'post-thumbnails' );
 
+//Dejar la calidad al 100% en post
+add_filter( 'jpeg_quality', 'imagen_jpeg_quality' );
+function imagen_jpeg_quality() {
+  return 100;
+}
+
 ?>

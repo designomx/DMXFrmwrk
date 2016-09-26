@@ -336,7 +336,27 @@ FRMWRK.main = (function($) {
 			});
 
 			$('.plan-box').bind('click', function() {
-				$(this).toggleClass('active-selection');
+				//$(this).toggleClass('active-selection');
+				if($(this).hasClass('cellplan') && !($('.tripleplay1').hasClass('active-selection') || $('.tripleplay2').hasClass('active-selection') || $('.tripleplay3').hasClass('active-selection') || $('.streaming').hasClass('active-selection'))){
+					$(this).toggleClass('active-selection');
+				}
+				if($(this).hasClass('cellplan') && ($('.tripleplay1').hasClass('active-selection') || $('.tripleplay2').hasClass('active-selection') || $('.tripleplay3').hasClass('active-selection') || $('.streaming').hasClass('active-selection'))){
+					$('#modalIncompatibles').openModal();
+				}
+
+				if($(this).hasClass('streaming') && !($('.tripleplay1').hasClass('active-selection') || $('.tripleplay2').hasClass('active-selection') || $('.tripleplay3').hasClass('active-selection') || $('.cellplan').hasClass('active-selection'))){
+					$(this).toggleClass('active-selection');
+				}
+				if($(this).hasClass('streaming') && ($('.tripleplay1').hasClass('active-selection') || $('.tripleplay2').hasClass('active-selection') || $('.tripleplay3').hasClass('active-selection') || $('.cellplan').hasClass('active-selection'))){
+					$('#modalIncompatibles').openModal();
+				}
+
+				if(($(this).hasClass('tripleplay1') || $(this).hasClass('tripleplay2') || $(this).hasClass('tripleplay3')) && ($('.cellplan').hasClass('active-selection') || $('.streaming').hasClass('active-selection'))){
+					$('#modalIncompatibles').openModal();
+				}
+				if(($(this).hasClass('tripleplay1') || $(this).hasClass('tripleplay2') || $(this).hasClass('tripleplay3')) && !($('.cellplan').hasClass('active-selection') || $('.streaming').hasClass('active-selection'))){
+					$(this).toggleClass('active-selection');
+				}
 			});
 
 			$(".scroll-box").mCustomScrollbar({
@@ -346,7 +366,7 @@ FRMWRK.main = (function($) {
 			});
 
 			var _selfClick = 0;
-
+			/*
 			$('.cellplan').click(function() {
 
 				$("div").filter($(".nocell")).fadeToggle('500', function() {
@@ -393,6 +413,7 @@ FRMWRK.main = (function($) {
 
 			});
 
+			
 			$('.tripleplay1, .tripleplay2, .tripleplay3').click(function() {
 
 				var triple1True = $('.active-selection.tripleplay1').length
@@ -423,6 +444,7 @@ FRMWRK.main = (function($) {
 				}
 
 			});
+			*/
 		};
 
 	var _homeSlideFade = function() {

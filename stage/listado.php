@@ -130,7 +130,7 @@ if(isset($_POST['listadoSimple'])){
 				  	 ");*/
 			//echo $query;
 			$query=("SELECT   	 
-			DISTINCT(P.id_plan),
+							DISTINCT(P.id_plan),
 							P.nombre, 
 							P.precio, 
 							P.mas_datos, P.visible, 
@@ -596,7 +596,12 @@ if(isset($_POST['listadoSimple'])){
 							<p class="truncate margin-btm-no"> &nbsp</p>
 								<div class="slide-bar-bx row">
 									<div class="col s12">';
+			$grupoCheckBase='	<div class="slider-bx clear-pad-marg">
+									<p class="truncate margin-btm-no">Tipo de Plan</p>
+										<div class="slide-bar-bx row">
+											<div class="col s12">';
 			$hayGrupo3=false;
+			$contadorDe2CheckCelulares=0;
 			foreach($rows as $row)
 			{
 				//print_r($row);
@@ -637,22 +642,43 @@ if(isset($_POST['listadoSimple'])){
 								</script>';
 						}
 						if ($row['grupo']==2){
-						$grupo2=$grupo2.'
-											<input class="checkbox'.$row["hijoDe"].'" type="checkbox" id="checkbox'.$row["id_tipoDato"].'" onchange="CargarPlanesConFiltros();"/>
-											<label for="checkbox'.$row["id_tipoDato"].'">'.$row["label"].'</label>
-								<script type="text/javascript">
-								if(sessionStorage.filtrosCheck){
-									var getFiltrosCheck= JSON.parse(sessionStorage.getItem("filtrosCheck"));
-								}else{
-									var getFiltrosCheck = new Array();
-								}
-								getFiltrosCheck.push({id_tipoDato:"'.$row["id_tipoDato"].'",value:"checkbox'.$row["id_tipoDato"].'"});
-								//console.log(getFiltros);
-								$.each(getFiltrosCheck, function( index, value ) {
-									//console.log( value.id_tipoDato+":"+value.value );
-								});
-								sessionStorage.setItem("filtrosCheck", JSON.stringify(getFiltrosCheck));
-								</script>';
+							if($contadorDe2CheckCelulares<2){
+								$contadorDe2CheckCelulares+=1;
+								$grupo2=$grupo2.'
+													<input class="checkbox'.$row["hijoDe"].'" type="checkbox" id="checkbox'.$row["id_tipoDato"].'" onchange="CargarPlanesConFiltros();"/>
+													<label for="checkbox'.$row["id_tipoDato"].'">'.$row["label"].'</label>
+										<script type="text/javascript">
+										if(sessionStorage.filtrosCheck){
+											var getFiltrosCheck= JSON.parse(sessionStorage.getItem("filtrosCheck"));
+										}else{
+											var getFiltrosCheck = new Array();
+										}
+										getFiltrosCheck.push({id_tipoDato:"'.$row["id_tipoDato"].'",value:"checkbox'.$row["id_tipoDato"].'"});
+										//console.log(getFiltros);
+										$.each(getFiltrosCheck, function( index, value ) {
+											//console.log( value.id_tipoDato+":"+value.value );
+										});
+										sessionStorage.setItem("filtrosCheck", JSON.stringify(getFiltrosCheck));
+										</script>';
+							}else{
+								$hayGrupo3=true;
+								$grupo3.='
+													<input class="checkbox'.$row["hijoDe"].'" type="checkbox" id="checkbox'.$row["id_tipoDato"].'" onchange="CargarPlanesConFiltros();"/>
+													<label for="checkbox'.$row["id_tipoDato"].'">'.$row["label"].'</label>
+										<script type="text/javascript">
+										if(sessionStorage.filtrosCheck){
+											var getFiltrosCheck= JSON.parse(sessionStorage.getItem("filtrosCheck"));
+										}else{
+											var getFiltrosCheck = new Array();
+										}
+										getFiltrosCheck.push({id_tipoDato:"'.$row["id_tipoDato"].'",value:"checkbox'.$row["id_tipoDato"].'"});
+										//console.log(getFiltros);
+										$.each(getFiltrosCheck, function( index, value ) {
+											//console.log( value.id_tipoDato+":"+value.value );
+										});
+										sessionStorage.setItem("filtrosCheck", JSON.stringify(getFiltrosCheck));
+										</script>';
+							}
 						}
 						if ($row['grupo']==3){
 							$hayGrupo3=true;
@@ -1075,42 +1101,37 @@ if(isset($_POST['verDetalles'])){
 									</div>
 								</li>';
 							}
-							/*
+							
 							$respuesta.='</ul>
 							<div>
-								<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal()" class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
+								<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal(),$(\'#contractModal\').openModal() " class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
 								</a>
 							</div>';
-							*/
+							
+							/*
 							$respuesta.='</ul>
 							<form action="#">
 								 <input id="MeGustariaContratar" type="checkbox" name="contratar" class="MeGustariaContratarClass" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar">Me gustaría contratar aquí</label>
 							</form>';
+							*/
 						}else{
-							/*
+							
 							$respuesta.='
 								<div>
-									<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal()" class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
+									<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal() ,$(\'#contractModal\').openModal() " class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
 									</a>
 								</div>';
-							*/
+							
+							/*
 							$respuesta.='
 							<form action="#">
 								 <input id="MeGustariaContratar" type="checkbox" class="MeGustariaContratarClass" name="contratar" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar">Me gustaría contratar aquí</label>
 							</form>';
+							*/
 						}
 					}
 				}else{
-					/*
-					$respuesta.='
-						<h5>Opciones y características adicionales</h5>
-						'.$row['mas_datos'].'
-						<div>
-							<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal()" class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
-							</a>
-						</div>
-						';
-					*/
+										
 					$respuesta.='
 						<h5>Opciones y características adicionales</h5>
 						<p>'.$respuestaTextoAtributos.'</p>
@@ -1118,6 +1139,12 @@ if(isset($_POST['verDetalles'])){
 						<form action="#">
 							<input id="MeGustariaContratar" type="checkbox" class="MeGustariaContratarClass" name="contratar" value="true" data-idPlan="'.$row['id_plan'].'"> <label for="MeGustariaContratar">Me gustaría contratar aquí</label>
 						</form>
+						';
+					$respuesta.=$row['mas_datos'].'
+						<div>
+							<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\'),$(\'#deatilsModal\').closeModal(),$(\'#contractModal\').openModal() " class="waves-effect waves-light btn orange modal-trigger">Contratar <i class="material-icons">done</i>
+							</a>
+						</div>
 						';
 					//Pdf Canales
 					if(!empty($row["pdf_canalesTV"])){
@@ -1604,6 +1631,7 @@ if(isset($_POST['SelectDeEstados'])){
 
 if(isset($_POST['CompararPlanes'])){
 	if(isset($_POST['id_plan'])){
+		/*
 		$query=("SELECT 
 		DISTINCT(P.id_plan),
 	 	P.nombre, 
@@ -1637,7 +1665,20 @@ if(isset($_POST['CompararPlanes'])){
 	  	LEFT JOIN tipoDatosServicios TDS3 ON P.id_tipoDato_principal_3 = TDS3.id_tipoDato 
 	  	LEFT JOIN tipoDatosServicios TDS4 ON P.id_tipoDato_principal_4 = TDS4.id_tipoDato 
 	  	WHERE P.id_plan=".$_POST['id_plan']);
-
+		*/
+		$query=("SELECT   	 
+				DISTINCT(P.id_plan),
+				P.nombre, 
+				P.precio, 
+				P.id_empresa,
+				P.mas_datos, P.visible, 
+				E.nombre as empresa, 
+				E.codigo_color as empresa_color
+				FROM planes P
+				INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
+				INNER JOIN cobertura C ON P.ID_PLAN=C.ID_PLAN
+				INNER JOIN planes_tipoServicios PT ON P.ID_PLAN=PT.ID_PLAN
+				WHERE P.id_plan=".$_POST['id_plan']);
 
 		$result = $mysqli->query($query);
 
@@ -1652,64 +1693,61 @@ if(isset($_POST['CompararPlanes'])){
 								<div class="paq-bx paq-comparado paq-comparado'.$_POST["num_plan_comp"].'">
 									<h4 class="truncate">'.$row["nombre"].'</h4>
 									<ul>';
-										switch ($row['tipoDato1']) {
-										    case "texto":
-												$respuesta=$respuesta.'<li>'.$row["dato_principal_1"].'</li>';
-										        break;
-										    case "integer":
-												$respuesta=$respuesta.'<li>'.$row["dato_principal_1"].' '.$row["dato1"].'</li>';
-										        break;
-										    case "boolean":
-												$respuesta=$respuesta.'<li>'.$row["dato1"].'</li>';
-										        break;
-										}
-										switch ($row['tipoDato2']) {
-										    case "texto":
-												$respuesta=$respuesta.'<li>'.$row["dato_principal_2"].'</li>';
-										        break;
-										    case "integer":
-												$respuesta=$respuesta.'<li>'.$row["dato_principal_2"].' '.$row["dato2"].'</li>';
-										        break;
-										    case "boolean":
-												$respuesta=$respuesta.'<li>'.$row["dato2"].'</li>';
-										        break;
-										}
-										switch ($row['tipoDato3']) {
-										    case "texto":
-												$respuesta=$respuesta.'<li>'.$row["dato_principal_3"].'</li>';
-										        break;
-										    case "integer":
-												$respuesta=$respuesta.'<li>'.$row["dato_principal_3"].' '.$row["dato3"].'</li>';
-										        break;
-										    case "boolean":
-												$respuesta=$respuesta.'<li>'.$row["dato3"].'</li>';
-										        break;
-										}
-										switch ($row['tipoDato4']) {
-										    case "texto":
-												$respuesta=$respuesta.'<li>'.$row["dato_principal_4"].'</li>';
-										        break;
-										    case "integer":
-												$respuesta=$respuesta.'<li>'.$row["dato_principal_4"].' '.$row["dato4"].'</li>';
-										        break;
-										    case "boolean":
-												$respuesta=$respuesta.'<li>'.$row["dato4"].'</li>';
-										        break;
-										}
-										$query_redesSociales="SELECT PRS.id_redSocial,
-											RS.nombre
-											FROM planes_redesSociales PRS
-											INNER JOIN redesSociales RS ON PRS.id_redSocial=RS.id_redSocial 
-											WHERE PRS.id_plan=".$row["id_plan"];
-										$result_redesSociales = $mysqli->query($query_redesSociales);
-										$numero_filasRS = mysqli_num_rows($result_redesSociales);
-										if($numero_filasRS>0){
-											$respuesta=$respuesta.'<li>Redes Sociales</li>';
-											while($rowRedSocial = $result_redesSociales->fetch_array())
-											{
-												$respuesta=$respuesta.'<li>('.$rowRedSocial["nombre"].')</li>';
-											} 
-										}
+			$query_atributos = 'SELECT 	PTDS.valor,
+										PTDS.id_tipoDato,
+										TDS.label as dato,
+										TDS.tipo as tipoDato
+								FROM planes_tipoDatosServicios PTDS
+								LEFT JOIN tipoDatosServicios TDS ON PTDS.id_tipoDato = TDS.id_tipoDato 
+								WHERE PTDS.id_plan='.$row["id_plan"].'
+								ORDER BY TDS.orden';
+			$result_atributos = $mysqli->query($query_atributos);
+			$atributo=array();
+			//Variable para saber si un plan es prepago o no, así mostrar los textos de 'sin recarga minima' o 'con recarga minima'
+			$prepago=false;
+			while($atributo = $result_atributos->fetch_array()){
+				switch ($atributo['tipoDato']) {
+				    case "texto":
+				    	if($atributo['valor'] != NULL){
+				    		$respuesta=$respuesta.'<li>'.$atributo["valor"].'</li>';
+				    	}
+				        break;
+				    case "integer":
+				    	if($atributo['valor'] != NULL && $atributo['valor'] != 0){
+				    		$respuesta=$respuesta.'<li>'.$atributo["valor"].' '.$atributo["dato"].'</li>';	
+				    	}else{
+				    		$respuesta=$respuesta.'<li class="delAtributo atributo'.$atributo["id_tipoDato"].'" data-dato="'.$atributo["id_tipoDato"].'"><del>'.$atributo["dato"].'</del></li>';
+				    	}
+				        break;
+				    case "boolean":
+				    	if($atributo['valor'] == 1){
+				    		$respuesta=$respuesta.'<li>'.$atributo["dato"].'</li>';
+				    		if($atributo['id_tipoDato']==2){
+				    			$prepago=true;
+				    		}
+				    	}else{
+				    		$respuesta=$respuesta.'<li class="delAtributo atributo'.$atributo["id_tipoDato"].'" data-dato="'.$atributo["id_tipoDato"].'"><del>'.$atributo["dato"].'</del></li>';
+				    		if($atributo['id_tipoDato']==2){
+				    			$prepago=false;
+				    		}
+				    	}
+				        break;
+				}
+			}
+			$query_redesSociales="SELECT PRS.id_redSocial,
+				RS.nombre
+				FROM planes_redesSociales PRS
+				INNER JOIN redesSociales RS ON PRS.id_redSocial=RS.id_redSocial 
+				WHERE PRS.id_plan=".$row["id_plan"];
+			$result_redesSociales = $mysqli->query($query_redesSociales);
+			$numero_filasRS = mysqli_num_rows($result_redesSociales);
+			if($numero_filasRS>0){
+				$respuesta=$respuesta.'<li>Redes Sociales</li>';
+				while($rowRedSocial = $result_redesSociales->fetch_array())
+				{
+					$respuesta=$respuesta.'<li>('.$rowRedSocial["nombre"].')</li>';
+				} 
+			}
 			$respuesta=$respuesta.'</ul>'.$row["mas_datos"].'
 
 								</div>
@@ -1728,7 +1766,7 @@ if(isset($_POST['CompararPlanes'])){
 				$respuesta=$respuesta.'<div class="paq-price">$'.number_format($row["precio"]).'</div>';
 			}
 //<div class="paq-price">$'.$row["precio"].'</div>
-			/*$respuesta=$respuesta.'	<div class="more-actions-bx comparetratation">
+			$respuesta=$respuesta.'	<div class="more-actions-bx comparetratation">
 									<a href="#!" onclick="eliminarDelComparador('.$row["id_plan"].')" class="grey white-text text-white">Eliminar</a>
 									<a href="#contractModal" onclick="contratar(\''.$row['id_plan'].'\',\''.$row["nombre"].'\',\''.$row["id_empresa"].'\',\''.$_POST["estado"].'\')" class="compare-slct orange accent-4 modal-trigger">Contratar <i class="material-icons">done</i></a>
 									<div class="clearfix"></div>
@@ -1736,7 +1774,7 @@ if(isset($_POST['CompararPlanes'])){
 							</div>
 						</div>
 					</div>';
-			*/
+			/*
 			$respuesta=$respuesta.'	
 									<div class="more-actions-bx comparetratation">
 									<a href="#!" class="grey"></a>
@@ -1746,7 +1784,8 @@ if(isset($_POST['CompararPlanes'])){
 								</div>
 							</div>
 						</div>
-					</div>';	
+					</div>';
+			*/	
 		}
 		echo $respuesta;
 
@@ -2151,7 +2190,6 @@ if(isset($_POST['contratar'])){
 			INNER JOIN relacion_contacto_empresas RCE ON C.id_contacto = RCE.id_contacto
 			WHERE RCE.id_empresa=".$id_empresa." AND (C.estado=".$estado." OR C.estado=-1)";
 
-	
 	if (!$mysqli->query($query)) {
     	printf("Errormessage: %s\n", $mysqli->error);
 	}else{

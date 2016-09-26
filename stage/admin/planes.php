@@ -74,7 +74,33 @@ function createMultipleSelect($recordset, $title, $id_name, $assignedName, $unas
 
 
 //createMultipleSelect($servicios, "Servicios", "id_tipoServicio", "services", "unassignedServices");
+function createMainDataInputNEW($tipoDatosServicios){
+	mysql_data_seek($tipoDatosServicios, 0);
+	echo '	<tr>';
+			    while($row_tipoDatosServicios = mysql_fetch_assoc($tipoDatosServicios)){
+			    	if($row_tipoDatosServicios['tipo'] != 'NULL'){
+				    	echo '<tr class="tipoServicio'.$row_tipoDatosServicios['id_tipoServicio'].'">
+				    				<td>';    
+				    				echo $row_tipoDatosServicios['label'];
+				    		echo '	</td>';
+				    	if($row_tipoDatosServicios['tipo'] == 'boolean'){
+				    		echo '<td>';
+				    			echo '<input type="checkbox" name="atributo'.$row_tipoDatosServicios['id_tipoDato'].'" value="1" data-idTipoDato="'.$row_tipoDatosServicios['id_tipoDato'].'">';
+				    		echo '</td>';
+				    	}else{
+				    		//if($row_tipoDatosServicios['tipo'] == 'integer'){
+								echo '<td>';
+					    			echo '<input type="text" name="atributo'.$row_tipoDatosServicios['id_tipoDato'].'" data-idTipoDato="'.$row_tipoDatosServicios['id_tipoDato'].'">';
+					    		echo '</td>';
+				    		//}
+				    	}
+				    	echo '</tr>';
+				    }
+			    }
+    echo '	</tr>';
 
+
+}
 
 function createMainDataInput($tipoDatosServicios, $selectName, $inputName, $label){
 
@@ -89,6 +115,7 @@ function createMainDataInput($tipoDatosServicios, $selectName, $inputName, $labe
    		echo "		<option value='" . $row_tipoDatosServicios['id_tipoDato'] . "' type='" . $row_tipoDatosServicios['tipo'] . "'>" .  $row_tipoDatosServicios['label'] . "</option>";
     } 
     echo "    </select>";
+
     echo "  </td>";
     echo "  <td><input type='text' id='" . $inputName . "' name='" . $inputName . "' value=''/></td>";
     echo "</tr>";
@@ -176,7 +203,7 @@ if($_POST['servicios'] == "todos"){
 			(select count(*) from planes_tipoServicios where planes_tipoServicios.id_plan=P.id_plan and planes_tipoServicios.id_tipoServicio=1) as telMovil  
 				FROM planes P
 				INNER JOIN empresas E ON P.ID_EMPRESA=E.ID_EMPRESA
-				 ORDER BY empresa ASC, precio DESC");
+				ORDER BY empresa ASC, precio DESC");
 		}else{
 			$query_planes = "SELECT 
 			DISTINCT(P.id_plan),
@@ -364,7 +391,7 @@ $query_servicios = "SELECT * FROM tipoServicios ORDER BY id_tipoServicio ASC";
 $servicios = mysql_query($query_servicios, $dbConn) or die(mysql_error());
 
 /* Obtiene el catalogo de tipo de datos de los servicios */
-$query_tipoDatosServicios = "SELECT * FROM tipoDatosServicios ORDER BY id_tipoDato ASC";
+$query_tipoDatosServicios = "SELECT * FROM tipoDatosServicios ORDER BY orden ASC";
 $tipoDatosServicios = mysql_query($query_tipoDatosServicios, $dbConn) or die(mysql_error());
 
 /* Obtiene el catálogo de empresas */
@@ -427,196 +454,92 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 			$('select#id_tipoDato_principal_2').val('');
 			$('select#id_tipoDato_principal_3').val('');
 			$('select#id_tipoDato_principal_4').val('');
+			$('.tipoServicio1').hide();
+			$('.tipoServicio2').hide();
+			$('.tipoServicio3').hide();
+			$('.tipoServicio4').hide();
 		}
 
 		if(celular && (telefono || internet || tv)){
 			alert("No puede seleccionar Teléfono móvil junto con ningun otro servicio");
+			$('.tipoServicio1').hide();
+			$('.tipoServicio2').hide();
+			$('.tipoServicio3').hide();
+			$('.tipoServicio4').hide();
 			//Desactivar los bullets que no corresponden al servicio
-			$('select#id_tipoDato_principal_1 option[value="0"],option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"],option[value="14"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_2 option[value="0"],option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"],option[value="14"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_3 option[value="0"],option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"],option[value="14"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_4 option[value="0"],option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"],option[value="14"]').attr('disabled','disabled');
-
-			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('');
-			$('select#id_tipoDato_principal_2').val('');
-			$('select#id_tipoDato_principal_3').val('');
-			$('select#id_tipoDato_principal_4').val('');
+			
 		}
 
 		if(celular && !telefono && !internet && !tv){
-			//Activar los bullets correspondientes al servicio
-			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled',false);
-
-			//Desactivar los bullets que no corresponden al servicio
-			$('select#id_tipoDato_principal_1 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_2 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_3 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_4 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-
-			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('1').trigger("change");
-			$('select#id_tipoDato_principal_2').val('3').trigger("change");
-			$('select#id_tipoDato_principal_3').val('6').trigger("change");
-			$('select#id_tipoDato_principal_4').val('5').trigger("change");
+			$('.tipoServicio1').show();
+			$('.tipoServicio2').hide();
+			$('.tipoServicio3').hide();
+			$('.tipoServicio4').hide();
+			
 
 		}
 
 		//Single play telefono
 		if(!celular && telefono && !internet && !tv){
-
-			//Activar los bullets correspondientes al servicio
-			$('select#id_tipoDato_principal_1 option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_2 option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_3 option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_4 option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
-
-			//Desactivar los bullets que no corresponden al servicio
-			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-
-			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('7').trigger("change");
-			$('select#id_tipoDato_principal_2').val('8').trigger("change");
-			$('select#id_tipoDato_principal_3').val('9').trigger("change");
-			$('select#id_tipoDato_principal_4').val('10').trigger("change");
+			$('.tipoServicio1').hide();
+			$('.tipoServicio2').show();
+			$('.tipoServicio3').hide();
+			$('.tipoServicio4').hide();
+			
 		}
 
 		//Single Play Internet
 		if(!celular && !telefono && internet && !tv){
-
-			//Activar los bullets correspondientes al servicio
-			$('select#id_tipoDato_principal_1 option[value="11"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_2 option[value="11"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_3 option[value="11"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_4 option[value="11"]').attr('disabled',false);
-
-			//Desactivar los bullets que no corresponden al servicio
-			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-
-			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('11').trigger("change");
-			$('select#id_tipoDato_principal_2').val('').trigger("change");
-			$('select#id_tipoDato_principal_3').val('').trigger("change");
-			$('select#id_tipoDato_principal_4').val('').trigger("change");
+			$('.tipoServicio1').hide();
+			$('.tipoServicio2').hide();
+			$('.tipoServicio3').show();
+			$('.tipoServicio4').hide();
+			
 		}
 
 		//Single Play TV
 		if(!celular && !telefono && !internet && tv){
+			$('.tipoServicio1').hide();
+			$('.tipoServicio2').hide();
+			$('.tipoServicio3').hide();
+			$('.tipoServicio4').show();
 
-			//Activar los bullets correspondientes al servicio
-			$('select#id_tipoDato_principal_1 option[value="12"],option[value="13"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_2 option[value="12"],option[value="13"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_3 option[value="12"],option[value="13"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_4 option[value="12"],option[value="13"]').attr('disabled',false);
-
-			//Desactivar los bullets que no corresponden al servicio
-			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"]').attr('disabled','disabled');
-
-			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('13').trigger("change");
-			$('select#id_tipoDato_principal_2').val('12').trigger("change");
-			$('select#id_tipoDato_principal_3').val('').trigger("change");
-			$('select#id_tipoDato_principal_4').val('').trigger("change");
 		}
 
 		//DoblePlay TV+Internet
 		if(!celular && !telefono && internet && tv){
+			$('.tipoServicio1').hide();
+			$('.tipoServicio2').hide();
+			$('.tipoServicio3').show();
+			$('.tipoServicio4').show();
 
-			//Activar los bullets correspondientes al servicio
-			$('select#id_tipoDato_principal_1 option[value="12"],option[value="13"],option[value="11"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_2 option[value="12"],option[value="13"],option[value="11"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_3 option[value="12"],option[value="13"],option[value="11"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_4 option[value="12"],option[value="13"],option[value="11"]').attr('disabled',false);
-
-			//Desactivar los bullets que no corresponden al servicio
-			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled','disabled');
-
-			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('13').trigger("change");
-			$('select#id_tipoDato_principal_2').val('12').trigger("change");
-			$('select#id_tipoDato_principal_3').val('11').trigger("change");
-			$('select#id_tipoDato_principal_4').val('').trigger("change");
 		}
 
 		//DoblePlay TV+Internet
 		if(!celular && telefono && !internet && tv){
-
-			//Activar los bullets correspondientes al servicio
-			$('select#id_tipoDato_principal_1 option[value="12"],option[value="13"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_2 option[value="12"],option[value="13"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_3 option[value="12"],option[value="13"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_4 option[value="12"],option[value="13"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
-
-			//Desactivar los bullets que no corresponden al servicio
-			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="11"]').attr('disabled','disabled');
-
-			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('13').trigger("change");
-			$('select#id_tipoDato_principal_2').val('12').trigger("change");
-			$('select#id_tipoDato_principal_3').val('7').trigger("change");
-			$('select#id_tipoDato_principal_4').val('8').trigger("change");
+			$('.tipoServicio1').hide();
+			$('.tipoServicio2').show();
+			$('.tipoServicio3').hide();
+			$('.tipoServicio4').show();
+	
 		}
 
 		//DoblePlay Telefono+Internet
 		if(!celular && telefono && internet && !tv){
+			$('.tipoServicio1').hide();
+			$('.tipoServicio2').show();
+			$('.tipoServicio3').show();
+			$('.tipoServicio4').hide();
 
-			//Activar los bullets correspondientes al servicio
-			$('select#id_tipoDato_principal_1 option[value="11"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_2 option[value="11"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_3 option[value="11"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_4 option[value="11"],option[value="7"],option[value="8"],option[value="9"],option[value="10"]').attr('disabled',false);
-
-			//Desactivar los bullets que no corresponden al servicio
-			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"],option[value="12"],option[value="13"]').attr('disabled','disabled');
-
-			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('11').trigger("change");
-			$('select#id_tipoDato_principal_2').val('7').trigger("change");
-			$('select#id_tipoDato_principal_3').val('8').trigger("change");
-			$('select#id_tipoDato_principal_4').val('9').trigger("change");
 		}
 
 		//TriplePlay Telefono+TV+Internet
-		if(!celular && telefono && !internet && tv){
+		if(!celular && telefono && internet && tv){
+			$('.tipoServicio1').hide();
+			$('.tipoServicio2').show();
+			$('.tipoServicio3').show();
+			$('.tipoServicio4').show();
 
-			//Activar los bullets correspondientes al servicio
-			$('select#id_tipoDato_principal_1 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_2 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_3 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled',false);
-			$('select#id_tipoDato_principal_4 option[value="7"],option[value="8"],option[value="9"],option[value="10"],option[value="11"],option[value="12"],option[value="13"]').attr('disabled',false);
-
-			//Desactivar los bullets que no corresponden al servicio
-			$('select#id_tipoDato_principal_1 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_2 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_3 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled','disabled');
-			$('select#id_tipoDato_principal_4 option[value="1"],option[value="2"],option[value="3"],option[value="4"],option[value="5"],option[value="6"]').attr('disabled','disabled');
-
-			//Seleccionar Bullets Principales
-			$('select#id_tipoDato_principal_1').val('13').trigger("change");
-			$('select#id_tipoDato_principal_2').val('11').trigger("change");
-			$('select#id_tipoDato_principal_3').val('7').trigger("change");
-			$('select#id_tipoDato_principal_4').val('8').trigger("change");
 		}
 
 
@@ -629,6 +552,7 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 	var originalAssignedStates = [];
 	var originalAssignedRedesSociales = [];
 	var originalAssignedCelulares = [];
+	var originalAssignedDataServices = [];
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -698,6 +622,7 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 		originalAssignedStates = [];
 		originalAssignedRedesSociales = [];
 		originalAssignedCelulares = [];
+		originalAssignedDataServices = [];
 	
 		// Limpiamos el posible contenido de todos los inputs.
 		allFields.val("").removeClass('error');
@@ -883,9 +808,44 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 						}).done(function(){
 							//alert(".done getPlanServicios")
 							$('select#services').multiSelect("destroy");
-							$('select#services').multiSelect();							
+							//$('select#services').multiSelect();				
+							$('select#services').multiSelect({
+								afterSelect: function(values){
+							    	bulletsDatosPrincipales();
+								},
+								afterDeselect: function(values){
+							    	bulletsDatosPrincipales();
+								}
+							});
+							bulletsDatosPrincipales();
+						});	
+
+						// Obtenemos de la base los atributos del servicios asignados al plan.
+						$.getJSON("ajax/getPlanDataServicios.php", {'id': id_plan}, function(serviciosDataPlan) {
+							//$('select#services').multiSelect("refresh");
+							$.each(serviciosDataPlan, function(recordNum, servicio) {
+								//alert("GetServiciosPlan")
+															
+								//$('select#services option[value="' + servicio['id_tipoServicio'] + '"]').attr("selected", "selected");
+								if(servicio['tipo']=='boolean'){
+									if(servicio['valor']==1){
+										$('input[name=atributo'+servicio['id_tipoDato']+']').prop('checked','checked');
+									}
+								}else{
+									if(servicio['valor']!='null'){
+										$('input[name=atributo'+servicio['id_tipoDato']+']').val(servicio['valor']);
+									}
+								}
+								originalAssignedDataServices.push([servicio['id_tipoDato'],servicio['valor']]);
+							
+							});
 						
-						});						
+						}).done(function(){
+							//alert(".done getPlanServicios")
+							//$('select#services').multiSelect("destroy");
+							//$('select#services').multiSelect();							
+						
+						});					
 												
 						// Obtenemos de la base los estados asignados al plan.
 						$.getJSON("ajax/getPlanEstados.php", {'id': id_plan}, function(estadosPlan) {
@@ -1010,11 +970,47 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 							});
 						
 						}).done(function(){
-							
+							//alert(".done getPlanServicios")
 							$('select#services').multiSelect("destroy");
-							$('select#services').multiSelect();							
+							//$('select#services').multiSelect();				
+							$('select#services').multiSelect({
+								afterSelect: function(values){
+							    	bulletsDatosPrincipales();
+								},
+								afterDeselect: function(values){
+							    	bulletsDatosPrincipales();
+								}
+							});
+							bulletsDatosPrincipales();
+						});	
+	
+
+						// Obtenemos de la base los atributos del servicios asignados al plan.
+						$.getJSON("ajax/getPlanDataServicios.php", {'id': id_plan}, function(serviciosDataPlan) {
+							//$('select#services').multiSelect("refresh");
+							$.each(serviciosDataPlan, function(recordNum, servicio) {
+								//alert("GetServiciosPlan")
+															
+								//$('select#services option[value="' + servicio['id_tipoServicio'] + '"]').attr("selected", "selected");
+								if(servicio['tipo']=='boolean'){
+									if(servicio['valor']==1){
+										$('input[name=atributo'+servicio['id_tipoDato']+']').prop('checked','checked');
+									}
+								}else{
+									if(servicio['valor']!='null'){
+										$('input[name=atributo'+servicio['id_tipoDato']+']').val(servicio['valor']);
+									}
+								}
+								originalAssignedDataServices.push([servicio['id_tipoDato'],servicio['valor']]);
+							
+							});
 						
-						});						
+						}).done(function(){
+							//alert(".done getPlanServicios")
+							//$('select#services').multiSelect("destroy");
+							//$('select#services').multiSelect();							
+						
+						});									
 												
 						// Obtenemos de la base los estados asignados al plan.
 						$.getJSON("ajax/getPlanEstados.php", {'id': id_plan}, function(estadosPlan) {
@@ -1360,7 +1356,7 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
 						cache: false,             			// To unable request pages to be cached
 						processData: false,       			// To send DOMDocument or non processed data file it is set to false
 						success: function(data)   			// A function to be called if request succeeds
-						{
+						{	console.log(data);
 							removeCursorToWait();
 							$('div#formPlanWindow').fadeOut();
 							alert("Tu plan se guardo con Exito!");
@@ -1603,10 +1599,11 @@ $celulares = mysql_query($query_celulares, $dbConn) or die(mysql_error());
         	<td colspan="3">&nbsp;</td>
         </tr>
         <?php
-					createMainDataInput($tipoDatosServicios, "id_tipoDato_principal_1", "dato_principal_1", "Dato principal 1:");
-					createMainDataInput($tipoDatosServicios, "id_tipoDato_principal_2", "dato_principal_2", "Dato principal 2:");
-					createMainDataInput($tipoDatosServicios, "id_tipoDato_principal_3", "dato_principal_3", "Dato principal 3:");
-					createMainDataInput($tipoDatosServicios, "id_tipoDato_principal_4", "dato_principal_4", "Dato principal 4:");
+					//createMainDataInput($tipoDatosServicios, "id_tipoDato_principal_1", "dato_principal_1", "Dato principal 1:");
+					//createMainDataInput($tipoDatosServicios, "id_tipoDato_principal_2", "dato_principal_2", "Dato principal 2:");
+					//createMainDataInput($tipoDatosServicios, "id_tipoDato_principal_3", "dato_principal_3", "Dato principal 3:");
+					//createMainDataInput($tipoDatosServicios, "id_tipoDato_principal_4", "dato_principal_4", "Dato principal 4:");
+					createMainDataInputNEW($tipoDatosServicios);
 				?>
         <tr>
         	<td>M&aacute;s datos:</td>

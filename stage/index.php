@@ -40,6 +40,7 @@ require('blog/wp-blog-header.php');
 		<!-- This is FontsAwesome 4.3.0-->
 		<link href="fawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link href="css/dev.css" type="text/css" rel="stylesheet" media="all" />
 
 
 	</head>
@@ -104,6 +105,7 @@ require('blog/wp-blog-header.php');
 			</li>
 		</ul>
 		<div class="clearfix"></div>
+
 		<br />
 		<div id="blog-module" class=" blog-module row grey lighten-5">
 			<div class="col m12 l8 blog-timeline-bx">
@@ -280,84 +282,150 @@ require('blog/wp-blog-header.php');
 			</div>
 			<div class="widget-wrapper">
 				<div class="discover-title">¡Decidir nunca fue tan simple!</div>
-				<div class="scroll-box1">
-					<div class="alignr-box">
-						<div class="products-box">
-							<div id="celular" class="plan-box cellplan">
-								<div class="content-bx hvr-grow">
-									<div class="valigny">
-										<i class="material-icons">phone_android</i>
-										<p>celular</p>
+				<div class="panelServicios">
+					<div class="scroll-box1 desktopSelect">
+						<div class="alignr-box">
+							<div class="products-box">
+								<div id="celular" class="plan-box cellplan">
+									<div class="content-bx hvr-grow">
+										<div class="valigny">
+											<i class="material-icons">phone_android</i>
+											<p>celular</p>
+										</div>
+									</div>
+									<div class="check-plan">
+										<i class="fa fa-check"></i>
+									</div>
+									<div class="cancel-plan">
+										<i class="fa fa-times-circle"></i>
 									</div>
 								</div>
-								<div class="check-plan">
-									<i class="fa fa-check"></i>
-								</div>
-								<div class="cancel-plan">
-									<i class="fa fa-times-circle"></i>
-								</div>
-							</div>
-							<div id="internet" class="plan-box nocell nostreaming tripleplay3">
-								<div class="content-bx hvr-grow">
-									<div class="valigny">
-										<i class="material-icons">wifi</i>
-										<p>internet</p>
+								<div id="internet" class="plan-box nocell nostreaming tripleplay3">
+									<div class="content-bx hvr-grow">
+										<div class="valigny">
+											<i class="material-icons">wifi</i>
+											<p>internet</p>
+										</div>
+									</div>
+									<div class="check-plan">
+										<i class="fa fa-check"></i>
+									</div>
+									<div class="cancel-plan">
+										<i class="fa fa-times-circle"></i>
 									</div>
 								</div>
-								<div class="check-plan">
-									<i class="fa fa-check"></i>
-								</div>
-								<div class="cancel-plan">
-									<i class="fa fa-times-circle"></i>
-								</div>
-							</div>
-							<div id="telefono" class="plan-box nocell nostreaming tripleplay1">
-								<div class="content-bx hvr-grow">
-									<div class="valigny">
-										<i class="material-icons">phone</i>
-										<p>tel. fijo</p>
+								<div id="telefono" class="plan-box nocell nostreaming tripleplay1">
+									<div class="content-bx hvr-grow">
+										<div class="valigny">
+											<i class="material-icons">phone</i>
+											<p>tel. fijo</p>
+										</div>
+									</div>
+									<div class="check-plan">
+										<i class="fa fa-check"></i>
+									</div>
+									<div class="cancel-plan">
+										<i class="fa fa-times-circle"></i>
 									</div>
 								</div>
-								<div class="check-plan">
-									<i class="fa fa-check"></i>
-								</div>
-								<div class="cancel-plan">
-									<i class="fa fa-times-circle"></i>
-								</div>
-							</div>
-							<div id="television" class="plan-box nocell nostreaming tripleplay2">
-								<div class="content-bx hvr-grow">
-									<div class="valigny">
-										<i class="material-icons">tv</i>
-										<p>tv</p>
+								<div id="television" class="plan-box nocell nostreaming tripleplay2">
+									<div class="content-bx hvr-grow">
+										<div class="valigny">
+											<i class="material-icons">tv</i>
+											<p>tv</p>
+										</div>
+									</div>
+									<div class="check-plan">
+										<i class="fa fa-check"></i>
+									</div>
+									<div class="cancel-plan">
+										<i class="fa fa-times-circle"></i>
 									</div>
 								</div>
-								<div class="check-plan">
-									<i class="fa fa-check"></i>
-								</div>
-								<div class="cancel-plan">
-									<i class="fa fa-times-circle"></i>
-								</div>
-							</div>
-							<div id="streaming" class="plan-box nocell streaming">
-								<div class="content-bx hvr-grow">
-									<div class="valigny">
-										<i class="material-icons">live_tv</i>
-										<p>streaming</p>
+								<div id="streaming" class="plan-box nocell streaming">
+									<div class="content-bx hvr-grow">
+										<div class="valigny">
+											<i class="material-icons">live_tv</i>
+											<p>streaming</p>
+										</div>
 									</div>
-								</div>
-								<div class="check-plan">
-									<i class="fa fa-check"></i>
-								</div>
-								<div class="cancel-plan">
-									<i class="fa fa-times-circle"></i>
+									<div class="check-plan">
+										<i class="fa fa-check"></i>
+									</div>
+									<div class="cancel-plan">
+										<i class="fa fa-times-circle"></i>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					<div class="scroll-box1 mobileSelect">
+						<div class="alignr-box-mobile">
+							<div class="row">
+								<div class="row s12 btnServicioMobile servicioCelular">
+									<div class="col s2 offset-s1 iconServicios">
+										<i class="material-icons">phone_android</i>
+									</div>	
+									<div class="col s7 nameServicios">
+										Celular
+									</div>
+									<div class="col s2 check-plan-mobile ">
+										<i class="fa fa-check"></i>
+									</div>
+								</div>
+								<div class="row s12 btnServicioMobile triplePlay servicioInternet">
+									<div class="col s2 offset-s1 iconServicios">
+										<i class="material-icons">wifi</i>
+									</div>
+									<div class="col s7 nameServicios">
+										Internet
+									</div>
+									<div class="check-plan-mobile col s2">
+										<i class="fa fa-check"></i>
+									</div>
+								</div>
+								<div class="row s12 btnServicioMobile triplePlay servicioTelefono">
+									<div class="col s2 offset-s1 iconServicios">
+										<i class="material-icons">phone</i>	
+									</div>
+									<div class="col s7 nameServicios">
+										Tel. fijo	
+									</div>
+									<div class="check-plan-mobile col s2">
+										<i class="fa fa-check"></i>
+									</div>
+								</div>
+								<div class="row m12 btnServicioMobile triplePlay servicioTelevision">
+									<div class="col s2 offset-s1 iconServicios">
+										<i class="material-icons">tv</i>	
+									</div>
+									<div class="col s7 nameServicios">
+										Tv
+									</div>
+									<div class="check-plan-mobile col s2">
+										<i class="fa fa-check"></i>
+									</div>
+								</div>
+								<div class="row m12 btnServicioMobile btnServicioMobile-bottom servicioStreaming">
+									<div class="col s2 offset-s1 iconServicios">
+										<i class="material-icons">live_tv</i>	
+									</div>
+									<div class="col s7 nameServicios">
+										Streaming	
+									</div>
+									<div class="check-plan-mobile col s2">
+										<i class="fa fa-check"></i>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
 				</div>
-				<a id="btnBuscar" class="search-btn z-depth-1 hoverable">Buscar <i class="fa fa-angle-right right"></i></a>
-				<a id="btnBuscarHidden" class="modal-trigger" href="#modalLocation" style="display: none;"></a>
+				<div class="div_btnBuscar">
+					<a id="btnBuscar" class="search-btn z-depth-1 hoverable">Buscar <i class="fa fa-angle-right right"></i></a>
+					<a id="btnBuscarHidden" class="modal-trigger" href="#modalLocation" style="display: none;"></a>
+				</div>
 			</div>
 		</div>
 
@@ -443,6 +511,27 @@ require('blog/wp-blog-header.php');
 		        </form>
 			  </div>
 			</div>
+
+			<!-- Modal Structure Alerta servicios incompatibles -->
+			<div id="modalIncompatibles" class="modal">
+				<div class="modal-content">
+					<h4></h4>
+					<p>Lo sentimos, este servicio no se puede comparar con su selección actual.</p>
+				</div>
+				<div class="modal-footer">
+					<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Aceptar</a>
+				</div>
+			</div>
+			<!-- Modal Structure Alerta NoServicios -->
+			<div id="modalSinServicios" class="modal">
+				<div class="modal-content">
+					<h4></h4>
+					<p>Debe seleccionar al menos un tipo de servicio</p>
+				</div>
+				<div class="modal-footer">
+					<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Aceptar</a>
+				</div>
+			</div>
 		<!--[if IE]>
 			<script src="js/html5.js"></script>
 			<script type="text/javascript" src="js/respond.js"></script>
@@ -471,7 +560,7 @@ require('blog/wp-blog-header.php');
 		<!--PERFIL-->
 		<script src="js/web.js"></script>
 		<script type="text/javascript" src="js/fadeSlideShow.js"></script>
-		
+		<script src="js/blockUI.js"></script>
 		<script>
 			jQuery(function() {
 		  	
@@ -500,375 +589,7 @@ require('blog/wp-blog-header.php');
 		</script>
 		<div id="fb-root"></div>
 
-				
-
-		<script >
-
-			$( "#btnSelecEstado" ).click(function() {
-				if($( "#selectEstado" ).val()!=-1){
-					//Funcion para revisar los SELECT del selector principal
-					sessionStorage.setItem("estado",$( "#selectEstado" ).val());
-				}else{
-					alert("Debe seleccionar un estado");
-					return false;
-				}
-			});
-
-			jQuery(document).ready(function(){
-				CargarAnuncio();
-				cargarmas();
-		  		$(".cargarmas").hide();
-				var data={
-					SelectDeEstados:"true"
-				}
-				jQuery.ajax({
-					//dataType:"json",
-					type: "POST",
-					url: "listado.php",
-					data: data
-				})
-			    .done(function(data){
-					jQuery("#SelectDeEstados").html(data);
-			    })
-			    .fail(function(data){
-			    	console.log(data);
-			    	window.location.href = "index.php";
-			    });
-
-			    jQuery('#slideshow').fadeSlideShow();
-
-			    checkMobile();
-			    //Por ahora no se muestra nunca el video de youtube en el scrollbar.
-			    $('.videoYoutubeSponsor').remove();
-
-			    //Siempre se abre el modal del video.
-				$( "#modalVideoBienvenida" ).openModal({
-					complete: function() { $('.lean-overlay').remove();$("#embed02").remove() } // Callback for Modal close
-				});
-			    if(localStorage.getItem("primeraVisitaEligeFacil") != "false"){
-			    	localStorage.setItem("primeraVisitaEligeFacil",false);
-			    	$("#embed02")[0].src += "&autoplay=1";
-			    }
-
-
-			    
-			});
-
-			function CargarAnuncio(){
-				if($('.AnuncioHomeDerecho').length){
-					
-					var data={
-							CargarAnuncio:true,
-							id_anuncio:3
-						}
-				
-					jQuery.ajax({
-						//dataType:"json",
-						type: "POST",
-						url: "listado.php",
-						data: data
-					})
-				    .done(function(data){
-				    	//$(".AnuncioDerechoHome").html("PruebaCargando")
-						jQuery(".AnuncioHomeDerecho").append(data);
-				    })
-				    .fail(function(data){
-				    	console.log(data);
-				    	window.location.href = "index.php";
-				    });
-				    
-				}
-				if($('.AnuncioComparadorCentro').length){
-					
-					var data={
-							CargarAnuncio:true,
-							id_anuncio:5
-						}
-				
-					jQuery.ajax({
-						//dataType:"json",
-						type: "POST",
-						url: "listado.php",
-						data: data
-					})
-				    .done(function(data){
-				    	//$(".AnuncioDerechoHome").html("PruebaCargando")
-						jQuery(".AnuncioComparadorCentro").append(data);
-				    })
-				    .fail(function(data){
-				    	console.log(data);
-				    	window.location.href = "index.php";
-				    });
-				    
-				}
-			}
-
-			$( "#descubreBTN" ).click(function() {
-				if (sessionStorage.getItem("estado") === null) {
-					return false;
-				}else{
-					if((sessionStorage.getItem("ServicioCelular") === null || sessionStorage.getItem("ServicioCelular")==0) && (sessionStorage.getItem("ServicioInternet") === null || sessionStorage.getItem("ServicioInternet")==0) && (sessionStorage.getItem("ServicioTelefono") === null || sessionStorage.getItem("ServicioTelefono")==0) && (sessionStorage.getItem("ServicioTelevision") === null || sessionStorage.getItem("ServicioTelevision")==0) && (sessionStorage.getItem("ServicioStreaming") === null || sessionStorage.getItem("ServicioStreaming")==0)   ){
-								return false;
-					}else{
-						
-					}
-				}
-
-			});
-			$("#btnBuscar").click(function(){
-				var contador=0,celular=0,internet=0,telefono=0,television=0,streaming=0;
-				if($("#celular").hasClass( "active-selection" )){
-					//alert("celular");
-					celular=1;
-					contador+=1;
-					sessionStorage.setItem("ServicioCelular","1");			
-				}else{
-					sessionStorage.setItem("ServicioCelular","0");
-				}
-				if($("#internet").hasClass( "active-selection" )){
-					//alert("internet");
-					internet=1;
-					contador+=1;
-					sessionStorage.setItem("ServicioInternet","1");	
-				}else{
-					sessionStorage.setItem("ServicioInternet","0");
-				}
-				if($("#telefono").hasClass( "active-selection" )){
-					//alert("telefono");
-					telefono=1;
-					contador+=1;
-					sessionStorage.setItem("ServicioTelefono","1");	
-				}else{
-					sessionStorage.setItem("ServicioTelefono","0");
-				}
-				if($("#television").hasClass( "active-selection" )){
-					//alert("television");
-					television=1;
-					contador+=1;
-					sessionStorage.setItem("ServicioTelevision","1");
-				}else{
-					sessionStorage.setItem("ServicioTelevision","0");
-				}
-				if($("#streaming").hasClass( "active-selection" )){
-					//alert("streaming");
-					streaming=1;
-					contador+=1;
-					sessionStorage.setItem("ServicioStreaming","1");
-				}else{
-					sessionStorage.setItem("ServicioStreaming","0");
-				}
-				//Llamar directo a listado-comparador.php sin archivo de por medio (servicio)
-				if(contador<1){
-					alert("Debe seleccionar al menos un tipo de servicio");
-					return false;
-				}else{
-					jQuery( "#btnBuscarHidden" ).trigger( "click" );
-				}
-			});
-			function VerVideo(element,url,source){
-				//alert("revisa videos")
-				//console.log("verVideo: "+$(element).data("url"));
-				//PostId
-				var id=	$(element).data("id");
-				//PostId
-				var titulo=	$(element).data("titulo");
-				if(source=="youtube"){
-					//console.log("youtube");
-					$('#contenedorVideo').html('<iframe width="853" height="480" src="'+url+'?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
-				}
-				if(source=="vimeo"){
-					//console.log("vimeo");
-					$('#contenedorVideo').html('<iframe src="'+url+'" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
-				}
-				$('#videoModalFooter').html('<a href="http://www.eligefacil.com/blog/?p='+id+'" class="waves-effect btn-flat">Más</a>');
-				$("#tituloVideo").html(titulo);
-			}
-			function cargarmas(){
-				//console.log("cargar mas")
-				//console.log($(".cargarmas").length);
-
-				if($(".cargarmas").length<5){
-					var j=$(".cargarmas").length;
-				}else{
-					var j=5;
-				}
-				var k=$(".planmostrado").length;
-				//console.log(k);
-				for(var i=k; i<k+j;i++){
-					$("#cargarmas"+i).removeClass("cargarmas");
-					$("#cargarmas"+i).addClass("planmostrado");
-				}
-				$(".planmostrado").show();
-				if($(".cargarmas").length<1){
-					$("#btnCargarMas").hide();
-					//$( "#btnCargarMas" ).prop( "disabled", true );
-				}else{
-					$("#btnCargarMas").show();
-				}
-			}
-			/*
-			$('#btnVerVideo2').on('click', function() {
-				jQuery( "#btnVerVideo" ).trigger( "click" );
-			});
-			$('#btnVerVideo').on('click', function() {
-	 			
-			});
-			*/
-			$("#RegistrarUsuario").submit(function(ev){
-				ev.preventDefault();
-				RegistrarUsuario();
-			})
-			function RegistrarUsuario(){
-					var nombreUsuario=$( "#nombreUsuario" ).val();
-					var emailUsuario=$( "#emailUsuario" ).val();
-					console.log(nombreUsuario);
-					console.log(emailUsuario);
-					enviarCorreo(nombreUsuario,emailUsuario);
-
-					
-			};
-			function checkMobile(){
-				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		 			// .mCustomScrollbar("scrollTo",'8%');
-		 			/*
-		 			$(".scroll-box1").mCustomScrollbar({
-						axis: "x",
-						theme: "minimal",
-						updateOnContentResize: true,
-						documentTouchScroll: true,
-						mouseWheel:{ enable: false },
-						callbacks:{
-							onScrollStart:function(){
-								if(this.mcs.direction !='x'){
-									console.log('y')
-								}
-								console.log("onScrollStart");
-							},
-						    onOverflowYNone:function(){
-						      console.log("Vertical scrolling is not required");
-						    },
-						    onOverflow:function(){
-						      console.log("Horizontal scrolling required");
-						    },
-						    whileScrolling:function(){ 
-						    	console.log(this.mcs.direction)
-						    }
-						}
-					});
-					*/
-				 	//$('.sliders-scroll-wrapp').mCustomScrollbar("scrollTo",'90');
-				 	$('.scroll-box1').scrollLeft(90);
-				}else{
-					$(".scroll-box1").mCustomScrollbar({
-						axis: "x",
-						theme: "minimal",
-						updateOnContentResize: true
-					});
-				}
-			}
-			
-			function enviarCorreo(nombre,email){
-			  	console.log("function enviarCorreo nombre: "+nombre);
-			  	console.log("function enviarCorreo email: "+email);
-			  	console.log("Enviando correo..");
-			  	$.blockUI({ message: null }); 
-				var target = document.createElement("div");
-				document.body.appendChild(target);
-				var spinner = new Spinner(opts).spin(target);
-				var overlay = iosOverlay({
-					text: "Cargando",
-					spinner: spinner
-				});
-				var nombre_enviar=nombre;
-				var email_enviar=email;
-				var data={
-						nombre:nombre_enviar,
-						email:email_enviar
-					}
-				jQuery.ajax({
-					//dataType:"json",
-					type: "POST",
-					url: "register.php",
-					data: data
-				})
-			    .done(function(data){
-			    	console.log(data)
-			    	if(data==true){
-			    		//console.log(data)
-			    		//alert("true");
-			    		alert("!Hemos envíado a tu correo un enlace para acceder al sitio!");
-			    		$( "#nombreUsuario" ).val("");
-						$( "#emailUsuario" ).val("");
-			    		window.setTimeout(function() {
-							overlay.update({
-								icon: "images/assets/check.png",
-								text: "Listo revisa tu correo!"
-							});
-						}, 1000);
-						window.setTimeout(function() {
-							overlay.hide();
-						}, 2000);
-						setTimeout($.unblockUI, 3000);
-
-			    	}else{
-			    		if(data=="duplicado"){
-			    			alert("Correo ya registrado, se reenvío enlace");
-			    			$( "#nombreUsuario" ).val("");
-							$( "#emailUsuario" ).val("");
-							//console.log(data);
-				    		//alert("false");
-				    		window.setTimeout(function() {
-								overlay.update({
-									icon: "images/assets/check.png",
-									text: "Listo"
-								});
-							}, 1000);
-							window.setTimeout(function() {
-								overlay.hide();
-							}, 2000);
-							setTimeout($.unblockUI, 3000);
-			    		}else{
-			    			if(data=="error"){
-				    			//alert("Correo ya registrado, se reenvío enlace");
-				    			$( "#nombreUsuario" ).val("");
-								$( "#emailUsuario" ).val("");
-								//console.log(data);
-					    		//alert("false");
-					    		window.setTimeout(function() {
-									overlay.update({
-										icon: "images/assets/cross.png",
-										text: "Error en DB"
-									});
-								}, 1000);
-								window.setTimeout(function() {
-									overlay.hide();
-								}, 2000);
-								setTimeout($.unblockUI, 3000);
-							}else{
-								//console.log(data);
-					    		//alert("false");
-					    		window.setTimeout(function() {
-									overlay.update({
-										icon: "images/assets/cross.png",
-										text: "Error"
-									});
-								}, 1000);
-								window.setTimeout(function() {
-									overlay.hide();
-								}, 2000);
-								setTimeout($.unblockUI, 3000);
-							}
-						}
-			    	}
-			    	//console.log(data)
-			    })
-			    .fail(function(data){
-			    	console.log(data);
-			    	//window.location.href = "indexBE.php";
-			    });
-		  	}
-
-		</script>
+		<script type="text/javascript" src="js/index.js"></script>	
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

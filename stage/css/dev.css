@@ -1,0 +1,93 @@
+.check-plan-mobile {
+  width: 36px !important;
+  height: 36px !important;
+  background-color: #a2a2a2 !important;
+  border: 5px solid rgba(255, 255, 255, 0.4) !important;
+  -webkit-border-radius: 50% !important;
+  -webkit-background-clip: padding-box !important;
+  -moz-border-radius: 50% !important;
+  -moz-background-clip: padding !important;
+  border-radius: 50% !important;
+  background-clip: padding-box !important;
+  -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3) !important;
+  -moz-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3) !important;
+  /*position: relative !important;*/
+  left: 50% !important;
+  bottom: -12px !important;
+  margin-left: -18px !important;
+  /*display: none;
+  visibility: hidden;*/
+  margin-top:10px;
+  padding:1px 1px 1px 6px !important;
+}
+
+.check-plan-mobile i {
+  color: white;
+  line-height: 25px;
+}
+.check-plan-mobile.checked-opt {
+  display: block;
+  background-color: #4ccb00 !important;
+  visibility: visible;
+}
+
+.btnServicioMobile{
+  border-top:0.5px solid #a2a2a2;
+  height: 36px;
+}
+
+.alignr-box-mobile {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 10%;
+  padding: 0 20px;
+}
+@media only screen and (max-width: 640px) {
+  .alignr-box-mobile {
+    padding: 10px 0px 10px 0px;
+  }
+}
+
+.iconServicios{
+  padding-top: 16px !important;
+}
+
+.nameServicios{
+  padding-top: 6px !important;
+  padding-left: 0px !important;
+  font-size:26px;
+}
+
+.btnServicioMobile-bottom{
+  padding:0px 0px 55px 0px ;
+  border-bottom: 0.5px solid #a2a2a2;
+}
+
+.mobileSelect{
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .checks-scroll-bx p {
+    display: inline !important;
+  }
+  .checks-scroll-bx{
+    /*width: 100% !important;
+    height: 40px;*/
+  }
+  .sliders-scroll-bx{
+    width: 100% !important;
+  }
+}
+/*
+.mCSB_horizontal.mCSB_inside > .mCSB_container {
+    margin-right: 0;
+    margin-bottom: 0px !important;
+}
+*/
+
+.mCSB_horizontal.mCSB_inside > .mCSB_container {
+    margin-bottom: 0px !important;
+}

@@ -41,7 +41,6 @@ switch($transaccion){
 								 GetSQLValueString($_POST['visible'], "int"),
 								 'current_timestamp');
 
-				echo '<script>console.log('.$sql.')</script>';
 				$result = mysql_query($sql, $dbConn) or die( mysql_error());
 				mysql_free_result($result);
 				
@@ -154,6 +153,18 @@ if(isset($_POST['unassignedServices'])){
 			$deleteSQL = sprintf("DELETE FROM planes_tipoServicios WHERE id_plan=%s AND id_tipoServicio=%s", GetSQLValueString($_POST['id_plan'], "int"), GetSQLValueString($id_unassignedService, "int"));
 			$result = mysql_query($deleteSQL, $dbConn) or die(mysql_error());
 			mysql_free_result($result);
+
+			//Eliminamos en la tabla planes_tipoDatosServicios todos los 'atributos' del servicio que estamos asignando al plan
+			$tipoDatosServiciosSQL=sprintf("SELECT * FROM tipoDatosServicios WHERE id_tipoServicio= %s ORDER BY orden ASC",GetSQLValueString($id_unassignedService, "int"));
+			$tipoDatosServicios = mysql_query($tipoDatosServiciosSQL, $dbConn) or die(mysql_error());
+			mysql_data_seek($tipoDatosServicios, 0);
+			while($row_tipoDatosServicios = mysql_fetch_assoc($tipoDatosServicios)){
+				echo GetSQLValueString($_POST['id_plan'], "int").','.$row_tipoDatosServicios['id_tipoDato'];
+				$insertAtributoSQL = sprintf('DELETE FROM planes_tipoDatosServicios WHERE id_plan =%s AND id_tipoDato = %s',GetSQLValueString($_POST['id_plan'], "int"),$row_tipoDatosServicios['id_tipoDato']);
+				$result = mysql_query($insertAtributoSQL, $dbConn) or die(mysql_error());
+				mysql_free_result($result);
+			}
+			mysql_free_result($tipoDatosServicios);
 					
 	}//foreach
 
@@ -178,9 +189,38 @@ foreach($_POST['services'] as $id_tipoServicio){
 			
 			$result = mysql_query($insertSQL, $dbConn) or die(mysql_error());
 			mysql_free_result($result);
-			
+
+			//Insertamos en la tabla todos los 'atributos' del servicio que estamos asignando al plan
+			$tipoDatosServiciosSQL=sprintf("SELECT * FROM tipoDatosServicios WHERE id_tipoServicio= %s ORDER BY orden ASC",GetSQLValueString($id_tipoServicio, "int"));
+			//echo $tipoDatosServiciosSQL;
+			$tipoDatosServicios = mysql_query($tipoDatosServiciosSQL, $dbConn) or die(mysql_error());
+
+			while($row_tipoDatosServicios = mysql_fetch_assoc($tipoDatosServicios)){
+				$query_alreadyAssignedAtributo = sprintf("SELECT * FROM planes_tipoDatosServicios WHERE id_plan=%s AND id_tipoDato=%s", GetSQLValueString($_POST['id_plan'], "int"), $row_tipoDatosServicios['id_tipoDato']);
+				echo $query_alreadyAssignedAtributo;
+				$alreadyAssignedAtributo = mysql_query($query_alreadyAssignedAtributo, $dbConn) or die(mysql_error());
+				$totalRows_alreadyAssignedAtributo = mysql_num_rows($alreadyAssignedAtributo);
+				mysql_free_result($alreadyAssignedAtributo);
+				//Saber si el atributo viene en la llamada del form
+				$attr='atributo'.$row_tipoDatosServicios['id_tipoDato'];
+				if(isset($_POST[$attr])){
+					$valorAtributo=$_POST[$attr];
+				}else{
+					$valorAtributo=NULL;
+				}
+				
+				// Sólo inserta el atributo en la tabla si no está ya.
+				if($totalRows_alreadyAssignedAtributo < 1){
+					$insertAtributoSQL = sprintf('INSERT INTO planes_tipoDatosServicios (id_plan, id_tipoDato,valor) VALUES (%s,%s,%s)',GetSQLValueString($_POST['id_plan'], "int"),$row_tipoDatosServicios['id_tipoDato'],GetSQLValueString($valorAtributo, "text"));
+					//echo $insertAtributoSQL;
+					$resultInsertAttr = mysql_query($insertAtributoSQL, $dbConn) or die(mysql_error());
+					mysql_free_result($resultInsertAttr);
+				}else{
+
+				}
+			}
+			mysql_free_result($tipoDatosServicios);
 		}
-						
 }//foreach
 
 
